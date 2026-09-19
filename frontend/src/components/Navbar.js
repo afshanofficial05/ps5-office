@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { useAuth } from '../context/AuthContext';
 import Avatar from './Avatar';
 import { 
-  LogOut, Plus, Bell, ShieldCheck, Sparkles 
+  LogOut, Plus, Bell, ShieldCheck, Sparkles, CheckSquare 
 } from 'lucide-react';
 
 export default function Navbar({ title, subtitle }) {
