@@ -11,6 +11,12 @@ if db_url.startswith("postgres://"):
 is_sqlite = db_url.startswith("sqlite")
 
 connect_args = {"check_same_thread": False} if is_sqlite else {}
+
+# For PostgreSQL (Supabase / Render), ensure sslmode=require is set if not present
+if not is_sqlite and "sslmode" not in db_url:
+    sep = "&" if "?" in db_url else "?"
+    db_url = f"{db_url}{sep}sslmode=require"
+
 engine_kwargs = {"connect_args": connect_args, "echo": False}
 
 if not is_sqlite:

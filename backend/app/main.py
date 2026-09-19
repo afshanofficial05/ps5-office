@@ -46,21 +46,35 @@ from backend.app.api.achievements import router as achievements_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Initialize DB tables
-    Base.metadata.create_all(bind=engine)
-    # Ensure backward-compatible columns exist
-    with engine.begin() as conn:
-        try:
-            from sqlalchemy import text
-            conn.execute(text("ALTER TABLE match_results ADD COLUMN IF NOT EXISTS notes TEXT;"))
-        except Exception:
-            pass
-    # Seed database
-    db = SessionLocal()
     try:
-        seed_database(db)
-    finally:
-        db.close()
+        sys.stdout.reconfigure(line_buffering=True)
+        sys.stderr.reconfigure(line_buffering=True)
+    except Exception:
+        pass
+
+    print("[STARTUP] Starting PSO Gaming Platform API...", flush=True)
+    try:
+        print("[STARTUP] Initializing database schema...", flush=True)
+        Base.metadata.create_all(bind=engine)
+        with engine.begin() as conn:
+            try:
+                from sqlalchemy import text
+                conn.execute(text("ALTER TABLE match_results ADD COLUMN IF NOT EXISTS notes TEXT;"))
+            except Exception as e:
+                print(f"[STARTUP] Migration note: {e}", flush=True)
+
+        print("[STARTUP] Seeding database defaults...", flush=True)
+        db = SessionLocal()
+        try:
+            seed_database(db)
+            print("[STARTUP] Database seed complete!", flush=True)
+        finally:
+            db.close()
+    except Exception as exc:
+        print(f"[STARTUP ERROR] Database initialization notice: {exc}", flush=True)
+        print("[STARTUP] Continuing server startup...", flush=True)
+
+    print("[STARTUP] Server is live and ready to accept requests!", flush=True)
     yield
 
 app = FastAPI(
