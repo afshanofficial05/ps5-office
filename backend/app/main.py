@@ -115,6 +115,11 @@ app.include_router(reports_router, prefix=settings.API_V1_STR)
 app.include_router(achievements_router, prefix=settings.API_V1_STR)
 
 
+@app.get("/")
+def root():
+    return {"status": "ok", "message": "PSO Gaming Platform API is running", "docs": "/docs"}
+
+@app.get("/health")
 @app.get("/api/health")
 def health_check():
     return {"status": "ok", "platform": "PSO Gaming Platform", "version": "1.0.0"}
