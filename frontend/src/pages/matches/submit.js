@@ -203,73 +203,227 @@ export default function SubmitMatchResultPage() {
   if (submittedMatch) {
     return (
       <Layout title="Result Submitted" requireAuth={true}>
-        <div style={{ maxWidth: '640px', margin: '40px auto' }}>
+        <div style={{ maxWidth: '560px', margin: '20px auto 40px', padding: '0 12px' }}>
           <div className="glass-card" style={{
-            padding: '40px 32px',
+            padding: '36px 20px',
             textAlign: 'center',
             background: '#ffffff',
             borderRadius: '24px',
-            border: '1.5px solid #86efac'
+            border: '1.5px solid #86efac',
+            boxShadow: '0 10px 30px -5px rgba(22, 163, 74, 0.12)'
           }}>
+            {/* Animated Check Icon */}
             <div style={{
-              width: '64px',
-              height: '64px',
+              width: '68px',
+              height: '68px',
               borderRadius: '50%',
-              background: '#dcfce7',
+              background: 'linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%)',
               color: '#16a34a',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              margin: '0 auto 18px'
+              margin: '0 auto 16px',
+              boxShadow: '0 4px 12px rgba(22, 163, 74, 0.2)'
             }}>
-              <CheckCircle size={36} />
+              <CheckCircle size={38} strokeWidth={2.5} />
             </div>
 
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 900, color: '#0f172a', marginBottom: '8px' }}>
+            <h2 style={{ fontSize: '1.45rem', fontWeight: 900, color: '#0f172a', marginBottom: '8px', letterSpacing: '-0.02em' }}>
               Result submitted successfully!
             </h2>
-            <p style={{ fontSize: '0.92rem', color: '#64748b', marginBottom: '24px', lineHeight: 1.5 }}>
-              Waiting for admin verification. Your match has been registered as 
-              <strong style={{ color: '#2563eb' }}> {submittedMatch.match_code}</strong>.
-              Ratings and rankings will automatically update once verified.
+            <p style={{ fontSize: '0.88rem', color: '#64748b', marginBottom: '22px', lineHeight: 1.5, maxWidth: '440px', margin: '0 auto 22px' }}>
+              Waiting for admin verification. Your match has been registered as{' '}
+              <span style={{
+                display: 'inline-block',
+                fontWeight: 800,
+                color: '#2563eb',
+                background: '#eff6ff',
+                padding: '2px 8px',
+                borderRadius: '6px',
+                border: '1px solid #bfdbfe'
+              }}>
+                {submittedMatch.match_code}
+              </span>.
+              Ratings will automatically update once verified.
             </p>
 
-            {/* Match Summary Pill */}
+            {/* Scoreboard Card: Perfect 3-column Grid */}
             <div style={{
               background: '#f8fafc',
               border: '1px solid #e2e8f0',
-              borderRadius: '16px',
-              padding: '16px 20px',
-              marginBottom: '28px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-around'
+              borderRadius: '20px',
+              padding: '20px 14px',
+              marginBottom: '26px',
+              boxShadow: 'inset 0 1px 2px rgba(0, 0, 0, 0.02)'
             }}>
-              <div>
-                <p style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 600 }}>You</p>
-                <p style={{ fontSize: '1.05rem', fontWeight: 800, color: '#0f172a' }}>{user?.name}</p>
-                <p style={{ fontSize: '1.6rem', fontWeight: 900, color: '#2563eb', fontFamily: 'monospace' }}>
-                  {submittedMatch.result?.score_a}
-                </p>
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'minmax(0, 1fr) auto minmax(0, 1fr)',
+                gap: '8px',
+                alignItems: 'center'
+              }}>
+                {/* Player A (You) */}
+                <div style={{ textAlign: 'center', minWidth: 0, padding: '0 4px' }}>
+                  <span style={{
+                    display: 'inline-block',
+                    fontSize: '0.72rem',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em',
+                    color: '#2563eb',
+                    background: '#eff6ff',
+                    padding: '2px 8px',
+                    borderRadius: '999px',
+                    marginBottom: '6px'
+                  }}>
+                    You
+                  </span>
+                  <p style={{
+                    fontSize: '0.92rem',
+                    fontWeight: 800,
+                    color: '#0f172a',
+                    whiteSpace: 'normal',
+                    wordBreak: 'break-word',
+                    lineHeight: 1.25,
+                    minHeight: '2.4em',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: '0 0 6px 0'
+                  }}>
+                    {user?.name}
+                  </p>
+                  <div style={{
+                    fontSize: '2.2rem',
+                    fontWeight: 900,
+                    color: '#2563eb',
+                    fontFamily: 'monospace',
+                    lineHeight: 1
+                  }}>
+                    {submittedMatch.result?.score_a ?? 0}
+                  </div>
+                </div>
+
+                {/* VS Divider Badge */}
+                <div style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '0 6px'
+                }}>
+                  <div style={{
+                    width: '36px',
+                    height: '36px',
+                    borderRadius: '50%',
+                    background: '#ffffff',
+                    border: '1.5px solid #cbd5e1',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '0.72rem',
+                    fontWeight: 900,
+                    color: '#64748b',
+                    boxShadow: '0 2px 6px rgba(0,0,0,0.04)'
+                  }}>
+                    VS
+                  </div>
+                </div>
+
+                {/* Player B (Opponent) */}
+                <div style={{ textAlign: 'center', minWidth: 0, padding: '0 4px' }}>
+                  <span style={{
+                    display: 'inline-block',
+                    fontSize: '0.72rem',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em',
+                    color: '#7c3aed',
+                    background: '#f5f3ff',
+                    padding: '2px 8px',
+                    borderRadius: '999px',
+                    marginBottom: '6px'
+                  }}>
+                    Opponent
+                  </span>
+                  <p style={{
+                    fontSize: '0.92rem',
+                    fontWeight: 800,
+                    color: '#0f172a',
+                    whiteSpace: 'normal',
+                    wordBreak: 'break-word',
+                    lineHeight: 1.25,
+                    minHeight: '2.4em',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: '0 0 6px 0'
+                  }}>
+                    {selectedOpponent?.name || 'Opponent'}
+                  </p>
+                  <div style={{
+                    fontSize: '2.2rem',
+                    fontWeight: 900,
+                    color: '#7c3aed',
+                    fontFamily: 'monospace',
+                    lineHeight: 1
+                  }}>
+                    {submittedMatch.result?.score_b ?? 0}
+                  </div>
+                </div>
               </div>
 
-              <div style={{ fontSize: '1.2rem', fontWeight: 900, color: '#94a3b8' }}>VS</div>
-
-              <div>
-                <p style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 600 }}>Opponent</p>
-                <p style={{ fontSize: '1.05rem', fontWeight: 800, color: '#0f172a' }}>{selectedOpponent?.name || 'Opponent'}</p>
-                <p style={{ fontSize: '1.6rem', fontWeight: 900, color: '#7c3aed', fontFamily: 'monospace' }}>
-                  {submittedMatch.result?.score_b}
-                </p>
-              </div>
+              {/* Penalty shootout info if applicable */}
+              {submittedMatch.result?.is_penalty_shootout && (
+                <div style={{
+                  marginTop: '12px',
+                  paddingTop: '10px',
+                  borderTop: '1px dashed #cbd5e1',
+                  fontSize: '0.8rem',
+                  fontWeight: 700,
+                  color: '#7c3aed'
+                }}>
+                  Penalties: {submittedMatch.result?.penalty_score_a} - {submittedMatch.result?.penalty_score_b}
+                </div>
+              )}
             </div>
 
-            <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link href={`/matches/${submittedMatch.id}`} className="btn btn-primary" style={{ padding: '10px 20px' }}>
+            {/* Action Buttons: Stacked on Mobile, Full-width & Tap-Friendly */}
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '10px',
+              maxWidth: '360px',
+              margin: '0 auto'
+            }}>
+              <Link
+                href={`/matches/${submittedMatch.id}`}
+                className="btn btn-primary"
+                style={{
+                  width: '100%',
+                  justifyContent: 'center',
+                  padding: '12px 18px',
+                  fontSize: '0.95rem',
+                  fontWeight: 800,
+                  borderRadius: '14px',
+                  boxShadow: '0 4px 14px rgba(37, 99, 235, 0.25)'
+                }}
+              >
                 <span>View Match Lobby</span>
-                <ChevronRight size={16} />
+                <ChevronRight size={18} />
               </Link>
-              <Link href="/matches/history" className="btn btn-secondary" style={{ padding: '10px 20px' }}>
+              <Link
+                href="/matches/history"
+                className="btn btn-secondary"
+                style={{
+                  width: '100%',
+                  justifyContent: 'center',
+                  padding: '12px 18px',
+                  fontSize: '0.92rem',
+                  fontWeight: 700,
+                  borderRadius: '14px'
+                }}
+              >
                 <span>My Matches History</span>
               </Link>
             </div>
