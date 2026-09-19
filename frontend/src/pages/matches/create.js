@@ -4,7 +4,7 @@ import Layout from '../../components/Layout';
 import { api } from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
 import { 
-  Swords, Users, Shield, ArrowRight, Check, 
+  Swords, Users, Shield, ArrowRight, Check, Search,
   Globe, PlusCircle, Clock, CheckCircle2, AlertCircle, X, ChevronRight, HelpCircle
 } from 'lucide-react';
 
@@ -22,6 +22,7 @@ export default function CreateMatchPage() {
   const [selectedTeamId, setSelectedTeamId] = useState(null);
   const [categoryFilter, setCategoryFilter] = useState('ALL');
   const [leagueFilter, setLeagueFilter] = useState('ALL');
+  const [searchQuery, setSearchQuery] = useState('');
   const [displayLimit, setDisplayLimit] = useState(36);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
@@ -126,14 +127,30 @@ export default function CreateMatchPage() {
   }, [teams]);
 
   const filteredTeams = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
     return teams.filter((t) => {
-      if (categoryFilter === 'POPULAR') return (t.pick_count || 0) > 0 || t.ovr >= 85;
-      if (categoryFilter === 'NATIONAL' && t.category !== 'National') return false;
-      if (categoryFilter === 'CLUB' && t.category !== 'Club') return false;
+      if (categoryFilter === 'POPULAR') {
+        const isPopular = (t.pick_count || 0) > 0 || t.ovr >= 85;
+        if (!isPopular) return false;
+      } else if (categoryFilter === 'NATIONAL') {
+        if (t.category !== 'National') return false;
+      } else if (categoryFilter === 'CLUB') {
+        if (t.category !== 'Club') return false;
+      }
+
       if (leagueFilter !== 'ALL' && t.league !== leagueFilter) return false;
+
+      if (q) {
+        const nameMatch = t.name?.toLowerCase().includes(q);
+        const leagueMatch = t.league?.toLowerCase().includes(q);
+        const codeMatch = t.short_code?.toLowerCase().includes(q);
+        const catMatch = t.category?.toLowerCase().includes(q);
+        if (!nameMatch && !leagueMatch && !codeMatch && !catMatch) return false;
+      }
+
       return true;
     });
-  }, [teams, categoryFilter, leagueFilter]);
+  }, [teams, categoryFilter, leagueFilter, searchQuery]);
 
   return (
     <Layout title="Create Match Lobby" requireAuth={true}>
@@ -352,17 +369,17 @@ export default function CreateMatchPage() {
             </div>
           </div>
 
-          {/* Category & League Filter Bar (No Search Input) */}
+          {/* Category & Search Bar (Changed "All Leagues" to Search) */}
           <div style={{
             display: 'flex',
-            gap: '8px',
+            gap: '10px',
             marginBottom: '16px',
             flexWrap: 'wrap',
             alignItems: 'center',
             justifyContent: 'space-between'
           }}>
             {/* Category Filter Pills */}
-            <div className="touch-tab-bar" style={{ display: 'flex', gap: '6px' }}>
+            <div className="touch-tab-bar" style={{ display: 'flex', gap: '6px', overflowX: 'auto', maxWidth: '100%' }}>
               {[
                 { id: 'ALL', label: `All (${teams.length})` },
                 { id: 'POPULAR', label: 'Popular' },
@@ -392,38 +409,98 @@ export default function CreateMatchPage() {
               ))}
             </div>
 
-            {/* League Dropdown Filter */}
-            <select
-              value={leagueFilter}
-              onChange={(e) => { setLeagueFilter(e.target.value); setDisplayLimit(36); }}
-              className="form-select"
-              style={{
-                fontSize: '0.84rem',
-                padding: '8px 14px',
-                backgroundColor: '#ffffff',
-                borderColor: leagueFilter !== 'ALL' ? '#2563eb' : '#cbd5e1',
-                color: '#0f172a',
-                borderRadius: '10px',
-                minWidth: '160px',
-                minHeight: '40px'
-              }}
-            >
-              <option value="ALL">All Leagues</option>
-              {leagues.map(l => (
-                <option key={l} value={l}>{l}</option>
-              ))}
-            </select>
+            {/* Search Input (Replaced All Leagues option so users can search and find teams) */}
+            <div style={{
+              position: 'relative',
+              flex: '1 1 240px',
+              minWidth: '220px',
+              maxWidth: '360px'
+            }}>
+              <Search
+                size={16}
+                style={{
+                  position: 'absolute',
+                  left: '12px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  color: searchQuery ? '#2563eb' : '#94a3b8',
+                  pointerEvents: 'none',
+                  transition: 'color 0.15s ease'
+                }}
+              />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setDisplayLimit(36);
+                }}
+                placeholder="Search teams or leagues..."
+                style={{
+                  width: '100%',
+                  padding: '9px 34px 9px 36px',
+                  fontSize: '16px', // 16px prevents iOS Safari auto-zoom
+                  borderRadius: '10px',
+                  border: searchQuery ? '1.5px solid #2563eb' : '1px solid #cbd5e1',
+                  backgroundColor: '#ffffff',
+                  color: '#0f172a',
+                  outline: 'none',
+                  minHeight: '40px',
+                  boxSizing: 'border-box',
+                  transition: 'border-color 0.15s ease, box-shadow 0.15s ease'
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#2563eb';
+                  e.target.style.boxShadow = '0 0 0 3px rgba(37, 99, 235, 0.12)';
+                }}
+                onBlur={(e) => {
+                  if (!searchQuery) {
+                    e.target.style.borderColor = '#cbd5e1';
+                  }
+                  e.target.style.boxShadow = 'none';
+                }}
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSearchQuery('');
+                    setDisplayLimit(36);
+                  }}
+                  style={{
+                    position: 'absolute',
+                    right: '10px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    background: '#f1f5f9',
+                    border: 'none',
+                    color: '#64748b',
+                    cursor: 'pointer',
+                    padding: '3px',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                  title="Clear search"
+                >
+                  <X size={14} />
+                </button>
+              )}
+            </div>
           </div>
 
           {/* Compact Teams Grid */}
           <div style={{ maxHeight: '460px', overflowY: 'auto', paddingRight: '4px' }}>
             {filteredTeams.length === 0 ? (
               <div style={{ textAlign: 'center', padding: '36px 16px', color: '#64748b' }}>
-                <p style={{ fontSize: '0.95rem', fontWeight: 700, color: '#0f172a' }}>No teams found for this filter</p>
-                <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', marginTop: '12px' }}>
+                <p style={{ fontSize: '0.95rem', fontWeight: 700, color: '#0f172a' }}>
+                  {searchQuery ? `No teams found matching "${searchQuery}"` : 'No teams found for this filter'}
+                </p>
+                <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', marginTop: '12px', flexWrap: 'wrap' }}>
                   <button
                     type="button"
-                    onClick={() => { setCategoryFilter('ALL'); setLeagueFilter('ALL'); }}
+                    onClick={() => { setCategoryFilter('ALL'); setLeagueFilter('ALL'); setSearchQuery(''); }}
                     className="btn btn-secondary"
                     style={{ padding: '8px 14px', fontSize: '0.82rem' }}
                   >
@@ -431,7 +508,12 @@ export default function CreateMatchPage() {
                   </button>
                   <button
                     type="button"
-                    onClick={() => { setShowRequestModal(true); }}
+                    onClick={() => {
+                      if (searchQuery) {
+                        setRequestForm(prev => ({ ...prev, team_name: searchQuery }));
+                      }
+                      setShowRequestModal(true);
+                    }}
                     className="btn btn-primary"
                     style={{ padding: '8px 14px', fontSize: '0.82rem' }}
                   >

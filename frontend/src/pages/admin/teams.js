@@ -3,7 +3,7 @@ import Layout from '../../components/Layout';
 import { useAuth } from '../../context/AuthContext';
 import { api } from '../../services/api';
 import { 
-  Shield, Plus, Edit2, Trash2, Save, X, Check, Globe, 
+  Shield, Plus, Edit2, Trash2, Save, X, Check, Globe, Search,
   Building2, ChevronLeft, ChevronRight, Clock, CheckCircle2, 
   AlertCircle, AlertTriangle, Layers, Inbox
 } from 'lucide-react';
@@ -23,9 +23,10 @@ export default function AdminTeamsPage() {
 
   const [loading, setLoading] = useState(true);
 
-  // Filter state (No search term)
+  // Filter state
   const [categoryFilter, setCategoryFilter] = useState('ALL');
   const [leagueFilter, setLeagueFilter] = useState('ALL');
+  const [searchQuery, setSearchQuery] = useState('');
   const [requestStatusFilter, setRequestStatusFilter] = useState('PENDING'); // 'PENDING' | 'ALL' | 'APPROVED' | 'REJECTED'
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -39,7 +40,9 @@ export default function AdminTeamsPage() {
   const [mid, setMid] = useState(82);
   const [defRating, setDefRating] = useState(82);
   const [category, setCategory] = useState('Club');
+  const [shortCode, setShortCode] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [formError, setFormError] = useState('');
   const [error, setError] = useState('');
 
   // Delete Team State
@@ -47,42 +50,48 @@ export default function AdminTeamsPage() {
   const [deleteSubmitting, setDeleteSubmitting] = useState(false);
   const [deleteError, setDeleteError] = useState('');
 
-  // Request Review State
+  // Review Modal State
+  const [showReviewModal, setShowReviewModal] = useState(false);
   const [reviewingRequest, setReviewingRequest] = useState(null);
-  const [reviewAction, setReviewAction] = useState(null); // 'APPROVE' | 'REJECT'
-  const [rejectionReason, setRejectionReason] = useState('');
+  const [reviewTeamName, setReviewTeamName] = useState('');
+  const [reviewLeague, setReviewLeague] = useState('');
   const [reviewOvr, setReviewOvr] = useState(80);
   const [reviewAtk, setReviewAtk] = useState(80);
   const [reviewMid, setReviewMid] = useState(80);
   const [reviewDef, setReviewDef] = useState(80);
-  const [reviewLeague, setReviewLeague] = useState('');
   const [reviewCategory, setReviewCategory] = useState('Club');
+  const [reviewShortCode, setReviewShortCode] = useState('');
+  const [reviewAdminNotes, setReviewAdminNotes] = useState('');
+  const [reviewAction, setReviewAction] = useState(null); // 'APPROVE' | 'REJECT'
+  const [rejectionReason, setRejectionReason] = useState('');
   const [reviewSubmitting, setReviewSubmitting] = useState(false);
   const [reviewError, setReviewError] = useState('');
 
   const fetchTeamsAndRequests = async () => {
+    setLoading(true);
     try {
-      const [teamsData, requestsData] = await Promise.all([
-        api.getTeams({ status: 'ACTIVE' }),
+      const [tData, rData] = await Promise.all([
+        api.getTeams(),
         api.getTeamRequests()
       ]);
-      setTeams(teamsData);
-      setTeamRequests(requestsData);
+      setTeams(tData);
+      setTeamRequests(rData);
     } catch (err) {
-      console.error('Failed to load teams or requests', err);
+      console.error('Failed to load teams data', err);
     } finally {
       setLoading(false);
     }
   };
+  const loadData = fetchTeamsAndRequests;
 
   useEffect(() => {
     fetchTeamsAndRequests();
   }, []);
 
-  // Reset pagination when category or league changes
+  // Reset pagination when category, league, or search changes
   useEffect(() => {
     setCurrentPage(1);
-  }, [categoryFilter, leagueFilter]);
+  }, [categoryFilter, leagueFilter, searchQuery]);
 
   // Extract unique leagues
   const leagues = useMemo(() => {
@@ -90,15 +99,22 @@ export default function AdminTeamsPage() {
     return Array.from(new Set(list)).sort();
   }, [teams]);
 
-  // Filtered teams (No search filtering)
+  // Filtered teams with search
   const filteredTeams = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
     return teams.filter(t => {
       if (categoryFilter === 'NATIONAL' && t.category !== 'National') return false;
       if (categoryFilter === 'CLUB' && t.category !== 'Club') return false;
       if (leagueFilter !== 'ALL' && t.league !== leagueFilter) return false;
+      if (q) {
+        const nameMatch = t.name?.toLowerCase().includes(q);
+        const leagueMatch = t.league?.toLowerCase().includes(q);
+        const shortMatch = t.short_code?.toLowerCase().includes(q);
+        if (!nameMatch && !leagueMatch && !shortMatch) return false;
+      }
       return true;
     });
-  }, [teams, categoryFilter, leagueFilter]);
+  }, [teams, categoryFilter, leagueFilter, searchQuery]);
 
   const totalPages = Math.max(1, Math.ceil(filteredTeams.length / PAGE_SIZE));
   const displayedTeams = useMemo(() => {
@@ -437,30 +453,89 @@ export default function AdminTeamsPage() {
                   </button>
                 </div>
 
-                {/* League Dropdown Filter */}
-                <div style={{ minWidth: '220px', flex: '0 1 280px' }}>
-                  <select
-                    value={leagueFilter}
-                    onChange={(e) => setLeagueFilter(e.target.value)}
-                    className="form-select"
-                    style={{
-                      fontSize: '0.85rem',
-                      padding: '8px 14px',
-                      backgroundColor: '#ffffff',
-                      borderColor: leagueFilter !== 'ALL' ? '#2563eb' : '#cbd5e1',
-                      color: '#0f172a',
-                      borderRadius: '10px',
-                      minHeight: '40px',
-                      width: '100%'
-                    }}
-                  >
-                    <option value="ALL">All Leagues ({leagues.length})</option>
-                    {leagues.map(l => (
-                      <option key={l} value={l}>
-                        {l} ({teams.filter(t => t.league === l).length})
-                      </option>
-                    ))}
-                  </select>
+                {/* Search Bar & League Dropdown Filter */}
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', flex: '1 1 320px', justifyContent: 'flex-end' }}>
+                  {/* Search Input */}
+                  <div style={{ position: 'relative', flex: '1 1 200px', minWidth: '180px', maxWidth: '300px' }}>
+                    <Search
+                      size={15}
+                      style={{
+                        position: 'absolute',
+                        left: '12px',
+                        top: '50%',
+                        transform: 'translateY(-50%)',
+                        color: searchQuery ? '#2563eb' : '#94a3b8',
+                        pointerEvents: 'none'
+                      }}
+                    />
+                    <input
+                      type="text"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      placeholder="Search teams or leagues..."
+                      style={{
+                        width: '100%',
+                        padding: '8px 30px 8px 34px',
+                        fontSize: '0.85rem',
+                        borderRadius: '10px',
+                        border: searchQuery ? '1.5px solid #2563eb' : '1px solid #cbd5e1',
+                        backgroundColor: '#ffffff',
+                        color: '#0f172a',
+                        outline: 'none',
+                        minHeight: '40px',
+                        boxSizing: 'border-box'
+                      }}
+                    />
+                    {searchQuery && (
+                      <button
+                        type="button"
+                        onClick={() => setSearchQuery('')}
+                        style={{
+                          position: 'absolute',
+                          right: '8px',
+                          top: '50%',
+                          transform: 'translateY(-50%)',
+                          background: '#f1f5f9',
+                          border: 'none',
+                          color: '#64748b',
+                          cursor: 'pointer',
+                          padding: '3px',
+                          borderRadius: '50%',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center'
+                        }}
+                      >
+                        <X size={13} />
+                      </button>
+                    )}
+                  </div>
+
+                  {/* League Dropdown Filter */}
+                  <div style={{ minWidth: '170px', flex: '0 1 200px' }}>
+                    <select
+                      value={leagueFilter}
+                      onChange={(e) => setLeagueFilter(e.target.value)}
+                      className="form-select"
+                      style={{
+                        fontSize: '0.85rem',
+                        padding: '8px 14px',
+                        backgroundColor: '#ffffff',
+                        borderColor: leagueFilter !== 'ALL' ? '#2563eb' : '#cbd5e1',
+                        color: '#0f172a',
+                        borderRadius: '10px',
+                        minHeight: '40px',
+                        width: '100%'
+                      }}
+                    >
+                      <option value="ALL">All Leagues ({leagues.length})</option>
+                      {leagues.map(l => (
+                        <option key={l} value={l}>
+                          {l} ({teams.filter(t => t.league === l).length})
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
               </div>
 
@@ -468,10 +543,10 @@ export default function AdminTeamsPage() {
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '12px', paddingTop: '10px', borderTop: '1px solid #f1f5f9', fontSize: '0.78rem', color: '#64748b', flexWrap: 'wrap', gap: '8px' }}>
                 <div>
                   Showing <strong style={{ color: '#0f172a' }}>{filteredTeams.length === 0 ? 0 : ((currentPage - 1) * PAGE_SIZE) + 1}</strong> to <strong style={{ color: '#0f172a' }}>{Math.min(currentPage * PAGE_SIZE, filteredTeams.length)}</strong> of <strong style={{ color: '#2563eb' }}>{filteredTeams.length}</strong> teams
-                  {(categoryFilter !== 'ALL' || leagueFilter !== 'ALL') && (
+                  {(categoryFilter !== 'ALL' || leagueFilter !== 'ALL' || searchQuery !== '') && (
                     <button
                       type="button"
-                      onClick={() => { setCategoryFilter('ALL'); setLeagueFilter('ALL'); }}
+                      onClick={() => { setCategoryFilter('ALL'); setLeagueFilter('ALL'); setSearchQuery(''); }}
                       style={{ marginLeft: '12px', background: 'none', border: 'none', color: '#e11d48', cursor: 'pointer', fontSize: '0.78rem', textDecoration: 'underline', fontWeight: 600 }}
                     >
                       Reset filters
