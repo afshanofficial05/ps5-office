@@ -479,32 +479,26 @@ export default function SubmitMatchResultPage() {
           {/* Section 1: Players & Clubs Selection */}
           <div className="submit-teams-grid">
             {/* Player A (You) */}
-            <div style={{
-              background: '#eff6ff',
-              border: '1.5px solid #bfdbfe',
-              borderRadius: '16px',
-              padding: '16px'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-                <Avatar user={user} size={36} />
-                <div>
-                  <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#2563eb', textTransform: 'uppercase' }}>
+            <div className="submit-player-card card-you">
+              <div className="submit-player-header">
+                <Avatar user={user} size={34} />
+                <div style={{ minWidth: 0, flex: 1 }}>
+                  <span className="submit-card-badge badge-you">
                     You (Player A)
                   </span>
-                  <p style={{ fontSize: '0.95rem', fontWeight: 800, color: '#0f172a' }}>
+                  <p className="submit-card-name">
                     {user?.name}
                   </p>
                 </div>
               </div>
 
-              <label style={{ display: 'block', fontSize: '0.76rem', fontWeight: 700, color: '#475569', marginBottom: '4px' }}>
+              <label className="submit-field-label">
                 Your FC Club
               </label>
               <select
                 className="form-input"
                 value={userTeamId}
                 onChange={(e) => setUserTeamId(e.target.value)}
-                style={{ fontSize: '0.85rem' }}
               >
                 {teams.map((t) => (
                   <option key={t.id} value={t.id}>{t.name} ({t.ovr} OVR)</option>
@@ -513,29 +507,25 @@ export default function SubmitMatchResultPage() {
             </div>
 
             {/* VS Badge */}
-            <div style={{
-              width: '40px',
-              height: '40px',
-              borderRadius: '50%',
-              background: '#f1f5f9',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontWeight: 900,
-              fontSize: '0.85rem',
-              color: '#64748b'
-            }}>
-              VS
+            <div className="submit-vs-badge">
+              <span>VS</span>
             </div>
 
             {/* Player B (Opponent) */}
-            <div style={{
-              background: '#faf5ff',
-              border: '1.5px solid #e9d5ff',
-              borderRadius: '16px',
-              padding: '16px'
-            }}>
-              <label style={{ display: 'block', fontSize: '0.76rem', fontWeight: 700, color: '#7c3aed', textTransform: 'uppercase', marginBottom: '6px' }}>
+            <div className="submit-player-card card-opp">
+              <div className="submit-player-header">
+                <Avatar user={selectedOpponent} name={selectedOpponent?.name || 'Opponent'} size={34} />
+                <div style={{ minWidth: 0, flex: 1 }}>
+                  <span className="submit-card-badge badge-opp">
+                    Opponent (Player B)
+                  </span>
+                  <p className="submit-card-name">
+                    {selectedOpponent?.name || 'Choose Below'}
+                  </p>
+                </div>
+              </div>
+
+              <label className="submit-field-label">
                 Select Opponent *
               </label>
               <select
@@ -543,7 +533,7 @@ export default function SubmitMatchResultPage() {
                 required
                 value={opponentId}
                 onChange={(e) => setOpponentId(e.target.value)}
-                style={{ fontSize: '0.88rem', fontWeight: 700, marginBottom: '12px' }}
+                style={{ marginBottom: '10px' }}
               >
                 {players.length === 0 ? (
                   <option value="">No other players available</option>
@@ -556,14 +546,13 @@ export default function SubmitMatchResultPage() {
                 )}
               </select>
 
-              <label style={{ display: 'block', fontSize: '0.76rem', fontWeight: 700, color: '#475569', marginBottom: '4px' }}>
+              <label className="submit-field-label">
                 Opponent FC Club
               </label>
               <select
                 className="form-input"
                 value={opponentTeamId}
                 onChange={(e) => setOpponentTeamId(e.target.value)}
-                style={{ fontSize: '0.85rem' }}
               >
                 {teams.map((t) => (
                   <option key={t.id} value={t.id}>{t.name} ({t.ovr} OVR)</option>
@@ -579,10 +568,11 @@ export default function SubmitMatchResultPage() {
             </label>
 
             <div className="submit-score-grid">
-              <div>
-                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#2563eb', marginBottom: '6px' }}>
-                  {user?.name} (Your Score)
-                </label>
+              <div className="submit-score-col">
+                <div className="submit-score-header">
+                  <span className="submit-score-tag tag-you">YOU</span>
+                  <span className="submit-score-name" title={user?.name}>{user?.name}</span>
+                </div>
                 <input
                   type="text"
                   inputMode="numeric"
@@ -590,8 +580,7 @@ export default function SubmitMatchResultPage() {
                   maxLength={2}
                   required
                   placeholder="0"
-                  className="form-input"
-                  style={{ fontSize: '1.6rem', fontWeight: 900, textAlign: 'center', fontFamily: 'monospace' }}
+                  className="form-input score-box-input"
                   value={userScore}
                   onFocus={(e) => e.target.select()}
                   onChange={(e) => handleScoreChange('user', e.target.value)}
@@ -601,12 +590,17 @@ export default function SubmitMatchResultPage() {
                 />
               </div>
 
-              <div style={{ fontSize: '1.8rem', fontWeight: 900, color: '#94a3b8' }}>:</div>
+              <div className="submit-score-divider">
+                <span>:</span>
+              </div>
 
-              <div>
-                <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#7c3aed', marginBottom: '6px' }}>
-                  {selectedOpponent?.name || 'Opponent'} Score
-                </label>
+              <div className="submit-score-col">
+                <div className="submit-score-header">
+                  <span className="submit-score-tag tag-opp">OPPONENT</span>
+                  <span className="submit-score-name" title={selectedOpponent?.name || 'Opponent'}>
+                    {selectedOpponent?.name || 'Opponent'}
+                  </span>
+                </div>
                 <input
                   type="text"
                   inputMode="numeric"
@@ -614,8 +608,7 @@ export default function SubmitMatchResultPage() {
                   maxLength={2}
                   required
                   placeholder="0"
-                  className="form-input"
-                  style={{ fontSize: '1.6rem', fontWeight: 900, textAlign: 'center', fontFamily: 'monospace' }}
+                  className="form-input score-box-input"
                   value={opponentScore}
                   onFocus={(e) => e.target.select()}
                   onChange={(e) => handleScoreChange('opponent', e.target.value)}
@@ -673,18 +666,8 @@ export default function SubmitMatchResultPage() {
             </div>
 
             {isPenaltyShootout && (
-              <div style={{
-                marginTop: '12px',
-                display: 'grid',
-                gridTemplateColumns: '1fr auto 1fr',
-                gap: '16px',
-                alignItems: 'center',
-                padding: '14px 18px',
-                background: '#faf5ff',
-                border: '1px solid #e9d5ff',
-                borderRadius: '14px'
-              }}>
-                <div>
+              <div className="submit-penalties-box">
+                <div className="submit-score-col">
                   <label style={{ fontSize: '0.74rem', fontWeight: 700, color: '#7c3aed', display: 'block', marginBottom: '4px' }}>Your Penalties</label>
                   <input
                     type="text"
@@ -692,15 +675,16 @@ export default function SubmitMatchResultPage() {
                     pattern="[0-9]*"
                     maxLength={2}
                     placeholder="0"
-                    className="form-input"
-                    style={{ textAlign: 'center', fontWeight: 700, fontSize: '1.2rem' }}
+                    className="form-input score-box-input"
                     value={userPenaltyScore}
                     onFocus={(e) => e.target.select()}
                     onChange={(e) => handlePenaltyChange('user', e.target.value)}
                   />
                 </div>
-                <div style={{ fontSize: '1.2rem', fontWeight: 900, color: '#94a3b8', paddingTop: '16px' }}>:</div>
-                <div>
+                <div className="submit-score-divider">
+                  <span>:</span>
+                </div>
+                <div className="submit-score-col">
                   <label style={{ fontSize: '0.74rem', fontWeight: 700, color: '#7c3aed', display: 'block', marginBottom: '4px' }}>Opponent Penalties</label>
                   <input
                     type="text"
@@ -708,8 +692,7 @@ export default function SubmitMatchResultPage() {
                     pattern="[0-9]*"
                     maxLength={2}
                     placeholder="0"
-                    className="form-input"
-                    style={{ textAlign: 'center', fontWeight: 700, fontSize: '1.2rem' }}
+                    className="form-input score-box-input"
                     value={opponentPenaltyScore}
                     onFocus={(e) => e.target.select()}
                     onChange={(e) => handlePenaltyChange('opponent', e.target.value)}
@@ -730,7 +713,6 @@ export default function SubmitMatchResultPage() {
                 className="form-input"
                 value={matchDate}
                 onChange={(e) => setMatchDate(e.target.value)}
-                style={{ fontSize: '0.85rem' }}
               />
             </div>
 
@@ -744,7 +726,6 @@ export default function SubmitMatchResultPage() {
                 placeholder="e.g. Lunchtime match, 90 mins, extra time"
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
-                style={{ fontSize: '0.85rem' }}
               />
             </div>
           </div>
@@ -781,29 +762,156 @@ export default function SubmitMatchResultPage() {
 
           <style jsx>{`
             .submit-card-container {
-              padding: 32px 28px;
+              padding: 28px 24px;
               background: #ffffff;
-              border-radius: 24px;
+              border-radius: 20px;
               box-shadow: 0 4px 20px rgba(0,0,0,0.04);
             }
             .submit-teams-grid {
               display: grid;
               grid-template-columns: 1fr auto 1fr;
-              gap: 18px;
+              gap: 16px;
               align-items: center;
-              margin-bottom: 28px;
-              padding-bottom: 24px;
+              margin-bottom: 24px;
+              padding-bottom: 20px;
               border-bottom: 1px solid #f1f5f9;
+            }
+            .submit-player-card {
+              border-radius: 16px;
+              padding: 16px;
+              transition: all 0.2s ease;
+            }
+            .card-you {
+              background: #eff6ff;
+              border: 1.5px solid #bfdbfe;
+            }
+            .card-opp {
+              background: #faf5ff;
+              border: 1.5px solid #e9d5ff;
+            }
+            .submit-player-header {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              margin-bottom: 12px;
+            }
+            .submit-card-badge {
+              display: block;
+              font-size: 0.7rem;
+              font-weight: 800;
+              letter-spacing: 0.03em;
+              text-transform: uppercase;
+            }
+            .badge-you {
+              color: #2563eb;
+            }
+            .badge-opp {
+              color: #7c3aed;
+            }
+            .submit-card-name {
+              font-size: 0.92rem;
+              font-weight: 800;
+              color: #0f172a;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              margin: 0;
+            }
+            .submit-field-label {
+              display: block;
+              font-size: 0.75rem;
+              font-weight: 700;
+              color: #475569;
+              margin-bottom: 5px;
+            }
+            .submit-vs-badge {
+              width: 36px;
+              height: 36px;
+              border-radius: 50%;
+              background: #f1f5f9;
+              border: 1px solid #e2e8f0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-weight: 900;
+              font-size: 0.8rem;
+              color: #64748b;
+              flex-shrink: 0;
+              margin: 0 auto;
             }
             .submit-score-grid {
               display: grid;
               grid-template-columns: 1fr auto 1fr;
-              gap: 20px;
-              align-items: center;
+              gap: 14px;
+              align-items: flex-end;
               background: #f8fafc;
               border: 1px solid #e2e8f0;
-              border-radius: 18px;
-              padding: 20px;
+              border-radius: 16px;
+              padding: 16px 14px;
+            }
+            .submit-penalties-box {
+              margin-top: 12px;
+              display: grid;
+              grid-template-columns: 1fr auto 1fr;
+              gap: 14px;
+              align-items: flex-end;
+              padding: 14px;
+              background: #faf5ff;
+              border: 1px solid #e9d5ff;
+              border-radius: 14px;
+            }
+            .submit-score-col {
+              display: flex;
+              flex-direction: column;
+              min-width: 0;
+            }
+            .submit-score-header {
+              min-height: 38px;
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-end;
+              margin-bottom: 6px;
+            }
+            .submit-score-tag {
+              font-size: 0.68rem;
+              font-weight: 800;
+              letter-spacing: 0.04em;
+              text-transform: uppercase;
+              display: block;
+            }
+            .tag-you {
+              color: #2563eb;
+            }
+            .tag-opp {
+              color: #7c3aed;
+            }
+            .submit-score-name {
+              font-size: 0.82rem;
+              font-weight: 700;
+              color: #0f172a;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              display: block;
+            }
+            .score-box-input {
+              font-size: 1.65rem !important;
+              font-weight: 900 !important;
+              text-align: center;
+              font-family: monospace;
+              height: 52px;
+              border-radius: 12px;
+            }
+            .submit-score-divider {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              height: 52px;
+              font-size: 1.8rem;
+              font-weight: 900;
+              color: #94a3b8;
+              line-height: 1;
+              padding: 0 4px;
             }
             .submit-meta-grid {
               display: grid;
@@ -814,9 +922,9 @@ export default function SubmitMatchResultPage() {
             .submit-action-btn {
               width: 100%;
               padding: 14px;
-              font-size: 1rem;
+              font-size: 0.95rem;
               font-weight: 800;
-              border-radius: 14px;
+              border-radius: 12px;
               display: flex;
               align-items: center;
               justify-content: center;
@@ -825,34 +933,55 @@ export default function SubmitMatchResultPage() {
 
             @media (max-width: 640px) {
               .submit-card-container {
-                padding: 16px 12px !important;
+                padding: 14px 10px !important;
                 border-radius: 16px !important;
               }
               .submit-teams-grid {
                 grid-template-columns: 1fr !important;
-                gap: 12px !important;
-                margin-bottom: 20px !important;
-                padding-bottom: 16px !important;
+                gap: 8px !important;
+                margin-bottom: 16px !important;
+                padding-bottom: 14px !important;
+              }
+              .submit-player-card {
+                padding: 12px 10px !important;
+                border-radius: 12px !important;
+              }
+              .submit-vs-badge {
+                width: 30px !important;
+                height: 30px !important;
+                font-size: 0.72rem !important;
+                margin: 2px auto !important;
               }
               .submit-score-grid {
-                padding: 14px 10px !important;
-                gap: 10px !important;
+                padding: 12px 8px !important;
+                gap: 8px !important;
+                border-radius: 12px !important;
+              }
+              .submit-penalties-box {
+                padding: 10px 8px !important;
+                gap: 8px !important;
+                border-radius: 12px !important;
+              }
+              .score-box-input {
+                font-size: 1.45rem !important;
+                height: 48px !important;
+              }
+              .submit-score-divider {
+                height: 48px !important;
+                font-size: 1.5rem !important;
               }
               .submit-meta-grid {
                 grid-template-columns: 1fr !important;
                 gap: 12px !important;
               }
               .submit-button-wrap {
-                position: static !important;
-                margin-top: 24px !important;
-                margin-bottom: 24px !important;
-                padding-top: 8px !important;
+                margin-top: 20px !important;
+                margin-bottom: 20px !important;
               }
               .submit-action-btn {
-                min-height: 48px !important;
-                font-size: 0.92rem !important;
+                min-height: 46px !important;
+                font-size: 0.9rem !important;
                 border-radius: 12px !important;
-                box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35) !important;
               }
             }
           `}</style>

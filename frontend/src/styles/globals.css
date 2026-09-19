@@ -230,35 +230,67 @@ body {
 /* Inputs & Form Controls */
 .form-input {
   width: 100%;
-  padding: 12px 16px;
+  padding: 11px 14px;
   background: #ffffff;
-  border: 1px solid var(--border-color);
+  border: 1.5px solid var(--border-color);
   border-radius: var(--radius-md);
   color: var(--text-main);
   font-family: inherit;
-  font-size: 0.95rem;
-  transition: all 0.2s ease;
+  font-size: 0.92rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
   outline: none;
+  box-sizing: border-box;
 }
 .form-input:focus {
   border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
+/* Custom Minimal Dropdown Styling (replaces chunky native browser arrows) */
+select.form-input,
+select.form-select,
 .form-select {
   width: 100%;
-  padding: 12px 16px;
-  background: #ffffff;
-  border: 1px solid var(--border-color);
+  padding: 11px 36px 11px 14px;
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px 14px;
+  border: 1.5px solid var(--border-color);
   border-radius: var(--radius-md);
   color: var(--text-main);
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   outline: none;
   cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  box-sizing: border-box;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
+select.form-input:focus,
+select.form-select:focus,
 .form-select:focus {
   border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* Prevent iOS Safari Viewport Auto-Zoom (Inputs/Selects < 16px cause zoom jumping) */
+@media (max-width: 640px) {
+  .form-input,
+  .form-select,
+  select.form-input,
+  select.form-select,
+  input.form-input {
+    font-size: 16px !important;
+    min-height: 44px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 }
 
 /* Tables */
@@ -372,18 +404,19 @@ body {
 }
 
 .mobile-brand-icon {
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
   background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+  flex-shrink: 0;
 }
 
 .mobile-brand-title {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 800;
   letter-spacing: -0.01em;
   color: var(--text-main);
@@ -391,7 +424,7 @@ body {
 }
 
 .mobile-brand-subtitle {
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 600;
   color: #2563eb;
   text-transform: uppercase;
@@ -400,10 +433,10 @@ body {
 }
 
 .mobile-menu-trigger {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  background: #f1f5f9;
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  background: #f8fafc;
   border: 1px solid var(--border-color);
   display: flex;
   align-items: center;
@@ -455,14 +488,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 28px;
-  border-radius: 14px;
+  width: 28px;
+  height: 24px;
+  border-radius: 12px;
   transition: all 0.2s ease;
 }
 
 .mobile-tab-label {
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.01em;
   transition: color 0.2s ease;
@@ -484,14 +517,14 @@ body {
 }
 
 .mobile-tab-active-dot {
-  width: 4px;
-  height: 4px;
+  width: 3px;
+  height: 3px;
   border-radius: 50%;
   background: #2563eb;
   margin-top: 1px;
 }
 
-/* Floating Center Action Trigger [+] */
+/* Floating Center Action Trigger [+] (Minimal, streamlined) */
 .mobile-bottom-action-trigger {
   flex: 1;
   display: flex;
@@ -502,28 +535,28 @@ body {
   border: none;
   cursor: pointer;
   padding: 0;
-  margin-top: -16px;
+  margin-top: -8px;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   outline: none;
 }
 
 .mobile-fab-circle {
-  width: 50px;
-  height: 50px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.45);
-  border: 3px solid #ffffff;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35);
+  border: 2px solid #ffffff;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .mobile-bottom-action-trigger:active .mobile-fab-circle {
   transform: scale(0.92);
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 1px 4px rgba(37, 99, 235, 0.25);
 }
 
 .action-label {
@@ -633,9 +666,9 @@ body {
 }
 
 .mobile-action-icon-wrap {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;

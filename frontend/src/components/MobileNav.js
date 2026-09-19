@@ -157,7 +157,7 @@ export default function MobileNav() {
       <header className="mobile-top-bar">
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <div className="mobile-brand-icon">
-            <Gamepad2 size={20} color="#ffffff" />
+            <Gamepad2 size={16} color="#ffffff" />
           </div>
           <div>
             <h1 className="mobile-brand-title">PSO GAMING</h1>
@@ -182,7 +182,7 @@ export default function MobileNav() {
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle navigation menu"
           >
-            {isOpen ? <X size={22} color="#0f172a" /> : <Menu size={22} color="#0f172a" />}
+            {isOpen ? <X size={18} color="#0f172a" /> : <Menu size={18} color="#0f172a" />}
           </button>
         </div>
       </header>
@@ -299,7 +299,7 @@ export default function MobileNav() {
                 onClick={() => setIsActionSheetOpen(false)}
               >
                 <div className="mobile-action-icon-wrap primary">
-                  <Camera size={22} />
+                  <Camera size={18} />
                 </div>
                 <div style={{ flex: 1 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -308,7 +308,7 @@ export default function MobileNav() {
                   </div>
                   <p className="mobile-action-desc">Upload screenshot proof and record 1v1 / 2v2 score</p>
                 </div>
-                <ChevronRight size={16} color="#94a3b8" />
+                <ChevronRight size={15} color="#94a3b8" />
               </Link>
 
               {/* Action 2: Create / Challenge Match */}
@@ -318,13 +318,13 @@ export default function MobileNav() {
                 onClick={() => setIsActionSheetOpen(false)}
               >
                 <div className="mobile-action-icon-wrap violet">
-                  <Swords size={20} />
+                  <Swords size={18} />
                 </div>
                 <div style={{ flex: 1 }}>
                   <span className="mobile-action-name">Create Match Challenge</span>
                   <p className="mobile-action-desc">Start a live 1v1 or 2v2 competitive room</p>
                 </div>
-                <ChevronRight size={16} color="#94a3b8" />
+                <ChevronRight size={15} color="#94a3b8" />
               </Link>
 
               {/* Action 3: Join Match with Code */}
@@ -334,13 +334,13 @@ export default function MobileNav() {
                 onClick={() => setIsActionSheetOpen(false)}
               >
                 <div className="mobile-action-icon-wrap amber">
-                  <KeyRound size={20} />
+                  <KeyRound size={18} />
                 </div>
                 <div style={{ flex: 1 }}>
                   <span className="mobile-action-name">Join with Room Code</span>
                   <p className="mobile-action-desc">Enter 6-digit match pin to join opponent</p>
                 </div>
-                <ChevronRight size={16} color="#94a3b8" />
+                <ChevronRight size={15} color="#94a3b8" />
               </Link>
             </div>
           </div>
@@ -363,7 +363,7 @@ export default function MobileNav() {
                 aria-label="Quick Action Menu"
               >
                 <div className="mobile-fab-circle">
-                  <Plus size={24} color="#ffffff" strokeWidth={2.5} />
+                  <Plus size={18} color="#ffffff" strokeWidth={2.2} />
                 </div>
                 <span className="mobile-tab-label action-label">{item.label}</span>
               </button>
@@ -377,7 +377,7 @@ export default function MobileNav() {
               className={`mobile-bottom-tab ${isActive ? 'active' : ''}`}
             >
               <div className="mobile-tab-icon-wrap">
-                <Icon size={20} />
+                <Icon size={18} strokeWidth={1.8} />
               </div>
               <span className="mobile-tab-label">{item.label}</span>
               {isActive && <span className="mobile-tab-active-dot" />}
