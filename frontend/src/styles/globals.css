@@ -502,29 +502,29 @@ select.form-select:focus,
 }
 
 .mobile-bottom-tab.active {
-  color: #008778;
+  color: #2563eb;
 }
 
 .mobile-bottom-tab.active .mobile-tab-icon-wrap {
-  background: #e6f7f5;
-  color: #008778;
+  background: #eff6ff;
+  color: #2563eb;
   transform: translateY(-1px);
 }
 
 .mobile-bottom-tab.active .mobile-tab-label {
   font-weight: 700;
-  color: #008778;
+  color: #2563eb;
 }
 
 .mobile-tab-active-dot {
   width: 3.5px;
   height: 3.5px;
   border-radius: 50%;
-  background: #008778;
+  background: #2563eb;
   margin-top: 1px;
 }
 
-/* Floating Center Action Trigger [+] (Teal round FAB matching model) */
+/* Floating Center Action Trigger [+] (Blue & White theme) */
 .mobile-bottom-action-trigger {
   flex: 1;
   display: flex;
@@ -545,22 +545,22 @@ select.form-select:focus,
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: #007A78;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0, 122, 120, 0.35);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35);
   border: 2px solid #ffffff;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .mobile-bottom-action-trigger:active .mobile-fab-circle {
   transform: scale(0.92);
-  box-shadow: 0 1px 4px rgba(0, 122, 120, 0.25);
+  box-shadow: 0 1px 4px rgba(37, 99, 235, 0.25);
 }
 
 .action-label {
-  color: #007A78 !important;
+  color: #2563eb !important;
   font-weight: 700 !important;
   margin-top: 2px;
 }
