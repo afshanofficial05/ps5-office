@@ -1,0 +1,618 @@
+1 Real Madrid Spain Primera División (1) 85 90 84 82
+2 FC Barcelona Spain Primera División (1) 85 87 85 83
+3 Paris Saint-Germain France Ligue 1 (1) 85 85 86 86
+4 FC Barcelona W Spain Liga F Femenina (1) 85 87 83 86
+5 Arsenal W England WSL (1) 84 85 84 84
+6 OL Lyonnes W France 1 Women's League (1) 84 85 82 84
+7 Bayern München Germany 1. Bundesliga (1) 84 90 85 83
+8 Arsenal England Premier League (1) 84 86 85 84
+9 Manchester City England Premier League (1) 84 87 84 82
+10 Liverpool England Premier League (1) 84 87 84 83
+11 Bayern München W Germany Frauen-Bundesliga (1) 83 83 84 81
+12 Inter Italy Serie A (1) 83 86 83 83
+13 Chelsea W England WSL (1) 83 86 83 82
+14 Real Madrid W Spain Liga F Femenina (1) 82 82 82 79
+15 Atlético de Madrid Spain Primera División (1) 82 84 82 81
+16 Manchester City W England WSL (1) 82 89 80 80
+17 Napoli Italy Serie A (1) 81 78 81 80
+18 Milano FC Italy Serie A (1) 81 82 82 78
+19 Newcastle United England Premier League (1) 81 79 84 80
+20 Aston Villa England Premier League (1) 81 82 81 80
+21 Chelsea England Premier League (1) 81 82 84 79
+22 Borussia Dortmund Germany 1. Bundesliga (1) 81 82 80 81
+23 Manchester United W England WSL (1) 81 83 81 80
+24 Paris Saint-Germain W France 1 Women's League (1) 80 78 80 80
+25 Athletic Club de Bilbao Spain Primera División (1) 80 79 81 79
+26 Roma Italy Serie A (1) 80 80 80 80
+27 Juventus Italy Serie A (1) 80 81 80 81
+28 Manchester United England Premier League (1) 80 82 82 79
+29 Tottenham Hotspur England Premier League (1) 80 79 80 80
+30 VfL Wolfsburg W Germany Frauen-Bundesliga (1) 80 81 81 78
+31 Sporting CP Portugal Primeira Liga (1) 79 78 80 78
+32 Bayer 04 Leverkusen Germany 1. Bundesliga (1) 79 80 80 78
+33 Olympique de Marseille France Ligue 1 (1) 79 80 79 79
+34 Atalanta Italy Serie A (1) 79 77 78 78
+35 Eintracht Frankfurt W Germany Frauen-Bundesliga (1) 79 77 81 78
+36 Galatasaray Turkey Süper Lig (1) 79 81 80 78
+37 Nottingham Forest England Premier League (1) 79 79 78 80
+38 Real Betis Balompié Spain Primera División (1) 79 80 80 77
+39 Villarreal CF Spain Primera División (1) 79 80 80 77
+40 Crystal Palace England Premier League (1) 79 79 78 79
+41 RB Leipzig Germany 1. Bundesliga (1) 79 78 78 79
+42 AFC Bournemouth England Premier League (1) 78 79 78 77
+43 Atlético de Madrid W Spain Liga F Femenina (1) 78 78 76 78
+44 London City Lionesses W England WSL (1) 78 72 79 76
+45 Brentford England Premier League (1) 78 81 78 77
+46 Fenerbahçe Turkey Süper Lig (1) 78 72 79 77
+47 Lazio Italy Serie A (1) 78 77 77 78
+48 Everton England Premier League (1) 78 76 78 77
+49 Brighton & Hove Albion England Premier League (1) 78 80 79 78
+50 Gotham FC W USA NWSL (1) 78 77 78 77
+51 Al Hilal Saudi Pro League (1) 78 78 79 75
+52 FC Porto Portugal Primeira Liga (1) 78 72 78 79
+53 Washington Spirit W USA NWSL (1) 78 80 78 76
+54 Benfica Portugal Primeira Liga (1) 78 80 78 77
+55 Fulham England Premier League (1) 78 78 78 78
+56 VfB Stuttgart Germany 1. Bundesliga (1) 77 80 78 76
+57 Orlando Pride W USA NWSL (1) 77 79 76 76
+58 Como Italy Serie A (1) 77 77 77 75
+59 Eintracht Frankfurt Germany 1. Bundesliga (1) 77 82 77 79
+60 PSV Holland Eredivisie (1) 77 77 78 76
+61 TSG 1899 Hoffenheim Germany 1. Bundesliga (1) 77 77 78 75
+62 Girona FC Spain Primera División (1) 77 76 77 76
+63 Sunderland England Premier League (1) 77 76 78 78
+64 LOSC Lille France Ligue 1 (1) 77 77 77 76
+65 CA Osasuna Spain Primera División (1) 77 78 77 77
+66 Paris FC W France 1 Women's League (1) 77 85 78 77
+67 Rayo Vallecano Spain Primera División (1) 77 81 77 77
+68 Olympique Lyonnais France Ligue 1 (1) 77 76 77 77
+69 RC Lens France Ligue 1 (1) 77 77 78 76
+70 West Ham United England Premier League (1) 77 76 78 77
+71 Stade Rennais France Ligue 1 (1) 76 78 76 74
+72 RCD Mallorca Spain Primera División (1) 76 75 76 77
+73 Bologna Italy Serie A (1) 76 77 77 74
+74 Fiorentina Italy Serie A (1) 76 77 75 75
+75 Olympiacos Rest of World 76 78 76 75
+76 Al Nassr Saudi Pro League (1) 76 85 77 74
+77 Everton W England WSL (1) 76 76 76 74
+78 Valencia CF Spain Primera División (1) 76 76 75 74
+79 Chicago Stars FC W USA NWSL (1) 76 74 76 73
+80 Portland Thorns FC W USA NWSL (1) 76 79 74 72
+81 Getafe CF Spain Primera División (1) 76 75 77 75
+82 Leeds United England Premier League (1) 76 76 77 76
+83 RC Celta de Vigo Spain Primera División (1) 76 79 75 77
+84 Roma W Rest of World Women 76 78 79 73
+85 Juventus W Rest of World Women 76 69 79 77
+86 Aston Villa W England WSL (1) 76 76 75 76
+87 VfL Wolfsburg Germany 1. Bundesliga (1) 76 76 76 74
+88 Bayer 04 Leverkusen W Germany Frauen-Bundesliga (1) 76 78 75 76
+89 West Ham United W England WSL (1) 76 77 76 75
+90 Brighton & Hove Albion W England WSL (1) 76 77 76 75
+91 Flamengo CONMEBOL Libertadores 76 77 76 75
+92 Tottenham Hotspur W England WSL (1) 76 72 76 75
+93 Paris FC France Ligue 1 (1) 75 75 76 73
+94 Palmeiras CONMEBOL Libertadores 75 78 76 74
+95 RCD Espanyol Spain Primera División (1) 75 73 74 76
+96 Botafogo CONMEBOL Sudamericana 75 71 75 75
+97 Boca Juniors Argentina Primera División (1) 75 75 74 73
+98 1. FSV Mainz 05 Germany 1. Bundesliga (1) 75 73 78 75
+99 SC Freiburg Germany 1. Bundesliga (1) 75 74 75 76
+100 Celtic Scotland Premiership (1) 75 73 75 73
+101 Liverpool W England WSL (1) 75 73 75 74
+102 Ajax Holland Eredivisie (1) 75 77 73 74
+103 Feyenoord Holland Eredivisie (1) 75 76 76 74
+104 RC Strasbourg France Ligue 1 (1) 75 75 75 75
+105 Real Sociedad W Spain Liga F Femenina (1) 75 74 76 74
+106 Athletic Club de Bilbao W Spain Liga F Femenina (1) 75 72 75 77
+107 Utah Royals W USA NWSL (1) 75 78 75 73
+108 Werder Bremen Germany 1. Bundesliga (1) 75 73 76 74
+109 Slavia Praha Rest of World 75 75 75 74
+110 Torino Italy Serie A (1) 75 78 73 74
+111 Bay FC W USA NWSL (1) 75 83 70 71
+112 Atlético Mineiro CONMEBOL Sudamericana 75 77 75 76
+113 Wolverhampton Wanderers England Premier League (1) 75 74 75 74
+114 AEK Rest of World 75 77 75 74
+115 Borussia M'gladbach Germany 1. Bundesliga (1) 75 77 75 75
+116 Burnley England Premier League (1) 75 75 74 75
+117 FC Fleury 91 W France 1 Women's League (1) 74 70 75 75
+118 Rangers Scotland Premiership (1) 74 73 73 73
+119 Racing Louisville FC W USA NWSL (1) 74 70 72 73
+120 San Diego Wave FC W USA NWSL (1) 74 75 73 72
+121 Santos CONMEBOL Sudamericana 74 74 72 75
+122 Internacional - 74 71 73 75
+123 1. FC Union Berlin Germany 1. Bundesliga (1) 74 74 74 76
+124 Levante UD Spain Primera División (1) 74 74 73 74
+125 Al Ittihad Saudi Pro League (1) 74 76 76 72
+126 RB Bragantino CONMEBOL Sudamericana 74 71 75 75
+127 River Plate Argentina Primera División (1) 74 74 74 74
+128 Al Qadsiah Saudi Pro League (1) 74 76 76 71
+129 Al Ahli Saudi Pro League (1) 74 77 74 73
+130 Union Saint-Gilloise Belgium Pro League (1) 74 73 74 75
+131 Houston Dash W USA NWSL (1) 74 73 73 74
+132 FC Badalona Women W Spain Liga F Femenina (1) 74 77 74 73
+133 Benfica W Rest of World Women 74 75 73 74
+134 FC Augsburg Germany 1. Bundesliga (1) 74 75 74 75
+135 Leicester City W England WSL (1) 74 75 74 75
+136 PAOK Rest of World 74 76 76 73
+137 Sassuolo Italy Serie A (1) 74 77 75 73
+138 Seattle Reign FC W USA NWSL (1) 74 76 71 71
+139 SC Freiburg W Germany Frauen-Bundesliga (1) 74 74 74 74
+140 RB Leipzig W Germany Frauen-Bundesliga (1) 74 70 74 73
+141 Racing Club de Avellaneda Argentina Primera División (1) 74 78 72 73
+142 1. FC Köln W Germany Frauen-Bundesliga (1) 74 75 73 73
+143 Stade Brestois 29 France Ligue 1 (1) 74 75 74 74
+144 Angel City FC W USA NWSL (1) 74 79 73 71
+145 Corinthians CONMEBOL Libertadores 73 75 72 74
+146 São Paulo CONMEBOL Sudamericana 73 73 72 73
+147 Ipswich Town England Championship (2) 73 69 73 74
+148 Cremonese Italy Serie A (1) 73 74 71 72
+149 Toulouse FC France Ligue 1 (1) 73 73 73 73
+150 Panathinaikos Rest of World 73 73 73 73
+151 Estudiantes de La Plata Argentina Primera División (1) 73 76 73 73
+152 TSG 1899 Hoffenheim W Germany Frauen-Bundesliga (1) 73 77 71 73
+153 Werder Bremen W Germany Frauen-Bundesliga (1) 73 75 72 72
+154 Vélez Sarsfield Argentina Primera División (1) 73 73 71 73
+155 AZ Holland Eredivisie (1) 73 75 73 71
+156 Sevilla FC W Spain Liga F Femenina (1) 73 72 75 70
+157 Rosario Central Argentina Primera División (1) 73 72 74 70
+158 Genoa Italy Serie A (1) 73 73 72 73
+159 Sparta Praha Rest of World 73 74 73 72
+160 Cagliari Italy Serie A (1) 73 72 72 73
+161 Coventry City England Championship (2) 73 73 73 72
+162 Costa Adeje Tenerife W Spain Liga F Femenina (1) 73 71 75 73
+163 Parma Italy Serie A (1) 73 72 73 71
+164 1. FC Union Berlin W Germany Frauen-Bundesliga (1) 73 75 73 72
+165 FC Lorient France Ligue 1 (1) 73 72 73 72
+166 Real Oviedo Spain Primera División (1) 73 74 72 73
+167 North Carolina Courage W USA NWSL (1) 73 74 71 72
+168 Hellas Verona Italy Serie A (1) 73 70 73 71
+169 Trabzonspor Turkey Süper Lig (1) 73 77 72 73
+170 Genk Belgium Pro League (1) 73 71 73 74
+171 Pisa Italy Serie A (1) 72 70 72 71
+172 Bahia Rest of World 72 74 72 72
+173 Southampton England Championship (2) 72 74 72 72
+174 Atlético Nacional Rest of World 72 77 70 71
+175 Middlesbrough England Championship (2) 72 70 72 72
+176 RC Deportivo W Spain Liga F Femenina (1) 72 75 70 68
+177 FC Nantes France Ligue 1 (1) 72 71 72 72
+178 Viktoria Plzeň Rest of World 72 71 72 72
+179 Le Havre AC France Ligue 1 (1) 72 71 72 72
+180 FC Utrecht Holland Eredivisie (1) 72 71 71 71
+181 Birmingham City England Championship (2) 72 72 72 73
+182 Lanús Argentina Primera División (1) 72 71 72 70
+183 Angers SCO France Ligue 1 (1) 72 71 73 70
+184 Anderlecht Belgium Pro League (1) 72 74 71 71
+185 Grêmio CONMEBOL Sudamericana 72 72 71 72
+186 Palermo Italy Serie B (2) 72 73 72 72
+187 Le Havre AC W France 1 Women's League (1) 72 70 72 70
+188 FC St. Pauli Germany 1. Bundesliga (1) 72 71 72 72
+189 N.E.C. Nijmegen Holland Eredivisie (1) 72 71 71 71
+190 Peñarol CONMEBOL Libertadores 72 73 72 70
+191 Dynamo Kyiv Rest of World 72 69 73 71
+192 Dijon FCO W France 1 Women's League (1) 72 73 73 71
+193 UD Las Palmas Spain Segunda División (2) 72 72 71 72
+194 Shakhtar Donetsk Rest of World 72 71 73 73
+195 1. FC Heidenheim Germany 1. Bundesliga (1) 72 72 72 72
+196 Argentinos Juniors Argentina Primera División (1) 72 71 73 71
+197 Cruzeiro CONMEBOL Libertadores 72 75 71 73
+198 FC Midtjylland Denmark Superliga (1) 72 72 71 72
+199 Swansea City England Championship (2) 71 72 70 72
+200 Talleres de Córdoba Argentina Primera División (1) 71 69 71 69
+201 Granada CF W Spain Liga F Femenina (1) 71 70 74 67
+202 Ferencvárosi TC Rest of World 71 70 71 68
+203 Millwall England Championship (2) 71 69 72 72
+204 Belgrano de Córdoba Argentina Primera División (1) 71 73 73 71
+205 RC Deportivo Spain Segunda División (2) 71 70 72 71
+206 Leicester City England Championship (2) 71 68 72 70
+207 FC Schalke 04 Germany 2. Bundesliga (2) 71 75 70 70
+208 Los Angeles FC USA Major League Soccer (1) 71 77 71 70
+209 Lecce Italy Serie A (1) 71 71 71 70
+210 Olympique de Marseille W France 1 Women's League (1) 71 80 72 70
+211 Vancouver Whitecaps USA Major League Soccer (1) 71 73 73 67
+212 Independiente Argentina Primera División (1) 71 71 70 72
+213 Sheffield United England Championship (2) 71 71 72 71
+214 FC Metz France Ligue 1 (1) 71 71 72 70
+215 Montpellier HSC W France 1 Women's League (1) 71 71 69 75
+216 İstanbul Başakşehir FK Turkey Süper Lig (1) 71 70 72 71
+217 Heart of Midlothian Scotland Premiership (1) 71 72 72 70
+218 FC Twente Holland Eredivisie (1) 71 71 70 70
+219 Madrid CFF W Spain Liga F Femenina (1) 71 73 73 71
+220 Bristol City England Championship (2) 71 71 71 70
+221 Nacional CONMEBOL Libertadores 71 73 69 72
+222 RC Strasbourg W France 1 Women's League (1) 71 73 69 71
+223 Venezia Italy Serie B (2) 71 71 72 69
+224 FK Bodø/Glimt Norway Eliteserien (1) 71 73 72 70
+225 Hull City England Championship (2) 71 74 71 71
+226 Samsunspor Turkey Süper Lig (1) 71 70 71 70
+227 RCD Espanyol W Spain Liga F Femenina (1) 71 71 72 70
+228 FC Basel Switzerland Super League (1) 71 68 71 70
+229 Fortaleza - 71 71 71 71
+230 Estoril Portugal Primeira Liga (1) 70 71 71 69
+231 NEOM SC Saudi Pro League (1) 70 71 71 68
+232 AS Saint-Étienne France Ligue 2 (2) 70 75 70 69
+233 América de Cali CONMEBOL Sudamericana 70 71 70 69
+234 Mirassol CONMEBOL Libertadores 70 71 69 71
+235 Preston North End England Championship (2) 70 70 72 69
+236 Huracán Argentina Primera División (1) 70 64 69 70
+237 Gil Vicente FC Portugal Primeira Liga (1) 70 68 69 69
+238 Stoke City England Championship (2) 70 68 70 70
+239 Defensa y Justicia Argentina Primera División (1) 70 69 69 69
+240 FC Lugano Switzerland Super League (1) 70 71 70 69
+241 Watford England Championship (2) 70 68 71 69
+242 Olimpia Asunción CONMEBOL Sudamericana 70 70 70 69
+243 Seattle Sounders USA Major League Soccer (1) 70 73 70 68
+244 Independiente Rivadavia Argentina Primera División (1) 70 75 70 70
+245 Universitario de Deportes CONMEBOL Libertadores 70 70 70 71
+246 Alianza Lima - 70 70 69 68
+247 Junior de Barranquilla CONMEBOL Libertadores 70 72 70 69
+248 LDU Quito CONMEBOL Libertadores 70 69 69 70
+249 Wrexham England Championship (2) 70 70 71 70
+250 Independiente Medellín CONMEBOL Libertadores 70 71 69 70
+251 SV Darmstadt 98 Germany 2. Bundesliga (2) 70 72 70 69
+252 Universidad de Chile - 70 71 69 70
+253 Independiente Santa Fe CONMEBOL Libertadores 70 73 70 69
+254 Millonarios CONMEBOL Sudamericana 70 71 70 68
+255 Levante UD W Spain Liga F Femenina (1) 70 69 69 68
+256 Houston Dynamo USA Major League Soccer (1) 70 73 71 69
+257 Lech Poznań Poland Ekstraklasa (1) 70 74 69 68
+258 AGF Denmark Superliga (1) 70 71 70 71
+259 Casa Pia Portugal Primeira Liga (1) 70 69 68 68
+260 Los Angeles Galaxy USA Major League Soccer (1) 70 72 70 68
+261 Hajduk Split Rest of World 70 71 70 69
+262 Chicago Fire FC USA Major League Soccer (1) 70 76 69 67
+263 Racing de Santander Spain Segunda División (2) 70 71 71 68
+264 Standard Liège Belgium Pro League (1) 70 70 69 69
+265 Antwerp Belgium Pro League (1) 70 71 69 70
+266 San Lorenzo de Almagro Argentina Primera División (1) 70 70 68 62
+267 Columbus Crew USA Major League Soccer (1) 70 71 70 68
+268 Hertha BSC Germany 2. Bundesliga (2) 70 71 70 69
+269 Gent Belgium Pro League (1) 70 70 71 70
+270 Real Sporting de Gijón Spain Segunda División (2) 70 74 71 70
+271 Slavia Praha W Rest of World Women 70 68 71 69
+272 AS Saint-Étienne W France 1 Women's League (1) 70 71 71 70
+273 Norwich City England Championship (2) 70 70 70 69
+274 Sampdoria Italy Serie B (2) 70 73 70 69
+275 Atlanta United FC USA Major League Soccer (1) 70 70 72 68
+276 Derby County England Championship (2) 70 74 70 69
+277 Burgos CF Spain Segunda División (2) 69 69 69 68
+278 Widzew Łódź Poland Ekstraklasa (1) 69 69 69 69
+279 Arouca Portugal Primeira Liga (1) 69 67 69 69
+280 Viking FK Norway Eliteserien (1) 69 69 69 69
+281 New York City FC USA Major League Soccer (1) 69 72 70 66
+282 OH Leuven Belgium Pro League (1) 69 67 69 70
+283 APOEL Nicosia FC Rest of World 69 67 70 68
+284 Al Taawoun Saudi Pro League (1) 69 70 71 64
+285 FC Carl Zeiss Jena W Germany Frauen-Bundesliga (1) 69 70 68 67
+286 Go Ahead Eagles Holland Eredivisie (1) 69 68 69 68
+287 1. FC Kaiserslautern Germany 2. Bundesliga (2) 69 70 70 69
+288 Al Khaleej Saudi Pro League (1) 69 79 69 66
+289 Jagiellonia Białystok Poland Ekstraklasa (1) 69 70 69 69
+290 Libertad CONMEBOL Libertadores 69 73 68 69
+291 CD Castellón Spain Segunda División (2) 69 69 70 68
+292 CD Leganés Spain Segunda División (2) 69 68 69 68
+293 Brøndby IF Denmark Superliga (1) 69 66 70 69
+294 Göztepe Turkey Süper Lig (1) 69 69 69 68
+295 Kocaelispor Turkey Süper Lig (1) 69 71 67 70
+296 Konyaspor Turkey Süper Lig (1) 69 69 69 69
+297 Atlético Bucaramanga - 69 70 69 69
+298 SK Rapid Austria Bundesliga (1) 69 68 69 69
+299 LASK Austria Bundesliga (1) 69 70 68 69
+300 Orlando City SC USA Major League Soccer (1) 69 68 70 68
+301 RC Lens W France 1 Women's League (1) 69 70 68 69
+302 Sporting Cristal CONMEBOL Libertadores 69 69 69 69
+303 RB Salzburg Austria Bundesliga (1) 69 69 70 68
+304 Austin FC USA Major League Soccer (1) 69 69 68 67
+305 Real Zaragoza Spain Segunda División (2) 69 69 67 69
+306 Nashville SC USA Major League Soccer (1) 69 70 69 68
+307 VfL Bochum Germany 2. Bundesliga (2) 69 69 69 70
+308 Raków Częstochowa Poland Ekstraklasa (1) 69 71 69 69
+309 Real Salt Lake USA Major League Soccer (1) 69 65 68 68
+310 Charlton Athletic England Championship (2) 69 67 69 69
+311 Kasımpaşa Turkey Süper Lig (1) 69 69 69 67
+312 Gaziantep FK Turkey Süper Lig (1) 69 72 68 67
+313 Fortuna Düsseldorf Germany 2. Bundesliga (2) 69 70 69 68
+314 KV Mechelen Belgium Pro League (1) 69 70 69 68
+315 Unión de Santa Fe Argentina Primera División (1) 69 68 70 69
+316 Barcelona SC Guayaquil CONMEBOL Libertadores 69 70 67 69
+317 Deportes Tolima CONMEBOL Libertadores 69 69 69 69
+318 Jeonbuk Hyundai Motors Korea K League 1 (1) 69 69 69 67
+319 Barracas Central Argentina Primera División (1) 69 69 69 67
+320 FC Cincinnati USA Major League Soccer (1) 69 76 68 68
+321 Qarabağ FK Rest of World 69 68 70 69
+322 Vitória de Guimarães Portugal Primeira Liga (1) 69 70 67 69
+323 Portsmouth England Championship (2) 69 70 69 68
+324 Holstein Kiel Germany 2. Bundesliga (2) 69 68 68 69
+325 Córdoba CF Spain Segunda División (2) 69 70 69 68
+326 EC Vitória - 69 68 70 70
+327 Málaga CF Spain Segunda División (2) 69 71 69 67
+328 FC Rosengård W Rest of World Women 69 69 70 66
+329 Charleroi Belgium Pro League (1) 69 69 70 69
+330 Karlsruher SC Germany 2. Bundesliga (2) 69 68 69 69
+331 Modena Italy Serie B (2) 69 68 69 70
+332 Oxford United England Championship (2) 69 67 68 69
+333 Blackburn Rovers England Championship (2) 69 69 69 67
+334 Empoli Italy Serie B (2) 69 68 69 68
+335 Servette FC Switzerland Super League (1) 69 69 69 68
+336 Westerlo Belgium Pro League (1) 68 67 69 68
+337 Moreirense Portugal Primeira Liga (1) 68 65 68 68
+338 Melgar FBC - 68 70 66 67
+339 Rosenborg BK Norway Eliteserien (1) 68 64 69 67
+340 Hammarby IF Sweden Allsvenskan (1) 68 68 69 68
+341 Estrela da Amadora Portugal Primeira Liga (1) 68 68 65 66
+342 Tondela Portugal Primeira Liga (1) 68 72 66 67
+343 Antalyaspor Turkey Süper Lig (1) 68 69 68 68
+344 Newell's Old Boys Argentina Primera División (1) 68 69 65 66
+345 Nacional da Madeira Portugal Primeira Liga (1) 68 69 68 68
+346 Alverca Portugal Primeira Liga (1) 68 70 66 68
+347 Banfield Argentina Primera División (1) 68 68 67 67
+348 Sarmiento Argentina Primera División (1) 68 70 67 67
+349 Portland Timbers USA Major League Soccer (1) 68 68 69 68
+350 Cusco FC CONMEBOL Libertadores 68 69 68 67
+351 Buriram United Rest of World 68 71 70 67
+352 Alhama FC W Spain Liga F Femenina (1) 68 70 68 65
+353 Frosinone Italy Serie B (2) 68 69 69 68
+354 Südtirol Italy Serie B (2) 68 67 69 68
+355 San Diego FC USA Major League Soccer (1) 68 73 68 62
+356 Carrarese Italy Serie B (2) 68 68 68 67
+357 Al Ettifaq Saudi Pro League (1) 68 69 70 66
+358 Aldosivi Argentina Primera División (1) 68 68 65 67
+359 Catanzaro Italy Serie B (2) 68 69 68 66
+360 Cardiff City England League One (3) 68 66 67 68
+361 sc Heerenveen Holland Eredivisie (1) 68 67 69 67
+362 Legia Warszawa Poland Ekstraklasa (1) 68 67 69 68
+363 Albacete Balompié Spain Segunda División (2) 68 68 68 68
+364 Bari Italy Serie B (2) 68 68 69 67
+365 FC Nordsjælland Denmark Superliga (1) 68 68 69 67
+366 Randers FC Denmark Superliga (1) 68 64 68 68
+367 Ulsan HD FC Korea K League 1 (1) 68 68 69 65
+368 FC Seoul Korea K League 1 (1) 68 71 65 70
+369 Daejeon Hana Citizen Korea K League 1 (1) 68 68 68 68
+370 SK Brann Norway Eliteserien (1) 68 68 68 68
+371 FC St. Gallen Switzerland Super League (1) 68 65 68 67
+372 Padova Italy Serie B (2) 68 69 68 66
+373 Pogoń Szczecin Poland Ekstraklasa (1) 68 68 68 67
+374 Arminia Bielefeld Germany 2. Bundesliga (2) 68 67 68 68
+375 Universitatea Cluj Romania Liga I (1) 68 70 67 68
+376 Luton Town England League One (3) 68 68 67 68
+377 Sparta Rotterdam Holland Eredivisie (1) 68 73 67 67
+378 Montpellier HSC France Ligue 2 (2) 68 70 67 69
+379 Aberdeen Scotland Premiership (1) 68 66 69 63
+380 Hibernian Scotland Premiership (1) 68 67 68 67
+381 1. FC Nürnberg Germany 2. Bundesliga (2) 68 68 69 68
+382 Pescara Italy Serie B (2) 68 65 69 67
+383 Sturm Graz Austria Bundesliga (1) 68 67 69 68
+384 Colorado Rapids USA Major League Soccer (1) 68 71 68 67
+385 FC Rapid Romania Liga I (1) 68 66 69 68
+386 Fortuna Sittard Holland Eredivisie (1) 68 68 68 67
+387 SV Elversberg Germany 2. Bundesliga (2) 68 65 69 68
+388 Dender Belgium Pro League (1) 68 68 67 67
+389 Universitatea Craiova Romania Liga I (1) 68 67 68 69
+390 Malmö FF Sweden Allsvenskan (1) 68 69 65 68
+391 Górnik Zabrze Poland Ekstraklasa (1) 68 66 69 68
+392 FC Dallas USA Major League Soccer (1) 67 71 68 65
+393 Amiens SC France Ligue 2 (2) 67 65 66 64
+394 IF Elfsborg Sweden Allsvenskan (1) 67 65 68 67
+395 SD Huesca Spain Segunda División (2) 67 67 67 66
+396 FC Sion Switzerland Super League (1) 67 67 67 68
+397 Red Star FC (FRANCE) France Ligue 2 (2) 67 64 68 67
+398 Huddersfield Town England League One (3) 67 66 67 66
+399 GKS Katowice Poland Ekstraklasa (1) 67 66 67 67
+400 Molde FK Norway Eliteserien (1) 67 67 67 66
+401 Cracovia Poland Ekstraklasa (1) 67 67 68 68
+402 Reggiana Italy Serie B (2) 67 67 66 66
+403 Blau-Weiß Linz Austria Bundesliga (1) 67 68 66 65
+404 Sheffield Wednesday England Championship (2) 67 68 65 66
+405 Djurgårdens IF Sweden Allsvenskan (1) 67 65 67 65
+406 Eintracht Braunschweig Germany 2. Bundesliga (2) 67 67 67 67
+407 BK Häcken Sweden Allsvenskan (1) 67 61 68 66
+408 ESTAC Troyes France Ligue 2 (2) 67 67 67 66
+409 SpVgg Greuther Fürth Germany 2. Bundesliga (2) 67 72 68 67
+410 Viborg FF Denmark Superliga (1) 67 65 68 67
+411 Cercle Brugge Belgium Pro League (1) 67 69 66 67
+412 Stade Lavallois MFC France Ligue 2 (2) 66 67 66 65
+413 Motor Lublin Poland Ekstraklasa (1) 66 67 68 65
+414 Pohang Steelers Korea K League 1 (1) 66 66 66 66
+415 Reading England League One (3) 66 65 66 66
+416 Excelsior Holland Eredivisie (1) 66 66 66 66
+417 Vålerenga Fotball Norway Eliteserien (1) 66 66 65 66
+418 FC Luzern Switzerland Super League (1) 66 67 65 66
+419 FC Zürich Switzerland Super League (1) 66 64 64 65
+420 Grenoble Foot 38 France Ligue 2 (2) 66 65 66 67
+421 Academia Puerto Cabello CONMEBOL Sudamericana 66 67 67 66
+422 Club Atlético Grau - 66 67 67 65
+423 Macará CONMEBOL Sudamericana 66 66 66 66
+424 Always Ready CONMEBOL Libertadores 66 67 65 66
+425 Clermont Foot France Ligue 2 (2) 66 65 65 65
+426 Coquimbo Unido CONMEBOL Libertadores 66 65 66 67
+427 Wycombe Wanderers England League One (3) 66 67 66 66
+428 Gangwon FC Korea K League 1 (1) 66 60 67 66
+429 Stockport County England League One (3) 66 65 66 65
+430 Deportivo La Guaira CONMEBOL Libertadores 66 67 66 67
+431 Boston River CONMEBOL Sudamericana 66 64 67 64
+432 Plymouth Argyle England League One (3) 66 65 65 66
+433 O'Higgins CONMEBOL Sudamericana 66 66 68 66
+434 Blackpool England League One (3) 66 66 66 65
+435 Central Córdoba Argentina Primera División (1) 66 65 67 65
+436 Montevideo City Torque CONMEBOL Sudamericana 66 65 68 65
+437 FC Volendam Holland Eredivisie (1) 66 66 67 66
+438 Al Fayha Saudi Pro League (1) 66 67 65 67
+439 Cienciano CONMEBOL Sudamericana 66 68 66 66
+440 Lechia Gdańsk Poland Ekstraklasa (1) 66 67 67 65
+441 FC Thun Switzerland Super League (1) 66 64 66 67
+442 Colo-Colo - 66 68 66 65
+443 Deportivo Cuenca CONMEBOL Sudamericana 66 66 66 66
+444 Carabobo FC CONMEBOL Sudamericana 66 61 67 66
+445 Korona Kielce Poland Ekstraklasa (1) 66 66 67 66
+446 AIK Sweden Allsvenskan (1) 66 64 66 63
+447 Lincoln City England League One (3) 66 65 66 66
+448 Motherwell Scotland Premiership (1) 66 71 66 65
+449 GAIS Sweden Allsvenskan (1) 66 63 63 66
+450 Radomiak Radom Poland Ekstraklasa (1) 66 66 66 67
+451 Silkeborg IF Denmark Superliga (1) 66 70 65 66
+452 Odense Boldklub Denmark Superliga (1) 66 66 67 65
+453 IFK Göteborg Sweden Allsvenskan (1) 66 64 68 65
+454 Hansa Rostock Germany 3. Liga (3) 66 66 65 66
+455 SC Bastia France Ligue 2 (2) 66 64 67 66
+456 TSV 1860 München Germany 3. Liga (3) 66 66 65 65
+457 Deportivo Riestra Argentina Primera División (1) 65 67 65 64
+458 Independiente Petrolero CONMEBOL Sudamericana 65 65 66 64
+459 Mushuc Runa - 65 64 65 65
+460 Leyton Orient England League One (3) 65 67 64 64
+461 Barnsley England League One (3) 65 66 64 65
+462 Hartberg Austria Bundesliga (1) 65 65 65 63
+463 Fredrikstad FK Norway Eliteserien (1) 65 65 67 63
+464 GV San José - 65 66 66 64
+465 Gimcheon Sangmu Korea K League 1 (1) 65 65 64 63
+466 Altach Austria Bundesliga (1) 65 64 66 63
+467 Kilmarnock Scotland Premiership (1) 65 63 64 64
+468 Alemannia Aachen Germany 3. Liga (3) 65 65 64 64
+469 Grazer AK Austria Bundesliga (1) 65 65 65 65
+470 MSV Duisburg Germany 3. Liga (3) 65 67 65 64
+471 AS Nancy France Ligue 2 (2) 65 64 65 63
+472 IK Sirius Sweden Allsvenskan (1) 65 69 64 64
+473 Auckland FC Australia A-League (1) 65 63 65 66
+474 Al Hazem Saudi Pro League (1) 65 74 65 59
+475 Damac FC Saudi Pro League (1) 65 66 64 66
+476 FC Zürich W Rest of World Women 65 61 67 68
+477 Tromsø IL Norway Eliteserien (1) 65 63 65 66
+478 Vejle BK Denmark Superliga (1) 65 65 64 65
+479 SV Ried Austria Bundesliga (1) 65 65 65 65
+480 Sporting KC USA Major League Soccer (1) 65 75 65 62
+481 Bradford City England League One (3) 65 66 65 64
+482 Rot-Weiß Essen Germany 3. Liga (3) 66 66 66 64
+483 Grasshopper Club Zürich Switzerland Super League (1) 65 66 64 62
+484 Al Riyadh Saudi Pro League (1) 65 63 65 61
+485 Deportivo Táchira - 65 64 67 64
+486 Caracas FC CONMEBOL Sudamericana 65 65 64 65
+487 Sarpsborg 08 Norway Eliteserien (1) 65 65 65 65
+488 Energie Cottbus Germany 3. Liga (3) 65 65 65 64
+489 Unión Española - 65 66 65 65
+490 Blooming CONMEBOL Sudamericana 65 67 65 64
+491 Sydney FC Australia A-League (1) 65 66 65 66
+492 Eyüpspor Turkey Süper Lig (1) 65 64 65 63
+493 Nacional Potosí - 65 66 64 65
+494 Racing Club De Montevideo - 65 65 65 66
+495 Melbourne City Australia A-League (1) 65 62 65 64
+496 SC Verl Germany 3. Liga (3) 65 62 65 64
+497 FC Anyang Korea K League 1 (1) 65 64 65 65
+498 Melbourne Victory Australia A-League (1) 65 65 65 62
+499 WSG Tirol Austria Bundesliga (1) 65 65 66 66
+500 UTA Arad Romania Liga I (1) 65 65 65 66
+501 Pau FC France Ligue 2 (2) 65 65 66 64
+502 FC Argeș Romania Liga I (1) 65 65 64 65
+503 Chengdu Rongcheng F.C. China Super League (1) 65 67 68 62
+504 Western Sydney Wanderers Australia A-League (1) 65 65 66 63
+505 SC Oțelul Galați Romania Liga I (1) 65 64 65 65
+506 Farul Constanța Romania Liga I (1) 65 66 66 65
+507 SSV Ulm 1846 Germany 3. Liga (3) 65 62 65 64
+508 Degerfors IF Sweden Allsvenskan (1) 64 64 62 63
+509 IF Brommapojkarna Sweden Allsvenskan (1) 64 64 64 62
+510 Newcastle Jets Australia A-League (1) 64 65 64 62
+511 Dundee FC Scotland Premiership (1) 64 66 64 64
+512 US Boulogne France Ligue 2 (2) 64 62 65 64
+513 Adelaide United Australia A-League (1) 64 65 62 63
+514 FC Ingolstadt 04 Germany 3. Liga (3) 64 60 64 64
+515 Al Najmah Saudi Pro League (1) 64 64 66 61
+516 Doncaster Rovers England League One (3) 64 62 64 63
+517 IFK Norrköping Sweden Allsvenskan (1) 64 67 66 64
+518 Livingston Scotland Premiership (1) 64 63 64 62
+519 Arka Gdynia Poland Ekstraklasa (1) 64 64 64 63
+520 Jahn Regensburg Germany 3. Liga (3) 64 63 64 63
+521 Alianza Atlético de Sullana CONMEBOL Sudamericana 64 64 65 64
+522 Daegu FC Korea K League 1 (1) 64 63 65 60
+523 Bruk-Bet Termalica Nieciecza Poland Ekstraklasa (1) 64 64 64 64
+524 Port Vale England League One (3) 64 65 63 65
+525 Wigan Athletic England League One (3) 64 65 63 64
+526 FC Hermannstadt Romania Liga I (1) 64 64 65 64
+527 Suwon FC Korea K League 1 (1) 64 63 64 62
+528 Rodez Aveyron Football France Ligue 2 (2) 64 66 65 64
+529 Al Fateh Saudi Pro League (1) 64 67 65 61
+530 St. Mirren Scotland Premiership (1) 64 64 65 63
+531 SV Waldhof Mannheim Germany 3. Liga (3) 64 65 63 64
+532 Peterborough United England League One (3) 64 66 64 64
+533 Viktoria Köln Germany 3. Liga (3) 64 62 64 64
+534 Unirea Slobozia Romania Liga I (1) 63 64 63 63
+535 HamKam Fotball Norway Eliteserien (1) 63 57 64 63
+536 Halmstads BK Sweden Allsvenskan (1) 63 62 63 63
+537 Salford City England League Two (4) 63 63 62 62
+538 Cambridge United England League Two (4) 63 63 62 63
+539 San Martín de San Juan Argentina Primera División (1) 63 62 64 63
+540 Chesterfield England League Two (4) 63 60 63 63
+541 Colchester United England League Two (4) 63 62 63 62
+542 Northampton Town England League One (3) 63 62 63 64
+543 Falkirk Scotland Premiership (1) 63 63 63 62
+544 Notts County England League Two (4) 63 63 63 62
+545 Sandefjord Fotball Norway Eliteserien (1) 63 61 63 63
+546 Perth Glory Australia A-League (1) 63 67 59 63
+547 Macarthur FC Australia A-League (1) 63 66 62 62
+548 San Antonio Bulo Bulo - 63 59 62 64
+549 Exeter City England League One (3) 63 65 62 63
+550 AFC Wimbledon England League One (3) 63 63 63 64
+551 FC Fredericia Denmark Superliga (1) 63 63 63 63
+552 HJK Helsinki Rest of World 63 67 63 63
+553 Brisbane Roar Australia A-League (1) 63 62 64 63
+554 Burton Albion England League One (3) 63 64 62 63
+555 Strømsgodset Toppfotball Norway Eliteserien (1) 63 63 63 66
+556 Zhejiang Professional FC China Super League (1) 62 66 60 62
+557 Bromley England League Two (4) 62 62 62 62
+558 Swindon Town England League Two (4) 62 64 63 62
+559 Wellington Phoenix Australia A-League (1) 62 63 62 61
+560 Derry City Rep. Ireland Premier Division (1) 62 63 62 62
+561 St Patrick's Athletic Rep. Ireland Premier Division (1) 62 62 63 61
+562 Barrow England League Two (4) 62 61 61 62
+563 Barnet England League Two (4) 62 62 62 62
+564 1. FC Schweinfurt 05 Germany 3. Liga (3) 62 63 61 63
+565 Grimsby Town England League Two (4) 62 63 62 61
+566 Crawley Town England League Two (4) 62 58 61 61
+567 Fleetwood Town England League Two (4) 62 62 63 61
+568 Gwangju FC Korea K League 1 (1) 62 59 60 60
+569 Gillingham England League Two (4) 62 62 62 62
+570 Tianjin Jinmen Tiger China Super League (1) 62 72 64 59
+571 FK Haugesund Norway Eliteserien (1) 62 63 61 62
+572 Kristiansund BK Norway Eliteserien (1) 62 63 62 61
+573 Central Coast Mariners Australia A-League (1) 62 59 61 63
+574 Western United FC - 62 61 62 64
+575 Metaloglobus București Romania Liga I (1) 62 62 62 60
+576 FK Csíkszereda Miercurea Ciuc Romania Liga I (1) 62 64 62 62
+577 IFK Värnamo Sweden Allsvenskan (1) 62 64 62 62
+578 Cheltenham Town England League Two (4) 62 60 62 62
+579 Walsall England League Two (4) 62 64 61 62
+580 Östers IF Sweden Allsvenskan (1) 62 62 62 63
+581 Bristol Rovers England League Two (4) 62 61 62 63
+582 Dalian Yingbo FC China Super League (1) 62 64 63 61
+583 Tranmere Rovers England League Two (4) 62 62 60 62
+584 TSV Havelse Germany 3. Liga (3) 62 62 62 62
+585 Harrogate Town England League Two (4) 61 61 60 60
+586 Henan FC China Super League (1) 61 54 62 62
+587 Shrewsbury Town England League Two (4) 61 58 60 62
+588 Crewe Alexandra England League Two (4) 61 61 61 61
+589 Qingdao West Coast FC China Super League (1) 61 55 66 58
+590 Changchun Yatai China Super League (1) 61 62 60 60
+591 Bohemians Rep. Ireland Premier Division (1) 61 58 62 60
+592 Oldham Athletic England League Two (4) 61 61 60 61
+593 VfB Stuttgart II Germany 3. Liga (3) 61 62 61 62
+594 Sportivo Luqueño - 61 61 61 61
+595 Meizhou Hakka China Super League (1) 60 65 59 60
+596 Yunnan Yukun China Super League (1) 60 70 63 58
+597 Wuhan Three Towns China Super League (1) 60 64 58 61
+598 Newport County England League Two (4) 60 60 60 59
+599 Accrington Stanley England League Two (4) 60 60 60 60
+600 TSG 1899 Hoffenheim II Germany 3. Liga (3) 60 59 61 62
+601 United Tigers SC Indian Super League (1) 59 58 58 60
+602 Drogheda United Rep. Ireland Premier Division (1) 59 60 58 60
+603 Shenzhen Peng City China Super League (1) 59 61 61 58
+604 Galway United Rep. Ireland Premier Division (1) 59 58 59 58
+605 Sligo Rovers Rep. Ireland Premier Division (1) 59 58 60 58
+606 Waterford Rep. Ireland Premier Division (1) 59 60 59 57
+607 Bengaluru FC Indian Super League (1) 59 62 56 60
+608 East Bengal FC Indian Super League (1) 59 60 60 58
+609 Qingdao Hainiu FC China Super League (1) 58 57 60 57
+610 Jamshedpur FC Indian Super League (1) 58 63 56 58
+611 Mumbai City FC Indian Super League (1) 58 65 55 56
+612 Punjab FC Indian Super League (1) 57 60 56 56
+613 Odisha FC Indian Super League (1) 57 56 54 55
+614 NorthEast United Indian Super League (1) 57 51 62 54
+615 Cork City Rep. Ireland Premier Division (1) 56 59 55 55
+616 SC Delhi Indian Super League (1) 55 53 55 54
+617 Kerala Blasters FC Indian Super League (1) 54 56 55 53
+618 Mohammedan SC Indian Super League (1) 52 51 52 51

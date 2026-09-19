@@ -1,0 +1,5564 @@
+[
+  {
+    "rank": 1,
+    "name": "Real Madrid",
+    "league": "Spain Primera División (1)",
+    "ovr": 85,
+    "atk": 90,
+    "mid": 84,
+    "def": 82
+  },
+  {
+    "rank": 2,
+    "name": "FC Barcelona",
+    "league": "Spain Primera División (1)",
+    "ovr": 85,
+    "atk": 87,
+    "mid": 85,
+    "def": 83
+  },
+  {
+    "rank": 3,
+    "name": "Paris Saint-Germain",
+    "league": "France Ligue 1 (1)",
+    "ovr": 85,
+    "atk": 85,
+    "mid": 86,
+    "def": 86
+  },
+  {
+    "rank": 4,
+    "name": "FC Barcelona W",
+    "league": "Spain Liga F Femenina (1)",
+    "ovr": 85,
+    "atk": 87,
+    "mid": 83,
+    "def": 86
+  },
+  {
+    "rank": 5,
+    "name": "Arsenal W",
+    "league": "England WSL (1)",
+    "ovr": 84,
+    "atk": 85,
+    "mid": 84,
+    "def": 84
+  },
+  {
+    "rank": 6,
+    "name": "OL Lyonnes W",
+    "league": "France 1 Women's League (1)",
+    "ovr": 84,
+    "atk": 85,
+    "mid": 82,
+    "def": 84
+  },
+  {
+    "rank": 7,
+    "name": "Bayern München",
+    "league": "Germany 1. Bundesliga (1)",
+    "ovr": 84,
+    "atk": 90,
+    "mid": 85,
+    "def": 83
+  },
+  {
+    "rank": 8,
+    "name": "Arsenal",
+    "league": "England Premier League (1)",
+    "ovr": 84,
+    "atk": 86,
+    "mid": 85,
+    "def": 84
+  },
+  {
+    "rank": 9,
+    "name": "Manchester City",
+    "league": "England Premier League (1)",
+    "ovr": 84,
+    "atk": 87,
+    "mid": 84,
+    "def": 82
+  },
+  {
+    "rank": 10,
+    "name": "Liverpool",
+    "league": "England Premier League (1)",
+    "ovr": 84,
+    "atk": 87,
+    "mid": 84,
+    "def": 83
+  },
+  {
+    "rank": 11,
+    "name": "Bayern München W",
+    "league": "Germany Frauen-Bundesliga (1)",
+    "ovr": 83,
+    "atk": 83,
+    "mid": 84,
+    "def": 81
+  },
+  {
+    "rank": 12,
+    "name": "Inter",
+    "league": "Italy Serie A (1)",
+    "ovr": 83,
+    "atk": 86,
+    "mid": 83,
+    "def": 83
+  },
+  {
+    "rank": 13,
+    "name": "Chelsea W",
+    "league": "England WSL (1)",
+    "ovr": 83,
+    "atk": 86,
+    "mid": 83,
+    "def": 82
+  },
+  {
+    "rank": 14,
+    "name": "Real Madrid W",
+    "league": "Spain Liga F Femenina (1)",
+    "ovr": 82,
+    "atk": 82,
+    "mid": 82,
+    "def": 79
+  },
+  {
+    "rank": 15,
+    "name": "Atlético de Madrid",
+    "league": "Spain Primera División (1)",
+    "ovr": 82,
+    "atk": 84,
+    "mid": 82,
+    "def": 81
+  },
+  {
+    "rank": 16,
+    "name": "Manchester City W",
+    "league": "England WSL (1)",
+    "ovr": 82,
+    "atk": 89,
+    "mid": 80,
+    "def": 80
+  },
+  {
+    "rank": 17,
+    "name": "Napoli",
+    "league": "Italy Serie A (1)",
+    "ovr": 81,
+    "atk": 78,
+    "mid": 81,
+    "def": 80
+  },
+  {
+    "rank": 18,
+    "name": "Milano FC",
+    "league": "Italy Serie A (1)",
+    "ovr": 81,
+    "atk": 82,
+    "mid": 82,
+    "def": 78
+  },
+  {
+    "rank": 19,
+    "name": "Newcastle United",
+    "league": "England Premier League (1)",
+    "ovr": 81,
+    "atk": 79,
+    "mid": 84,
+    "def": 80
+  },
+  {
+    "rank": 20,
+    "name": "Aston Villa",
+    "league": "England Premier League (1)",
+    "ovr": 81,
+    "atk": 82,
+    "mid": 81,
+    "def": 80
+  },
+  {
+    "rank": 21,
+    "name": "Chelsea",
+    "league": "England Premier League (1)",
+    "ovr": 81,
+    "atk": 82,
+    "mid": 84,
+    "def": 79
+  },
+  {
+    "rank": 22,
+    "name": "Borussia Dortmund",
+    "league": "Germany 1. Bundesliga (1)",
+    "ovr": 81,
+    "atk": 82,
+    "mid": 80,
+    "def": 81
+  },
+  {
+    "rank": 23,
+    "name": "Manchester United W",
+    "league": "England WSL (1)",
+    "ovr": 81,
+    "atk": 83,
+    "mid": 81,
+    "def": 80
+  },
+  {
+    "rank": 24,
+    "name": "Paris Saint-Germain W",
+    "league": "France 1 Women's League (1)",
+    "ovr": 80,
+    "atk": 78,
+    "mid": 80,
+    "def": 80
+  },
+  {
+    "rank": 25,
+    "name": "Athletic Club de Bilbao",
+    "league": "Spain Primera División (1)",
+    "ovr": 80,
+    "atk": 79,
+    "mid": 81,
+    "def": 79
+  },
+  {
+    "rank": 26,
+    "name": "Roma",
+    "league": "Italy Serie A (1)",
+    "ovr": 80,
+    "atk": 80,
+    "mid": 80,
+    "def": 80
+  },
+  {
+    "rank": 27,
+    "name": "Juventus",
+    "league": "Italy Serie A (1)",
+    "ovr": 80,
+    "atk": 81,
+    "mid": 80,
+    "def": 81
+  },
+  {
+    "rank": 28,
+    "name": "Manchester United",
+    "league": "England Premier League (1)",
+    "ovr": 80,
+    "atk": 82,
+    "mid": 82,
+    "def": 79
+  },
+  {
+    "rank": 29,
+    "name": "Tottenham Hotspur",
+    "league": "England Premier League (1)",
+    "ovr": 80,
+    "atk": 79,
+    "mid": 80,
+    "def": 80
+  },
+  {
+    "rank": 30,
+    "name": "VfL Wolfsburg W",
+    "league": "Germany Frauen-Bundesliga (1)",
+    "ovr": 80,
+    "atk": 81,
+    "mid": 81,
+    "def": 78
+  },
+  {
+    "rank": 31,
+    "name": "Sporting CP",
+    "league": "Portugal Primeira Liga (1)",
+    "ovr": 79,
+    "atk": 78,
+    "mid": 80,
+    "def": 78
+  },
+  {
+    "rank": 32,
+    "name": "Bayer 04 Leverkusen",
+    "league": "Germany 1. Bundesliga (1)",
+    "ovr": 79,
+    "atk": 80,
+    "mid": 80,
+    "def": 78
+  },
+  {
+    "rank": 33,
+    "name": "Olympique de Marseille",
+    "league": "France Ligue 1 (1)",
+    "ovr": 79,
+    "atk": 80,
+    "mid": 79,
+    "def": 79
+  },
+  {
+    "rank": 34,
+    "name": "Atalanta",
+    "league": "Italy Serie A (1)",
+    "ovr": 79,
+    "atk": 77,
+    "mid": 78,
+    "def": 78
+  },
+  {
+    "rank": 35,
+    "name": "Eintracht Frankfurt W",
+    "league": "Germany Frauen-Bundesliga (1)",
+    "ovr": 79,
+    "atk": 77,
+    "mid": 81,
+    "def": 78
+  },
+  {
+    "rank": 36,
+    "name": "Galatasaray",
+    "league": "Turkey Süper Lig (1)",
+    "ovr": 79,
+    "atk": 81,
+    "mid": 80,
+    "def": 78
+  },
+  {
+    "rank": 37,
+    "name": "Nottingham Forest",
+    "league": "England Premier League (1)",
+    "ovr": 79,
+    "atk": 79,
+    "mid": 78,
+    "def": 80
+  },
+  {
+    "rank": 38,
+    "name": "Real Betis Balompié",
+    "league": "Spain Primera División (1)",
+    "ovr": 79,
+    "atk": 80,
+    "mid": 80,
+    "def": 77
+  },
+  {
+    "rank": 39,
+    "name": "Villarreal CF",
+    "league": "Spain Primera División (1)",
+    "ovr": 79,
+    "atk": 80,
+    "mid": 80,
+    "def": 77
+  },
+  {
+    "rank": 40,
+    "name": "Crystal Palace",
+    "league": "England Premier League (1)",
+    "ovr": 79,
+    "atk": 79,
+    "mid": 78,
+    "def": 79
+  },
+  {
+    "rank": 41,
+    "name": "RB Leipzig",
+    "league": "Germany 1. Bundesliga (1)",
+    "ovr": 79,
+    "atk": 78,
+    "mid": 78,
+    "def": 79
+  },
+  {
+    "rank": 42,
+    "name": "AFC Bournemouth",
+    "league": "England Premier League (1)",
+    "ovr": 78,
+    "atk": 79,
+    "mid": 78,
+    "def": 77
+  },
+  {
+    "rank": 43,
+    "name": "Atlético de Madrid W",
+    "league": "Spain Liga F Femenina (1)",
+    "ovr": 78,
+    "atk": 78,
+    "mid": 76,
+    "def": 78
+  },
+  {
+    "rank": 44,
+    "name": "London City Lionesses W",
+    "league": "England WSL (1)",
+    "ovr": 78,
+    "atk": 72,
+    "mid": 79,
+    "def": 76
+  },
+  {
+    "rank": 45,
+    "name": "Brentford",
+    "league": "England Premier League (1)",
+    "ovr": 78,
+    "atk": 81,
+    "mid": 78,
+    "def": 77
+  },
+  {
+    "rank": 46,
+    "name": "Fenerbahçe",
+    "league": "Turkey Süper Lig (1)",
+    "ovr": 78,
+    "atk": 72,
+    "mid": 79,
+    "def": 77
+  },
+  {
+    "rank": 47,
+    "name": "Lazio",
+    "league": "Italy Serie A (1)",
+    "ovr": 78,
+    "atk": 77,
+    "mid": 77,
+    "def": 78
+  },
+  {
+    "rank": 48,
+    "name": "Everton",
+    "league": "England Premier League (1)",
+    "ovr": 78,
+    "atk": 76,
+    "mid": 78,
+    "def": 77
+  },
+  {
+    "rank": 49,
+    "name": "Brighton & Hove Albion",
+    "league": "England Premier League (1)",
+    "ovr": 78,
+    "atk": 80,
+    "mid": 79,
+    "def": 78
+  },
+  {
+    "rank": 50,
+    "name": "Gotham FC W",
+    "league": "USA NWSL (1)",
+    "ovr": 78,
+    "atk": 77,
+    "mid": 78,
+    "def": 77
+  },
+  {
+    "rank": 51,
+    "name": "Al Hilal",
+    "league": "Saudi Pro League (1)",
+    "ovr": 78,
+    "atk": 78,
+    "mid": 79,
+    "def": 75
+  },
+  {
+    "rank": 52,
+    "name": "FC Porto",
+    "league": "Portugal Primeira Liga (1)",
+    "ovr": 78,
+    "atk": 72,
+    "mid": 78,
+    "def": 79
+  },
+  {
+    "rank": 53,
+    "name": "Washington Spirit W",
+    "league": "USA NWSL (1)",
+    "ovr": 78,
+    "atk": 80,
+    "mid": 78,
+    "def": 76
+  },
+  {
+    "rank": 54,
+    "name": "Benfica",
+    "league": "Portugal Primeira Liga (1)",
+    "ovr": 78,
+    "atk": 80,
+    "mid": 78,
+    "def": 77
+  },
+  {
+    "rank": 55,
+    "name": "Fulham",
+    "league": "England Premier League (1)",
+    "ovr": 78,
+    "atk": 78,
+    "mid": 78,
+    "def": 78
+  },
+  {
+    "rank": 56,
+    "name": "VfB Stuttgart",
+    "league": "Germany 1. Bundesliga (1)",
+    "ovr": 77,
+    "atk": 80,
+    "mid": 78,
+    "def": 76
+  },
+  {
+    "rank": 57,
+    "name": "Orlando Pride W",
+    "league": "USA NWSL (1)",
+    "ovr": 77,
+    "atk": 79,
+    "mid": 76,
+    "def": 76
+  },
+  {
+    "rank": 58,
+    "name": "Como",
+    "league": "Italy Serie A (1)",
+    "ovr": 77,
+    "atk": 77,
+    "mid": 77,
+    "def": 75
+  },
+  {
+    "rank": 59,
+    "name": "Eintracht Frankfurt",
+    "league": "Germany 1. Bundesliga (1)",
+    "ovr": 77,
+    "atk": 82,
+    "mid": 77,
+    "def": 79
+  },
+  {
+    "rank": 60,
+    "name": "PSV",
+    "league": "Holland Eredivisie (1)",
+    "ovr": 77,
+    "atk": 77,
+    "mid": 78,
+    "def": 76
+  },
+  {
+    "rank": 61,
+    "name": "TSG 1899 Hoffenheim",
+    "league": "Germany 1. Bundesliga (1)",
+    "ovr": 77,
+    "atk": 77,
+    "mid": 78,
+    "def": 75
+  },
+  {
+    "rank": 62,
+    "name": "Girona FC",
+    "league": "Spain Primera División (1)",
+    "ovr": 77,
+    "atk": 76,
+    "mid": 77,
+    "def": 76
+  },
+  {
+    "rank": 63,
+    "name": "Sunderland",
+    "league": "England Premier League (1)",
+    "ovr": 77,
+    "atk": 76,
+    "mid": 78,
+    "def": 78
+  },
+  {
+    "rank": 64,
+    "name": "LOSC Lille",
+    "league": "France Ligue 1 (1)",
+    "ovr": 77,
+    "atk": 77,
+    "mid": 77,
+    "def": 76
+  },
+  {
+    "rank": 65,
+    "name": "CA Osasuna",
+    "league": "Spain Primera División (1)",
+    "ovr": 77,
+    "atk": 78,
+    "mid": 77,
+    "def": 77
+  },
+  {
+    "rank": 66,
+    "name": "Paris FC W",
+    "league": "France 1 Women's League (1)",
+    "ovr": 77,
+    "atk": 85,
+    "mid": 78,
+    "def": 77
+  },
+  {
+    "rank": 67,
+    "name": "Rayo Vallecano",
+    "league": "Spain Primera División (1)",
+    "ovr": 77,
+    "atk": 81,
+    "mid": 77,
+    "def": 77
+  },
+  {
+    "rank": 68,
+    "name": "Olympique Lyonnais",
+    "league": "France Ligue 1 (1)",
+    "ovr": 77,
+    "atk": 76,
+    "mid": 77,
+    "def": 77
+  },
+  {
+    "rank": 69,
+    "name": "RC Lens",
+    "league": "France Ligue 1 (1)",
+    "ovr": 77,
+    "atk": 77,
+    "mid": 78,
+    "def": 76
+  },
+  {
+    "rank": 70,
+    "name": "West Ham United",
+    "league": "England Premier League (1)",
+    "ovr": 77,
+    "atk": 76,
+    "mid": 78,
+    "def": 77
+  },
+  {
+    "rank": 71,
+    "name": "Stade Rennais",
+    "league": "France Ligue 1 (1)",
+    "ovr": 76,
+    "atk": 78,
+    "mid": 76,
+    "def": 74
+  },
+  {
+    "rank": 72,
+    "name": "RCD Mallorca",
+    "league": "Spain Primera División (1)",
+    "ovr": 76,
+    "atk": 75,
+    "mid": 76,
+    "def": 77
+  },
+  {
+    "rank": 73,
+    "name": "Bologna",
+    "league": "Italy Serie A (1)",
+    "ovr": 76,
+    "atk": 77,
+    "mid": 77,
+    "def": 74
+  },
+  {
+    "rank": 74,
+    "name": "Fiorentina",
+    "league": "Italy Serie A (1)",
+    "ovr": 76,
+    "atk": 77,
+    "mid": 75,
+    "def": 75
+  },
+  {
+    "rank": 75,
+    "name": "Olympiacos",
+    "league": "Rest of World",
+    "ovr": 76,
+    "atk": 78,
+    "mid": 76,
+    "def": 75
+  },
+  {
+    "rank": 76,
+    "name": "Al Nassr",
+    "league": "Saudi Pro League (1)",
+    "ovr": 76,
+    "atk": 85,
+    "mid": 77,
+    "def": 74
+  },
+  {
+    "rank": 77,
+    "name": "Everton W",
+    "league": "England WSL (1)",
+    "ovr": 76,
+    "atk": 76,
+    "mid": 76,
+    "def": 74
+  },
+  {
+    "rank": 78,
+    "name": "Valencia CF",
+    "league": "Spain Primera División (1)",
+    "ovr": 76,
+    "atk": 76,
+    "mid": 75,
+    "def": 74
+  },
+  {
+    "rank": 79,
+    "name": "Chicago Stars FC W",
+    "league": "USA NWSL (1)",
+    "ovr": 76,
+    "atk": 74,
+    "mid": 76,
+    "def": 73
+  },
+  {
+    "rank": 80,
+    "name": "Portland Thorns FC W",
+    "league": "USA NWSL (1)",
+    "ovr": 76,
+    "atk": 79,
+    "mid": 74,
+    "def": 72
+  },
+  {
+    "rank": 81,
+    "name": "Getafe CF",
+    "league": "Spain Primera División (1)",
+    "ovr": 76,
+    "atk": 75,
+    "mid": 77,
+    "def": 75
+  },
+  {
+    "rank": 82,
+    "name": "Leeds United",
+    "league": "England Premier League (1)",
+    "ovr": 76,
+    "atk": 76,
+    "mid": 77,
+    "def": 76
+  },
+  {
+    "rank": 83,
+    "name": "RC Celta de Vigo",
+    "league": "Spain Primera División (1)",
+    "ovr": 76,
+    "atk": 79,
+    "mid": 75,
+    "def": 77
+  },
+  {
+    "rank": 84,
+    "name": "Roma W",
+    "league": "Rest of World Women",
+    "ovr": 76,
+    "atk": 78,
+    "mid": 79,
+    "def": 73
+  },
+  {
+    "rank": 85,
+    "name": "Juventus W",
+    "league": "Rest of World Women",
+    "ovr": 76,
+    "atk": 69,
+    "mid": 79,
+    "def": 77
+  },
+  {
+    "rank": 86,
+    "name": "Aston Villa W",
+    "league": "England WSL (1)",
+    "ovr": 76,
+    "atk": 76,
+    "mid": 75,
+    "def": 76
+  },
+  {
+    "rank": 87,
+    "name": "VfL Wolfsburg",
+    "league": "Germany 1. Bundesliga (1)",
+    "ovr": 76,
+    "atk": 76,
+    "mid": 76,
+    "def": 74
+  },
+  {
+    "rank": 88,
+    "name": "Bayer 04 Leverkusen W",
+    "league": "Germany Frauen-Bundesliga (1)",
+    "ovr": 76,
+    "atk": 78,
+    "mid": 75,
+    "def": 76
+  },
+  {
+    "rank": 89,
+    "name": "West Ham United W",
+    "league": "England WSL (1)",
+    "ovr": 76,
+    "atk": 77,
+    "mid": 76,
+    "def": 75
+  },
+  {
+    "rank": 90,
+    "name": "Brighton & Hove Albion W",
+    "league": "England WSL (1)",
+    "ovr": 76,
+    "atk": 77,
+    "mid": 76,
+    "def": 75
+  },
+  {
+    "rank": 91,
+    "name": "Flamengo",
+    "league": "CONMEBOL Libertadores",
+    "ovr": 76,
+    "atk": 77,
+    "mid": 76,
+    "def": 75
+  },
+  {
+    "rank": 92,
+    "name": "Tottenham Hotspur W",
+    "league": "England WSL (1)",
+    "ovr": 76,
+    "atk": 72,
+    "mid": 76,
+    "def": 75
+  },
+  {
+    "rank": 93,
+    "name": "Paris FC",
+    "league": "France Ligue 1 (1)",
+    "ovr": 75,
+    "atk": 75,
+    "mid": 76,
+    "def": 73
+  },
+  {
+    "rank": 94,
+    "name": "Palmeiras",
+    "league": "CONMEBOL Libertadores",
+    "ovr": 75,
+    "atk": 78,
+    "mid": 76,
+    "def": 74
+  },
+  {
+    "rank": 95,
+    "name": "RCD Espanyol",
+    "league": "Spain Primera División (1)",
+    "ovr": 75,
+    "atk": 73,
+    "mid": 74,
+    "def": 76
+  },
+  {
+    "rank": 96,
+    "name": "Botafogo",
+    "league": "CONMEBOL Sudamericana",
+    "ovr": 75,
+    "atk": 71,
+    "mid": 75,
+    "def": 75
+  },
+  {
+    "rank": 97,
+    "name": "Boca Juniors",
+    "league": "Argentina Primera División (1)",
+    "ovr": 75,
+    "atk": 75,
+    "mid": 74,
+    "def": 73
+  },
+  {
+    "rank": 98,
+    "name": "1. FSV Mainz 05",
+    "league": "Germany 1. Bundesliga (1)",
+    "ovr": 75,
+    "atk": 73,
+    "mid": 78,
+    "def": 75
+  },
+  {
+    "rank": 99,
+    "name": "SC Freiburg",
+    "league": "Germany 1. Bundesliga (1)",
+    "ovr": 75,
+    "atk": 74,
+    "mid": 75,
+    "def": 76
+  },
+  {
+    "rank": 100,
+    "name": "Celtic",
+    "league": "Scotland Premiership (1)",
+    "ovr": 75,
+    "atk": 73,
+    "mid": 75,
+    "def": 73
+  },
+  {
+    "rank": 101,
+    "name": "Liverpool W",
+    "league": "England WSL (1)",
+    "ovr": 75,
+    "atk": 73,
+    "mid": 75,
+    "def": 74
+  },
+  {
+    "rank": 102,
+    "name": "Ajax",
+    "league": "Holland Eredivisie (1)",
+    "ovr": 75,
+    "atk": 77,
+    "mid": 73,
+    "def": 74
+  },
+  {
+    "rank": 103,
+    "name": "Feyenoord",
+    "league": "Holland Eredivisie (1)",
+    "ovr": 75,
+    "atk": 76,
+    "mid": 76,
+    "def": 74
+  },
+  {
+    "rank": 104,
+    "name": "RC Strasbourg",
+    "league": "France Ligue 1 (1)",
+    "ovr": 75,
+    "atk": 75,
+    "mid": 75,
+    "def": 75
+  },
+  {
+    "rank": 105,
+    "name": "Real Sociedad W",
+    "league": "Spain Liga F Femenina (1)",
+    "ovr": 75,
+    "atk": 74,
+    "mid": 76,
+    "def": 74
+  },
+  {
+    "rank": 106,
+    "name": "Athletic Club de Bilbao W",
+    "league": "Spain Liga F Femenina (1)",
+    "ovr": 75,
+    "atk": 72,
+    "mid": 75,
+    "def": 77
+  },
+  {
+    "rank": 107,
+    "name": "Utah Royals W",
+    "league": "USA NWSL (1)",
+    "ovr": 75,
+    "atk": 78,
+    "mid": 75,
+    "def": 73
+  },
+  {
+    "rank": 108,
+    "name": "Werder Bremen",
+    "league": "Germany 1. Bundesliga (1)",
+    "ovr": 75,
+    "atk": 73,
+    "mid": 76,
+    "def": 74
+  },
+  {
+    "rank": 109,
+    "name": "Slavia Praha",
+    "league": "Rest of World",
+    "ovr": 75,
+    "atk": 75,
+    "mid": 75,
+    "def": 74
+  },
+  {
+    "rank": 110,
+    "name": "Torino",
+    "league": "Italy Serie A (1)",
+    "ovr": 75,
+    "atk": 78,
+    "mid": 73,
+    "def": 74
+  },
+  {
+    "rank": 111,
+    "name": "Bay FC W",
+    "league": "USA NWSL (1)",
+    "ovr": 75,
+    "atk": 83,
+    "mid": 70,
+    "def": 71
+  },
+  {
+    "rank": 112,
+    "name": "Atlético Mineiro",
+    "league": "CONMEBOL Sudamericana",
+    "ovr": 75,
+    "atk": 77,
+    "mid": 75,
+    "def": 76
+  },
+  {
+    "rank": 113,
+    "name": "Wolverhampton Wanderers",
+    "league": "England Premier League (1)",
+    "ovr": 75,
+    "atk": 74,
+    "mid": 75,
+    "def": 74
+  },
+  {
+    "rank": 114,
+    "name": "AEK",
+    "league": "Rest of World",
+    "ovr": 75,
+    "atk": 77,
+    "mid": 75,
+    "def": 74
+  },
+  {
+    "rank": 115,
+    "name": "Borussia M'gladbach",
+    "league": "Germany 1. Bundesliga (1)",
+    "ovr": 75,
+    "atk": 77,
+    "mid": 75,
+    "def": 75
+  },
+  {
+    "rank": 116,
+    "name": "Burnley",
+    "league": "England Premier League (1)",
+    "ovr": 75,
+    "atk": 75,
+    "mid": 74,
+    "def": 75
+  },
+  {
+    "rank": 117,
+    "name": "FC Fleury 91 W",
+    "league": "France 1 Women's League (1)",
+    "ovr": 74,
+    "atk": 70,
+    "mid": 75,
+    "def": 75
+  },
+  {
+    "rank": 118,
+    "name": "Rangers",
+    "league": "Scotland Premiership (1)",
+    "ovr": 74,
+    "atk": 73,
+    "mid": 73,
+    "def": 73
+  },
+  {
+    "rank": 119,
+    "name": "Racing Louisville FC W",
+    "league": "USA NWSL (1)",
+    "ovr": 74,
+    "atk": 70,
+    "mid": 72,
+    "def": 73
+  },
+  {
+    "rank": 120,
+    "name": "San Diego Wave FC W",
+    "league": "USA NWSL (1)",
+    "ovr": 74,
+    "atk": 75,
+    "mid": 73,
+    "def": 72
+  },
+  {
+    "rank": 121,
+    "name": "Santos",
+    "league": "CONMEBOL Sudamericana",
+    "ovr": 74,
+    "atk": 74,
+    "mid": 72,
+    "def": 75
+  },
+  {
+    "rank": 122,
+    "name": "Internacional",
+    "league": "-",
+    "ovr": 74,
+    "atk": 71,
+    "mid": 73,
+    "def": 75
+  },
+  {
+    "rank": 123,
+    "name": "1. FC Union Berlin",
+    "league": "Germany 1. Bundesliga (1)",
+    "ovr": 74,
+    "atk": 74,
+    "mid": 74,
+    "def": 76
+  },
+  {
+    "rank": 124,
+    "name": "Levante UD",
+    "league": "Spain Primera División (1)",
+    "ovr": 74,
+    "atk": 74,
+    "mid": 73,
+    "def": 74
+  },
+  {
+    "rank": 125,
+    "name": "Al Ittihad",
+    "league": "Saudi Pro League (1)",
+    "ovr": 74,
+    "atk": 76,
+    "mid": 76,
+    "def": 72
+  },
+  {
+    "rank": 126,
+    "name": "RB Bragantino",
+    "league": "CONMEBOL Sudamericana",
+    "ovr": 74,
+    "atk": 71,
+    "mid": 75,
+    "def": 75
+  },
+  {
+    "rank": 127,
+    "name": "River Plate",
+    "league": "Argentina Primera División (1)",
+    "ovr": 74,
+    "atk": 74,
+    "mid": 74,
+    "def": 74
+  },
+  {
+    "rank": 128,
+    "name": "Al Qadsiah",
+    "league": "Saudi Pro League (1)",
+    "ovr": 74,
+    "atk": 76,
+    "mid": 76,
+    "def": 71
+  },
+  {
+    "rank": 129,
+    "name": "Al Ahli",
+    "league": "Saudi Pro League (1)",
+    "ovr": 74,
+    "atk": 77,
+    "mid": 74,
+    "def": 73
+  },
+  {
+    "rank": 130,
+    "name": "Union Saint-Gilloise",
+    "league": "Belgium Pro League (1)",
+    "ovr": 74,
+    "atk": 73,
+    "mid": 74,
+    "def": 75
+  },
+  {
+    "rank": 131,
+    "name": "Houston Dash W",
+    "league": "USA NWSL (1)",
+    "ovr": 74,
+    "atk": 73,
+    "mid": 73,
+    "def": 74
+  },
+  {
+    "rank": 132,
+    "name": "FC Badalona Women W",
+    "league": "Spain Liga F Femenina (1)",
+    "ovr": 74,
+    "atk": 77,
+    "mid": 74,
+    "def": 73
+  },
+  {
+    "rank": 133,
+    "name": "Benfica W",
+    "league": "Rest of World Women",
+    "ovr": 74,
+    "atk": 75,
+    "mid": 73,
+    "def": 74
+  },
+  {
+    "rank": 134,
+    "name": "FC Augsburg",
+    "league": "Germany 1. Bundesliga (1)",
+    "ovr": 74,
+    "atk": 75,
+    "mid": 74,
+    "def": 75
+  },
+  {
+    "rank": 135,
+    "name": "Leicester City W",
+    "league": "England WSL (1)",
+    "ovr": 74,
+    "atk": 75,
+    "mid": 74,
+    "def": 75
+  },
+  {
+    "rank": 136,
+    "name": "PAOK",
+    "league": "Rest of World",
+    "ovr": 74,
+    "atk": 76,
+    "mid": 76,
+    "def": 73
+  },
+  {
+    "rank": 137,
+    "name": "Sassuolo",
+    "league": "Italy Serie A (1)",
+    "ovr": 74,
+    "atk": 77,
+    "mid": 75,
+    "def": 73
+  },
+  {
+    "rank": 138,
+    "name": "Seattle Reign FC W",
+    "league": "USA NWSL (1)",
+    "ovr": 74,
+    "atk": 76,
+    "mid": 71,
+    "def": 71
+  },
+  {
+    "rank": 139,
+    "name": "SC Freiburg W",
+    "league": "Germany Frauen-Bundesliga (1)",
+    "ovr": 74,
+    "atk": 74,
+    "mid": 74,
+    "def": 74
+  },
+  {
+    "rank": 140,
+    "name": "RB Leipzig W",
+    "league": "Germany Frauen-Bundesliga (1)",
+    "ovr": 74,
+    "atk": 70,
+    "mid": 74,
+    "def": 73
+  },
+  {
+    "rank": 141,
+    "name": "Racing Club de Avellaneda",
+    "league": "Argentina Primera División (1)",
+    "ovr": 74,
+    "atk": 78,
+    "mid": 72,
+    "def": 73
+  },
+  {
+    "rank": 142,
+    "name": "1. FC Köln W",
+    "league": "Germany Frauen-Bundesliga (1)",
+    "ovr": 74,
+    "atk": 75,
+    "mid": 73,
+    "def": 73
+  },
+  {
+    "rank": 143,
+    "name": "Stade Brestois 29",
+    "league": "France Ligue 1 (1)",
+    "ovr": 74,
+    "atk": 75,
+    "mid": 74,
+    "def": 74
+  },
+  {
+    "rank": 144,
+    "name": "Angel City FC W",
+    "league": "USA NWSL (1)",
+    "ovr": 74,
+    "atk": 79,
+    "mid": 73,
+    "def": 71
+  },
+  {
+    "rank": 145,
+    "name": "Corinthians",
+    "league": "CONMEBOL Libertadores",
+    "ovr": 73,
+    "atk": 75,
+    "mid": 72,
+    "def": 74
+  },
+  {
+    "rank": 146,
+    "name": "São Paulo",
+    "league": "CONMEBOL Sudamericana",
+    "ovr": 73,
+    "atk": 73,
+    "mid": 72,
+    "def": 73
+  },
+  {
+    "rank": 147,
+    "name": "Ipswich Town",
+    "league": "England Championship (2)",
+    "ovr": 73,
+    "atk": 69,
+    "mid": 73,
+    "def": 74
+  },
+  {
+    "rank": 148,
+    "name": "Cremonese",
+    "league": "Italy Serie A (1)",
+    "ovr": 73,
+    "atk": 74,
+    "mid": 71,
+    "def": 72
+  },
+  {
+    "rank": 149,
+    "name": "Toulouse FC",
+    "league": "France Ligue 1 (1)",
+    "ovr": 73,
+    "atk": 73,
+    "mid": 73,
+    "def": 73
+  },
+  {
+    "rank": 150,
+    "name": "Panathinaikos",
+    "league": "Rest of World",
+    "ovr": 73,
+    "atk": 73,
+    "mid": 73,
+    "def": 73
+  },
+  {
+    "rank": 151,
+    "name": "Estudiantes de La Plata",
+    "league": "Argentina Primera División (1)",
+    "ovr": 73,
+    "atk": 76,
+    "mid": 73,
+    "def": 73
+  },
+  {
+    "rank": 152,
+    "name": "TSG 1899 Hoffenheim W",
+    "league": "Germany Frauen-Bundesliga (1)",
+    "ovr": 73,
+    "atk": 77,
+    "mid": 71,
+    "def": 73
+  },
+  {
+    "rank": 153,
+    "name": "Werder Bremen W",
+    "league": "Germany Frauen-Bundesliga (1)",
+    "ovr": 73,
+    "atk": 75,
+    "mid": 72,
+    "def": 72
+  },
+  {
+    "rank": 154,
+    "name": "Vélez Sarsfield",
+    "league": "Argentina Primera División (1)",
+    "ovr": 73,
+    "atk": 73,
+    "mid": 71,
+    "def": 73
+  },
+  {
+    "rank": 155,
+    "name": "AZ",
+    "league": "Holland Eredivisie (1)",
+    "ovr": 73,
+    "atk": 75,
+    "mid": 73,
+    "def": 71
+  },
+  {
+    "rank": 156,
+    "name": "Sevilla FC W",
+    "league": "Spain Liga F Femenina (1)",
+    "ovr": 73,
+    "atk": 72,
+    "mid": 75,
+    "def": 70
+  },
+  {
+    "rank": 157,
+    "name": "Rosario Central",
+    "league": "Argentina Primera División (1)",
+    "ovr": 73,
+    "atk": 72,
+    "mid": 74,
+    "def": 70
+  },
+  {
+    "rank": 158,
+    "name": "Genoa",
+    "league": "Italy Serie A (1)",
+    "ovr": 73,
+    "atk": 73,
+    "mid": 72,
+    "def": 73
+  },
+  {
+    "rank": 159,
+    "name": "Sparta Praha",
+    "league": "Rest of World",
+    "ovr": 73,
+    "atk": 74,
+    "mid": 73,
+    "def": 72
+  },
+  {
+    "rank": 160,
+    "name": "Cagliari",
+    "league": "Italy Serie A (1)",
+    "ovr": 73,
+    "atk": 72,
+    "mid": 72,
+    "def": 73
+  },
+  {
+    "rank": 161,
+    "name": "Coventry City",
+    "league": "England Championship (2)",
+    "ovr": 73,
+    "atk": 73,
+    "mid": 73,
+    "def": 72
+  },
+  {
+    "rank": 162,
+    "name": "Costa Adeje Tenerife W",
+    "league": "Spain Liga F Femenina (1)",
+    "ovr": 73,
+    "atk": 71,
+    "mid": 75,
+    "def": 73
+  },
+  {
+    "rank": 163,
+    "name": "Parma",
+    "league": "Italy Serie A (1)",
+    "ovr": 73,
+    "atk": 72,
+    "mid": 73,
+    "def": 71
+  },
+  {
+    "rank": 164,
+    "name": "1. FC Union Berlin W",
+    "league": "Germany Frauen-Bundesliga (1)",
+    "ovr": 73,
+    "atk": 75,
+    "mid": 73,
+    "def": 72
+  },
+  {
+    "rank": 165,
+    "name": "FC Lorient",
+    "league": "France Ligue 1 (1)",
+    "ovr": 73,
+    "atk": 72,
+    "mid": 73,
+    "def": 72
+  },
+  {
+    "rank": 166,
+    "name": "Real Oviedo",
+    "league": "Spain Primera División (1)",
+    "ovr": 73,
+    "atk": 74,
+    "mid": 72,
+    "def": 73
+  },
+  {
+    "rank": 167,
+    "name": "North Carolina Courage W",
+    "league": "USA NWSL (1)",
+    "ovr": 73,
+    "atk": 74,
+    "mid": 71,
+    "def": 72
+  },
+  {
+    "rank": 168,
+    "name": "Hellas Verona",
+    "league": "Italy Serie A (1)",
+    "ovr": 73,
+    "atk": 70,
+    "mid": 73,
+    "def": 71
+  },
+  {
+    "rank": 169,
+    "name": "Trabzonspor",
+    "league": "Turkey Süper Lig (1)",
+    "ovr": 73,
+    "atk": 77,
+    "mid": 72,
+    "def": 73
+  },
+  {
+    "rank": 170,
+    "name": "Genk",
+    "league": "Belgium Pro League (1)",
+    "ovr": 73,
+    "atk": 71,
+    "mid": 73,
+    "def": 74
+  },
+  {
+    "rank": 171,
+    "name": "Pisa",
+    "league": "Italy Serie A (1)",
+    "ovr": 72,
+    "atk": 70,
+    "mid": 72,
+    "def": 71
+  },
+  {
+    "rank": 172,
+    "name": "Bahia",
+    "league": "Rest of World",
+    "ovr": 72,
+    "atk": 74,
+    "mid": 72,
+    "def": 72
+  },
+  {
+    "rank": 173,
+    "name": "Southampton",
+    "league": "England Championship (2)",
+    "ovr": 72,
+    "atk": 74,
+    "mid": 72,
+    "def": 72
+  },
+  {
+    "rank": 174,
+    "name": "Atlético Nacional",
+    "league": "Rest of World",
+    "ovr": 72,
+    "atk": 77,
+    "mid": 70,
+    "def": 71
+  },
+  {
+    "rank": 175,
+    "name": "Middlesbrough",
+    "league": "England Championship (2)",
+    "ovr": 72,
+    "atk": 70,
+    "mid": 72,
+    "def": 72
+  },
+  {
+    "rank": 176,
+    "name": "RC Deportivo W",
+    "league": "Spain Liga F Femenina (1)",
+    "ovr": 72,
+    "atk": 75,
+    "mid": 70,
+    "def": 68
+  },
+  {
+    "rank": 177,
+    "name": "FC Nantes",
+    "league": "France Ligue 1 (1)",
+    "ovr": 72,
+    "atk": 71,
+    "mid": 72,
+    "def": 72
+  },
+  {
+    "rank": 178,
+    "name": "Viktoria Plzeň",
+    "league": "Rest of World",
+    "ovr": 72,
+    "atk": 71,
+    "mid": 72,
+    "def": 72
+  },
+  {
+    "rank": 179,
+    "name": "Le Havre AC",
+    "league": "France Ligue 1 (1)",
+    "ovr": 72,
+    "atk": 71,
+    "mid": 72,
+    "def": 72
+  },
+  {
+    "rank": 180,
+    "name": "FC Utrecht",
+    "league": "Holland Eredivisie (1)",
+    "ovr": 72,
+    "atk": 71,
+    "mid": 71,
+    "def": 71
+  },
+  {
+    "rank": 181,
+    "name": "Birmingham City",
+    "league": "England Championship (2)",
+    "ovr": 72,
+    "atk": 72,
+    "mid": 72,
+    "def": 73
+  },
+  {
+    "rank": 182,
+    "name": "Lanús",
+    "league": "Argentina Primera División (1)",
+    "ovr": 72,
+    "atk": 71,
+    "mid": 72,
+    "def": 70
+  },
+  {
+    "rank": 183,
+    "name": "Angers SCO",
+    "league": "France Ligue 1 (1)",
+    "ovr": 72,
+    "atk": 71,
+    "mid": 73,
+    "def": 70
+  },
+  {
+    "rank": 184,
+    "name": "Anderlecht",
+    "league": "Belgium Pro League (1)",
+    "ovr": 72,
+    "atk": 74,
+    "mid": 71,
+    "def": 71
+  },
+  {
+    "rank": 185,
+    "name": "Grêmio",
+    "league": "CONMEBOL Sudamericana",
+    "ovr": 72,
+    "atk": 72,
+    "mid": 71,
+    "def": 72
+  },
+  {
+    "rank": 186,
+    "name": "Palermo",
+    "league": "Italy Serie B (2)",
+    "ovr": 72,
+    "atk": 73,
+    "mid": 72,
+    "def": 72
+  },
+  {
+    "rank": 187,
+    "name": "Le Havre AC W",
+    "league": "France 1 Women's League (1)",
+    "ovr": 72,
+    "atk": 70,
+    "mid": 72,
+    "def": 70
+  },
+  {
+    "rank": 188,
+    "name": "FC St. Pauli",
+    "league": "Germany 1. Bundesliga (1)",
+    "ovr": 72,
+    "atk": 71,
+    "mid": 72,
+    "def": 72
+  },
+  {
+    "rank": 189,
+    "name": "N.E.C. Nijmegen",
+    "league": "Holland Eredivisie (1)",
+    "ovr": 72,
+    "atk": 71,
+    "mid": 71,
+    "def": 71
+  },
+  {
+    "rank": 190,
+    "name": "Peñarol",
+    "league": "CONMEBOL Libertadores",
+    "ovr": 72,
+    "atk": 73,
+    "mid": 72,
+    "def": 70
+  },
+  {
+    "rank": 191,
+    "name": "Dynamo Kyiv",
+    "league": "Rest of World",
+    "ovr": 72,
+    "atk": 69,
+    "mid": 73,
+    "def": 71
+  },
+  {
+    "rank": 192,
+    "name": "Dijon FCO W",
+    "league": "France 1 Women's League (1)",
+    "ovr": 72,
+    "atk": 73,
+    "mid": 73,
+    "def": 71
+  },
+  {
+    "rank": 193,
+    "name": "UD Las Palmas",
+    "league": "Spain Segunda División (2)",
+    "ovr": 72,
+    "atk": 72,
+    "mid": 71,
+    "def": 72
+  },
+  {
+    "rank": 194,
+    "name": "Shakhtar Donetsk",
+    "league": "Rest of World",
+    "ovr": 72,
+    "atk": 71,
+    "mid": 73,
+    "def": 73
+  },
+  {
+    "rank": 195,
+    "name": "1. FC Heidenheim",
+    "league": "Germany 1. Bundesliga (1)",
+    "ovr": 72,
+    "atk": 72,
+    "mid": 72,
+    "def": 72
+  },
+  {
+    "rank": 196,
+    "name": "Argentinos Juniors",
+    "league": "Argentina Primera División (1)",
+    "ovr": 72,
+    "atk": 71,
+    "mid": 73,
+    "def": 71
+  },
+  {
+    "rank": 197,
+    "name": "Cruzeiro",
+    "league": "CONMEBOL Libertadores",
+    "ovr": 72,
+    "atk": 75,
+    "mid": 71,
+    "def": 73
+  },
+  {
+    "rank": 198,
+    "name": "FC Midtjylland",
+    "league": "Denmark Superliga (1)",
+    "ovr": 72,
+    "atk": 72,
+    "mid": 71,
+    "def": 72
+  },
+  {
+    "rank": 199,
+    "name": "Swansea City",
+    "league": "England Championship (2)",
+    "ovr": 71,
+    "atk": 72,
+    "mid": 70,
+    "def": 72
+  },
+  {
+    "rank": 200,
+    "name": "Talleres de Córdoba",
+    "league": "Argentina Primera División (1)",
+    "ovr": 71,
+    "atk": 69,
+    "mid": 71,
+    "def": 69
+  },
+  {
+    "rank": 201,
+    "name": "Granada CF W",
+    "league": "Spain Liga F Femenina (1)",
+    "ovr": 71,
+    "atk": 70,
+    "mid": 74,
+    "def": 67
+  },
+  {
+    "rank": 202,
+    "name": "Ferencvárosi TC",
+    "league": "Rest of World",
+    "ovr": 71,
+    "atk": 70,
+    "mid": 71,
+    "def": 68
+  },
+  {
+    "rank": 203,
+    "name": "Millwall",
+    "league": "England Championship (2)",
+    "ovr": 71,
+    "atk": 69,
+    "mid": 72,
+    "def": 72
+  },
+  {
+    "rank": 204,
+    "name": "Belgrano de Córdoba",
+    "league": "Argentina Primera División (1)",
+    "ovr": 71,
+    "atk": 73,
+    "mid": 73,
+    "def": 71
+  },
+  {
+    "rank": 205,
+    "name": "RC Deportivo",
+    "league": "Spain Segunda División (2)",
+    "ovr": 71,
+    "atk": 70,
+    "mid": 72,
+    "def": 71
+  },
+  {
+    "rank": 206,
+    "name": "Leicester City",
+    "league": "England Championship (2)",
+    "ovr": 71,
+    "atk": 68,
+    "mid": 72,
+    "def": 70
+  },
+  {
+    "rank": 207,
+    "name": "FC Schalke 04",
+    "league": "Germany 2. Bundesliga (2)",
+    "ovr": 71,
+    "atk": 75,
+    "mid": 70,
+    "def": 70
+  },
+  {
+    "rank": 208,
+    "name": "Los Angeles FC",
+    "league": "USA Major League Soccer (1)",
+    "ovr": 71,
+    "atk": 77,
+    "mid": 71,
+    "def": 70
+  },
+  {
+    "rank": 209,
+    "name": "Lecce",
+    "league": "Italy Serie A (1)",
+    "ovr": 71,
+    "atk": 71,
+    "mid": 71,
+    "def": 70
+  },
+  {
+    "rank": 210,
+    "name": "Olympique de Marseille W",
+    "league": "France 1 Women's League (1)",
+    "ovr": 71,
+    "atk": 80,
+    "mid": 72,
+    "def": 70
+  },
+  {
+    "rank": 211,
+    "name": "Vancouver Whitecaps",
+    "league": "USA Major League Soccer (1)",
+    "ovr": 71,
+    "atk": 73,
+    "mid": 73,
+    "def": 67
+  },
+  {
+    "rank": 212,
+    "name": "Independiente",
+    "league": "Argentina Primera División (1)",
+    "ovr": 71,
+    "atk": 71,
+    "mid": 70,
+    "def": 72
+  },
+  {
+    "rank": 213,
+    "name": "Sheffield United",
+    "league": "England Championship (2)",
+    "ovr": 71,
+    "atk": 71,
+    "mid": 72,
+    "def": 71
+  },
+  {
+    "rank": 214,
+    "name": "FC Metz",
+    "league": "France Ligue 1 (1)",
+    "ovr": 71,
+    "atk": 71,
+    "mid": 72,
+    "def": 70
+  },
+  {
+    "rank": 215,
+    "name": "Montpellier HSC W",
+    "league": "France 1 Women's League (1)",
+    "ovr": 71,
+    "atk": 71,
+    "mid": 69,
+    "def": 75
+  },
+  {
+    "rank": 216,
+    "name": "İstanbul Başakşehir FK",
+    "league": "Turkey Süper Lig (1)",
+    "ovr": 71,
+    "atk": 70,
+    "mid": 72,
+    "def": 71
+  },
+  {
+    "rank": 217,
+    "name": "Heart of Midlothian",
+    "league": "Scotland Premiership (1)",
+    "ovr": 71,
+    "atk": 72,
+    "mid": 72,
+    "def": 70
+  },
+  {
+    "rank": 218,
+    "name": "FC Twente",
+    "league": "Holland Eredivisie (1)",
+    "ovr": 71,
+    "atk": 71,
+    "mid": 70,
+    "def": 70
+  },
+  {
+    "rank": 219,
+    "name": "Madrid CFF W",
+    "league": "Spain Liga F Femenina (1)",
+    "ovr": 71,
+    "atk": 73,
+    "mid": 73,
+    "def": 71
+  },
+  {
+    "rank": 220,
+    "name": "Bristol City",
+    "league": "England Championship (2)",
+    "ovr": 71,
+    "atk": 71,
+    "mid": 71,
+    "def": 70
+  },
+  {
+    "rank": 221,
+    "name": "Nacional",
+    "league": "CONMEBOL Libertadores",
+    "ovr": 71,
+    "atk": 73,
+    "mid": 69,
+    "def": 72
+  },
+  {
+    "rank": 222,
+    "name": "RC Strasbourg W",
+    "league": "France 1 Women's League (1)",
+    "ovr": 71,
+    "atk": 73,
+    "mid": 69,
+    "def": 71
+  },
+  {
+    "rank": 223,
+    "name": "Venezia",
+    "league": "Italy Serie B (2)",
+    "ovr": 71,
+    "atk": 71,
+    "mid": 72,
+    "def": 69
+  },
+  {
+    "rank": 224,
+    "name": "FK Bodø/Glimt",
+    "league": "Norway Eliteserien (1)",
+    "ovr": 71,
+    "atk": 73,
+    "mid": 72,
+    "def": 70
+  },
+  {
+    "rank": 225,
+    "name": "Hull City",
+    "league": "England Championship (2)",
+    "ovr": 71,
+    "atk": 74,
+    "mid": 71,
+    "def": 71
+  },
+  {
+    "rank": 226,
+    "name": "Samsunspor",
+    "league": "Turkey Süper Lig (1)",
+    "ovr": 71,
+    "atk": 70,
+    "mid": 71,
+    "def": 70
+  },
+  {
+    "rank": 227,
+    "name": "RCD Espanyol W",
+    "league": "Spain Liga F Femenina (1)",
+    "ovr": 71,
+    "atk": 71,
+    "mid": 72,
+    "def": 70
+  },
+  {
+    "rank": 228,
+    "name": "FC Basel",
+    "league": "Switzerland Super League (1)",
+    "ovr": 71,
+    "atk": 68,
+    "mid": 71,
+    "def": 70
+  },
+  {
+    "rank": 229,
+    "name": "Fortaleza",
+    "league": "-",
+    "ovr": 71,
+    "atk": 71,
+    "mid": 71,
+    "def": 71
+  },
+  {
+    "rank": 230,
+    "name": "Estoril",
+    "league": "Portugal Primeira Liga (1)",
+    "ovr": 70,
+    "atk": 71,
+    "mid": 71,
+    "def": 69
+  },
+  {
+    "rank": 231,
+    "name": "NEOM SC",
+    "league": "Saudi Pro League (1)",
+    "ovr": 70,
+    "atk": 71,
+    "mid": 71,
+    "def": 68
+  },
+  {
+    "rank": 232,
+    "name": "AS Saint-Étienne",
+    "league": "France Ligue 2 (2)",
+    "ovr": 70,
+    "atk": 75,
+    "mid": 70,
+    "def": 69
+  },
+  {
+    "rank": 233,
+    "name": "América de Cali",
+    "league": "CONMEBOL Sudamericana",
+    "ovr": 70,
+    "atk": 71,
+    "mid": 70,
+    "def": 69
+  },
+  {
+    "rank": 234,
+    "name": "Mirassol",
+    "league": "CONMEBOL Libertadores",
+    "ovr": 70,
+    "atk": 71,
+    "mid": 69,
+    "def": 71
+  },
+  {
+    "rank": 235,
+    "name": "Preston North End",
+    "league": "England Championship (2)",
+    "ovr": 70,
+    "atk": 70,
+    "mid": 72,
+    "def": 69
+  },
+  {
+    "rank": 236,
+    "name": "Huracán",
+    "league": "Argentina Primera División (1)",
+    "ovr": 70,
+    "atk": 64,
+    "mid": 69,
+    "def": 70
+  },
+  {
+    "rank": 237,
+    "name": "Gil Vicente FC",
+    "league": "Portugal Primeira Liga (1)",
+    "ovr": 70,
+    "atk": 68,
+    "mid": 69,
+    "def": 69
+  },
+  {
+    "rank": 238,
+    "name": "Stoke City",
+    "league": "England Championship (2)",
+    "ovr": 70,
+    "atk": 68,
+    "mid": 70,
+    "def": 70
+  },
+  {
+    "rank": 239,
+    "name": "Defensa y Justicia",
+    "league": "Argentina Primera División (1)",
+    "ovr": 70,
+    "atk": 69,
+    "mid": 69,
+    "def": 69
+  },
+  {
+    "rank": 240,
+    "name": "FC Lugano",
+    "league": "Switzerland Super League (1)",
+    "ovr": 70,
+    "atk": 71,
+    "mid": 70,
+    "def": 69
+  },
+  {
+    "rank": 241,
+    "name": "Watford",
+    "league": "England Championship (2)",
+    "ovr": 70,
+    "atk": 68,
+    "mid": 71,
+    "def": 69
+  },
+  {
+    "rank": 242,
+    "name": "Olimpia Asunción",
+    "league": "CONMEBOL Sudamericana",
+    "ovr": 70,
+    "atk": 70,
+    "mid": 70,
+    "def": 69
+  },
+  {
+    "rank": 243,
+    "name": "Seattle Sounders",
+    "league": "USA Major League Soccer (1)",
+    "ovr": 70,
+    "atk": 73,
+    "mid": 70,
+    "def": 68
+  },
+  {
+    "rank": 244,
+    "name": "Independiente Rivadavia",
+    "league": "Argentina Primera División (1)",
+    "ovr": 70,
+    "atk": 75,
+    "mid": 70,
+    "def": 70
+  },
+  {
+    "rank": 245,
+    "name": "Universitario de Deportes",
+    "league": "CONMEBOL Libertadores",
+    "ovr": 70,
+    "atk": 70,
+    "mid": 70,
+    "def": 71
+  },
+  {
+    "rank": 246,
+    "name": "Alianza Lima",
+    "league": "-",
+    "ovr": 70,
+    "atk": 70,
+    "mid": 69,
+    "def": 68
+  },
+  {
+    "rank": 247,
+    "name": "Junior de Barranquilla",
+    "league": "CONMEBOL Libertadores",
+    "ovr": 70,
+    "atk": 72,
+    "mid": 70,
+    "def": 69
+  },
+  {
+    "rank": 248,
+    "name": "LDU Quito",
+    "league": "CONMEBOL Libertadores",
+    "ovr": 70,
+    "atk": 69,
+    "mid": 69,
+    "def": 70
+  },
+  {
+    "rank": 249,
+    "name": "Wrexham",
+    "league": "England Championship (2)",
+    "ovr": 70,
+    "atk": 70,
+    "mid": 71,
+    "def": 70
+  },
+  {
+    "rank": 250,
+    "name": "Independiente Medellín",
+    "league": "CONMEBOL Libertadores",
+    "ovr": 70,
+    "atk": 71,
+    "mid": 69,
+    "def": 70
+  },
+  {
+    "rank": 251,
+    "name": "SV Darmstadt 98",
+    "league": "Germany 2. Bundesliga (2)",
+    "ovr": 70,
+    "atk": 72,
+    "mid": 70,
+    "def": 69
+  },
+  {
+    "rank": 252,
+    "name": "Universidad de Chile",
+    "league": "-",
+    "ovr": 70,
+    "atk": 71,
+    "mid": 69,
+    "def": 70
+  },
+  {
+    "rank": 253,
+    "name": "Independiente Santa Fe",
+    "league": "CONMEBOL Libertadores",
+    "ovr": 70,
+    "atk": 73,
+    "mid": 70,
+    "def": 69
+  },
+  {
+    "rank": 254,
+    "name": "Millonarios",
+    "league": "CONMEBOL Sudamericana",
+    "ovr": 70,
+    "atk": 71,
+    "mid": 70,
+    "def": 68
+  },
+  {
+    "rank": 255,
+    "name": "Levante UD W",
+    "league": "Spain Liga F Femenina (1)",
+    "ovr": 70,
+    "atk": 69,
+    "mid": 69,
+    "def": 68
+  },
+  {
+    "rank": 256,
+    "name": "Houston Dynamo",
+    "league": "USA Major League Soccer (1)",
+    "ovr": 70,
+    "atk": 73,
+    "mid": 71,
+    "def": 69
+  },
+  {
+    "rank": 257,
+    "name": "Lech Poznań",
+    "league": "Poland Ekstraklasa (1)",
+    "ovr": 70,
+    "atk": 74,
+    "mid": 69,
+    "def": 68
+  },
+  {
+    "rank": 258,
+    "name": "AGF",
+    "league": "Denmark Superliga (1)",
+    "ovr": 70,
+    "atk": 71,
+    "mid": 70,
+    "def": 71
+  },
+  {
+    "rank": 259,
+    "name": "Casa Pia",
+    "league": "Portugal Primeira Liga (1)",
+    "ovr": 70,
+    "atk": 69,
+    "mid": 68,
+    "def": 68
+  },
+  {
+    "rank": 260,
+    "name": "Los Angeles Galaxy",
+    "league": "USA Major League Soccer (1)",
+    "ovr": 70,
+    "atk": 72,
+    "mid": 70,
+    "def": 68
+  },
+  {
+    "rank": 261,
+    "name": "Hajduk Split",
+    "league": "Rest of World",
+    "ovr": 70,
+    "atk": 71,
+    "mid": 70,
+    "def": 69
+  },
+  {
+    "rank": 262,
+    "name": "Chicago Fire FC",
+    "league": "USA Major League Soccer (1)",
+    "ovr": 70,
+    "atk": 76,
+    "mid": 69,
+    "def": 67
+  },
+  {
+    "rank": 263,
+    "name": "Racing de Santander",
+    "league": "Spain Segunda División (2)",
+    "ovr": 70,
+    "atk": 71,
+    "mid": 71,
+    "def": 68
+  },
+  {
+    "rank": 264,
+    "name": "Standard Liège",
+    "league": "Belgium Pro League (1)",
+    "ovr": 70,
+    "atk": 70,
+    "mid": 69,
+    "def": 69
+  },
+  {
+    "rank": 265,
+    "name": "Antwerp",
+    "league": "Belgium Pro League (1)",
+    "ovr": 70,
+    "atk": 71,
+    "mid": 69,
+    "def": 70
+  },
+  {
+    "rank": 266,
+    "name": "San Lorenzo de Almagro",
+    "league": "Argentina Primera División (1)",
+    "ovr": 70,
+    "atk": 70,
+    "mid": 68,
+    "def": 62
+  },
+  {
+    "rank": 267,
+    "name": "Columbus Crew",
+    "league": "USA Major League Soccer (1)",
+    "ovr": 70,
+    "atk": 71,
+    "mid": 70,
+    "def": 68
+  },
+  {
+    "rank": 268,
+    "name": "Hertha BSC",
+    "league": "Germany 2. Bundesliga (2)",
+    "ovr": 70,
+    "atk": 71,
+    "mid": 70,
+    "def": 69
+  },
+  {
+    "rank": 269,
+    "name": "Gent",
+    "league": "Belgium Pro League (1)",
+    "ovr": 70,
+    "atk": 70,
+    "mid": 71,
+    "def": 70
+  },
+  {
+    "rank": 270,
+    "name": "Real Sporting de Gijón",
+    "league": "Spain Segunda División (2)",
+    "ovr": 70,
+    "atk": 74,
+    "mid": 71,
+    "def": 70
+  },
+  {
+    "rank": 271,
+    "name": "Slavia Praha W",
+    "league": "Rest of World Women",
+    "ovr": 70,
+    "atk": 68,
+    "mid": 71,
+    "def": 69
+  },
+  {
+    "rank": 272,
+    "name": "AS Saint-Étienne W",
+    "league": "France 1 Women's League (1)",
+    "ovr": 70,
+    "atk": 71,
+    "mid": 71,
+    "def": 70
+  },
+  {
+    "rank": 273,
+    "name": "Norwich City",
+    "league": "England Championship (2)",
+    "ovr": 70,
+    "atk": 70,
+    "mid": 70,
+    "def": 69
+  },
+  {
+    "rank": 274,
+    "name": "Sampdoria",
+    "league": "Italy Serie B (2)",
+    "ovr": 70,
+    "atk": 73,
+    "mid": 70,
+    "def": 69
+  },
+  {
+    "rank": 275,
+    "name": "Atlanta United FC",
+    "league": "USA Major League Soccer (1)",
+    "ovr": 70,
+    "atk": 70,
+    "mid": 72,
+    "def": 68
+  },
+  {
+    "rank": 276,
+    "name": "Derby County",
+    "league": "England Championship (2)",
+    "ovr": 70,
+    "atk": 74,
+    "mid": 70,
+    "def": 69
+  },
+  {
+    "rank": 277,
+    "name": "Burgos CF",
+    "league": "Spain Segunda División (2)",
+    "ovr": 69,
+    "atk": 69,
+    "mid": 69,
+    "def": 68
+  },
+  {
+    "rank": 278,
+    "name": "Widzew Łódź",
+    "league": "Poland Ekstraklasa (1)",
+    "ovr": 69,
+    "atk": 69,
+    "mid": 69,
+    "def": 69
+  },
+  {
+    "rank": 279,
+    "name": "Arouca",
+    "league": "Portugal Primeira Liga (1)",
+    "ovr": 69,
+    "atk": 67,
+    "mid": 69,
+    "def": 69
+  },
+  {
+    "rank": 280,
+    "name": "Viking FK",
+    "league": "Norway Eliteserien (1)",
+    "ovr": 69,
+    "atk": 69,
+    "mid": 69,
+    "def": 69
+  },
+  {
+    "rank": 281,
+    "name": "New York City FC",
+    "league": "USA Major League Soccer (1)",
+    "ovr": 69,
+    "atk": 72,
+    "mid": 70,
+    "def": 66
+  },
+  {
+    "rank": 282,
+    "name": "OH Leuven",
+    "league": "Belgium Pro League (1)",
+    "ovr": 69,
+    "atk": 67,
+    "mid": 69,
+    "def": 70
+  },
+  {
+    "rank": 283,
+    "name": "APOEL Nicosia FC",
+    "league": "Rest of World",
+    "ovr": 69,
+    "atk": 67,
+    "mid": 70,
+    "def": 68
+  },
+  {
+    "rank": 284,
+    "name": "Al Taawoun",
+    "league": "Saudi Pro League (1)",
+    "ovr": 69,
+    "atk": 70,
+    "mid": 71,
+    "def": 64
+  },
+  {
+    "rank": 285,
+    "name": "FC Carl Zeiss Jena W",
+    "league": "Germany Frauen-Bundesliga (1)",
+    "ovr": 69,
+    "atk": 70,
+    "mid": 68,
+    "def": 67
+  },
+  {
+    "rank": 286,
+    "name": "Go Ahead Eagles",
+    "league": "Holland Eredivisie (1)",
+    "ovr": 69,
+    "atk": 68,
+    "mid": 69,
+    "def": 68
+  },
+  {
+    "rank": 287,
+    "name": "1. FC Kaiserslautern",
+    "league": "Germany 2. Bundesliga (2)",
+    "ovr": 69,
+    "atk": 70,
+    "mid": 70,
+    "def": 69
+  },
+  {
+    "rank": 288,
+    "name": "Al Khaleej",
+    "league": "Saudi Pro League (1)",
+    "ovr": 69,
+    "atk": 79,
+    "mid": 69,
+    "def": 66
+  },
+  {
+    "rank": 289,
+    "name": "Jagiellonia Białystok",
+    "league": "Poland Ekstraklasa (1)",
+    "ovr": 69,
+    "atk": 70,
+    "mid": 69,
+    "def": 69
+  },
+  {
+    "rank": 290,
+    "name": "Libertad",
+    "league": "CONMEBOL Libertadores",
+    "ovr": 69,
+    "atk": 73,
+    "mid": 68,
+    "def": 69
+  },
+  {
+    "rank": 291,
+    "name": "CD Castellón",
+    "league": "Spain Segunda División (2)",
+    "ovr": 69,
+    "atk": 69,
+    "mid": 70,
+    "def": 68
+  },
+  {
+    "rank": 292,
+    "name": "CD Leganés",
+    "league": "Spain Segunda División (2)",
+    "ovr": 69,
+    "atk": 68,
+    "mid": 69,
+    "def": 68
+  },
+  {
+    "rank": 293,
+    "name": "Brøndby IF",
+    "league": "Denmark Superliga (1)",
+    "ovr": 69,
+    "atk": 66,
+    "mid": 70,
+    "def": 69
+  },
+  {
+    "rank": 294,
+    "name": "Göztepe",
+    "league": "Turkey Süper Lig (1)",
+    "ovr": 69,
+    "atk": 69,
+    "mid": 69,
+    "def": 68
+  },
+  {
+    "rank": 295,
+    "name": "Kocaelispor",
+    "league": "Turkey Süper Lig (1)",
+    "ovr": 69,
+    "atk": 71,
+    "mid": 67,
+    "def": 70
+  },
+  {
+    "rank": 296,
+    "name": "Konyaspor",
+    "league": "Turkey Süper Lig (1)",
+    "ovr": 69,
+    "atk": 69,
+    "mid": 69,
+    "def": 69
+  },
+  {
+    "rank": 297,
+    "name": "Atlético Bucaramanga",
+    "league": "-",
+    "ovr": 69,
+    "atk": 70,
+    "mid": 69,
+    "def": 69
+  },
+  {
+    "rank": 298,
+    "name": "SK Rapid",
+    "league": "Austria Bundesliga (1)",
+    "ovr": 69,
+    "atk": 68,
+    "mid": 69,
+    "def": 69
+  },
+  {
+    "rank": 299,
+    "name": "LASK",
+    "league": "Austria Bundesliga (1)",
+    "ovr": 69,
+    "atk": 70,
+    "mid": 68,
+    "def": 69
+  },
+  {
+    "rank": 300,
+    "name": "Orlando City SC",
+    "league": "USA Major League Soccer (1)",
+    "ovr": 69,
+    "atk": 68,
+    "mid": 70,
+    "def": 68
+  },
+  {
+    "rank": 301,
+    "name": "RC Lens W",
+    "league": "France 1 Women's League (1)",
+    "ovr": 69,
+    "atk": 70,
+    "mid": 68,
+    "def": 69
+  },
+  {
+    "rank": 302,
+    "name": "Sporting Cristal",
+    "league": "CONMEBOL Libertadores",
+    "ovr": 69,
+    "atk": 69,
+    "mid": 69,
+    "def": 69
+  },
+  {
+    "rank": 303,
+    "name": "RB Salzburg",
+    "league": "Austria Bundesliga (1)",
+    "ovr": 69,
+    "atk": 69,
+    "mid": 70,
+    "def": 68
+  },
+  {
+    "rank": 304,
+    "name": "Austin FC",
+    "league": "USA Major League Soccer (1)",
+    "ovr": 69,
+    "atk": 69,
+    "mid": 68,
+    "def": 67
+  },
+  {
+    "rank": 305,
+    "name": "Real Zaragoza",
+    "league": "Spain Segunda División (2)",
+    "ovr": 69,
+    "atk": 69,
+    "mid": 67,
+    "def": 69
+  },
+  {
+    "rank": 306,
+    "name": "Nashville SC",
+    "league": "USA Major League Soccer (1)",
+    "ovr": 69,
+    "atk": 70,
+    "mid": 69,
+    "def": 68
+  },
+  {
+    "rank": 307,
+    "name": "VfL Bochum",
+    "league": "Germany 2. Bundesliga (2)",
+    "ovr": 69,
+    "atk": 69,
+    "mid": 69,
+    "def": 70
+  },
+  {
+    "rank": 308,
+    "name": "Raków Częstochowa",
+    "league": "Poland Ekstraklasa (1)",
+    "ovr": 69,
+    "atk": 71,
+    "mid": 69,
+    "def": 69
+  },
+  {
+    "rank": 309,
+    "name": "Real Salt Lake",
+    "league": "USA Major League Soccer (1)",
+    "ovr": 69,
+    "atk": 65,
+    "mid": 68,
+    "def": 68
+  },
+  {
+    "rank": 310,
+    "name": "Charlton Athletic",
+    "league": "England Championship (2)",
+    "ovr": 69,
+    "atk": 67,
+    "mid": 69,
+    "def": 69
+  },
+  {
+    "rank": 311,
+    "name": "Kasımpaşa",
+    "league": "Turkey Süper Lig (1)",
+    "ovr": 69,
+    "atk": 69,
+    "mid": 69,
+    "def": 67
+  },
+  {
+    "rank": 312,
+    "name": "Gaziantep FK",
+    "league": "Turkey Süper Lig (1)",
+    "ovr": 69,
+    "atk": 72,
+    "mid": 68,
+    "def": 67
+  },
+  {
+    "rank": 313,
+    "name": "Fortuna Düsseldorf",
+    "league": "Germany 2. Bundesliga (2)",
+    "ovr": 69,
+    "atk": 70,
+    "mid": 69,
+    "def": 68
+  },
+  {
+    "rank": 314,
+    "name": "KV Mechelen",
+    "league": "Belgium Pro League (1)",
+    "ovr": 69,
+    "atk": 70,
+    "mid": 69,
+    "def": 68
+  },
+  {
+    "rank": 315,
+    "name": "Unión de Santa Fe",
+    "league": "Argentina Primera División (1)",
+    "ovr": 69,
+    "atk": 68,
+    "mid": 70,
+    "def": 69
+  },
+  {
+    "rank": 316,
+    "name": "Barcelona SC Guayaquil",
+    "league": "CONMEBOL Libertadores",
+    "ovr": 69,
+    "atk": 70,
+    "mid": 67,
+    "def": 69
+  },
+  {
+    "rank": 317,
+    "name": "Deportes Tolima",
+    "league": "CONMEBOL Libertadores",
+    "ovr": 69,
+    "atk": 69,
+    "mid": 69,
+    "def": 69
+  },
+  {
+    "rank": 318,
+    "name": "Jeonbuk Hyundai Motors",
+    "league": "Korea K League 1 (1)",
+    "ovr": 69,
+    "atk": 69,
+    "mid": 69,
+    "def": 67
+  },
+  {
+    "rank": 319,
+    "name": "Barracas Central",
+    "league": "Argentina Primera División (1)",
+    "ovr": 69,
+    "atk": 69,
+    "mid": 69,
+    "def": 67
+  },
+  {
+    "rank": 320,
+    "name": "FC Cincinnati",
+    "league": "USA Major League Soccer (1)",
+    "ovr": 69,
+    "atk": 76,
+    "mid": 68,
+    "def": 68
+  },
+  {
+    "rank": 321,
+    "name": "Qarabağ FK",
+    "league": "Rest of World",
+    "ovr": 69,
+    "atk": 68,
+    "mid": 70,
+    "def": 69
+  },
+  {
+    "rank": 322,
+    "name": "Vitória de Guimarães",
+    "league": "Portugal Primeira Liga (1)",
+    "ovr": 69,
+    "atk": 70,
+    "mid": 67,
+    "def": 69
+  },
+  {
+    "rank": 323,
+    "name": "Portsmouth",
+    "league": "England Championship (2)",
+    "ovr": 69,
+    "atk": 70,
+    "mid": 69,
+    "def": 68
+  },
+  {
+    "rank": 324,
+    "name": "Holstein Kiel",
+    "league": "Germany 2. Bundesliga (2)",
+    "ovr": 69,
+    "atk": 68,
+    "mid": 68,
+    "def": 69
+  },
+  {
+    "rank": 325,
+    "name": "Córdoba CF",
+    "league": "Spain Segunda División (2)",
+    "ovr": 69,
+    "atk": 70,
+    "mid": 69,
+    "def": 68
+  },
+  {
+    "rank": 326,
+    "name": "EC Vitória",
+    "league": "-",
+    "ovr": 69,
+    "atk": 68,
+    "mid": 70,
+    "def": 70
+  },
+  {
+    "rank": 327,
+    "name": "Málaga CF",
+    "league": "Spain Segunda División (2)",
+    "ovr": 69,
+    "atk": 71,
+    "mid": 69,
+    "def": 67
+  },
+  {
+    "rank": 328,
+    "name": "FC Rosengård W",
+    "league": "Rest of World Women",
+    "ovr": 69,
+    "atk": 69,
+    "mid": 70,
+    "def": 66
+  },
+  {
+    "rank": 329,
+    "name": "Charleroi",
+    "league": "Belgium Pro League (1)",
+    "ovr": 69,
+    "atk": 69,
+    "mid": 70,
+    "def": 69
+  },
+  {
+    "rank": 330,
+    "name": "Karlsruher SC",
+    "league": "Germany 2. Bundesliga (2)",
+    "ovr": 69,
+    "atk": 68,
+    "mid": 69,
+    "def": 69
+  },
+  {
+    "rank": 331,
+    "name": "Modena",
+    "league": "Italy Serie B (2)",
+    "ovr": 69,
+    "atk": 68,
+    "mid": 69,
+    "def": 70
+  },
+  {
+    "rank": 332,
+    "name": "Oxford United",
+    "league": "England Championship (2)",
+    "ovr": 69,
+    "atk": 67,
+    "mid": 68,
+    "def": 69
+  },
+  {
+    "rank": 333,
+    "name": "Blackburn Rovers",
+    "league": "England Championship (2)",
+    "ovr": 69,
+    "atk": 69,
+    "mid": 69,
+    "def": 67
+  },
+  {
+    "rank": 334,
+    "name": "Empoli",
+    "league": "Italy Serie B (2)",
+    "ovr": 69,
+    "atk": 68,
+    "mid": 69,
+    "def": 68
+  },
+  {
+    "rank": 335,
+    "name": "Servette FC",
+    "league": "Switzerland Super League (1)",
+    "ovr": 69,
+    "atk": 69,
+    "mid": 69,
+    "def": 68
+  },
+  {
+    "rank": 336,
+    "name": "Westerlo",
+    "league": "Belgium Pro League (1)",
+    "ovr": 68,
+    "atk": 67,
+    "mid": 69,
+    "def": 68
+  },
+  {
+    "rank": 337,
+    "name": "Moreirense",
+    "league": "Portugal Primeira Liga (1)",
+    "ovr": 68,
+    "atk": 65,
+    "mid": 68,
+    "def": 68
+  },
+  {
+    "rank": 338,
+    "name": "Melgar FBC",
+    "league": "-",
+    "ovr": 68,
+    "atk": 70,
+    "mid": 66,
+    "def": 67
+  },
+  {
+    "rank": 339,
+    "name": "Rosenborg BK",
+    "league": "Norway Eliteserien (1)",
+    "ovr": 68,
+    "atk": 64,
+    "mid": 69,
+    "def": 67
+  },
+  {
+    "rank": 340,
+    "name": "Hammarby IF",
+    "league": "Sweden Allsvenskan (1)",
+    "ovr": 68,
+    "atk": 68,
+    "mid": 69,
+    "def": 68
+  },
+  {
+    "rank": 341,
+    "name": "Estrela da Amadora",
+    "league": "Portugal Primeira Liga (1)",
+    "ovr": 68,
+    "atk": 68,
+    "mid": 65,
+    "def": 66
+  },
+  {
+    "rank": 342,
+    "name": "Tondela",
+    "league": "Portugal Primeira Liga (1)",
+    "ovr": 68,
+    "atk": 72,
+    "mid": 66,
+    "def": 67
+  },
+  {
+    "rank": 343,
+    "name": "Antalyaspor",
+    "league": "Turkey Süper Lig (1)",
+    "ovr": 68,
+    "atk": 69,
+    "mid": 68,
+    "def": 68
+  },
+  {
+    "rank": 344,
+    "name": "Newell's Old Boys",
+    "league": "Argentina Primera División (1)",
+    "ovr": 68,
+    "atk": 69,
+    "mid": 65,
+    "def": 66
+  },
+  {
+    "rank": 345,
+    "name": "Nacional da Madeira",
+    "league": "Portugal Primeira Liga (1)",
+    "ovr": 68,
+    "atk": 69,
+    "mid": 68,
+    "def": 68
+  },
+  {
+    "rank": 346,
+    "name": "Alverca",
+    "league": "Portugal Primeira Liga (1)",
+    "ovr": 68,
+    "atk": 70,
+    "mid": 66,
+    "def": 68
+  },
+  {
+    "rank": 347,
+    "name": "Banfield",
+    "league": "Argentina Primera División (1)",
+    "ovr": 68,
+    "atk": 68,
+    "mid": 67,
+    "def": 67
+  },
+  {
+    "rank": 348,
+    "name": "Sarmiento",
+    "league": "Argentina Primera División (1)",
+    "ovr": 68,
+    "atk": 70,
+    "mid": 67,
+    "def": 67
+  },
+  {
+    "rank": 349,
+    "name": "Portland Timbers",
+    "league": "USA Major League Soccer (1)",
+    "ovr": 68,
+    "atk": 68,
+    "mid": 69,
+    "def": 68
+  },
+  {
+    "rank": 350,
+    "name": "Cusco FC",
+    "league": "CONMEBOL Libertadores",
+    "ovr": 68,
+    "atk": 69,
+    "mid": 68,
+    "def": 67
+  },
+  {
+    "rank": 351,
+    "name": "Buriram United",
+    "league": "Rest of World",
+    "ovr": 68,
+    "atk": 71,
+    "mid": 70,
+    "def": 67
+  },
+  {
+    "rank": 352,
+    "name": "Alhama FC W",
+    "league": "Spain Liga F Femenina (1)",
+    "ovr": 68,
+    "atk": 70,
+    "mid": 68,
+    "def": 65
+  },
+  {
+    "rank": 353,
+    "name": "Frosinone",
+    "league": "Italy Serie B (2)",
+    "ovr": 68,
+    "atk": 69,
+    "mid": 69,
+    "def": 68
+  },
+  {
+    "rank": 354,
+    "name": "Südtirol",
+    "league": "Italy Serie B (2)",
+    "ovr": 68,
+    "atk": 67,
+    "mid": 69,
+    "def": 68
+  },
+  {
+    "rank": 355,
+    "name": "San Diego FC",
+    "league": "USA Major League Soccer (1)",
+    "ovr": 68,
+    "atk": 73,
+    "mid": 68,
+    "def": 62
+  },
+  {
+    "rank": 356,
+    "name": "Carrarese",
+    "league": "Italy Serie B (2)",
+    "ovr": 68,
+    "atk": 68,
+    "mid": 68,
+    "def": 67
+  },
+  {
+    "rank": 357,
+    "name": "Al Ettifaq",
+    "league": "Saudi Pro League (1)",
+    "ovr": 68,
+    "atk": 69,
+    "mid": 70,
+    "def": 66
+  },
+  {
+    "rank": 358,
+    "name": "Aldosivi",
+    "league": "Argentina Primera División (1)",
+    "ovr": 68,
+    "atk": 68,
+    "mid": 65,
+    "def": 67
+  },
+  {
+    "rank": 359,
+    "name": "Catanzaro",
+    "league": "Italy Serie B (2)",
+    "ovr": 68,
+    "atk": 69,
+    "mid": 68,
+    "def": 66
+  },
+  {
+    "rank": 360,
+    "name": "Cardiff City",
+    "league": "England League One (3)",
+    "ovr": 68,
+    "atk": 66,
+    "mid": 67,
+    "def": 68
+  },
+  {
+    "rank": 361,
+    "name": "sc Heerenveen",
+    "league": "Holland Eredivisie (1)",
+    "ovr": 68,
+    "atk": 67,
+    "mid": 69,
+    "def": 67
+  },
+  {
+    "rank": 362,
+    "name": "Legia Warszawa",
+    "league": "Poland Ekstraklasa (1)",
+    "ovr": 68,
+    "atk": 67,
+    "mid": 69,
+    "def": 68
+  },
+  {
+    "rank": 363,
+    "name": "Albacete Balompié",
+    "league": "Spain Segunda División (2)",
+    "ovr": 68,
+    "atk": 68,
+    "mid": 68,
+    "def": 68
+  },
+  {
+    "rank": 364,
+    "name": "Bari",
+    "league": "Italy Serie B (2)",
+    "ovr": 68,
+    "atk": 68,
+    "mid": 69,
+    "def": 67
+  },
+  {
+    "rank": 365,
+    "name": "FC Nordsjælland",
+    "league": "Denmark Superliga (1)",
+    "ovr": 68,
+    "atk": 68,
+    "mid": 69,
+    "def": 67
+  },
+  {
+    "rank": 366,
+    "name": "Randers FC",
+    "league": "Denmark Superliga (1)",
+    "ovr": 68,
+    "atk": 64,
+    "mid": 68,
+    "def": 68
+  },
+  {
+    "rank": 367,
+    "name": "Ulsan HD FC",
+    "league": "Korea K League 1 (1)",
+    "ovr": 68,
+    "atk": 68,
+    "mid": 69,
+    "def": 65
+  },
+  {
+    "rank": 368,
+    "name": "FC Seoul",
+    "league": "Korea K League 1 (1)",
+    "ovr": 68,
+    "atk": 71,
+    "mid": 65,
+    "def": 70
+  },
+  {
+    "rank": 369,
+    "name": "Daejeon Hana Citizen",
+    "league": "Korea K League 1 (1)",
+    "ovr": 68,
+    "atk": 68,
+    "mid": 68,
+    "def": 68
+  },
+  {
+    "rank": 370,
+    "name": "SK Brann",
+    "league": "Norway Eliteserien (1)",
+    "ovr": 68,
+    "atk": 68,
+    "mid": 68,
+    "def": 68
+  },
+  {
+    "rank": 371,
+    "name": "FC St. Gallen",
+    "league": "Switzerland Super League (1)",
+    "ovr": 68,
+    "atk": 65,
+    "mid": 68,
+    "def": 67
+  },
+  {
+    "rank": 372,
+    "name": "Padova",
+    "league": "Italy Serie B (2)",
+    "ovr": 68,
+    "atk": 69,
+    "mid": 68,
+    "def": 66
+  },
+  {
+    "rank": 373,
+    "name": "Pogoń Szczecin",
+    "league": "Poland Ekstraklasa (1)",
+    "ovr": 68,
+    "atk": 68,
+    "mid": 68,
+    "def": 67
+  },
+  {
+    "rank": 374,
+    "name": "Arminia Bielefeld",
+    "league": "Germany 2. Bundesliga (2)",
+    "ovr": 68,
+    "atk": 67,
+    "mid": 68,
+    "def": 68
+  },
+  {
+    "rank": 375,
+    "name": "Universitatea Cluj",
+    "league": "Romania Liga I (1)",
+    "ovr": 68,
+    "atk": 70,
+    "mid": 67,
+    "def": 68
+  },
+  {
+    "rank": 376,
+    "name": "Luton Town",
+    "league": "England League One (3)",
+    "ovr": 68,
+    "atk": 68,
+    "mid": 67,
+    "def": 68
+  },
+  {
+    "rank": 377,
+    "name": "Sparta Rotterdam",
+    "league": "Holland Eredivisie (1)",
+    "ovr": 68,
+    "atk": 73,
+    "mid": 67,
+    "def": 67
+  },
+  {
+    "rank": 378,
+    "name": "Montpellier HSC",
+    "league": "France Ligue 2 (2)",
+    "ovr": 68,
+    "atk": 70,
+    "mid": 67,
+    "def": 69
+  },
+  {
+    "rank": 379,
+    "name": "Aberdeen",
+    "league": "Scotland Premiership (1)",
+    "ovr": 68,
+    "atk": 66,
+    "mid": 69,
+    "def": 63
+  },
+  {
+    "rank": 380,
+    "name": "Hibernian",
+    "league": "Scotland Premiership (1)",
+    "ovr": 68,
+    "atk": 67,
+    "mid": 68,
+    "def": 67
+  },
+  {
+    "rank": 381,
+    "name": "1. FC Nürnberg",
+    "league": "Germany 2. Bundesliga (2)",
+    "ovr": 68,
+    "atk": 68,
+    "mid": 69,
+    "def": 68
+  },
+  {
+    "rank": 382,
+    "name": "Pescara",
+    "league": "Italy Serie B (2)",
+    "ovr": 68,
+    "atk": 65,
+    "mid": 69,
+    "def": 67
+  },
+  {
+    "rank": 383,
+    "name": "Sturm Graz",
+    "league": "Austria Bundesliga (1)",
+    "ovr": 68,
+    "atk": 67,
+    "mid": 69,
+    "def": 68
+  },
+  {
+    "rank": 384,
+    "name": "Colorado Rapids",
+    "league": "USA Major League Soccer (1)",
+    "ovr": 68,
+    "atk": 71,
+    "mid": 68,
+    "def": 67
+  },
+  {
+    "rank": 385,
+    "name": "FC Rapid",
+    "league": "Romania Liga I (1)",
+    "ovr": 68,
+    "atk": 66,
+    "mid": 69,
+    "def": 68
+  },
+  {
+    "rank": 386,
+    "name": "Fortuna Sittard",
+    "league": "Holland Eredivisie (1)",
+    "ovr": 68,
+    "atk": 68,
+    "mid": 68,
+    "def": 67
+  },
+  {
+    "rank": 387,
+    "name": "SV Elversberg",
+    "league": "Germany 2. Bundesliga (2)",
+    "ovr": 68,
+    "atk": 65,
+    "mid": 69,
+    "def": 68
+  },
+  {
+    "rank": 388,
+    "name": "Dender",
+    "league": "Belgium Pro League (1)",
+    "ovr": 68,
+    "atk": 68,
+    "mid": 67,
+    "def": 67
+  },
+  {
+    "rank": 389,
+    "name": "Universitatea Craiova",
+    "league": "Romania Liga I (1)",
+    "ovr": 68,
+    "atk": 67,
+    "mid": 68,
+    "def": 69
+  },
+  {
+    "rank": 390,
+    "name": "Malmö FF",
+    "league": "Sweden Allsvenskan (1)",
+    "ovr": 68,
+    "atk": 69,
+    "mid": 65,
+    "def": 68
+  },
+  {
+    "rank": 391,
+    "name": "Górnik Zabrze",
+    "league": "Poland Ekstraklasa (1)",
+    "ovr": 68,
+    "atk": 66,
+    "mid": 69,
+    "def": 68
+  },
+  {
+    "rank": 392,
+    "name": "FC Dallas",
+    "league": "USA Major League Soccer (1)",
+    "ovr": 67,
+    "atk": 71,
+    "mid": 68,
+    "def": 65
+  },
+  {
+    "rank": 393,
+    "name": "Amiens SC",
+    "league": "France Ligue 2 (2)",
+    "ovr": 67,
+    "atk": 65,
+    "mid": 66,
+    "def": 64
+  },
+  {
+    "rank": 394,
+    "name": "IF Elfsborg",
+    "league": "Sweden Allsvenskan (1)",
+    "ovr": 67,
+    "atk": 65,
+    "mid": 68,
+    "def": 67
+  },
+  {
+    "rank": 395,
+    "name": "SD Huesca",
+    "league": "Spain Segunda División (2)",
+    "ovr": 67,
+    "atk": 67,
+    "mid": 67,
+    "def": 66
+  },
+  {
+    "rank": 396,
+    "name": "FC Sion",
+    "league": "Switzerland Super League (1)",
+    "ovr": 67,
+    "atk": 67,
+    "mid": 67,
+    "def": 68
+  },
+  {
+    "rank": 397,
+    "name": "Red Star FC (FRANCE)",
+    "league": "France Ligue 2 (2)",
+    "ovr": 67,
+    "atk": 64,
+    "mid": 68,
+    "def": 67
+  },
+  {
+    "rank": 398,
+    "name": "Huddersfield Town",
+    "league": "England League One (3)",
+    "ovr": 67,
+    "atk": 66,
+    "mid": 67,
+    "def": 66
+  },
+  {
+    "rank": 399,
+    "name": "GKS Katowice",
+    "league": "Poland Ekstraklasa (1)",
+    "ovr": 67,
+    "atk": 66,
+    "mid": 67,
+    "def": 67
+  },
+  {
+    "rank": 400,
+    "name": "Molde FK",
+    "league": "Norway Eliteserien (1)",
+    "ovr": 67,
+    "atk": 67,
+    "mid": 67,
+    "def": 66
+  },
+  {
+    "rank": 401,
+    "name": "Cracovia",
+    "league": "Poland Ekstraklasa (1)",
+    "ovr": 67,
+    "atk": 67,
+    "mid": 68,
+    "def": 68
+  },
+  {
+    "rank": 402,
+    "name": "Reggiana",
+    "league": "Italy Serie B (2)",
+    "ovr": 67,
+    "atk": 67,
+    "mid": 66,
+    "def": 66
+  },
+  {
+    "rank": 403,
+    "name": "Blau-Weiß Linz",
+    "league": "Austria Bundesliga (1)",
+    "ovr": 67,
+    "atk": 68,
+    "mid": 66,
+    "def": 65
+  },
+  {
+    "rank": 404,
+    "name": "Sheffield Wednesday",
+    "league": "England Championship (2)",
+    "ovr": 67,
+    "atk": 68,
+    "mid": 65,
+    "def": 66
+  },
+  {
+    "rank": 405,
+    "name": "Djurgårdens IF",
+    "league": "Sweden Allsvenskan (1)",
+    "ovr": 67,
+    "atk": 65,
+    "mid": 67,
+    "def": 65
+  },
+  {
+    "rank": 406,
+    "name": "Eintracht Braunschweig",
+    "league": "Germany 2. Bundesliga (2)",
+    "ovr": 67,
+    "atk": 67,
+    "mid": 67,
+    "def": 67
+  },
+  {
+    "rank": 407,
+    "name": "BK Häcken",
+    "league": "Sweden Allsvenskan (1)",
+    "ovr": 67,
+    "atk": 61,
+    "mid": 68,
+    "def": 66
+  },
+  {
+    "rank": 408,
+    "name": "ESTAC Troyes",
+    "league": "France Ligue 2 (2)",
+    "ovr": 67,
+    "atk": 67,
+    "mid": 67,
+    "def": 66
+  },
+  {
+    "rank": 409,
+    "name": "SpVgg Greuther Fürth",
+    "league": "Germany 2. Bundesliga (2)",
+    "ovr": 67,
+    "atk": 72,
+    "mid": 68,
+    "def": 67
+  },
+  {
+    "rank": 410,
+    "name": "Viborg FF",
+    "league": "Denmark Superliga (1)",
+    "ovr": 67,
+    "atk": 65,
+    "mid": 68,
+    "def": 67
+  },
+  {
+    "rank": 411,
+    "name": "Cercle Brugge",
+    "league": "Belgium Pro League (1)",
+    "ovr": 67,
+    "atk": 69,
+    "mid": 66,
+    "def": 67
+  },
+  {
+    "rank": 412,
+    "name": "Stade Lavallois MFC",
+    "league": "France Ligue 2 (2)",
+    "ovr": 66,
+    "atk": 67,
+    "mid": 66,
+    "def": 65
+  },
+  {
+    "rank": 413,
+    "name": "Motor Lublin",
+    "league": "Poland Ekstraklasa (1)",
+    "ovr": 66,
+    "atk": 67,
+    "mid": 68,
+    "def": 65
+  },
+  {
+    "rank": 414,
+    "name": "Pohang Steelers",
+    "league": "Korea K League 1 (1)",
+    "ovr": 66,
+    "atk": 66,
+    "mid": 66,
+    "def": 66
+  },
+  {
+    "rank": 415,
+    "name": "Reading",
+    "league": "England League One (3)",
+    "ovr": 66,
+    "atk": 65,
+    "mid": 66,
+    "def": 66
+  },
+  {
+    "rank": 416,
+    "name": "Excelsior",
+    "league": "Holland Eredivisie (1)",
+    "ovr": 66,
+    "atk": 66,
+    "mid": 66,
+    "def": 66
+  },
+  {
+    "rank": 417,
+    "name": "Vålerenga Fotball",
+    "league": "Norway Eliteserien (1)",
+    "ovr": 66,
+    "atk": 66,
+    "mid": 65,
+    "def": 66
+  },
+  {
+    "rank": 418,
+    "name": "FC Luzern",
+    "league": "Switzerland Super League (1)",
+    "ovr": 66,
+    "atk": 67,
+    "mid": 65,
+    "def": 66
+  },
+  {
+    "rank": 419,
+    "name": "FC Zürich",
+    "league": "Switzerland Super League (1)",
+    "ovr": 66,
+    "atk": 64,
+    "mid": 64,
+    "def": 65
+  },
+  {
+    "rank": 420,
+    "name": "Grenoble Foot 38",
+    "league": "France Ligue 2 (2)",
+    "ovr": 66,
+    "atk": 65,
+    "mid": 66,
+    "def": 67
+  },
+  {
+    "rank": 421,
+    "name": "Academia Puerto Cabello",
+    "league": "CONMEBOL Sudamericana",
+    "ovr": 66,
+    "atk": 67,
+    "mid": 67,
+    "def": 66
+  },
+  {
+    "rank": 422,
+    "name": "Club Atlético Grau",
+    "league": "-",
+    "ovr": 66,
+    "atk": 67,
+    "mid": 67,
+    "def": 65
+  },
+  {
+    "rank": 423,
+    "name": "Macará",
+    "league": "CONMEBOL Sudamericana",
+    "ovr": 66,
+    "atk": 66,
+    "mid": 66,
+    "def": 66
+  },
+  {
+    "rank": 424,
+    "name": "Always Ready",
+    "league": "CONMEBOL Libertadores",
+    "ovr": 66,
+    "atk": 67,
+    "mid": 65,
+    "def": 66
+  },
+  {
+    "rank": 425,
+    "name": "Clermont Foot",
+    "league": "France Ligue 2 (2)",
+    "ovr": 66,
+    "atk": 65,
+    "mid": 65,
+    "def": 65
+  },
+  {
+    "rank": 426,
+    "name": "Coquimbo Unido",
+    "league": "CONMEBOL Libertadores",
+    "ovr": 66,
+    "atk": 65,
+    "mid": 66,
+    "def": 67
+  },
+  {
+    "rank": 427,
+    "name": "Wycombe Wanderers",
+    "league": "England League One (3)",
+    "ovr": 66,
+    "atk": 67,
+    "mid": 66,
+    "def": 66
+  },
+  {
+    "rank": 428,
+    "name": "Gangwon FC",
+    "league": "Korea K League 1 (1)",
+    "ovr": 66,
+    "atk": 60,
+    "mid": 67,
+    "def": 66
+  },
+  {
+    "rank": 429,
+    "name": "Stockport County",
+    "league": "England League One (3)",
+    "ovr": 66,
+    "atk": 65,
+    "mid": 66,
+    "def": 65
+  },
+  {
+    "rank": 430,
+    "name": "Deportivo La Guaira",
+    "league": "CONMEBOL Libertadores",
+    "ovr": 66,
+    "atk": 67,
+    "mid": 66,
+    "def": 67
+  },
+  {
+    "rank": 431,
+    "name": "Boston River",
+    "league": "CONMEBOL Sudamericana",
+    "ovr": 66,
+    "atk": 64,
+    "mid": 67,
+    "def": 64
+  },
+  {
+    "rank": 432,
+    "name": "Plymouth Argyle",
+    "league": "England League One (3)",
+    "ovr": 66,
+    "atk": 65,
+    "mid": 65,
+    "def": 66
+  },
+  {
+    "rank": 433,
+    "name": "O'Higgins",
+    "league": "CONMEBOL Sudamericana",
+    "ovr": 66,
+    "atk": 66,
+    "mid": 68,
+    "def": 66
+  },
+  {
+    "rank": 434,
+    "name": "Blackpool",
+    "league": "England League One (3)",
+    "ovr": 66,
+    "atk": 66,
+    "mid": 66,
+    "def": 65
+  },
+  {
+    "rank": 435,
+    "name": "Central Córdoba",
+    "league": "Argentina Primera División (1)",
+    "ovr": 66,
+    "atk": 65,
+    "mid": 67,
+    "def": 65
+  },
+  {
+    "rank": 436,
+    "name": "Montevideo City Torque",
+    "league": "CONMEBOL Sudamericana",
+    "ovr": 66,
+    "atk": 65,
+    "mid": 68,
+    "def": 65
+  },
+  {
+    "rank": 437,
+    "name": "FC Volendam",
+    "league": "Holland Eredivisie (1)",
+    "ovr": 66,
+    "atk": 66,
+    "mid": 67,
+    "def": 66
+  },
+  {
+    "rank": 438,
+    "name": "Al Fayha",
+    "league": "Saudi Pro League (1)",
+    "ovr": 66,
+    "atk": 67,
+    "mid": 65,
+    "def": 67
+  },
+  {
+    "rank": 439,
+    "name": "Cienciano",
+    "league": "CONMEBOL Sudamericana",
+    "ovr": 66,
+    "atk": 68,
+    "mid": 66,
+    "def": 66
+  },
+  {
+    "rank": 440,
+    "name": "Lechia Gdańsk",
+    "league": "Poland Ekstraklasa (1)",
+    "ovr": 66,
+    "atk": 67,
+    "mid": 67,
+    "def": 65
+  },
+  {
+    "rank": 441,
+    "name": "FC Thun",
+    "league": "Switzerland Super League (1)",
+    "ovr": 66,
+    "atk": 64,
+    "mid": 66,
+    "def": 67
+  },
+  {
+    "rank": 442,
+    "name": "Colo-Colo",
+    "league": "-",
+    "ovr": 66,
+    "atk": 68,
+    "mid": 66,
+    "def": 65
+  },
+  {
+    "rank": 443,
+    "name": "Deportivo Cuenca",
+    "league": "CONMEBOL Sudamericana",
+    "ovr": 66,
+    "atk": 66,
+    "mid": 66,
+    "def": 66
+  },
+  {
+    "rank": 444,
+    "name": "Carabobo FC",
+    "league": "CONMEBOL Sudamericana",
+    "ovr": 66,
+    "atk": 61,
+    "mid": 67,
+    "def": 66
+  },
+  {
+    "rank": 445,
+    "name": "Korona Kielce",
+    "league": "Poland Ekstraklasa (1)",
+    "ovr": 66,
+    "atk": 66,
+    "mid": 67,
+    "def": 66
+  },
+  {
+    "rank": 446,
+    "name": "AIK",
+    "league": "Sweden Allsvenskan (1)",
+    "ovr": 66,
+    "atk": 64,
+    "mid": 66,
+    "def": 63
+  },
+  {
+    "rank": 447,
+    "name": "Lincoln City",
+    "league": "England League One (3)",
+    "ovr": 66,
+    "atk": 65,
+    "mid": 66,
+    "def": 66
+  },
+  {
+    "rank": 448,
+    "name": "Motherwell",
+    "league": "Scotland Premiership (1)",
+    "ovr": 66,
+    "atk": 71,
+    "mid": 66,
+    "def": 65
+  },
+  {
+    "rank": 449,
+    "name": "GAIS",
+    "league": "Sweden Allsvenskan (1)",
+    "ovr": 66,
+    "atk": 63,
+    "mid": 63,
+    "def": 66
+  },
+  {
+    "rank": 450,
+    "name": "Radomiak Radom",
+    "league": "Poland Ekstraklasa (1)",
+    "ovr": 66,
+    "atk": 66,
+    "mid": 66,
+    "def": 67
+  },
+  {
+    "rank": 451,
+    "name": "Silkeborg IF",
+    "league": "Denmark Superliga (1)",
+    "ovr": 66,
+    "atk": 70,
+    "mid": 65,
+    "def": 66
+  },
+  {
+    "rank": 452,
+    "name": "Odense Boldklub",
+    "league": "Denmark Superliga (1)",
+    "ovr": 66,
+    "atk": 66,
+    "mid": 67,
+    "def": 65
+  },
+  {
+    "rank": 453,
+    "name": "IFK Göteborg",
+    "league": "Sweden Allsvenskan (1)",
+    "ovr": 66,
+    "atk": 64,
+    "mid": 68,
+    "def": 65
+  },
+  {
+    "rank": 454,
+    "name": "Hansa Rostock",
+    "league": "Germany 3. Liga (3)",
+    "ovr": 66,
+    "atk": 66,
+    "mid": 65,
+    "def": 66
+  },
+  {
+    "rank": 455,
+    "name": "SC Bastia",
+    "league": "France Ligue 2 (2)",
+    "ovr": 66,
+    "atk": 64,
+    "mid": 67,
+    "def": 66
+  },
+  {
+    "rank": 456,
+    "name": "TSV 1860 München",
+    "league": "Germany 3. Liga (3)",
+    "ovr": 66,
+    "atk": 66,
+    "mid": 65,
+    "def": 65
+  },
+  {
+    "rank": 457,
+    "name": "Deportivo Riestra",
+    "league": "Argentina Primera División (1)",
+    "ovr": 65,
+    "atk": 67,
+    "mid": 65,
+    "def": 64
+  },
+  {
+    "rank": 458,
+    "name": "Independiente Petrolero",
+    "league": "CONMEBOL Sudamericana",
+    "ovr": 65,
+    "atk": 65,
+    "mid": 66,
+    "def": 64
+  },
+  {
+    "rank": 459,
+    "name": "Mushuc Runa",
+    "league": "-",
+    "ovr": 65,
+    "atk": 64,
+    "mid": 65,
+    "def": 65
+  },
+  {
+    "rank": 460,
+    "name": "Leyton Orient",
+    "league": "England League One (3)",
+    "ovr": 65,
+    "atk": 67,
+    "mid": 64,
+    "def": 64
+  },
+  {
+    "rank": 461,
+    "name": "Barnsley",
+    "league": "England League One (3)",
+    "ovr": 65,
+    "atk": 66,
+    "mid": 64,
+    "def": 65
+  },
+  {
+    "rank": 462,
+    "name": "Hartberg",
+    "league": "Austria Bundesliga (1)",
+    "ovr": 65,
+    "atk": 65,
+    "mid": 65,
+    "def": 63
+  },
+  {
+    "rank": 463,
+    "name": "Fredrikstad FK",
+    "league": "Norway Eliteserien (1)",
+    "ovr": 65,
+    "atk": 65,
+    "mid": 67,
+    "def": 63
+  },
+  {
+    "rank": 464,
+    "name": "GV San José",
+    "league": "-",
+    "ovr": 65,
+    "atk": 66,
+    "mid": 66,
+    "def": 64
+  },
+  {
+    "rank": 465,
+    "name": "Gimcheon Sangmu",
+    "league": "Korea K League 1 (1)",
+    "ovr": 65,
+    "atk": 65,
+    "mid": 64,
+    "def": 63
+  },
+  {
+    "rank": 466,
+    "name": "Altach",
+    "league": "Austria Bundesliga (1)",
+    "ovr": 65,
+    "atk": 64,
+    "mid": 66,
+    "def": 63
+  },
+  {
+    "rank": 467,
+    "name": "Kilmarnock",
+    "league": "Scotland Premiership (1)",
+    "ovr": 65,
+    "atk": 63,
+    "mid": 64,
+    "def": 64
+  },
+  {
+    "rank": 468,
+    "name": "Alemannia Aachen",
+    "league": "Germany 3. Liga (3)",
+    "ovr": 65,
+    "atk": 65,
+    "mid": 64,
+    "def": 64
+  },
+  {
+    "rank": 469,
+    "name": "Grazer AK",
+    "league": "Austria Bundesliga (1)",
+    "ovr": 65,
+    "atk": 65,
+    "mid": 65,
+    "def": 65
+  },
+  {
+    "rank": 470,
+    "name": "MSV Duisburg",
+    "league": "Germany 3. Liga (3)",
+    "ovr": 65,
+    "atk": 67,
+    "mid": 65,
+    "def": 64
+  },
+  {
+    "rank": 471,
+    "name": "AS Nancy",
+    "league": "France Ligue 2 (2)",
+    "ovr": 65,
+    "atk": 64,
+    "mid": 65,
+    "def": 63
+  },
+  {
+    "rank": 472,
+    "name": "IK Sirius",
+    "league": "Sweden Allsvenskan (1)",
+    "ovr": 65,
+    "atk": 69,
+    "mid": 64,
+    "def": 64
+  },
+  {
+    "rank": 473,
+    "name": "Auckland FC",
+    "league": "Australia A-League (1)",
+    "ovr": 65,
+    "atk": 63,
+    "mid": 65,
+    "def": 66
+  },
+  {
+    "rank": 474,
+    "name": "Al Hazem",
+    "league": "Saudi Pro League (1)",
+    "ovr": 65,
+    "atk": 74,
+    "mid": 65,
+    "def": 59
+  },
+  {
+    "rank": 475,
+    "name": "Damac FC",
+    "league": "Saudi Pro League (1)",
+    "ovr": 65,
+    "atk": 66,
+    "mid": 64,
+    "def": 66
+  },
+  {
+    "rank": 476,
+    "name": "FC Zürich W",
+    "league": "Rest of World Women",
+    "ovr": 65,
+    "atk": 61,
+    "mid": 67,
+    "def": 68
+  },
+  {
+    "rank": 477,
+    "name": "Tromsø IL",
+    "league": "Norway Eliteserien (1)",
+    "ovr": 65,
+    "atk": 63,
+    "mid": 65,
+    "def": 66
+  },
+  {
+    "rank": 478,
+    "name": "Vejle BK",
+    "league": "Denmark Superliga (1)",
+    "ovr": 65,
+    "atk": 65,
+    "mid": 64,
+    "def": 65
+  },
+  {
+    "rank": 479,
+    "name": "SV Ried",
+    "league": "Austria Bundesliga (1)",
+    "ovr": 65,
+    "atk": 65,
+    "mid": 65,
+    "def": 65
+  },
+  {
+    "rank": 480,
+    "name": "Sporting KC",
+    "league": "USA Major League Soccer (1)",
+    "ovr": 65,
+    "atk": 75,
+    "mid": 65,
+    "def": 62
+  },
+  {
+    "rank": 481,
+    "name": "Bradford City",
+    "league": "England League One (3)",
+    "ovr": 65,
+    "atk": 66,
+    "mid": 65,
+    "def": 64
+  },
+  {
+    "rank": 482,
+    "name": "Rot-Weiß Essen",
+    "league": "Germany 3. Liga (3)",
+    "ovr": 66,
+    "atk": 66,
+    "mid": 66,
+    "def": 64
+  },
+  {
+    "rank": 483,
+    "name": "Grasshopper Club Zürich",
+    "league": "Switzerland Super League (1)",
+    "ovr": 65,
+    "atk": 66,
+    "mid": 64,
+    "def": 62
+  },
+  {
+    "rank": 484,
+    "name": "Al Riyadh",
+    "league": "Saudi Pro League (1)",
+    "ovr": 65,
+    "atk": 63,
+    "mid": 65,
+    "def": 61
+  },
+  {
+    "rank": 485,
+    "name": "Deportivo Táchira",
+    "league": "-",
+    "ovr": 65,
+    "atk": 64,
+    "mid": 67,
+    "def": 64
+  },
+  {
+    "rank": 486,
+    "name": "Caracas FC",
+    "league": "CONMEBOL Sudamericana",
+    "ovr": 65,
+    "atk": 65,
+    "mid": 64,
+    "def": 65
+  },
+  {
+    "rank": 487,
+    "name": "Sarpsborg 08",
+    "league": "Norway Eliteserien (1)",
+    "ovr": 65,
+    "atk": 65,
+    "mid": 65,
+    "def": 65
+  },
+  {
+    "rank": 488,
+    "name": "Energie Cottbus",
+    "league": "Germany 3. Liga (3)",
+    "ovr": 65,
+    "atk": 65,
+    "mid": 65,
+    "def": 64
+  },
+  {
+    "rank": 489,
+    "name": "Unión Española",
+    "league": "-",
+    "ovr": 65,
+    "atk": 66,
+    "mid": 65,
+    "def": 65
+  },
+  {
+    "rank": 490,
+    "name": "Blooming",
+    "league": "CONMEBOL Sudamericana",
+    "ovr": 65,
+    "atk": 67,
+    "mid": 65,
+    "def": 64
+  },
+  {
+    "rank": 491,
+    "name": "Sydney FC",
+    "league": "Australia A-League (1)",
+    "ovr": 65,
+    "atk": 66,
+    "mid": 65,
+    "def": 66
+  },
+  {
+    "rank": 492,
+    "name": "Eyüpspor",
+    "league": "Turkey Süper Lig (1)",
+    "ovr": 65,
+    "atk": 64,
+    "mid": 65,
+    "def": 63
+  },
+  {
+    "rank": 493,
+    "name": "Nacional Potosí",
+    "league": "-",
+    "ovr": 65,
+    "atk": 66,
+    "mid": 64,
+    "def": 65
+  },
+  {
+    "rank": 494,
+    "name": "Racing Club De Montevideo",
+    "league": "-",
+    "ovr": 65,
+    "atk": 65,
+    "mid": 65,
+    "def": 66
+  },
+  {
+    "rank": 495,
+    "name": "Melbourne City",
+    "league": "Australia A-League (1)",
+    "ovr": 65,
+    "atk": 62,
+    "mid": 65,
+    "def": 64
+  },
+  {
+    "rank": 496,
+    "name": "SC Verl",
+    "league": "Germany 3. Liga (3)",
+    "ovr": 65,
+    "atk": 62,
+    "mid": 65,
+    "def": 64
+  },
+  {
+    "rank": 497,
+    "name": "FC Anyang",
+    "league": "Korea K League 1 (1)",
+    "ovr": 65,
+    "atk": 64,
+    "mid": 65,
+    "def": 65
+  },
+  {
+    "rank": 498,
+    "name": "Melbourne Victory",
+    "league": "Australia A-League (1)",
+    "ovr": 65,
+    "atk": 65,
+    "mid": 65,
+    "def": 62
+  },
+  {
+    "rank": 499,
+    "name": "WSG Tirol",
+    "league": "Austria Bundesliga (1)",
+    "ovr": 65,
+    "atk": 65,
+    "mid": 66,
+    "def": 66
+  },
+  {
+    "rank": 500,
+    "name": "UTA Arad",
+    "league": "Romania Liga I (1)",
+    "ovr": 65,
+    "atk": 65,
+    "mid": 65,
+    "def": 66
+  },
+  {
+    "rank": 501,
+    "name": "Pau FC",
+    "league": "France Ligue 2 (2)",
+    "ovr": 65,
+    "atk": 65,
+    "mid": 66,
+    "def": 64
+  },
+  {
+    "rank": 502,
+    "name": "FC Argeș",
+    "league": "Romania Liga I (1)",
+    "ovr": 65,
+    "atk": 65,
+    "mid": 64,
+    "def": 65
+  },
+  {
+    "rank": 503,
+    "name": "Chengdu Rongcheng F.C.",
+    "league": "China Super League (1)",
+    "ovr": 65,
+    "atk": 67,
+    "mid": 68,
+    "def": 62
+  },
+  {
+    "rank": 504,
+    "name": "Western Sydney Wanderers",
+    "league": "Australia A-League (1)",
+    "ovr": 65,
+    "atk": 65,
+    "mid": 66,
+    "def": 63
+  },
+  {
+    "rank": 505,
+    "name": "SC Oțelul Galați",
+    "league": "Romania Liga I (1)",
+    "ovr": 65,
+    "atk": 64,
+    "mid": 65,
+    "def": 65
+  },
+  {
+    "rank": 506,
+    "name": "Farul Constanța",
+    "league": "Romania Liga I (1)",
+    "ovr": 65,
+    "atk": 66,
+    "mid": 66,
+    "def": 65
+  },
+  {
+    "rank": 507,
+    "name": "SSV Ulm 1846",
+    "league": "Germany 3. Liga (3)",
+    "ovr": 65,
+    "atk": 62,
+    "mid": 65,
+    "def": 64
+  },
+  {
+    "rank": 508,
+    "name": "Degerfors IF",
+    "league": "Sweden Allsvenskan (1)",
+    "ovr": 64,
+    "atk": 64,
+    "mid": 62,
+    "def": 63
+  },
+  {
+    "rank": 509,
+    "name": "IF Brommapojkarna",
+    "league": "Sweden Allsvenskan (1)",
+    "ovr": 64,
+    "atk": 64,
+    "mid": 64,
+    "def": 62
+  },
+  {
+    "rank": 510,
+    "name": "Newcastle Jets",
+    "league": "Australia A-League (1)",
+    "ovr": 64,
+    "atk": 65,
+    "mid": 64,
+    "def": 62
+  },
+  {
+    "rank": 511,
+    "name": "Dundee FC",
+    "league": "Scotland Premiership (1)",
+    "ovr": 64,
+    "atk": 66,
+    "mid": 64,
+    "def": 64
+  },
+  {
+    "rank": 512,
+    "name": "US Boulogne",
+    "league": "France Ligue 2 (2)",
+    "ovr": 64,
+    "atk": 62,
+    "mid": 65,
+    "def": 64
+  },
+  {
+    "rank": 513,
+    "name": "Adelaide United",
+    "league": "Australia A-League (1)",
+    "ovr": 64,
+    "atk": 65,
+    "mid": 62,
+    "def": 63
+  },
+  {
+    "rank": 514,
+    "name": "FC Ingolstadt 04",
+    "league": "Germany 3. Liga (3)",
+    "ovr": 64,
+    "atk": 60,
+    "mid": 64,
+    "def": 64
+  },
+  {
+    "rank": 515,
+    "name": "Al Najmah",
+    "league": "Saudi Pro League (1)",
+    "ovr": 64,
+    "atk": 64,
+    "mid": 66,
+    "def": 61
+  },
+  {
+    "rank": 516,
+    "name": "Doncaster Rovers",
+    "league": "England League One (3)",
+    "ovr": 64,
+    "atk": 62,
+    "mid": 64,
+    "def": 63
+  },
+  {
+    "rank": 517,
+    "name": "IFK Norrköping",
+    "league": "Sweden Allsvenskan (1)",
+    "ovr": 64,
+    "atk": 67,
+    "mid": 66,
+    "def": 64
+  },
+  {
+    "rank": 518,
+    "name": "Livingston",
+    "league": "Scotland Premiership (1)",
+    "ovr": 64,
+    "atk": 63,
+    "mid": 64,
+    "def": 62
+  },
+  {
+    "rank": 519,
+    "name": "Arka Gdynia",
+    "league": "Poland Ekstraklasa (1)",
+    "ovr": 64,
+    "atk": 64,
+    "mid": 64,
+    "def": 63
+  },
+  {
+    "rank": 520,
+    "name": "Jahn Regensburg",
+    "league": "Germany 3. Liga (3)",
+    "ovr": 64,
+    "atk": 63,
+    "mid": 64,
+    "def": 63
+  },
+  {
+    "rank": 521,
+    "name": "Alianza Atlético de Sullana",
+    "league": "CONMEBOL Sudamericana",
+    "ovr": 64,
+    "atk": 64,
+    "mid": 65,
+    "def": 64
+  },
+  {
+    "rank": 522,
+    "name": "Daegu FC",
+    "league": "Korea K League 1 (1)",
+    "ovr": 64,
+    "atk": 63,
+    "mid": 65,
+    "def": 60
+  },
+  {
+    "rank": 523,
+    "name": "Bruk-Bet Termalica Nieciecza",
+    "league": "Poland Ekstraklasa (1)",
+    "ovr": 64,
+    "atk": 64,
+    "mid": 64,
+    "def": 64
+  },
+  {
+    "rank": 524,
+    "name": "Port Vale",
+    "league": "England League One (3)",
+    "ovr": 64,
+    "atk": 65,
+    "mid": 63,
+    "def": 65
+  },
+  {
+    "rank": 525,
+    "name": "Wigan Athletic",
+    "league": "England League One (3)",
+    "ovr": 64,
+    "atk": 65,
+    "mid": 63,
+    "def": 64
+  },
+  {
+    "rank": 526,
+    "name": "FC Hermannstadt",
+    "league": "Romania Liga I (1)",
+    "ovr": 64,
+    "atk": 64,
+    "mid": 65,
+    "def": 64
+  },
+  {
+    "rank": 527,
+    "name": "Suwon FC",
+    "league": "Korea K League 1 (1)",
+    "ovr": 64,
+    "atk": 63,
+    "mid": 64,
+    "def": 62
+  },
+  {
+    "rank": 528,
+    "name": "Rodez Aveyron Football",
+    "league": "France Ligue 2 (2)",
+    "ovr": 64,
+    "atk": 66,
+    "mid": 65,
+    "def": 64
+  },
+  {
+    "rank": 529,
+    "name": "Al Fateh",
+    "league": "Saudi Pro League (1)",
+    "ovr": 64,
+    "atk": 67,
+    "mid": 65,
+    "def": 61
+  },
+  {
+    "rank": 530,
+    "name": "St. Mirren",
+    "league": "Scotland Premiership (1)",
+    "ovr": 64,
+    "atk": 64,
+    "mid": 65,
+    "def": 63
+  },
+  {
+    "rank": 531,
+    "name": "SV Waldhof Mannheim",
+    "league": "Germany 3. Liga (3)",
+    "ovr": 64,
+    "atk": 65,
+    "mid": 63,
+    "def": 64
+  },
+  {
+    "rank": 532,
+    "name": "Peterborough United",
+    "league": "England League One (3)",
+    "ovr": 64,
+    "atk": 66,
+    "mid": 64,
+    "def": 64
+  },
+  {
+    "rank": 533,
+    "name": "Viktoria Köln",
+    "league": "Germany 3. Liga (3)",
+    "ovr": 64,
+    "atk": 62,
+    "mid": 64,
+    "def": 64
+  },
+  {
+    "rank": 534,
+    "name": "Unirea Slobozia",
+    "league": "Romania Liga I (1)",
+    "ovr": 63,
+    "atk": 64,
+    "mid": 63,
+    "def": 63
+  },
+  {
+    "rank": 535,
+    "name": "HamKam Fotball",
+    "league": "Norway Eliteserien (1)",
+    "ovr": 63,
+    "atk": 57,
+    "mid": 64,
+    "def": 63
+  },
+  {
+    "rank": 536,
+    "name": "Halmstads BK",
+    "league": "Sweden Allsvenskan (1)",
+    "ovr": 63,
+    "atk": 62,
+    "mid": 63,
+    "def": 63
+  },
+  {
+    "rank": 537,
+    "name": "Salford City",
+    "league": "England League Two (4)",
+    "ovr": 63,
+    "atk": 63,
+    "mid": 62,
+    "def": 62
+  },
+  {
+    "rank": 538,
+    "name": "Cambridge United",
+    "league": "England League Two (4)",
+    "ovr": 63,
+    "atk": 63,
+    "mid": 62,
+    "def": 63
+  },
+  {
+    "rank": 539,
+    "name": "San Martín de San Juan",
+    "league": "Argentina Primera División (1)",
+    "ovr": 63,
+    "atk": 62,
+    "mid": 64,
+    "def": 63
+  },
+  {
+    "rank": 540,
+    "name": "Chesterfield",
+    "league": "England League Two (4)",
+    "ovr": 63,
+    "atk": 60,
+    "mid": 63,
+    "def": 63
+  },
+  {
+    "rank": 541,
+    "name": "Colchester United",
+    "league": "England League Two (4)",
+    "ovr": 63,
+    "atk": 62,
+    "mid": 63,
+    "def": 62
+  },
+  {
+    "rank": 542,
+    "name": "Northampton Town",
+    "league": "England League One (3)",
+    "ovr": 63,
+    "atk": 62,
+    "mid": 63,
+    "def": 64
+  },
+  {
+    "rank": 543,
+    "name": "Falkirk",
+    "league": "Scotland Premiership (1)",
+    "ovr": 63,
+    "atk": 63,
+    "mid": 63,
+    "def": 62
+  },
+  {
+    "rank": 544,
+    "name": "Notts County",
+    "league": "England League Two (4)",
+    "ovr": 63,
+    "atk": 63,
+    "mid": 63,
+    "def": 62
+  },
+  {
+    "rank": 545,
+    "name": "Sandefjord Fotball",
+    "league": "Norway Eliteserien (1)",
+    "ovr": 63,
+    "atk": 61,
+    "mid": 63,
+    "def": 63
+  },
+  {
+    "rank": 546,
+    "name": "Perth Glory",
+    "league": "Australia A-League (1)",
+    "ovr": 63,
+    "atk": 67,
+    "mid": 59,
+    "def": 63
+  },
+  {
+    "rank": 547,
+    "name": "Macarthur FC",
+    "league": "Australia A-League (1)",
+    "ovr": 63,
+    "atk": 66,
+    "mid": 62,
+    "def": 62
+  },
+  {
+    "rank": 548,
+    "name": "San Antonio Bulo Bulo",
+    "league": "-",
+    "ovr": 63,
+    "atk": 59,
+    "mid": 62,
+    "def": 64
+  },
+  {
+    "rank": 549,
+    "name": "Exeter City",
+    "league": "England League One (3)",
+    "ovr": 63,
+    "atk": 65,
+    "mid": 62,
+    "def": 63
+  },
+  {
+    "rank": 550,
+    "name": "AFC Wimbledon",
+    "league": "England League One (3)",
+    "ovr": 63,
+    "atk": 63,
+    "mid": 63,
+    "def": 64
+  },
+  {
+    "rank": 551,
+    "name": "FC Fredericia",
+    "league": "Denmark Superliga (1)",
+    "ovr": 63,
+    "atk": 63,
+    "mid": 63,
+    "def": 63
+  },
+  {
+    "rank": 552,
+    "name": "HJK Helsinki",
+    "league": "Rest of World",
+    "ovr": 63,
+    "atk": 67,
+    "mid": 63,
+    "def": 63
+  },
+  {
+    "rank": 553,
+    "name": "Brisbane Roar",
+    "league": "Australia A-League (1)",
+    "ovr": 63,
+    "atk": 62,
+    "mid": 64,
+    "def": 63
+  },
+  {
+    "rank": 554,
+    "name": "Burton Albion",
+    "league": "England League One (3)",
+    "ovr": 63,
+    "atk": 64,
+    "mid": 62,
+    "def": 63
+  },
+  {
+    "rank": 555,
+    "name": "Strømsgodset Toppfotball",
+    "league": "Norway Eliteserien (1)",
+    "ovr": 63,
+    "atk": 63,
+    "mid": 63,
+    "def": 66
+  },
+  {
+    "rank": 556,
+    "name": "Zhejiang Professional FC",
+    "league": "China Super League (1)",
+    "ovr": 62,
+    "atk": 66,
+    "mid": 60,
+    "def": 62
+  },
+  {
+    "rank": 557,
+    "name": "Bromley",
+    "league": "England League Two (4)",
+    "ovr": 62,
+    "atk": 62,
+    "mid": 62,
+    "def": 62
+  },
+  {
+    "rank": 558,
+    "name": "Swindon Town",
+    "league": "England League Two (4)",
+    "ovr": 62,
+    "atk": 64,
+    "mid": 63,
+    "def": 62
+  },
+  {
+    "rank": 559,
+    "name": "Wellington Phoenix",
+    "league": "Australia A-League (1)",
+    "ovr": 62,
+    "atk": 63,
+    "mid": 62,
+    "def": 61
+  },
+  {
+    "rank": 560,
+    "name": "Derry City",
+    "league": "Rep. Ireland Premier Division (1)",
+    "ovr": 62,
+    "atk": 63,
+    "mid": 62,
+    "def": 62
+  },
+  {
+    "rank": 561,
+    "name": "St Patrick's Athletic",
+    "league": "Rep. Ireland Premier Division (1)",
+    "ovr": 62,
+    "atk": 62,
+    "mid": 63,
+    "def": 61
+  },
+  {
+    "rank": 562,
+    "name": "Barrow",
+    "league": "England League Two (4)",
+    "ovr": 62,
+    "atk": 61,
+    "mid": 61,
+    "def": 62
+  },
+  {
+    "rank": 563,
+    "name": "Barnet",
+    "league": "England League Two (4)",
+    "ovr": 62,
+    "atk": 62,
+    "mid": 62,
+    "def": 62
+  },
+  {
+    "rank": 564,
+    "name": "1. FC Schweinfurt 05",
+    "league": "Germany 3. Liga (3)",
+    "ovr": 62,
+    "atk": 63,
+    "mid": 61,
+    "def": 63
+  },
+  {
+    "rank": 565,
+    "name": "Grimsby Town",
+    "league": "England League Two (4)",
+    "ovr": 62,
+    "atk": 63,
+    "mid": 62,
+    "def": 61
+  },
+  {
+    "rank": 566,
+    "name": "Crawley Town",
+    "league": "England League Two (4)",
+    "ovr": 62,
+    "atk": 58,
+    "mid": 61,
+    "def": 61
+  },
+  {
+    "rank": 567,
+    "name": "Fleetwood Town",
+    "league": "England League Two (4)",
+    "ovr": 62,
+    "atk": 62,
+    "mid": 63,
+    "def": 61
+  },
+  {
+    "rank": 568,
+    "name": "Gwangju FC",
+    "league": "Korea K League 1 (1)",
+    "ovr": 62,
+    "atk": 59,
+    "mid": 60,
+    "def": 60
+  },
+  {
+    "rank": 569,
+    "name": "Gillingham",
+    "league": "England League Two (4)",
+    "ovr": 62,
+    "atk": 62,
+    "mid": 62,
+    "def": 62
+  },
+  {
+    "rank": 570,
+    "name": "Tianjin Jinmen Tiger",
+    "league": "China Super League (1)",
+    "ovr": 62,
+    "atk": 72,
+    "mid": 64,
+    "def": 59
+  },
+  {
+    "rank": 571,
+    "name": "FK Haugesund",
+    "league": "Norway Eliteserien (1)",
+    "ovr": 62,
+    "atk": 63,
+    "mid": 61,
+    "def": 62
+  },
+  {
+    "rank": 572,
+    "name": "Kristiansund BK",
+    "league": "Norway Eliteserien (1)",
+    "ovr": 62,
+    "atk": 63,
+    "mid": 62,
+    "def": 61
+  },
+  {
+    "rank": 573,
+    "name": "Central Coast Mariners",
+    "league": "Australia A-League (1)",
+    "ovr": 62,
+    "atk": 59,
+    "mid": 61,
+    "def": 63
+  },
+  {
+    "rank": 574,
+    "name": "Western United FC",
+    "league": "-",
+    "ovr": 62,
+    "atk": 61,
+    "mid": 62,
+    "def": 64
+  },
+  {
+    "rank": 575,
+    "name": "Metaloglobus București",
+    "league": "Romania Liga I (1)",
+    "ovr": 62,
+    "atk": 62,
+    "mid": 62,
+    "def": 60
+  },
+  {
+    "rank": 576,
+    "name": "FK Csíkszereda Miercurea Ciuc",
+    "league": "Romania Liga I (1)",
+    "ovr": 62,
+    "atk": 64,
+    "mid": 62,
+    "def": 62
+  },
+  {
+    "rank": 577,
+    "name": "IFK Värnamo",
+    "league": "Sweden Allsvenskan (1)",
+    "ovr": 62,
+    "atk": 64,
+    "mid": 62,
+    "def": 62
+  },
+  {
+    "rank": 578,
+    "name": "Cheltenham Town",
+    "league": "England League Two (4)",
+    "ovr": 62,
+    "atk": 60,
+    "mid": 62,
+    "def": 62
+  },
+  {
+    "rank": 579,
+    "name": "Walsall",
+    "league": "England League Two (4)",
+    "ovr": 62,
+    "atk": 64,
+    "mid": 61,
+    "def": 62
+  },
+  {
+    "rank": 580,
+    "name": "Östers IF",
+    "league": "Sweden Allsvenskan (1)",
+    "ovr": 62,
+    "atk": 62,
+    "mid": 62,
+    "def": 63
+  },
+  {
+    "rank": 581,
+    "name": "Bristol Rovers",
+    "league": "England League Two (4)",
+    "ovr": 62,
+    "atk": 61,
+    "mid": 62,
+    "def": 63
+  },
+  {
+    "rank": 582,
+    "name": "Dalian Yingbo FC",
+    "league": "China Super League (1)",
+    "ovr": 62,
+    "atk": 64,
+    "mid": 63,
+    "def": 61
+  },
+  {
+    "rank": 583,
+    "name": "Tranmere Rovers",
+    "league": "England League Two (4)",
+    "ovr": 62,
+    "atk": 62,
+    "mid": 60,
+    "def": 62
+  },
+  {
+    "rank": 584,
+    "name": "TSV Havelse",
+    "league": "Germany 3. Liga (3)",
+    "ovr": 62,
+    "atk": 62,
+    "mid": 62,
+    "def": 62
+  },
+  {
+    "rank": 585,
+    "name": "Harrogate Town",
+    "league": "England League Two (4)",
+    "ovr": 61,
+    "atk": 61,
+    "mid": 60,
+    "def": 60
+  },
+  {
+    "rank": 586,
+    "name": "Henan FC",
+    "league": "China Super League (1)",
+    "ovr": 61,
+    "atk": 54,
+    "mid": 62,
+    "def": 62
+  },
+  {
+    "rank": 587,
+    "name": "Shrewsbury Town",
+    "league": "England League Two (4)",
+    "ovr": 61,
+    "atk": 58,
+    "mid": 60,
+    "def": 62
+  },
+  {
+    "rank": 588,
+    "name": "Crewe Alexandra",
+    "league": "England League Two (4)",
+    "ovr": 61,
+    "atk": 61,
+    "mid": 61,
+    "def": 61
+  },
+  {
+    "rank": 589,
+    "name": "Qingdao West Coast FC",
+    "league": "China Super League (1)",
+    "ovr": 61,
+    "atk": 55,
+    "mid": 66,
+    "def": 58
+  },
+  {
+    "rank": 590,
+    "name": "Changchun Yatai",
+    "league": "China Super League (1)",
+    "ovr": 61,
+    "atk": 62,
+    "mid": 60,
+    "def": 60
+  },
+  {
+    "rank": 591,
+    "name": "Bohemians",
+    "league": "Rep. Ireland Premier Division (1)",
+    "ovr": 61,
+    "atk": 58,
+    "mid": 62,
+    "def": 60
+  },
+  {
+    "rank": 592,
+    "name": "Oldham Athletic",
+    "league": "England League Two (4)",
+    "ovr": 61,
+    "atk": 61,
+    "mid": 60,
+    "def": 61
+  },
+  {
+    "rank": 593,
+    "name": "VfB Stuttgart II",
+    "league": "Germany 3. Liga (3)",
+    "ovr": 61,
+    "atk": 62,
+    "mid": 61,
+    "def": 62
+  },
+  {
+    "rank": 594,
+    "name": "Sportivo Luqueño",
+    "league": "-",
+    "ovr": 61,
+    "atk": 61,
+    "mid": 61,
+    "def": 61
+  },
+  {
+    "rank": 595,
+    "name": "Meizhou Hakka",
+    "league": "China Super League (1)",
+    "ovr": 60,
+    "atk": 65,
+    "mid": 59,
+    "def": 60
+  },
+  {
+    "rank": 596,
+    "name": "Yunnan Yukun",
+    "league": "China Super League (1)",
+    "ovr": 60,
+    "atk": 70,
+    "mid": 63,
+    "def": 58
+  },
+  {
+    "rank": 597,
+    "name": "Wuhan Three Towns",
+    "league": "China Super League (1)",
+    "ovr": 60,
+    "atk": 64,
+    "mid": 58,
+    "def": 61
+  },
+  {
+    "rank": 598,
+    "name": "Newport County",
+    "league": "England League Two (4)",
+    "ovr": 60,
+    "atk": 60,
+    "mid": 60,
+    "def": 59
+  },
+  {
+    "rank": 599,
+    "name": "Accrington Stanley",
+    "league": "England League Two (4)",
+    "ovr": 60,
+    "atk": 60,
+    "mid": 60,
+    "def": 60
+  },
+  {
+    "rank": 600,
+    "name": "TSG 1899 Hoffenheim II",
+    "league": "Germany 3. Liga (3)",
+    "ovr": 60,
+    "atk": 59,
+    "mid": 61,
+    "def": 62
+  },
+  {
+    "rank": 601,
+    "name": "United Tigers SC",
+    "league": "Indian Super League (1)",
+    "ovr": 59,
+    "atk": 58,
+    "mid": 58,
+    "def": 60
+  },
+  {
+    "rank": 602,
+    "name": "Drogheda United",
+    "league": "Rep. Ireland Premier Division (1)",
+    "ovr": 59,
+    "atk": 60,
+    "mid": 58,
+    "def": 60
+  },
+  {
+    "rank": 603,
+    "name": "Shenzhen Peng City",
+    "league": "China Super League (1)",
+    "ovr": 59,
+    "atk": 61,
+    "mid": 61,
+    "def": 58
+  },
+  {
+    "rank": 604,
+    "name": "Galway United",
+    "league": "Rep. Ireland Premier Division (1)",
+    "ovr": 59,
+    "atk": 58,
+    "mid": 59,
+    "def": 58
+  },
+  {
+    "rank": 605,
+    "name": "Sligo Rovers",
+    "league": "Rep. Ireland Premier Division (1)",
+    "ovr": 59,
+    "atk": 58,
+    "mid": 60,
+    "def": 58
+  },
+  {
+    "rank": 606,
+    "name": "Waterford",
+    "league": "Rep. Ireland Premier Division (1)",
+    "ovr": 59,
+    "atk": 60,
+    "mid": 59,
+    "def": 57
+  },
+  {
+    "rank": 607,
+    "name": "Bengaluru FC",
+    "league": "Indian Super League (1)",
+    "ovr": 59,
+    "atk": 62,
+    "mid": 56,
+    "def": 60
+  },
+  {
+    "rank": 608,
+    "name": "East Bengal FC",
+    "league": "Indian Super League (1)",
+    "ovr": 59,
+    "atk": 60,
+    "mid": 60,
+    "def": 58
+  },
+  {
+    "rank": 609,
+    "name": "Qingdao Hainiu FC",
+    "league": "China Super League (1)",
+    "ovr": 58,
+    "atk": 57,
+    "mid": 60,
+    "def": 57
+  },
+  {
+    "rank": 610,
+    "name": "Jamshedpur FC",
+    "league": "Indian Super League (1)",
+    "ovr": 58,
+    "atk": 63,
+    "mid": 56,
+    "def": 58
+  },
+  {
+    "rank": 611,
+    "name": "Mumbai City FC",
+    "league": "Indian Super League (1)",
+    "ovr": 58,
+    "atk": 65,
+    "mid": 55,
+    "def": 56
+  },
+  {
+    "rank": 612,
+    "name": "Punjab FC",
+    "league": "Indian Super League (1)",
+    "ovr": 57,
+    "atk": 60,
+    "mid": 56,
+    "def": 56
+  },
+  {
+    "rank": 613,
+    "name": "Odisha FC",
+    "league": "Indian Super League (1)",
+    "ovr": 57,
+    "atk": 56,
+    "mid": 54,
+    "def": 55
+  },
+  {
+    "rank": 614,
+    "name": "NorthEast United",
+    "league": "Indian Super League (1)",
+    "ovr": 57,
+    "atk": 51,
+    "mid": 62,
+    "def": 54
+  },
+  {
+    "rank": 615,
+    "name": "Cork City",
+    "league": "Rep. Ireland Premier Division (1)",
+    "ovr": 56,
+    "atk": 59,
+    "mid": 55,
+    "def": 55
+  },
+  {
+    "rank": 616,
+    "name": "SC Delhi",
+    "league": "Indian Super League (1)",
+    "ovr": 55,
+    "atk": 53,
+    "mid": 55,
+    "def": 54
+  },
+  {
+    "rank": 617,
+    "name": "Kerala Blasters FC",
+    "league": "Indian Super League (1)",
+    "ovr": 54,
+    "atk": 56,
+    "mid": 55,
+    "def": 53
+  },
+  {
+    "rank": 618,
+    "name": "Mohammedan SC",
+    "league": "Indian Super League (1)",
+    "ovr": 52,
+    "atk": 51,
+    "mid": 52,
+    "def": 51
+  }
+]

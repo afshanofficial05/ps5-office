@@ -1,0 +1,22 @@
+{
+  "name": "PSO Gaming Arena",
+  "short_name": "PSO League",
+  "description": "Internal FC Gaming Platform & Match Verification",
+  "start_url": "/dashboard",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f172a",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "/gamepad_banner.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/gamepad_banner.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}

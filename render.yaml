@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: pso-gaming-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: pso-gaming-db
+          property: connectionString
+      - key: PYTHON_VERSION
+        value: 3.11.9
+
+databases:
+  - name: pso-gaming-db
+    databaseName: pso_db
+    user: pso_user
+    plan: free

@@ -1,0 +1,21 @@
+{
+  "name": "pso-gaming-platform",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.12.5",
+    "@supabase/supabase-js": "^2.115.0",
+    "canvas-confetti": "^1.9.3",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.428.0",
+    "next": "^14.2.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
