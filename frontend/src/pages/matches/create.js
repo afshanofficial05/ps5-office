@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
 import { api } from '../../services/api';
+import { useAuth } from '../../context/AuthContext';
 import { 
   Swords, Users, Shield, ArrowRight, Check, 
   Globe, PlusCircle, Clock, CheckCircle2, AlertCircle, X, ChevronRight, HelpCircle
@@ -9,6 +10,13 @@ import {
 
 export default function CreateMatchPage() {
   const router = useRouter();
+  const { user } = useAuth();
+
+  useEffect(() => {
+    if (user && (user.role === 'ADMIN' || user.role === 'SUPER_ADMIN')) {
+      router.replace('/admin/manual');
+    }
+  }, [user, router]);
   const [gameMode, setGameMode] = useState('1V1');
   const [teams, setTeams] = useState([]);
   const [selectedTeamId, setSelectedTeamId] = useState(null);

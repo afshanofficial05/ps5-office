@@ -93,16 +93,26 @@ export default function SubmitMatchResultPage() {
   const isTieBlocked = isMatchTied && (!isPenaltyShootout || !hasValidPenalties);
 
   useEffect(() => {
+    if (user && (user.role === 'ADMIN' || user.role === 'SUPER_ADMIN')) {
+      router.replace('/admin/manual');
+    }
+  }, [user, router]);
+
+  useEffect(() => {
     async function loadData() {
       try {
         setLoading(true);
         const [usersData, teamsData] = await Promise.all([
-          api.getUsers().catch(() => []),
+          api.getUsers('USER').catch(() => []),
           api.getTeams({ status: 'ACTIVE' }).catch(() => [])
         ]);
 
-        // Filter out current user from opponents list
-        const eligibleOpponents = usersData.filter(u => u.id !== user?.id && u.status === 'ACTIVE');
+        // Filter out current user from opponents list and ensure only active players (USER role) are shown
+        const eligibleOpponents = usersData.filter(u => 
+          u.id !== user?.id && 
+          u.status === 'ACTIVE' && 
+          u.role === 'USER'
+        );
         setPlayers(eligibleOpponents);
         setTeams(teamsData);
 
@@ -833,11 +843,10 @@ export default function SubmitMatchResultPage() {
                 gap: 12px !important;
               }
               .submit-button-wrap {
-                position: sticky;
-                bottom: calc(64px + env(safe-area-inset-bottom, 0px));
-                z-index: 40;
-                margin-top: 14px;
-                padding-top: 8px;
+                position: static !important;
+                margin-top: 24px !important;
+                margin-bottom: 24px !important;
+                padding-top: 8px !important;
               }
               .submit-action-btn {
                 min-height: 48px !important;

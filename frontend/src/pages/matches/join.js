@@ -2,10 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
 import { api } from '../../services/api';
+import { useAuth } from '../../context/AuthContext';
 import { LogIn, Swords, Users, ArrowRight, Hash } from 'lucide-react';
 
 export default function JoinMatchPage() {
   const router = useRouter();
+  const { user } = useAuth();
+
+  useEffect(() => {
+    if (user && (user.role === 'ADMIN' || user.role === 'SUPER_ADMIN')) {
+      router.replace('/admin');
+    }
+  }, [user, router]);
+
   const [matchCodeInput, setMatchCodeInput] = useState('');
   const [openMatches, setOpenMatches] = useState([]);
   const [loading, setLoading] = useState(true);

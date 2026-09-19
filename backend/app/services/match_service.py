@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 from fastapi import HTTPException
 from backend.app.models.models import (
     Match, MatchPlayer, MatchResult, MatchEvidence, MatchStatus, 
-    User, Team, Season, SeasonStatus
+    User, UserRole, Team, Season, SeasonStatus
 )
 from backend.app.schemas.schemas import MatchCreate1v1, MatchCreate2v2, MatchResultSubmit, ManualMatchCreate, DirectMatchSubmit
 from backend.app.services.verification_service import VerificationService
@@ -23,10 +23,19 @@ class MatchService:
 
     @classmethod
     def create_1v1_match(cls, db: Session, user_id: int, payload: MatchCreate1v1) -> Match:
+        creator = db.query(User).filter(User.id == user_id).first()
+        if creator and creator.role in [UserRole.ADMIN, UserRole.SUPER_ADMIN]:
+            raise HTTPException(status_code=403, detail="Admins manage matches and do not participate as players.")
+
         # Check team
         team = db.query(Team).filter(Team.id == payload.team_id, Team.status == "ACTIVE").first()
         if not team:
             raise HTTPException(status_code=400, detail="Selected team does not exist or is disabled")
+
+        if payload.opponent_id:
+            opponent = db.query(User).filter(User.id == payload.opponent_id).first()
+            if opponent and opponent.role in [UserRole.ADMIN, UserRole.SUPER_ADMIN]:
+                raise HTTPException(status_code=400, detail="Admins cannot be selected as match players.")
 
         # Active season
         active_season = db.query(Season).filter(Season.status == SeasonStatus.ACTIVE).first()
@@ -279,9 +288,16 @@ class MatchService:
         if user_id == payload.opponent_id:
             raise HTTPException(status_code=400, detail="You cannot submit a match against yourself")
 
+        user = db.query(User).filter(User.id == user_id).first()
+        if user and user.role in [UserRole.ADMIN, UserRole.SUPER_ADMIN]:
+            raise HTTPException(status_code=403, detail="Admins manage matches and do not submit fixtures as players.")
+
         opponent = db.query(User).filter(User.id == payload.opponent_id, User.status == "ACTIVE").first()
         if not opponent:
             raise HTTPException(status_code=404, detail="Selected opponent not found or inactive")
+
+        if opponent.role in [UserRole.ADMIN, UserRole.SUPER_ADMIN]:
+            raise HTTPException(status_code=400, detail="Admins cannot be selected as match opponents.")
 
         if not payload.evidence_url:
             raise HTTPException(status_code=400, detail="A screenshot upload is required for match result verification.")

@@ -70,11 +70,23 @@ export default function Navbar({ title, subtitle }) {
           }} />
         </div>
 
-        {/* Create Match Primary Button */}
-        <Link href="/matches/create" className="btn btn-cyan" style={{ padding: '10px 22px', fontSize: '0.9rem' }}>
-          <Plus size={16} />
-          <span>Create Match</span>
-        </Link>
+        {/* Role-Specific Primary Action Button */}
+        {user?.role === 'SUPER_ADMIN' ? (
+          <Link href="/super-admin" className="btn btn-primary" style={{ padding: '10px 20px', fontSize: '0.9rem' }}>
+            <ShieldCheck size={16} />
+            <span>Admin Console</span>
+          </Link>
+        ) : user?.role === 'ADMIN' ? (
+          <Link href="/admin/pending" className="btn btn-primary" style={{ padding: '10px 20px', fontSize: '0.9rem' }}>
+            <CheckSquare size={16} />
+            <span>Verify Matches</span>
+          </Link>
+        ) : (
+          <Link href="/matches/create" className="btn btn-cyan" style={{ padding: '10px 22px', fontSize: '0.9rem' }}>
+            <Plus size={16} />
+            <span>Create Match</span>
+          </Link>
+        )}
 
         {/* Profile Link */}
         <Link href="/profile" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }} title="My Profile">

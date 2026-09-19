@@ -22,6 +22,10 @@ def get_users(
     query = db.query(User)
     if role:
         query = query.filter(User.role == role)
+    elif current_user.role == UserRole.USER:
+        # Regular players should only see fellow players, never admins
+        query = query.filter(User.role == UserRole.USER)
+
     if search:
         query = query.filter(
             or_(

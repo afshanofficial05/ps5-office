@@ -1,7 +1,7 @@
 from typing import List
 from sqlalchemy.orm import Session
 from sqlalchemy import desc
-from backend.app.models.models import PlayerRating, User, Team, TeamStatistic
+from backend.app.models.models import PlayerRating, User, Team, TeamStatistic, UserRole
 from backend.app.schemas.schemas import LeaderboardPlayer, LeaderboardTeam
 
 class LeaderboardService:
@@ -10,7 +10,11 @@ class LeaderboardService:
         results = (
             db.query(PlayerRating, User)
             .join(User, PlayerRating.player_id == User.id)
-            .filter(PlayerRating.game_mode == game_mode, User.status == "ACTIVE")
+            .filter(
+                PlayerRating.game_mode == game_mode, 
+                User.status == "ACTIVE",
+                User.role == UserRole.USER
+            )
             .order_by(desc(PlayerRating.rating), desc(PlayerRating.wins))
             .limit(limit)
             .all()

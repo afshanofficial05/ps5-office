@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
 import RatingBadge from '../components/RatingBadge';
 import TopLeaderboardWidget from '../components/TopLeaderboardWidget';
@@ -10,12 +11,24 @@ import {
 } from 'lucide-react';
 
 export default function Dashboard() {
+  const router = useRouter();
   const { user } = useAuth();
   const [profile, setProfile] = useState(null);
   const [recentMatches, setRecentMatches] = useState([]);
   const [leaderboard1v1, setLeaderboard1v1] = useState([]);
   const [leaderboard2v2, setLeaderboard2v2] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (user?.role === 'SUPER_ADMIN') {
+      router.replace('/super-admin');
+      return;
+    }
+    if (user?.role === 'ADMIN') {
+      router.replace('/admin');
+      return;
+    }
+  }, [user, router]);
 
   useEffect(() => {
     let isMounted = true;

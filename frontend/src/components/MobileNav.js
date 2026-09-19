@@ -82,17 +82,20 @@ export default function MobileNav() {
   const getDrawerNavSections = () => {
     const sections = [];
 
-    // Player Section (visible to everyone)
-    sections.push({
-      title: 'Gaming & Competition',
-      items: [
-        { href: '/dashboard', label: 'Dashboard', icon: Home },
-        { href: '/matches/create', label: 'Create Match', icon: Swords },
-        { href: '/matches/join', label: 'Join Match', icon: PlusCircle },
-        { href: '/leaderboards', label: 'Leaderboards', icon: Trophy },
-        { href: '/matches/history', label: 'Match History', icon: History },
-      ],
-    });
+    // Player Section (visible only to competitive players)
+    if (role === 'USER') {
+      sections.push({
+        title: 'Player Arena',
+        items: [
+          { href: '/dashboard', label: 'Dashboard', icon: Home },
+          { href: '/matches/create', label: 'Create Match', icon: Swords },
+          { href: '/matches/join', label: 'Join Match', icon: PlusCircle },
+          { href: '/matches/submit', label: 'Submit Result', icon: CheckSquare },
+          { href: '/leaderboards', label: 'Leaderboards', icon: Trophy },
+          { href: '/matches/history', label: 'Match History', icon: History },
+        ],
+      });
+    }
 
     // Admin Section
     if (role === 'ADMIN' || role === 'SUPER_ADMIN') {
@@ -105,6 +108,8 @@ export default function MobileNav() {
         { href: '/admin/players', label: 'Player Accounts', icon: Users, perm: 'VIEW_PLAYERS' },
         { href: '/admin/manual', label: 'Record Match', icon: Swords, perm: 'MANUAL_MATCH_CREATE' },
         { href: '/admin/reports', label: 'Platform Reports', icon: BarChart3, perm: 'VIEW_REPORTS' },
+        { href: '/leaderboards', label: 'Leaderboards', icon: Trophy, perm: null },
+        { href: '/matches/history', label: 'Match History', icon: History, perm: null },
       ];
 
       const visibleAdminItems = rawAdminItems.filter(item => !item.perm || (hasPermission && hasPermission(item.perm)));
