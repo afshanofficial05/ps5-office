@@ -57,21 +57,21 @@ export default function LeaderboardsPage() {
 
   const currentPlayers = gameMode === '1V1' ? leaderboard1v1 : leaderboard2v2;
 
-  // Streak & Team Performance Pill (Website Blue & Neutral Theme)
+  // Streak & Team Performance Pill (NO EMOJIS - Clean professional typography)
   const getPlayerPill = (p) => {
     if (p.win_streak >= 3) {
-      return { icon: '👑', label: `${p.win_streak}W`, bg: '#eff6ff', color: '#2563eb', border: '#bfdbfe' };
+      return { label: `${p.win_streak}W`, bg: '#eff6ff', color: '#2563eb', border: '#bfdbfe' };
     }
     if (p.win_streak > 0) {
-      return { icon: '👑', label: `${p.win_streak}W`, bg: '#eff6ff', color: '#1d4ed8', border: '#bfdbfe' };
+      return { label: `${p.win_streak}W`, bg: '#eff6ff', color: '#1d4ed8', border: '#bfdbfe' };
     }
     if (p.losses >= 3) {
-      return { icon: '🛡️', label: `${p.losses}L`, bg: '#fff7ed', color: '#ea580c', border: '#ffedd5' };
+      return { label: `${p.losses}L`, bg: '#fff7ed', color: '#ea580c', border: '#ffedd5' };
     }
     if (p.losses > 0) {
-      return { icon: '🛡️', label: `${p.losses}L`, bg: '#f5f3ff', color: '#7c3aed', border: '#ede9fe' };
+      return { label: `${p.losses}L`, bg: '#f5f3ff', color: '#7c3aed', border: '#ede9fe' };
     }
-    return { icon: '🛡️', label: `${p.wins || 0}W`, bg: '#f1f5f9', color: '#475569', border: '#e2e8f0' };
+    return { label: `${p.wins || 0}W`, bg: '#f1f5f9', color: '#475569', border: '#e2e8f0' };
   };
 
   // Recent 5-Match Form Indicator (Blue for wins, grey for losses)
@@ -228,13 +228,12 @@ export default function LeaderboardsPage() {
         <div className="leaderboard-table-card">
           {mainTab === 'LEADERBOARD' ? (
             <div>
-              {/* Table Column Headers */}
+              {/* Perfectly Aligned 5-Column Table Header */}
               <div className="table-header-row">
                 <div className="col-rank">#</div>
                 <div className="col-player">PLAYER</div>
-                <div className="col-team">TEAM</div>
+                <div className="col-streak">STREAK</div>
                 <div className="col-points">POINTS</div>
-                <div className="col-winrate">WIN %</div>
                 <div className="col-form">FORM</div>
               </div>
 
@@ -290,8 +289,8 @@ export default function LeaderboardsPage() {
                         </div>
                       </div>
 
-                      {/* Team / Streak Pill */}
-                      <div className="col-team">
+                      {/* Streak Pill (No emoji - clean text) */}
+                      <div className="col-streak">
                         <span 
                           className="status-pill"
                           style={{
@@ -300,8 +299,7 @@ export default function LeaderboardsPage() {
                             border: `1px solid ${pill.border}`
                           }}
                         >
-                          <span style={{ fontSize: '0.66rem', marginRight: '2px' }}>{pill.icon}</span>
-                          <span>{pill.label}</span>
+                          {pill.label}
                         </span>
                       </div>
 
@@ -310,14 +308,7 @@ export default function LeaderboardsPage() {
                         <span className="points-bold-val">{Math.round(p.rating)}</span>
                       </div>
 
-                      {/* Win % */}
-                      <div className="col-winrate">
-                        <span className="winrate-val">
-                          {p.win_rate != null ? `${p.win_rate}%` : '0%'}
-                        </span>
-                      </div>
-
-                      {/* Form (5 Dots: Blue for wins, grey for loss/empty) */}
+                      {/* Form (5 Dots) */}
                       <div className="col-form">
                         <div className="form-dots-group">
                           {formDots.map((type, idx) => (
@@ -338,11 +329,10 @@ export default function LeaderboardsPage() {
             <div>
               <div className="table-header-row">
                 <div className="col-rank">#</div>
-                <div style={{ flex: 1.4, textAlign: 'left' }}>CLUB TEAM</div>
+                <div style={{ flex: 1, textAlign: 'left', minWidth: 0, paddingLeft: '8px' }}>CLUB TEAM</div>
                 <div style={{ width: '80px', textAlign: 'center' }}>LEAGUE</div>
                 <div className="col-points">POINTS</div>
-                <div className="col-winrate">WIN %</div>
-                <div style={{ width: '70px', textAlign: 'center' }}>RECORD</div>
+                <div style={{ width: '64px', textAlign: 'right' }}>RECORD</div>
               </div>
 
               {leaderboardTeams.length === 0 ? (
@@ -367,7 +357,7 @@ export default function LeaderboardsPage() {
                       )}
                     </div>
 
-                    <div style={{ flex: 1.4, minWidth: 0, textAlign: 'left' }}>
+                    <div style={{ flex: 1, minWidth: 0, textAlign: 'left', paddingLeft: '8px' }}>
                       <span className="player-full-name">{t.name}</span>
                       <span className="player-code-sub">{t.ovr} OVR • {t.matches} Matches</span>
                     </div>
@@ -380,11 +370,7 @@ export default function LeaderboardsPage() {
                       <span className="points-bold-val">{t.points}</span>
                     </div>
 
-                    <div className="col-winrate">
-                      <span className="winrate-val">{t.win_rate}%</span>
-                    </div>
-
-                    <div style={{ width: '70px', textAlign: 'center', fontSize: '0.74rem', fontWeight: 700, color: '#2563eb' }}>
+                    <div style={{ width: '64px', textAlign: 'right', fontSize: '0.76rem', fontWeight: 800, color: '#2563eb' }}>
                       {t.wins}W - {t.losses}L
                     </div>
                   </div>
@@ -404,7 +390,7 @@ export default function LeaderboardsPage() {
           padding-bottom: 24px;
         }
 
-        /* 1. Sub Tabs Header (Blue active indicator) */
+        /* 1. Sub Tabs Header */
         .subnav-tabs-bar {
           display: flex;
           align-items: center;
@@ -443,7 +429,7 @@ export default function LeaderboardsPage() {
           border-radius: 2px;
         }
 
-        /* 2. League Status Card (Blue & White theme) */
+        /* 2. League Status Card */
         .league-status-card {
           background: #ffffff;
           border: 1px solid #eef2f6;
@@ -556,17 +542,17 @@ export default function LeaderboardsPage() {
         .table-header-row {
           display: flex;
           align-items: center;
-          padding: 14px 12px;
+          padding: 14px 14px;
           border-bottom: 1px solid #f1f5f9;
-          font-size: 0.7rem;
+          font-size: 0.72rem;
           font-weight: 800;
           color: #94a3b8;
-          letter-spacing: 0.03em;
+          letter-spacing: 0.04em;
         }
         .leaderboard-data-row {
           display: flex;
           align-items: center;
-          padding: 12px 12px;
+          padding: 12px 14px;
           border-bottom: 1px solid #f8fafc;
           transition: background 0.15s ease;
         }
@@ -580,41 +566,41 @@ export default function LeaderboardsPage() {
           background: #eff6ff !important;
         }
 
-        /* Columns: Optimized so player name gets maximum breathing room */
+        /* 5-Column Alignment: Perfect spacing, zero collision */
         .col-rank {
-          width: 30px;
+          width: 32px;
           display: flex;
           align-items: center;
           justify-content: center;
           flex-shrink: 0;
+          text-align: center;
         }
         .col-player {
-          flex: 1.6;
+          flex: 1;
           display: flex;
           align-items: center;
-          gap: 10px;
+          gap: 12px;
           min-width: 0;
-          padding-right: 4px;
+          padding-right: 8px;
         }
-        .col-team {
-          width: 52px;
+        .col-streak {
+          width: 58px;
           display: flex;
           align-items: center;
           justify-content: center;
           flex-shrink: 0;
+          text-align: center;
         }
         .col-points {
-          width: 52px;
-          text-align: center;
+          width: 60px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           flex-shrink: 0;
-        }
-        .col-winrate {
-          width: 46px;
           text-align: center;
-          flex-shrink: 0;
         }
         .col-form {
-          width: 52px;
+          width: 62px;
           display: flex;
           align-items: center;
           justify-content: flex-end;
@@ -678,7 +664,7 @@ export default function LeaderboardsPage() {
           overflow: hidden;
         }
         .player-full-name {
-          font-size: 0.88rem;
+          font-size: 0.9rem;
           font-weight: 800;
           color: #0f172a;
           white-space: nowrap;
@@ -694,39 +680,37 @@ export default function LeaderboardsPage() {
           margin-top: 1px;
         }
 
-        /* Status / Streak Pill */
+        /* Status / Streak Pill: Clean Typography, NO Emojis */
         .status-pill {
-          padding: 2.5px 6px;
+          padding: 3px 8px;
           border-radius: 9999px;
-          font-size: 0.68rem;
+          font-size: 0.72rem;
           font-weight: 800;
+          letter-spacing: 0.02em;
           display: inline-flex;
           align-items: center;
+          justify-content: center;
+          min-width: 36px;
           line-height: 1;
         }
 
         /* Values */
         .points-bold-val {
-          font-size: 0.94rem;
+          font-size: 0.95rem;
           font-weight: 900;
           color: #0f172a;
           font-family: inherit;
         }
-        .winrate-val {
-          font-size: 0.78rem;
-          color: #64748b;
-          font-weight: 600;
-        }
 
-        /* 5-Match Form Dots (Blue for wins, grey for loss/empty) */
+        /* 5-Match Form Dots */
         .form-dots-group {
           display: flex;
           align-items: center;
-          gap: 3px;
+          gap: 3.5px;
         }
         .form-dot {
-          width: 5px;
-          height: 5px;
+          width: 5.5px;
+          height: 5.5px;
           border-radius: 50%;
         }
         .dot-win {
@@ -742,45 +726,40 @@ export default function LeaderboardsPage() {
         @media (max-width: 480px) {
           .table-header-row,
           .leaderboard-data-row {
-            padding: 10px 6px;
+            padding: 11px 8px;
           }
           .col-rank {
-            width: 24px;
+            width: 26px;
           }
           .col-player {
-            flex: 1.8;
-            gap: 7px;
+            flex: 1;
+            gap: 8px;
           }
-          .col-team {
-            width: 44px;
+          .col-streak {
+            width: 46px;
           }
           .col-points {
-            width: 44px;
-          }
-          .col-winrate {
-            width: 36px;
+            width: 48px;
           }
           .col-form {
-            width: 42px;
+            width: 48px;
           }
           .player-full-name {
-            font-size: 0.84rem;
+            font-size: 0.85rem;
           }
           .player-code-sub {
-            font-size: 0.64rem;
+            font-size: 0.65rem;
           }
           .points-bold-val {
-            font-size: 0.86rem;
-          }
-          .winrate-val {
-            font-size: 0.7rem;
+            font-size: 0.88rem;
           }
           .status-pill {
-            padding: 2px 4px;
-            font-size: 0.62rem;
+            padding: 2.5px 6px;
+            font-size: 0.66rem;
+            min-width: 30px;
           }
           .form-dots-group {
-            gap: 2px;
+            gap: 2.5px;
           }
           .form-dot {
             width: 4.5px;
