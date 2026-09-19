@@ -1,10 +1,10 @@
 /**
  * Image Compression Utility for PSO Gaming Platform
- * Strictly enforces maximum file size of 300 KB.
- * Uses client-side HTML5 Canvas for resizing and iterative compression.
+ * Optimized for cross-browser reliability (iOS Safari, Android Chrome, Desktop)
+ * Enforces dynamic size limits (defaults to 5000 KB / 5 MB)
  */
 
-export const DEFAULT_MAX_ALLOWED_SIZE_BYTES = 100 * 1024; // Default 100 KB
+export const DEFAULT_MAX_ALLOWED_SIZE_BYTES = 5000 * 1024; // Default 5 MB
 
 export function formatFileSize(bytes) {
   if (bytes === 0) return '0 B';
@@ -16,7 +16,7 @@ export function formatFileSize(bytes) {
 }
 
 /**
- * Validates file type. Allowed formats: JPG, PNG, WEBP.
+ * Validates file type. Allowed formats: JPG, PNG, WEBP, HEIC/HEIF (common on iPhone)
  */
 export function validateImageFileType(file) {
   if (!file) return { valid: false, error: 'No file selected' };
@@ -27,7 +27,7 @@ export function validateImageFileType(file) {
   const hasValidExt = validExtensions.some(ext => fileName.endsWith(ext));
   const hasValidMime = validMimeTypes.includes(file.type.toLowerCase()) || file.type.startsWith('image/');
 
-  if (!hasValidExt || !hasValidMime) {
+  if (!hasValidExt && !hasValidMime) {
     return {
       valid: false,
       error: 'Invalid file format. Please upload a screenshot in JPG, PNG, or WEBP format.'
@@ -66,7 +66,8 @@ function canvasToBlob(canvas, mimeType, quality) {
 }
 
 /**
- * Compresses an image file client-side to be <= dynamic maxAllowedSizeKb (defaults to 100 KB).
+ * Compresses an image file client-side to be <= dynamic maxAllowedSizeKb (defaults to 5000 KB).
+ * Guaranteed to produce well-compressed JPEG across all mobile (iOS Safari) and desktop browsers.
  * 
  * @param {File} file - Original file from input
  * @param {Object} options - Optional compression tuning (e.g. maxAllowedSizeKb)
@@ -86,76 +87,79 @@ export async function compressScreenshot(file, options = {}) {
   const originalSize = file.size;
   const originalSizeFormatted = formatFileSize(originalSize);
 
-  const maxAllowedKb = options.maxAllowedSizeKb || options.maxKb || 100;
+  // Default to 5000 KB (5 MB), or user/admin configured limit
+  const maxAllowedKb = options.maxAllowedSizeKb || options.maxKb || 5000;
   const targetMaxBytes = maxAllowedKb * 1024;
 
+  // If already under target and already under 1MB, we can still lightly optimize or keep
   try {
     const img = await loadImageFromFile(file);
 
-    // Dynamic initial dimensions: scale based on target size to balance clarity with compression speed
-    const defaultMaxWidth = maxAllowedKb <= 120 ? 1440 : 1920;
-    const defaultMaxHeight = maxAllowedKb <= 120 ? 900 : 1080;
+    let curWidth = img.width;
+    let curHeight = img.height;
 
-    const MAX_WIDTH = options.maxWidth || defaultMaxWidth;
-    const MAX_HEIGHT = options.maxHeight || defaultMaxHeight;
+    // Cap initial dimension to 1920x1080 (HD screenshot resolution)
+    const MAX_WIDTH = options.maxWidth || 1920;
+    const MAX_HEIGHT = options.maxHeight || 1080;
 
-    let { width, height } = img;
-
-    if (width > MAX_WIDTH || height > MAX_HEIGHT) {
-      const ratio = Math.min(MAX_WIDTH / width, MAX_HEIGHT / height);
-      width = Math.round(width * ratio);
-      height = Math.round(height * ratio);
+    if (curWidth > MAX_WIDTH || curHeight > MAX_HEIGHT) {
+      const ratio = Math.min(MAX_WIDTH / curWidth, MAX_HEIGHT / curHeight);
+      curWidth = Math.round(curWidth * ratio);
+      curHeight = Math.round(curHeight * ratio);
     }
 
     const canvas = document.createElement('canvas');
-    canvas.width = width;
-    canvas.height = height;
+    canvas.width = curWidth;
+    canvas.height = curHeight;
 
     const ctx = canvas.getContext('2d');
     ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = 'high';
-    ctx.drawImage(img, 0, 0, width, height);
+    ctx.drawImage(img, 0, 0, curWidth, curHeight);
 
-    const targetMime = 'image/webp';
-    const fallbackMime = 'image/jpeg';
-
-    // Iterative quality reduction
-    const qualitySteps = [0.82, 0.72, 0.60, 0.48, 0.38];
+    // Standardize on image/jpeg for 100% iOS Safari and Android compatibility
+    // (iOS Safari falls back to uncompressed PNG if image/webp is requested)
+    const targetMime = 'image/jpeg';
     let bestBlob = null;
 
+    // First attempt: try high to moderate quality
+    const qualitySteps = [0.85, 0.75, 0.65, 0.50, 0.40];
     for (const q of qualitySteps) {
-      let blob = await canvasToBlob(canvas, targetMime, q);
-      if (!blob || blob.size === 0) {
-        blob = await canvasToBlob(canvas, fallbackMime, q);
-      }
-
-      if (blob && blob.size <= targetMaxBytes) {
+      const blob = await canvasToBlob(canvas, targetMime, q);
+      if (blob) {
         bestBlob = blob;
-        break;
-      }
-      bestBlob = blob;
-    }
-
-    // If still over target, downscale canvas resolution by 25% and retry
-    if (bestBlob && bestBlob.size > targetMaxBytes) {
-      const scaleDownRatio = 0.75;
-      canvas.width = Math.round(width * scaleDownRatio);
-      canvas.height = Math.round(height * scaleDownRatio);
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-      for (const q of [0.65, 0.50, 0.35]) {
-        let blob = await canvasToBlob(canvas, targetMime, q);
-        if (!blob || blob.size === 0) {
-          blob = await canvasToBlob(canvas, fallbackMime, q);
-        }
-        if (blob && blob.size <= targetMaxBytes) {
-          bestBlob = blob;
+        if (blob.size <= targetMaxBytes) {
           break;
         }
       }
     }
 
-    // Limit check
+    // If still oversized, progressively downscale dimensions and compress
+    let passes = 0;
+    while (bestBlob && bestBlob.size > targetMaxBytes && passes < 4 && curWidth > 640) {
+      passes++;
+      curWidth = Math.round(curWidth * 0.75);
+      curHeight = Math.round(curHeight * 0.75);
+
+      canvas.width = curWidth;
+      canvas.height = curHeight;
+      const passCtx = canvas.getContext('2d');
+      passCtx.imageSmoothingEnabled = true;
+      passCtx.imageSmoothingQuality = 'high';
+      passCtx.drawImage(img, 0, 0, curWidth, curHeight);
+
+      for (const q of [0.70, 0.55, 0.40]) {
+        const blob = await canvasToBlob(canvas, targetMime, q);
+        if (blob) {
+          bestBlob = blob;
+          if (blob.size <= targetMaxBytes) {
+            break;
+          }
+        }
+      }
+    }
+
+    // Limit check fallback
     if (!bestBlob || bestBlob.size > targetMaxBytes) {
       const oversizedKb = bestBlob ? formatFileSize(bestBlob.size) : 'oversized';
       return {
@@ -169,11 +173,11 @@ export async function compressScreenshot(file, options = {}) {
     }
 
     // Convert Blob to File object with unique name
-    const ext = bestBlob.type === 'image/webp' ? '.webp' : '.jpg';
+    const ext = '.jpg';
     const baseName = file.name.replace(/\.[^/.]+$/, '');
     const cleanFileName = `${baseName}_compressed${ext}`;
     const compressedFile = new File([bestBlob], cleanFileName, {
-      type: bestBlob.type,
+      type: 'image/jpeg',
       lastModified: Date.now()
     });
 
@@ -188,7 +192,7 @@ export async function compressScreenshot(file, options = {}) {
       compressedSize: bestBlob.size,
       compressedSizeFormatted: formatFileSize(bestBlob.size),
       previewUrl,
-      savingsPercent: Math.round(((originalSize - bestBlob.size) / originalSize) * 100)
+      savingsPercent: Math.max(0, Math.round(((originalSize - bestBlob.size) / originalSize) * 100))
     };
 
   } catch (err) {

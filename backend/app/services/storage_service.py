@@ -12,7 +12,7 @@ from backend.app.models.models import SystemSetting
 
 logger = logging.getLogger(__name__)
 
-DEFAULT_SCREENSHOT_SIZE_KB = 100
+DEFAULT_SCREENSHOT_SIZE_KB = 5000  # Default 5 MB (accommodates high-res mobile photos and screenshots)
 ALLOWED_IMAGE_TYPES = {
     "image/jpeg",
     "image/jpg",
@@ -28,7 +28,7 @@ class StorageService:
                 setting = db.query(SystemSetting).filter(SystemSetting.key == "max_screenshot_size_kb").first()
                 if setting and setting.value:
                     val = int(setting.value)
-                    if 30 <= val <= 5000:
+                    if 30 <= val <= 10240:
                         return val
             except Exception as e:
                 logger.warning(f"Could not read max_screenshot_size_kb setting: {e}")

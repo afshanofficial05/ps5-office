@@ -52,7 +52,7 @@ export default function PendingVerificationPage() {
 
   const handleUpdateLimit = async (newLimit) => {
     const val = parseInt(newLimit, 10);
-    if (isNaN(val) || val < 30 || val > 5000) return;
+    if (isNaN(val) || val < 30 || val > 10240) return;
     setSavingLimit(true);
     try {
       await api.updateScreenshotLimit(val);

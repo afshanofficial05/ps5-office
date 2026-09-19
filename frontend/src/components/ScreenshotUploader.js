@@ -17,7 +17,7 @@ export default function ScreenshotUploader({
   const [result, setResult] = useState(null);
   const [error, setError] = useState('');
   const [modalPreview, setModalPreview] = useState(false);
-  const [limitKb, setLimitKb] = useState(maxSizeKb || 100);
+  const [limitKb, setLimitKb] = useState(maxSizeKb || 5000);
   const fileInputRef = useRef(null);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function ScreenshotUploader({
           setLimitKb(config.max_screenshot_size_kb);
         }
       } catch (err) {
-        // Fallback to 100 KB
+        // Fallback to 5000 KB (5 MB)
       }
     }
     loadConfig();
@@ -171,7 +171,7 @@ export default function ScreenshotUploader({
                   Click to select or drag & drop match screenshot
                 </p>
                 <p style={{ fontSize: '0.76rem', color: '#64748b', marginTop: '2px' }}>
-                  JPG, PNG, or WEBP. Automatically resized & compressed to max {limitKb} KB.
+                  JPG, PNG, or WEBP. Automatically resized & optimized.
                 </p>
               </div>
             </div>

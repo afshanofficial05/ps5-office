@@ -12,6 +12,7 @@ def seed_database(db: Session):
         {"key": "k_factor", "value": "24", "description": "Elo K-Factor multiplier"},
         {"key": "handicap_multiplier", "value": "5", "description": "Team OVR Difference Multiplier"},
         {"key": "max_handicap", "value": "150", "description": "Maximum Team Handicap Cap (+/-)"},
+        {"key": "max_screenshot_size_kb", "value": "5000", "description": "Maximum Screenshot Size in KB"},
     ]
     for s in settings_data:
         if not db.query(SystemSetting).filter(SystemSetting.key == s["key"]).first():
