@@ -1,10 +1,28 @@
 import os
 import sys
+import types
 
-# Ensure root directory is in sys.path so 'backend.app' imports always resolve
-ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-if ROOT_DIR not in sys.path:
-    sys.path.insert(0, ROOT_DIR)
+# Ensure paths and modules resolve whether running from repo root or backend/ directory
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__)) # .../app
+BACKEND_DIR = os.path.dirname(CURRENT_DIR)               # .../backend
+REPO_DIR = os.path.dirname(BACKEND_DIR)                 # .../repo
+
+for p in [REPO_DIR, BACKEND_DIR, CURRENT_DIR]:
+    if p and p not in sys.path:
+        sys.path.insert(0, p)
+
+if "backend" not in sys.modules:
+    try:
+        import backend
+    except ModuleNotFoundError:
+        try:
+            import app
+            backend_mod = types.ModuleType("backend")
+            backend_mod.app = app
+            sys.modules["backend"] = backend_mod
+            sys.modules["backend.app"] = app
+        except Exception:
+            pass
 
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
