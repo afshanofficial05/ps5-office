@@ -1,4 +1,5 @@
-from typing import Tuple, List, Dict
+from __future__ import annotations
+from typing import Tuple, List, Dict, Any
 from sqlalchemy.orm import Session
 from backend.app.models.models import SystemSetting
 from backend.app.core.config import settings
