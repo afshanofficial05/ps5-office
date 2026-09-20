@@ -240,7 +240,7 @@ def upload_bug_screenshot(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
-    file_url, storage_type = StorageService.save_screenshot(file, match_id=0, db=db)
+    file_url, storage_type = StorageService.save_screenshot(file, match_id=0, db=db, max_size_kb=8192)
     return {
         "file_url": file_url,
         "storage_type": storage_type,

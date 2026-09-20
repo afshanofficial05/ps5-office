@@ -65,7 +65,7 @@ class StorageService:
             )
 
     @classmethod
-    def save_screenshot(cls, file: UploadFile, match_id: int, db: Optional[Session] = None) -> Tuple[str, str]:
+    def save_screenshot(cls, file: UploadFile, match_id: int, db: Optional[Session] = None, max_size_kb: Optional[int] = None) -> Tuple[str, str]:
         """
         Validates and saves a match screenshot with structured naming:
         screenshots/{match_id}/{unique_id}.webp (or original extension).
@@ -73,8 +73,8 @@ class StorageService:
         file.file.seek(0)
         content = file.file.read()
         
-        max_limit_kb = cls.get_max_screenshot_size_kb(db)
-        cls.validate_screenshot(file, content, max_size_kb=max_limit_kb)
+        limit_kb = max_size_kb if max_size_kb is not None else cls.get_max_screenshot_size_kb(db)
+        cls.validate_screenshot(file, content, max_size_kb=limit_kb)
         
         unique_id = uuid.uuid4().hex[:12]
         ext = os.path.splitext(file.filename or "")[1].lower()
