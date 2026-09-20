@@ -5,8 +5,9 @@ import { api } from '../../services/api';
 import { 
   Bug, PlusCircle, CheckCircle2, Clock, AlertTriangle, 
   Upload, X, Image as ImageIcon, Laptop, Smartphone, HelpCircle, 
-  ChevronDown, ChevronUp, Check, ExternalLink, RefreshCw, MessageSquare
+  ChevronDown, ChevronUp, Check, ExternalLink, RefreshCw, MessageSquare, Loader2
 } from 'lucide-react';
+import { compressScreenshot, formatFileSize } from '../../utils/imageCompressor';
 
 const CATEGORIES = [
   { id: 'MATCHES', label: 'Match Lobby & Joining' },
@@ -39,6 +40,8 @@ export default function BugReportPage() {
   const [stepsToReproduce, setStepsToReproduce] = useState('');
   const [screenshotFile, setScreenshotFile] = useState(null);
   const [screenshotPreview, setScreenshotPreview] = useState('');
+  const [compressing, setCompressing] = useState(false);
+  const [compressionInfo, setCompressionInfo] = useState(null);
   const [uploadingImage, setUploadingImage] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
@@ -101,22 +104,47 @@ export default function BugReportPage() {
     }
   }, [user]);
 
-  const handleImageChange = (e) => {
+  const handleImageChange = async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
+    // Reject files above 8MB initially
     if (file.size > 8 * 1024 * 1024) {
-      setError('Screenshot must be under 8MB in size.');
+      setError('Image must be under 8MB in size.');
       return;
     }
 
-    setScreenshotFile(file);
-    setScreenshotPreview(URL.createObjectURL(file));
     setError('');
+    setCompressing(true);
+
+    try {
+      // Compress client-side to <= 200 KB
+      const res = await compressScreenshot(file, { maxAllowedSizeKb: 200 });
+      if (!res.success) {
+        setError(res.error || 'Failed to compress image.');
+        setCompressing(false);
+        return;
+      }
+
+      setScreenshotFile(res.file);
+      setScreenshotPreview(res.previewUrl || URL.createObjectURL(res.file));
+      setCompressionInfo({
+        originalSizeFormatted: res.originalSizeFormatted,
+        compressedSizeFormatted: res.compressedSizeFormatted,
+        originalBytes: res.originalSize,
+        compressedBytes: res.compressedSize
+      });
+    } catch (err) {
+      console.error('Image compression failed:', err);
+      setError('Failed to process and compress screenshot.');
+    } finally {
+      setCompressing(false);
+    }
   };
 
   const handleRemoveImage = () => {
     setScreenshotFile(null);
+    setCompressionInfo(null);
     if (screenshotPreview) {
       URL.revokeObjectURL(screenshotPreview);
       setScreenshotPreview('');
@@ -488,47 +516,92 @@ export default function BugReportPage() {
                   Screenshot / Photo Evidence <span style={{ color: '#64748b', fontWeight: 500 }}>(Optional)</span>
                 </label>
 
-                {screenshotPreview ? (
+                {compressing ? (
                   <div style={{
-                    position: 'relative',
+                    border: '2px dashed #93c5fd',
                     borderRadius: '12px',
-                    overflow: 'hidden',
-                    border: '1.5px solid #2563eb',
-                    maxWidth: '400px',
-                    maxHeight: '260px',
+                    padding: '28px 20px',
+                    textAlign: 'center',
+                    backgroundColor: '#eff6ff',
                     display: 'flex',
+                    flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    background: '#0f172a'
+                    gap: '10px'
                   }}>
-                    <img
-                      src={screenshotPreview}
-                      alt="Bug Preview"
-                      style={{ maxWidth: '100%', maxHeight: '260px', objectFit: 'contain' }}
-                    />
-                    <button
-                      type="button"
-                      onClick={handleRemoveImage}
-                      style={{
-                        position: 'absolute',
-                        top: '8px',
-                        right: '8px',
-                        backgroundColor: 'rgba(239, 68, 68, 0.9)',
-                        color: '#ffffff',
-                        border: 'none',
-                        borderRadius: '50%',
-                        width: '28px',
-                        height: '28px',
-                        cursor: 'pointer',
-                        display: 'flex',
+                    <Loader2 size={30} color="#2563eb" className="animate-spin" style={{ animation: 'spin 1s linear infinite' }} />
+                    <p style={{ fontSize: '0.88rem', fontWeight: 700, color: '#1e40af', margin: 0 }}>
+                      Compressing image to ≤ 200 KB...
+                    </p>
+                    <p style={{ fontSize: '0.74rem', color: '#64748b', margin: 0 }}>
+                      Optimizing resolution for fast upload
+                    </p>
+                  </div>
+                ) : screenshotPreview ? (
+                  <div>
+                    <div style={{
+                      position: 'relative',
+                      borderRadius: '12px',
+                      overflow: 'hidden',
+                      border: '1.5px solid #2563eb',
+                      maxWidth: '400px',
+                      maxHeight: '260px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      background: '#0f172a'
+                    }}>
+                      <img
+                        src={screenshotPreview}
+                        alt="Bug Preview"
+                        style={{ maxWidth: '100%', maxHeight: '260px', objectFit: 'contain' }}
+                      />
+                      <button
+                        type="button"
+                        onClick={handleRemoveImage}
+                        style={{
+                          position: 'absolute',
+                          top: '8px',
+                          right: '8px',
+                          backgroundColor: 'rgba(239, 68, 68, 0.9)',
+                          color: '#ffffff',
+                          border: 'none',
+                          borderRadius: '50%',
+                          width: '28px',
+                          height: '28px',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          boxShadow: '0 2px 6px rgba(0,0,0,0.3)'
+                        }}
+                        title="Remove image"
+                      >
+                        <X size={16} />
+                      </button>
+                    </div>
+
+                    {/* Compression Pill / Metrics */}
+                    {compressionInfo && (
+                      <div style={{
+                        marginTop: '8px',
+                        display: 'inline-flex',
                         alignItems: 'center',
-                        justifyContent: 'center',
-                        boxShadow: '0 2px 6px rgba(0,0,0,0.3)'
-                      }}
-                      title="Remove image"
-                    >
-                      <X size={16} />
-                    </button>
+                        gap: '6px',
+                        padding: '4px 10px',
+                        backgroundColor: '#ecfdf5',
+                        border: '1px solid #a7f3d0',
+                        borderRadius: '8px',
+                        fontSize: '0.74rem',
+                        color: '#065f46',
+                        fontWeight: 600
+                      }}>
+                        <Check size={13} color="#059669" />
+                        <span>Compressed: <strong>{compressionInfo.compressedSizeFormatted}</strong></span>
+                        <span style={{ color: '#9ca3af' }}>•</span>
+                        <span style={{ color: '#6b7280' }}>Original: {compressionInfo.originalSizeFormatted}</span>
+                      </div>
+                    )}
                   </div>
                 ) : (
                   <div style={{
@@ -553,7 +626,7 @@ export default function BugReportPage() {
                         Click to upload a screenshot
                       </p>
                       <p style={{ fontSize: '0.74rem', color: '#94a3b8', marginTop: '4px' }}>
-                        Supports PNG, JPG, WEBP up to 8MB
+                        Supports PNG, JPG, WEBP up to 8MB • Auto-compressed to ≤ 200 KB
                       </p>
                     </label>
                   </div>
@@ -601,11 +674,13 @@ export default function BugReportPage() {
               <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
                 <button
                   type="submit"
-                  disabled={submitting || uploadingImage}
+                  disabled={submitting || uploadingImage || compressing}
                   className="btn btn-primary"
                   style={{ padding: '10px 24px', fontSize: '0.92rem' }}
                 >
-                  {submitting ? (
+                  {compressing ? (
+                    <span>Compressing image...</span>
+                  ) : submitting ? (
                     <span>Submitting Report...</span>
                   ) : (
                     <>
