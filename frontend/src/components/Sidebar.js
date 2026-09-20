@@ -6,7 +6,7 @@ import Avatar from './Avatar';
 import { 
   Gamepad2, Swords, Trophy, History, User, Users, Shield, 
   Settings, CheckSquare, PlusCircle, LogIn, FileText, Activity, ShieldCheck,
-  HelpCircle, Home, ChevronRight, Sparkles, LayoutDashboard, Calendar, BarChart3, Award
+  HelpCircle, Home, ChevronRight, Sparkles, LayoutDashboard, Calendar, BarChart3, Award, Bug
 } from 'lucide-react';
 
 export default function Sidebar() {
@@ -24,6 +24,7 @@ export default function Sidebar() {
     { label: 'Submit Result', href: '/matches/submit', icon: CheckSquare },
     { label: 'Leaderboards', href: '/leaderboards', icon: Trophy },
     { label: 'My Matches', href: '/matches/history', icon: History },
+    { label: 'Report a Bug', href: '/bugs', icon: Bug },
     { label: 'My Profile', href: '/profile', icon: User },
   ];
 
@@ -35,6 +36,7 @@ export default function Sidebar() {
     { label: 'Manual Match Entry', href: '/admin/manual', icon: Swords, requiredPerm: 'MANUAL_MATCH_CREATE' },
     { label: 'Players Directory', href: '/admin/players', icon: Users, requiredPerm: 'VIEW_PLAYERS' },
     { label: 'Teams Database', href: '/admin/teams', icon: Shield, requiredPerm: 'VIEW_TEAMS' },
+    { label: 'Bug Reports', href: '/admin/bugs', icon: Bug, requiredPerm: null },
     { label: 'Platform Reports', href: '/admin/reports', icon: BarChart3, requiredPerm: 'VIEW_REPORTS' },
     { label: 'Leaderboards', href: '/leaderboards', icon: Trophy, requiredPerm: null },
     { label: 'Match History', href: '/matches/history', icon: History, requiredPerm: null },
@@ -51,6 +53,7 @@ export default function Sidebar() {
     { label: 'Pending Results', href: '/admin/pending', icon: CheckSquare },
     { label: 'Manual Match', href: '/admin/manual', icon: Swords },
     { label: 'Teams & Ratings', href: '/admin/teams', icon: Shield },
+    { label: 'Bug Reports', href: '/admin/bugs', icon: Bug },
     { label: 'Platform Reports', href: '/admin/reports', icon: BarChart3 },
     { label: 'Leaderboards', href: '/leaderboards', icon: Trophy },
     { label: 'System Settings', href: '/super-admin/settings', icon: Settings },

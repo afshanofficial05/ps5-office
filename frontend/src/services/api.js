@@ -207,5 +207,20 @@ export const api = {
     body: JSON.stringify({ player_id: playerId, achievement_id: achievementId })
   }),
   getAchievementPlayers: (achievementId) => request(`/achievements/${achievementId}/players`),
+
+  // Bug Reporting & Tracking
+  createBugReport: (data) => request('/bugs', { method: 'POST', body: JSON.stringify(data) }),
+  getMyBugReports: () => request('/bugs/my'),
+  getAllBugReports: (params = {}) => {
+    const q = new URLSearchParams(params);
+    return request(`/bugs?${q.toString()}`);
+  },
+  getBugReport: (id) => request(`/bugs/${id}`),
+  updateBugReport: (id, data) => request(`/bugs/${id}`, { method: 'PATCH', body: JSON.stringify(data) }),
+  uploadBugScreenshot: (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    return request('/bugs/upload-screenshot', { method: 'POST', body: formData });
+  },
 };
 

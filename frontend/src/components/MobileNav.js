@@ -6,7 +6,7 @@ import Avatar from './Avatar';
 import {
   Menu, X, Home, Swords, Trophy, Shield, User, History,
   CheckSquare, Users, Settings, FileText, LogOut, ChevronRight,
-  Gamepad2, PlusCircle, Calendar, BarChart3, Plus, Camera, KeyRound, Sparkles, Award
+  Gamepad2, PlusCircle, Calendar, BarChart3, Plus, Camera, KeyRound, Sparkles, Award, Bug
 } from 'lucide-react';
 
 export default function MobileNav() {
@@ -93,6 +93,7 @@ export default function MobileNav() {
           { href: '/matches/submit', label: 'Submit Result', icon: CheckSquare },
           { href: '/leaderboards', label: 'Leaderboards', icon: Trophy },
           { href: '/matches/history', label: 'Match History', icon: History },
+          { href: '/bugs', label: 'Report a Bug', icon: Bug },
         ],
       });
     }
@@ -107,6 +108,7 @@ export default function MobileNav() {
         { href: '/admin/teams', label: 'Teams & Requests', icon: Gamepad2, perm: 'VIEW_TEAMS' },
         { href: '/admin/players', label: 'Player Accounts', icon: Users, perm: 'VIEW_PLAYERS' },
         { href: '/admin/manual', label: 'Record Match', icon: Swords, perm: 'MANUAL_MATCH_CREATE' },
+        { href: '/admin/bugs', label: 'Bug Reports', icon: Bug, perm: null },
         { href: '/admin/reports', label: 'Platform Reports', icon: BarChart3, perm: 'VIEW_REPORTS' },
         { href: '/leaderboards', label: 'Leaderboards', icon: Trophy, perm: null },
         { href: '/matches/history', label: 'Match History', icon: History, perm: null },
@@ -129,6 +131,7 @@ export default function MobileNav() {
         items: [
           { href: '/super-admin', label: 'Executive Console', icon: Shield },
           { href: '/super-admin/admins', label: 'Staff Management', icon: Users },
+          { href: '/admin/bugs', label: 'Bug Reports', icon: Bug },
           { href: '/super-admin/players', label: 'Rating Overrides', icon: Trophy },
           { href: '/super-admin/audit-logs', label: 'Audit Logs', icon: FileText },
           { href: '/super-admin/settings', label: 'System Settings', icon: Settings },

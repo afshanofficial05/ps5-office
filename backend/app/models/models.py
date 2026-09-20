@@ -282,3 +282,50 @@ class TeamRequest(Base):
     player = relationship("User", foreign_keys=[player_id])
     reviewer = relationship("User", foreign_keys=[reviewed_by])
 
+
+class BugReportStatus:
+    OPEN = "OPEN"
+    IN_PROGRESS = "IN_PROGRESS"
+    RESOLVED = "RESOLVED"
+    CLOSED = "CLOSED"
+
+
+class BugReportSeverity:
+    LOW = "LOW"
+    MEDIUM = "MEDIUM"
+    HIGH = "HIGH"
+    CRITICAL = "CRITICAL"
+
+
+class BugReportCategory:
+    MATCHES = "MATCHES"
+    SUBMISSIONS = "SUBMISSIONS"
+    LEADERBOARD = "LEADERBOARD"
+    PROFILE = "PROFILE"
+    TEAMS = "TEAMS"
+    UI_ALIGNMENT = "UI_ALIGNMENT"
+    OTHER = "OTHER"
+
+
+class BugReport(Base):
+    __tablename__ = "bug_reports"
+
+    id = Column(Integer, primary_key=True, index=True)
+    reporter_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
+    title = Column(String(200), nullable=False)
+    category = Column(String(50), default=BugReportCategory.OTHER, nullable=False)
+    severity = Column(String(20), default=BugReportSeverity.MEDIUM, nullable=False)
+    description = Column(Text, nullable=False)
+    steps_to_reproduce = Column(Text, nullable=True)
+    device_info = Column(Text, nullable=True)
+    screenshot_url = Column(String(500), nullable=True)
+    status = Column(String(20), default=BugReportStatus.OPEN, nullable=False, index=True)
+    admin_notes = Column(Text, nullable=True)
+    resolved_by = Column(Integer, ForeignKey("users.id"), nullable=True)
+    resolved_at = Column(DateTime, nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    reporter = relationship("User", foreign_keys=[reporter_id])
+    resolver = relationship("User", foreign_keys=[resolved_by])
+
