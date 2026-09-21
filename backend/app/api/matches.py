@@ -13,6 +13,7 @@ from backend.app.schemas.schemas import (
 from backend.app.api.deps import get_current_user
 from backend.app.services.match_service import MatchService
 from backend.app.services.storage_service import StorageService
+from backend.app.services.notification_service import NotificationService
 from backend.app.core.config import settings
 
 router = APIRouter(prefix="/matches", tags=["matches"])
@@ -94,6 +95,10 @@ def create_1v1_match(
     current_user: User = Depends(get_current_user)
 ):
     created = MatchService.create_1v1_match(db, current_user.id, payload)
+    try:
+        NotificationService.notify_room_created(db, created, current_user)
+    except Exception as exc:
+        print(f"[NOTIFICATION NOTICE] Room create push notice: {exc}", flush=True)
     match = get_match_query(db).filter(Match.id == created.id).first()
     return serialize_match(match or created)
 
@@ -104,6 +109,10 @@ def create_2v2_match(
     current_user: User = Depends(get_current_user)
 ):
     created = MatchService.create_2v2_match(db, current_user.id, payload)
+    try:
+        NotificationService.notify_room_created(db, created, current_user)
+    except Exception as exc:
+        print(f"[NOTIFICATION NOTICE] Room create push notice: {exc}", flush=True)
     match = get_match_query(db).filter(Match.id == created.id).first()
     return serialize_match(match or created)
 

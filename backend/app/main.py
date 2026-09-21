@@ -43,6 +43,7 @@ from backend.app.api.seasons import router as seasons_router
 from backend.app.api.reports import router as reports_router
 from backend.app.api.achievements import router as achievements_router
 from backend.app.api.bugs import router as bugs_router
+from backend.app.api.notifications import router as notifications_router
 
 
 @asynccontextmanager
@@ -123,6 +124,7 @@ app.include_router(seasons_router, prefix=settings.API_V1_STR)
 app.include_router(reports_router, prefix=settings.API_V1_STR)
 app.include_router(achievements_router, prefix=settings.API_V1_STR)
 app.include_router(bugs_router, prefix=f"{settings.API_V1_STR}/bugs")
+app.include_router(notifications_router, prefix=settings.API_V1_STR)
 
 
 

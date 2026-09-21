@@ -3,7 +3,8 @@ from backend.app.models.models import (
     PlayerRating, Team, Season, Match, MatchPlayer, MatchResult,
     MatchEvidence, TeamStatistic, Achievement, PlayerAchievement,
     AuditLog, AdminPermission, SystemSetting, TeamRequest, TeamRequestStatus,
-    BugReport, BugReportStatus, BugReportSeverity, BugReportCategory
+    BugReport, BugReportStatus, BugReportSeverity, BugReportCategory,
+    PushSubscription, InAppNotification
 )
 
 __all__ = [
@@ -11,6 +12,7 @@ __all__ = [
     "PlayerRating", "Team", "Season", "Match", "MatchPlayer", "MatchResult",
     "MatchEvidence", "TeamStatistic", "Achievement", "PlayerAchievement",
     "AuditLog", "AdminPermission", "SystemSetting", "TeamRequest", "TeamRequestStatus",
-    "BugReport", "BugReportStatus", "BugReportSeverity", "BugReportCategory"
+    "BugReport", "BugReportStatus", "BugReportSeverity", "BugReportCategory",
+    "PushSubscription", "InAppNotification"
 ]
 

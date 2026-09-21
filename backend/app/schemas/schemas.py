@@ -428,3 +428,39 @@ class DashboardStatsResponse(BaseModel):
     most_wins: Optional[int] = None
     matches_over_time: List[Dict[str, Any]] = []
     player_registrations: List[Dict[str, Any]] = []
+
+
+# Push Notifications Schemas
+class PushSubscriptionKeys(BaseModel):
+    p256dh: str
+    auth: str
+
+class PushSubscriptionCreate(BaseModel):
+    endpoint: str
+    keys: PushSubscriptionKeys
+    user_agent: Optional[str] = None
+
+class NotificationPreferencesUpdate(BaseModel):
+    notify_rooms: Optional[bool] = None
+    notify_leaderboard: Optional[bool] = None
+
+class InAppNotificationResponse(BaseModel):
+    id: int
+    user_id: int
+    title: str
+    message: str
+    type: str
+    data_url: Optional[str] = None
+    is_read: bool
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
+
+class NotificationStatusResponse(BaseModel):
+    vapid_public_key: str
+    is_configured: bool
+    active_subscriptions: int
+    notify_rooms: bool
+    notify_leaderboard: bool
+

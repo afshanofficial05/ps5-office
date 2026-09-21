@@ -55,6 +55,8 @@ class User(Base):
     achievements = relationship("PlayerAchievement", back_populates="player", cascade="all, delete-orphan")
     permissions = relationship("AdminPermission", back_populates="admin", cascade="all, delete-orphan")
     audit_logs = relationship("AuditLog", back_populates="actor")
+    push_subscriptions = relationship("PushSubscription", back_populates="user", cascade="all, delete-orphan")
+    in_app_notifications = relationship("InAppNotification", back_populates="user", cascade="all, delete-orphan")
 
 
 class PlayerRating(Base):
@@ -328,4 +330,36 @@ class BugReport(Base):
 
     reporter = relationship("User", foreign_keys=[reporter_id])
     resolver = relationship("User", foreign_keys=[resolved_by])
+
+
+class PushSubscription(Base):
+    __tablename__ = "push_subscriptions"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
+    endpoint = Column(Text, nullable=False, index=True)
+    p256dh = Column(Text, nullable=False)
+    auth = Column(Text, nullable=False)
+    user_agent = Column(String(255), nullable=True)
+    notify_rooms = Column(Boolean, default=True, nullable=False)
+    notify_leaderboard = Column(Boolean, default=True, nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    user = relationship("User", back_populates="push_subscriptions")
+
+
+class InAppNotification(Base):
+    __tablename__ = "in_app_notifications"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
+    title = Column(String(200), nullable=False)
+    message = Column(Text, nullable=False)
+    type = Column(String(50), default="SYSTEM", nullable=False) # ROOM_CREATED, LEADERBOARD_UPDATE, MATCH_VERIFIED, SYSTEM
+    data_url = Column(String(255), nullable=True)
+    is_read = Column(Boolean, default=False, nullable=False, index=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    user = relationship("User", back_populates="in_app_notifications")
 

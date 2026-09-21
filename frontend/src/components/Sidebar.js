@@ -24,6 +24,7 @@ export default function Sidebar() {
     { label: 'Submit Result', href: '/matches/submit', icon: CheckSquare },
     { label: 'Leaderboards', href: '/leaderboards', icon: Trophy },
     { label: 'My Matches', href: '/matches/history', icon: History },
+    { label: 'Notifications', href: '/settings/notifications', icon: Bell },
     { label: 'Report a Bug', href: '/bugs', icon: Bug },
     { label: 'My Profile', href: '/profile', icon: User },
   ];
@@ -38,6 +39,7 @@ export default function Sidebar() {
     { label: 'Teams Database', href: '/admin/teams', icon: Shield, requiredPerm: 'VIEW_TEAMS' },
     { label: 'Bug Reports', href: '/admin/bugs', icon: Bug, requiredPerm: null },
     { label: 'Platform Reports', href: '/admin/reports', icon: BarChart3, requiredPerm: 'VIEW_REPORTS' },
+    { label: 'Notifications', href: '/settings/notifications', icon: Bell, requiredPerm: null },
     { label: 'Leaderboards', href: '/leaderboards', icon: Trophy, requiredPerm: null },
     { label: 'Match History', href: '/matches/history', icon: History, requiredPerm: null },
   ];
@@ -55,6 +57,7 @@ export default function Sidebar() {
     { label: 'Teams & Ratings', href: '/admin/teams', icon: Shield },
     { label: 'Bug Reports', href: '/admin/bugs', icon: Bug },
     { label: 'Platform Reports', href: '/admin/reports', icon: BarChart3 },
+    { label: 'Notifications', href: '/settings/notifications', icon: Bell },
     { label: 'Leaderboards', href: '/leaderboards', icon: Trophy },
     { label: 'System Settings', href: '/super-admin/settings', icon: Settings },
     { label: 'Audit Logs', href: '/super-admin/audit-logs', icon: FileText },

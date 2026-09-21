@@ -231,5 +231,25 @@ export const api = {
     formData.append('file', file);
     return request('/bugs/upload-screenshot', { method: 'POST', body: formData });
   },
+
+  // Notifications & Diagnostics
+  getVapidPublicKey: () => request('/notifications/vapid-public-key'),
+  getNotificationStatus: () => request('/notifications/status'),
+  subscribePushNotification: (subscriptionData) => request('/notifications/subscribe', {
+    method: 'POST',
+    body: JSON.stringify(subscriptionData)
+  }),
+  unsubscribePushNotification: (endpoint) => request('/notifications/unsubscribe', {
+    method: 'POST',
+    body: JSON.stringify({ endpoint })
+  }),
+  updateNotificationPreferences: (prefs) => request('/notifications/preferences', {
+    method: 'POST',
+    body: JSON.stringify(prefs)
+  }),
+  sendTestNotification: () => request('/notifications/test', { method: 'POST' }),
+  getInAppNotifications: (limit = 30) => request(`/notifications?limit=${limit}`),
+  markNotificationRead: (id) => request(`/notifications/${id}/read`, { method: 'POST' }),
+  markAllNotificationsRead: () => request('/notifications/read-all', { method: 'POST' }),
 };
 

@@ -28,6 +28,11 @@ class Settings(BaseSettings):
     # Uploads storage directory (fallback or local)
     UPLOAD_DIR: str = os.path.join(backend_root, "uploads")
 
+    # Web Push VAPID configuration
+    VAPID_PUBLIC_KEY: str = os.getenv("VAPID_PUBLIC_KEY", "BMkU-o-UFW0Pdy_a-omB0acfBQxn_Adoj5840yVlI7SkwmP4NsW6wXPsTw2erAGHt2QVAp1xmfMvibMJrHtCV6o")
+    VAPID_PRIVATE_KEY: str = os.getenv("VAPID_PRIVATE_KEY", "wIbb9iYjA4_ExDgFMyPNcr-3-AQ0ZoY3Z3lKF6hhMwg")
+    VAPID_SUBJECT: str = os.getenv("VAPID_SUBJECT", "mailto:afshanofficial05@gmail.com")
+
     # Elo defaults
     DEFAULT_K_FACTOR: int = 24
     DEFAULT_HANDICAP_MULTIPLIER: int = 5

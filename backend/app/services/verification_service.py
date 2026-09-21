@@ -215,6 +215,13 @@ class VerificationService:
 
         db.commit()
         db.refresh(match)
+
+        try:
+            from backend.app.services.notification_service import NotificationService
+            NotificationService.notify_match_approved(db, match)
+        except Exception as exc:
+            print(f"[NOTIFICATION NOTICE] Match approve push notice: {exc}", flush=True)
+
         return match
 
     @staticmethod
