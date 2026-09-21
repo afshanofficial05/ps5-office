@@ -42,7 +42,10 @@ export function resolveImageUrl(url) {
   // Handle local uploaded files if relative path
   if (trimmed.startsWith('/uploads') || trimmed.startsWith('uploads/')) {
     const cleanPath = trimmed.startsWith('/') ? trimmed : `/${trimmed}`;
-    return cleanPath;
+    const baseUrl = (typeof process !== 'undefined' && process.env.NEXT_PUBLIC_API_URL)
+      ? process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, '')
+      : '';
+    return baseUrl ? `${baseUrl}${cleanPath}` : cleanPath;
   }
 
   return trimmed;

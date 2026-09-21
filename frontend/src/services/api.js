@@ -1,4 +1,7 @@
-const API_BASE = '/api';
+const rawApiUrl = (typeof process !== 'undefined' && process.env.NEXT_PUBLIC_API_URL) 
+  ? process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, '') 
+  : '';
+const API_BASE = rawApiUrl ? `${rawApiUrl}/api` : '/api';
 
 export const getAuthToken = () => {
   if (typeof window !== 'undefined') {
@@ -42,7 +45,13 @@ export async function request(endpoint, options = {}) {
       const errData = await res.json();
       errorMessage = errData.detail || errData.message || errorMessage;
     } catch (e) {
-      errorMessage = `HTTP error ${res.status}: ${res.statusText}`;
+      if (res.status === 503) {
+        errorMessage = 'Backend service unavailable (503). The Render server might be waking up from sleep or is offline. Please wait ~30 seconds and retry.';
+      } else if (res.status === 504) {
+        errorMessage = 'Gateway timeout (504). Render backend took too long to respond. Please try again.';
+      } else {
+        errorMessage = `HTTP error ${res.status}: ${res.statusText || 'Unknown error'}`;
+      }
     }
     const error = new Error(errorMessage);
     error.status = res.status;

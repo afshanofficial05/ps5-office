@@ -1,9 +1,22 @@
+import React, { useEffect } from 'react';
 import '../styles/globals.css';
 import Head from 'next/head';
 import { AuthProvider } from '../context/AuthContext';
 import { ErrorBoundary } from '../components/ErrorBoundary';
 
 export default function App({ Component, pageProps }) {
+  // Silent pre-warm for Render free tier on initial visitor load
+  useEffect(() => {
+    const rawApiUrl = (typeof process !== 'undefined' && process.env.NEXT_PUBLIC_API_URL)
+      ? process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, '')
+      : '';
+    const targetUrl = rawApiUrl ? `${rawApiUrl}/health` : '/api/health';
+    
+    // Fire-and-forget background ping
+    fetch(targetUrl, { method: 'GET', mode: 'cors' }).catch(() => {
+      // Ignore background errors
+    });
+  }, []);
   return (
     <ErrorBoundary>
       <AuthProvider>
