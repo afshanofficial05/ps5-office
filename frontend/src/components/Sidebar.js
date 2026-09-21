@@ -6,7 +6,7 @@ import Avatar from './Avatar';
 import { 
   Gamepad2, Swords, Trophy, History, User, Users, Shield, 
   Settings, CheckSquare, PlusCircle, LogIn, FileText, Activity, ShieldCheck,
-  HelpCircle, Home, ChevronRight, Sparkles, LayoutDashboard, Calendar, BarChart3, Award, Bug
+  HelpCircle, Home, ChevronRight, Sparkles, LayoutDashboard, Calendar, BarChart3, Award, Bug, Bell
 } from 'lucide-react';
 
 export default function Sidebar() {
