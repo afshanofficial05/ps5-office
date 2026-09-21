@@ -3,10 +3,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useAuth } from '../context/AuthContext';
 import Avatar from './Avatar';
+import { api } from '../services/api';
 import {
   Menu, X, Home, Swords, Trophy, Shield, User, History,
   CheckSquare, Users, Settings, FileText, LogOut, ChevronRight,
-  Gamepad2, PlusCircle, Calendar, BarChart3, Plus, Camera, KeyRound, Sparkles, Award, Bug
+  Gamepad2, PlusCircle, Calendar, BarChart3, Plus, Camera, KeyRound, Sparkles, Award, Bug, Bell
 } from 'lucide-react';
 
 export default function MobileNav() {
@@ -14,6 +15,21 @@ export default function MobileNav() {
   const { user, logout, hasPermission } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [isActionSheetOpen, setIsActionSheetOpen] = useState(false);
+  const [unreadCount, setUnreadCount] = useState(0);
+
+  useEffect(() => {
+    if (!user) return;
+    const fetchUnread = () => {
+      api.getInAppNotifications(10).then((items) => {
+        if (Array.isArray(items)) {
+          setUnreadCount(items.filter(n => n && !n.is_read).length);
+        }
+      }).catch(() => {});
+    };
+    fetchUnread();
+    const interval = setInterval(fetchUnread, 25000);
+    return () => clearInterval(interval);
+  }, [user]);
 
   // Close drawer and action sheet on route change
   useEffect(() => {
@@ -93,6 +109,7 @@ export default function MobileNav() {
           { href: '/matches/submit', label: 'Submit Result', icon: CheckSquare },
           { href: '/leaderboards', label: 'Leaderboards', icon: Trophy },
           { href: '/matches/history', label: 'Match History', icon: History },
+          { href: '/settings/notifications', label: 'Notifications & Alerts', icon: Bell },
           { href: '/bugs', label: 'Report a Bug', icon: Bug },
         ],
       });
@@ -110,6 +127,7 @@ export default function MobileNav() {
         { href: '/admin/manual', label: 'Record Match', icon: Swords, perm: 'MANUAL_MATCH_CREATE' },
         { href: '/admin/bugs', label: 'Bug Reports', icon: Bug, perm: null },
         { href: '/admin/reports', label: 'Platform Reports', icon: BarChart3, perm: 'VIEW_REPORTS' },
+        { href: '/settings/notifications', label: 'Notifications & Alerts', icon: Bell, perm: null },
         { href: '/leaderboards', label: 'Leaderboards', icon: Trophy, perm: null },
         { href: '/matches/history', label: 'Match History', icon: History, perm: null },
       ];
@@ -134,16 +152,17 @@ export default function MobileNav() {
           { href: '/admin/bugs', label: 'Bug Reports', icon: Bug },
           { href: '/super-admin/players', label: 'Rating Overrides', icon: Trophy },
           { href: '/super-admin/audit-logs', label: 'Audit Logs', icon: FileText },
+          { href: '/settings/notifications', label: 'Notifications & Alerts', icon: Bell },
           { href: '/super-admin/settings', label: 'System Settings', icon: Settings },
         ],
       });
     }
 
-
     // Account
     sections.push({
       title: 'Account',
       items: [
+        { href: '/settings/notifications', label: 'Notification Settings & Diagnostics', icon: Bell },
         { href: '/profile', label: 'My Profile & Photo', icon: User },
       ],
     });
@@ -170,7 +189,49 @@ export default function MobileNav() {
           </div>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          {/* Mobile Top Notification Bell */}
+          <Link
+            href="/settings/notifications"
+            style={{
+              width: '36px',
+              height: '36px',
+              borderRadius: '50%',
+              backgroundColor: '#f1f5f9',
+              border: '1px solid #e2e8f0',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#0f172a',
+              position: 'relative',
+              textDecoration: 'none'
+            }}
+            title="Notifications"
+          >
+            <Bell size={17} />
+            {unreadCount > 0 && (
+              <span style={{
+                position: 'absolute',
+                top: '-2px',
+                right: '-2px',
+                minWidth: '16px',
+                height: '16px',
+                borderRadius: '8px',
+                backgroundColor: '#ef4444',
+                color: '#ffffff',
+                fontSize: '0.65rem',
+                fontWeight: 800,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                border: '2px solid #ffffff',
+                padding: '0 3px'
+              }}>
+                {unreadCount > 9 ? '9+' : unreadCount}
+              </span>
+            )}
+          </Link>
+
           <Link href="/profile" style={{ display: 'flex', alignItems: 'center' }}>
             <Avatar
               src={user.profile_photo}
