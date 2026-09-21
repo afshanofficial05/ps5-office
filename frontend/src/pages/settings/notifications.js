@@ -93,8 +93,9 @@ export default function NotificationSettingsPage() {
   const loadHistory = async () => {
     try {
       const list = await api.getInAppNotifications(20);
-      setNotifications(list || []);
+      setNotifications(Array.isArray(list) ? list : []);
     } catch (err) {
+      setNotifications([]);
       console.error('Failed to load notification history', err);
     } finally {
       setLoadingHistory(false);
@@ -185,7 +186,7 @@ export default function NotificationSettingsPage() {
   const handleMarkAllRead = async () => {
     try {
       await api.markAllNotificationsRead();
-      setNotifications(prev => prev.map(n => ({ ...n, is_read: true })));
+      setNotifications(prev => Array.isArray(prev) ? prev.map(n => ({ ...n, is_read: true })) : []);
     } catch (err) {
       console.error(err);
     }
@@ -589,7 +590,7 @@ export default function NotificationSettingsPage() {
                 Recent Notification Feed
               </h3>
             </div>
-            {notifications.length > 0 && (
+            {Array.isArray(notifications) && notifications.length > 0 && (
               <button
                 onClick={handleMarkAllRead}
                 style={{
@@ -610,7 +611,7 @@ export default function NotificationSettingsPage() {
             <div style={{ textAlign: 'center', padding: '24px', color: '#64748b' }}>
               Loading notification logs...
             </div>
-          ) : notifications.length === 0 ? (
+          ) : (!Array.isArray(notifications) || notifications.length === 0) ? (
             <div style={{
               textAlign: 'center',
               padding: '36px 20px',

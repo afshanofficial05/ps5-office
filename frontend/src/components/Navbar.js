@@ -18,21 +18,32 @@ export default function Navbar({ title, subtitle }) {
   const dropdownRef = useRef(null);
 
   const loadNotifications = async () => {
-    if (!user) return;
+    if (!user) {
+      setNotifications([]);
+      setUnreadCount(0);
+      return;
+    }
     try {
       const items = await api.getInAppNotifications(10);
-      setNotifications(items || []);
-      const unread = (items || []).filter(n => !n.is_read).length;
-      setUnreadCount(unread);
+      if (Array.isArray(items)) {
+        setNotifications(items);
+        setUnreadCount(items.filter(n => n && !n.is_read).length);
+      } else {
+        setNotifications([]);
+        setUnreadCount(0);
+      }
     } catch (err) {
-      // Ignore background errors
+      setNotifications([]);
+      setUnreadCount(0);
     }
   };
 
   useEffect(() => {
-    loadNotifications();
-    const interval = setInterval(loadNotifications, 15000);
-    return () => clearInterval(interval);
+    if (user) {
+      loadNotifications();
+      const interval = setInterval(loadNotifications, 20000);
+      return () => clearInterval(interval);
+    }
   }, [user]);
 
   // Click outside to close dropdown
@@ -187,7 +198,7 @@ export default function Navbar({ title, subtitle }) {
 
               {/* List */}
               <div style={{ maxHeight: '300px', overflowY: 'auto' }}>
-                {notifications.length === 0 ? (
+                {!Array.isArray(notifications) || notifications.length === 0 ? (
                   <div style={{ padding: '28px 16px', textAlign: 'center', color: '#64748b', fontSize: '0.84rem' }}>
                     No notifications yet
                   </div>

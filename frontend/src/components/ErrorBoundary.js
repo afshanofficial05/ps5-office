@@ -53,9 +53,29 @@ export class ErrorBoundary extends React.Component {
             <h2 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', marginBottom: '8px' }}>
               Something went wrong
             </h2>
-            <p style={{ fontSize: '0.88rem', color: '#64748b', marginBottom: '24px', lineHeight: 1.5 }}>
+            <p style={{ fontSize: '0.88rem', color: '#64748b', marginBottom: '16px', lineHeight: 1.5 }}>
               A temporary display error occurred. Please refresh or return to the main dashboard.
             </p>
+
+            {this.state.error && (
+              <div style={{
+                marginBottom: '20px',
+                padding: '12px 14px',
+                backgroundColor: '#fee2e2',
+                border: '1px solid #fecaca',
+                borderRadius: '10px',
+                color: '#991b1b',
+                fontSize: '0.78rem',
+                textAlign: 'left',
+                fontFamily: 'monospace',
+                maxHeight: '120px',
+                overflowY: 'auto',
+                lineHeight: 1.4
+              }}>
+                <strong>Error Details:</strong><br />
+                {this.state.error.message || String(this.state.error)}
+              </div>
+            )}
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
               <button
                 onClick={() => {
