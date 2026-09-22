@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Layout from '../../components/Layout';
 import RatingBadge from '../../components/RatingBadge';
 import Avatar from '../../components/Avatar';
+import ArenaDataLoader from '../../components/MorphingInfinity';
 import { useAuth } from '../../context/AuthContext';
 import { api } from '../../services/api';
 import { Users, Shield, Ban, CheckCircle, Trash2, ShieldAlert, Trophy, Award, Plus, X } from 'lucide-react';
@@ -127,6 +128,14 @@ export default function AdminPlayersPage() {
             You do not possess the <strong>VIEW_PLAYERS</strong> permission required to access the player registry.
           </p>
         </div>
+      </Layout>
+    );
+  }
+
+  if (loading) {
+    return (
+      <Layout title="Player Management" requireAuth={true} allowedRoles={['ADMIN', 'SUPER_ADMIN']}>
+        <ArenaDataLoader text="Loading Player Registry..." subtext="Fetching registered players and ratings..." />
       </Layout>
     );
   }

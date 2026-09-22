@@ -32,18 +32,12 @@ Built strictly according to specifications in [feasibility.md](file:///c:/Users/
 
 ---
 
-## 👥 Default Demo Credentials
+## 👥 Platform Admin Credentials
 
 | Role | Email | Password | Player ID | Permissions |
 | :--- | :--- | :--- | :--- | :--- |
-| **Super Admin** | `superadmin@pso.com` | `admin123` | `PSO-001` | Full System Authority |
-| **Gaming Admin** | `admin@pso.com` | `admin123` | `PSO-002` | Matches, Verification, Teams |
-| **Player 1** | `alex@pso.com` | `player123` | `PSO-1001` | Player Arena |
-| **Player 2** | `sarah@pso.com` | `player123` | `PSO-1002` | Player Arena |
-| **Player 3** | `marcus@pso.com` | `player123` | `PSO-1003` | Player Arena |
-| **Player 4** | `elena@pso.com` | `player123` | `PSO-1004` | Player Arena |
-
-*Note: You can also use the One-Click Demo Login buttons directly on the Login page.*
+| **Super Admin** | `speakerboxai@gmail.com` | `sbx@6004` | `PSO-001` | Full System Authority |
+| **Gaming Admin** | `adminsbxpso2026@gmail.com` | `pso2026` | `PSO-002` | Matches, Verification, Teams |
 
 ---
 

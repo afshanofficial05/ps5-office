@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Layout from '../../components/Layout';
+import ArenaDataLoader from '../../components/MorphingInfinity';
 import { useAuth } from '../../context/AuthContext';
 import { api } from '../../services/api';
 import { 
@@ -275,12 +276,7 @@ export default function AdminTeamsPage() {
   if (loading) {
     return (
       <Layout title="Teams & Requests" requireAuth={true}>
-        <div style={{ textAlign: 'center', padding: '100px 0' }}>
-          <div className="spinner" />
-          <p style={{ marginTop: '16px', color: '#64748b', fontWeight: 600 }}>
-            Loading FC team database & requests...
-          </p>
-        </div>
+        <ArenaDataLoader text="Loading FC Teams & Requests..." subtext="Syncing official club ratings and squad database..." />
       </Layout>
     );
   }

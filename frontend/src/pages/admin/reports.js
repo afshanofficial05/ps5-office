@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../../components/Layout';
+import ArenaDataLoader from '../../components/MorphingInfinity';
 import { useAuth } from '../../context/AuthContext';
 import { api } from '../../services/api';
 import { 
@@ -88,6 +89,14 @@ export default function AdminReportsPage() {
             You do not possess the <strong>VIEW_REPORTS</strong> permission required to access platform reports.
           </p>
         </div>
+      </Layout>
+    );
+  }
+
+  if (loading) {
+    return (
+      <Layout title="Platform Reports" requireAuth={true} allowedRoles={['ADMIN', 'SUPER_ADMIN']}>
+        <ArenaDataLoader text="Loading Platform Analytics..." subtext="Compiling match reports and export data..." />
       </Layout>
     );
   }

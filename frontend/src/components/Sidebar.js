@@ -6,7 +6,7 @@ import Avatar from './Avatar';
 import { 
   Gamepad2, Swords, Trophy, History, User, Users, Shield, 
   Settings, CheckSquare, PlusCircle, LogIn, FileText, Activity, ShieldCheck,
-  HelpCircle, Home, ChevronRight, Sparkles, LayoutDashboard, Calendar, BarChart3, Award, Bug, Bell
+  HelpCircle, Home, ChevronRight, Sparkles, LayoutDashboard, Calendar, BarChart3, Award, Bug, Bell, Lightbulb
 } from 'lucide-react';
 
 export default function Sidebar() {
@@ -25,7 +25,7 @@ export default function Sidebar() {
     { label: 'Leaderboards', href: '/leaderboards', icon: Trophy },
     { label: 'My Matches', href: '/matches/history', icon: History },
     { label: 'Notifications', href: '/settings/notifications', icon: Bell },
-    { label: 'Report a Bug', href: '/bugs', icon: Bug },
+    { label: 'Improvement Box', href: '/bugs', icon: Lightbulb },
     { label: 'My Profile', href: '/profile', icon: User },
   ];
 
@@ -37,7 +37,7 @@ export default function Sidebar() {
     { label: 'Manual Match Entry', href: '/admin/manual', icon: Swords, requiredPerm: 'MANUAL_MATCH_CREATE' },
     { label: 'Players Directory', href: '/admin/players', icon: Users, requiredPerm: 'VIEW_PLAYERS' },
     { label: 'Teams Database', href: '/admin/teams', icon: Shield, requiredPerm: 'VIEW_TEAMS' },
-    { label: 'Bug Reports', href: '/admin/bugs', icon: Bug, requiredPerm: null },
+    { label: 'Improvement Box', href: '/admin/bugs', icon: Lightbulb, requiredPerm: null },
     { label: 'Platform Reports', href: '/admin/reports', icon: BarChart3, requiredPerm: 'VIEW_REPORTS' },
     { label: 'Notifications', href: '/settings/notifications', icon: Bell, requiredPerm: null },
     { label: 'Leaderboards', href: '/leaderboards', icon: Trophy, requiredPerm: null },
@@ -55,7 +55,7 @@ export default function Sidebar() {
     { label: 'Pending Results', href: '/admin/pending', icon: CheckSquare },
     { label: 'Manual Match', href: '/admin/manual', icon: Swords },
     { label: 'Teams & Ratings', href: '/admin/teams', icon: Shield },
-    { label: 'Bug Reports', href: '/admin/bugs', icon: Bug },
+    { label: 'Improvement Box', href: '/admin/bugs', icon: Lightbulb },
     { label: 'Platform Reports', href: '/admin/reports', icon: BarChart3 },
     { label: 'Notifications', href: '/settings/notifications', icon: Bell },
     { label: 'Leaderboards', href: '/leaderboards', icon: Trophy },

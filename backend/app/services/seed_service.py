@@ -72,56 +72,24 @@ def seed_database(db: Session):
         db.flush()
         db.add_all([TeamStatistic(team_id=t.id) for t in new_teams])
 
-    # 5. Users: Super Admin, Admin, and Players
+    # 5. Users: Super Admin & Gaming Admin only
     users_to_seed = [
         {
             "player_id": "PSO-001",
             "name": "Super Admin",
-            "email": "superadmin@pso.com",
-            "password": "admin123",
+            "email": "speakerboxai@gmail.com",
+            "password": "sbx@6004",
             "role": UserRole.SUPER_ADMIN,
             "photo": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
         },
         {
             "player_id": "PSO-002",
             "name": "Gaming Admin",
-            "email": "admin@pso.com",
-            "password": "admin123",
+            "email": "adminsbxpso2026@gmail.com",
+            "password": "pso2026",
             "role": UserRole.ADMIN,
             "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80"
-        },
-        {
-            "player_id": "PSO-1001",
-            "name": "Alex Mercer",
-            "email": "alex@pso.com",
-            "password": "player123",
-            "role": UserRole.USER,
-            "photo": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80"
-        },
-        {
-            "player_id": "PSO-1002",
-            "name": "Sarah Connor",
-            "email": "sarah@pso.com",
-            "password": "player123",
-            "role": UserRole.USER,
-            "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80"
-        },
-        {
-            "player_id": "PSO-1003",
-            "name": "Marcus Vance",
-            "email": "marcus@pso.com",
-            "password": "player123",
-            "role": UserRole.USER,
-            "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80"
-        },
-        {
-            "player_id": "PSO-1004",
-            "name": "Elena Rostova",
-            "email": "elena@pso.com",
-            "password": "player123",
-            "role": UserRole.USER,
-            "photo": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80"
-        },
+        }
     ]
 
     for u_info in users_to_seed:

@@ -7,7 +7,7 @@ import { api } from '../services/api';
 import {
   Menu, X, Home, Swords, Trophy, Shield, User, History,
   CheckSquare, Users, Settings, FileText, LogOut, ChevronRight,
-  Gamepad2, PlusCircle, Calendar, BarChart3, Plus, Camera, KeyRound, Sparkles, Award, Bug, Bell
+  Gamepad2, PlusCircle, Calendar, BarChart3, Plus, Camera, KeyRound, Sparkles, Award, Bug, Bell, Lightbulb
 } from 'lucide-react';
 
 export default function MobileNav() {
@@ -110,7 +110,7 @@ export default function MobileNav() {
           { href: '/leaderboards', label: 'Leaderboards', icon: Trophy },
           { href: '/matches/history', label: 'Match History', icon: History },
           { href: '/settings/notifications', label: 'Notifications & Alerts', icon: Bell },
-          { href: '/bugs', label: 'Report a Bug', icon: Bug },
+          { href: '/bugs', label: 'Improvement Box', icon: Lightbulb },
         ],
       });
     }
@@ -125,7 +125,7 @@ export default function MobileNav() {
         { href: '/admin/teams', label: 'Teams & Requests', icon: Gamepad2, perm: 'VIEW_TEAMS' },
         { href: '/admin/players', label: 'Player Accounts', icon: Users, perm: 'VIEW_PLAYERS' },
         { href: '/admin/manual', label: 'Record Match', icon: Swords, perm: 'MANUAL_MATCH_CREATE' },
-        { href: '/admin/bugs', label: 'Bug Reports', icon: Bug, perm: null },
+        { href: '/admin/bugs', label: 'Improvement Box', icon: Lightbulb, perm: null },
         { href: '/admin/reports', label: 'Platform Reports', icon: BarChart3, perm: 'VIEW_REPORTS' },
         { href: '/settings/notifications', label: 'Notifications & Alerts', icon: Bell, perm: null },
         { href: '/leaderboards', label: 'Leaderboards', icon: Trophy, perm: null },
@@ -149,7 +149,7 @@ export default function MobileNav() {
         items: [
           { href: '/super-admin', label: 'Executive Console', icon: Shield },
           { href: '/super-admin/admins', label: 'Staff Management', icon: Users },
-          { href: '/admin/bugs', label: 'Bug Reports', icon: Bug },
+          { href: '/admin/bugs', label: 'Improvement Box', icon: Lightbulb },
           { href: '/super-admin/players', label: 'Rating Overrides', icon: Trophy },
           { href: '/super-admin/audit-logs', label: 'Audit Logs', icon: FileText },
           { href: '/settings/notifications', label: 'Notifications & Alerts', icon: Bell },

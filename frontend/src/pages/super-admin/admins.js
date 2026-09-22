@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../../components/Layout';
 import Avatar from '../../components/Avatar';
+import ArenaDataLoader from '../../components/MorphingInfinity';
 import { api } from '../../services/api';
 import { 
   ShieldCheck, Plus, Edit2, Check, X, Shield, Lock, Calendar, 
@@ -191,6 +192,14 @@ export default function SuperAdminAdminsPage() {
       console.error('Failed to toggle status', err);
     }
   };
+
+  if (loading) {
+    return (
+      <Layout title="Admin Management" requireAuth={true} allowedRoles={['SUPER_ADMIN']}>
+        <ArenaDataLoader text="Loading Staff & Administrators..." subtext="Syncing admin permissions and security credentials..." />
+      </Layout>
+    );
+  }
 
   return (
     <Layout title="Admin Management" requireAuth={true} allowedRoles={['SUPER_ADMIN']}>

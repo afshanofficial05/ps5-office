@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import { useAuth } from '../context/AuthContext';
-import { Gamepad2, Lock, Mail, User, ArrowRight, ShieldCheck, Zap } from 'lucide-react';
+import { Gamepad2, Lock, Mail, User, ArrowRight, ShieldCheck } from 'lucide-react';
 import FootballLoader from '../components/FootballLoader';
 
 export default function LoginPage() {
@@ -37,23 +37,6 @@ export default function LoginPage() {
       }
     } catch (err) {
       setError(err.message || 'Authentication failed');
-    } finally {
-      clearTimeout(slowTimer);
-      setIsSlowLoading(false);
-      setLoading(false);
-    }
-  };
-
-  const handleQuickDemo = async (demoEmail, demoPassword) => {
-    setEmail(demoEmail);
-    setPassword(demoPassword);
-    setError('');
-    setLoading(true);
-    const slowTimer = startSlowTimer();
-    try {
-      await login(demoEmail, demoPassword);
-    } catch (err) {
-      setError(err.message || 'Demo login failed');
     } finally {
       clearTimeout(slowTimer);
       setIsSlowLoading(false);
@@ -237,51 +220,6 @@ export default function LoginPage() {
               >
                 {isRegister ? 'Already have an account? Sign In' : 'New player? Create an account'}
               </button>
-            </div>
-
-            {/* Demo Login Shortcuts */}
-            <div style={{ marginTop: '28px', paddingTop: '20px', borderTop: '1px solid #f1f5f9' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '12px', justifyContent: 'center' }}>
-                <Zap size={14} color="#2563eb" />
-                <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                  One-Click Demo Credentials
-                </span>
-              </div>
-
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
-                <button
-                  type="button"
-                  onClick={() => handleQuickDemo('alex@pso.com', 'player123')}
-                  className="btn btn-secondary"
-                  style={{ fontSize: '0.78rem', padding: '8px', borderRadius: '10px' }}
-                >
-                  ⚽ Alex (Player 1)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleQuickDemo('sarah@pso.com', 'player123')}
-                  className="btn btn-secondary"
-                  style={{ fontSize: '0.78rem', padding: '8px', borderRadius: '10px' }}
-                >
-                  ⚽ Sarah (Player 2)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleQuickDemo('admin@pso.com', 'admin123')}
-                  className="btn btn-secondary"
-                  style={{ fontSize: '0.78rem', padding: '8px', borderRadius: '10px' }}
-                >
-                  🛡️ Gaming Admin
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleQuickDemo('superadmin@pso.com', 'admin123')}
-                  className="btn btn-secondary"
-                  style={{ fontSize: '0.78rem', padding: '8px', borderRadius: '10px' }}
-                >
-                  👑 Super Admin
-                </button>
-              </div>
             </div>
           </>
         )}

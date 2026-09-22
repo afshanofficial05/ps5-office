@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Layout from '../../components/Layout';
 import Avatar from '../../components/Avatar';
 import ScreenshotUploader from '../../components/ScreenshotUploader';
+import ArenaDataLoader from '../../components/MorphingInfinity';
 import { useAuth } from '../../context/AuthContext';
 import { api } from '../../services/api';
 import { 
@@ -202,9 +203,7 @@ export default function SubmitMatchResultPage() {
   if (loading) {
     return (
       <Layout title="Submit Match Result" requireAuth={true}>
-        <div style={{ textAlign: 'center', padding: '60px', color: '#64748b' }}>
-          Loading match submission arena...
-        </div>
+        <ArenaDataLoader text="Loading Submission Arena..." subtext="Fetching recent matches and player roster..." />
       </Layout>
     );
   }

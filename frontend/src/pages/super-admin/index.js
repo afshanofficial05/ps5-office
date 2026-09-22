@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Layout from '../../components/Layout';
+import ArenaDataLoader from '../../components/MorphingInfinity';
 import { api } from '../../services/api';
 import { 
   ShieldCheck, Users, Swords, Activity, Settings, FileText, 
@@ -24,6 +25,14 @@ export default function SuperAdminDashboardPage() {
     }
     loadStats();
   }, []);
+
+  if (loading) {
+    return (
+      <Layout title="Super Admin Control Center" requireAuth={true} allowedRoles={['SUPER_ADMIN']}>
+        <ArenaDataLoader text="Loading Executive Console..." subtext="Syncing system stats, audit records, and server metrics..." />
+      </Layout>
+    );
+  }
 
   return (
     <Layout title="Super Admin Control Center" requireAuth={true} allowedRoles={['SUPER_ADMIN']}>

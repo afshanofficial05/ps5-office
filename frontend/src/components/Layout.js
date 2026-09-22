@@ -5,6 +5,8 @@ import Sidebar from './Sidebar';
 import Navbar from './Navbar';
 import MobileNav from './MobileNav';
 
+import ArenaDataLoader from './MorphingInfinity';
+
 export default function Layout({ children, title, subtitle, requireAuth = true, allowedRoles = [] }) {
   const { user, loading } = useAuth();
   const router = useRouter();
@@ -28,24 +30,9 @@ export default function Layout({ children, title, subtitle, requireAuth = true, 
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'var(--bg-main)',
-        flexDirection: 'column',
-        gap: '16px'
+        backgroundColor: 'var(--bg-main)'
       }}>
-        <div style={{
-          width: '48px',
-          height: '48px',
-          borderRadius: '50%',
-          border: '4px solid rgba(99, 102, 241, 0.2)',
-          borderTopColor: '#6366f1',
-          animation: 'spin 1s linear infinite'
-        }} />
-        <style jsx>{`
-          @keyframes spin {
-            to { transform: rotate(360deg); }
-          }
-        `}</style>
-        <p style={{ color: '#94a3b8', fontSize: '0.9rem', fontWeight: 600 }}>Loading PSO Gaming Arena...</p>
+        <ArenaDataLoader text="Loading PSO Gaming Arena..." />
       </div>
     );
   }

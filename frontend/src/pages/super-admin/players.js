@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Layout from '../../components/Layout';
 import RatingBadge from '../../components/RatingBadge';
 import Avatar from '../../components/Avatar';
+import ArenaDataLoader from '../../components/MorphingInfinity';
 import { api } from '../../services/api';
 import { Users, Edit3, Save, X, AlertTriangle, Check } from 'lucide-react';
 
@@ -68,6 +69,14 @@ export default function SuperAdminPlayersPage() {
       setSubmitting(false);
     }
   };
+
+  if (loading) {
+    return (
+      <Layout title="Player Rating Overrides & Audits" requireAuth={true} allowedRoles={['SUPER_ADMIN']}>
+        <ArenaDataLoader text="Loading Player Roster..." subtext="Syncing player accounts and Elo ratings..." />
+      </Layout>
+    );
+  }
 
   return (
     <Layout title="Player Rating Overrides & Audits" requireAuth={true} allowedRoles={['SUPER_ADMIN']}>

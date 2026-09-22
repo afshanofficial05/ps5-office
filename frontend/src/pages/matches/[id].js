@@ -5,6 +5,7 @@ import RatingBadge from '../../components/RatingBadge';
 import RatingAnimation from '../../components/RatingAnimation';
 import WhatsAppShareModal from '../../components/WhatsAppShareModal';
 import ScreenshotUploader from '../../components/ScreenshotUploader';
+import ArenaDataLoader from '../../components/MorphingInfinity';
 import { useAuth } from '../../context/AuthContext';
 import { api } from '../../services/api';
 import { 
@@ -275,9 +276,7 @@ export default function MatchRoomPage() {
   if (loading) {
     return (
       <Layout title="Match Arena" requireAuth={true}>
-        <div style={{ textAlign: 'center', padding: '60px', color: '#64748b' }}>
-          Loading match lobby...
-        </div>
+        <ArenaDataLoader text="Loading Match Arena..." subtext="Syncing lobby and live game session data..." />
       </Layout>
     );
   }

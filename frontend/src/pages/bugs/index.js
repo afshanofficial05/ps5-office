@@ -5,7 +5,8 @@ import { api } from '../../services/api';
 import { 
   Bug, PlusCircle, CheckCircle2, Clock, AlertTriangle, 
   Upload, X, Image as ImageIcon, Laptop, Smartphone, HelpCircle, 
-  ChevronDown, ChevronUp, Check, ExternalLink, RefreshCw, MessageSquare, Loader2
+  ChevronDown, ChevronUp, Check, ExternalLink, RefreshCw, MessageSquare, Loader2,
+  Lightbulb, Sparkles, Inbox
 } from 'lucide-react';
 import { compressScreenshot, formatFileSize } from '../../utils/imageCompressor';
 
@@ -16,13 +17,13 @@ const CATEGORIES = [
   { id: 'TEAMS', label: 'Teams Database & Squad Selection' },
   { id: 'PROFILE', label: 'Profile, Photo & Account' },
   { id: 'UI_ALIGNMENT', label: 'Visual Glitch / Mobile Layout' },
-  { id: 'OTHER', label: 'Other General Bug' },
+  { id: 'OTHER', label: 'Feature Suggestion & General Improvement' },
 ];
 
 const SEVERITIES = [
-  { id: 'LOW', label: 'Low — Minor visual or typo issue', color: '#64748b', bg: '#f1f5f9' },
-  { id: 'MEDIUM', label: 'Medium — Noticeable but workaround exists', color: '#d97706', bg: '#fef3c7' },
-  { id: 'HIGH', label: 'High — Core feature malfunctioning', color: '#ea580c', bg: '#ffedd5' },
+  { id: 'LOW', label: 'Low — Suggestion or minor visual tweak', color: '#64748b', bg: '#f1f5f9' },
+  { id: 'MEDIUM', label: 'Medium — Noticeable issue or workflow enhancement', color: '#d97706', bg: '#fef3c7' },
+  { id: 'HIGH', label: 'High — Core feature malfunctioning or major improvement', color: '#ea580c', bg: '#ffedd5' },
   { id: 'CRITICAL', label: 'Critical — Blocks gameplay or crashes', color: '#dc2626', bg: '#fee2e2' },
 ];
 
@@ -185,7 +186,7 @@ export default function BugReportPage() {
       setDescription('');
       setStepsToReproduce('');
       handleRemoveImage();
-      setSuccess('Bug report submitted successfully! Developers have been notified.');
+      setSuccess('Improvement submitted successfully! Our team has been notified.');
 
       // Refresh bug list
       loadMyBugs();
@@ -198,7 +199,7 @@ export default function BugReportPage() {
 
     } catch (err) {
       console.error('Failed to submit bug', err);
-      setError(err.message || 'Failed to submit bug report. Please try again.');
+      setError(err.message || 'Failed to submit improvement. Please try again.');
     } finally {
       setSubmitting(false);
       setUploadingImage(false);
@@ -297,7 +298,7 @@ export default function BugReportPage() {
   };
 
   return (
-    <Layout title="Bug & Issue Reporting" requireAuth={true}>
+    <Layout title="Improvement Box" requireAuth={true}>
       <div style={{ maxWidth: '900px', margin: '0 auto', width: '100%' }}>
         
         {/* Header Banner */}
@@ -327,14 +328,28 @@ export default function BugReportPage() {
               boxShadow: '0 4px 12px rgba(37, 99, 235, 0.3)',
               flexShrink: 0
             }}>
-              <Bug size={24} />
+              <Lightbulb size={24} />
             </div>
             <div>
-              <h2 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#0f172a', margin: 0 }}>
-                Platform Bug Reporting
-              </h2>
-              <p style={{ color: '#64748b', fontSize: '0.86rem', marginTop: '3px' }}>
-                Encountered an issue or glitch? Submit a report so our engineering team can investigate and fix it.
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                <h2 style={{ fontSize: '1.3rem', fontWeight: 800, color: '#0f172a', margin: 0 }}>
+                  Improvement Box
+                </h2>
+                <span style={{
+                  fontSize: '0.72rem',
+                  fontWeight: 800,
+                  backgroundColor: '#dbeafe',
+                  color: '#1d4ed8',
+                  padding: '3px 8px',
+                  borderRadius: '20px',
+                  letterSpacing: '0.04em',
+                  textTransform: 'uppercase'
+                }}>
+                  Standard Platform Quality
+                </span>
+              </div>
+              <p style={{ color: '#64748b', fontSize: '0.86rem', marginTop: '4px' }}>
+                Have an idea, found a glitch, or want to suggest an improvement? Submit your feedback to help us maintain platform standards.
               </p>
             </div>
           </div>
@@ -362,7 +377,7 @@ export default function BugReportPage() {
                 transition: 'all 0.15s ease'
               }}
             >
-              Report Bug
+              Submit Improvement
             </button>
             <button
               type="button"
@@ -379,7 +394,7 @@ export default function BugReportPage() {
                 transition: 'all 0.15s ease'
               }}
             >
-              My Reports ({myBugs.length})
+              My Submissions ({myBugs.length})
             </button>
           </div>
         </div>
@@ -387,6 +402,30 @@ export default function BugReportPage() {
         {/* TAB 1: REPORT BUG FORM */}
         {activeTab === 'REPORT' && (
           <div className="glass-card" style={{ padding: '28px', background: '#ffffff', borderRadius: '18px' }}>
+
+            {/* Quality Standards Banner */}
+            <div style={{
+              padding: '14px 18px',
+              borderRadius: '12px',
+              backgroundColor: '#f8fafc',
+              border: '1.5px solid #e2e8f0',
+              marginBottom: '20px',
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '12px'
+            }}>
+              <Sparkles size={20} color="#2563eb" style={{ flexShrink: 0, marginTop: '2px' }} />
+              <div>
+                <div style={{ fontSize: '0.86rem', fontWeight: 700, color: '#0f172a' }}>
+                  Platform Quality & Submission Standards
+                </div>
+                <div style={{ fontSize: '0.78rem', color: '#64748b', marginTop: '3px', lineHeight: 1.5 }}>
+                  <strong>Be Specific:</strong> Clearly state what feature or flow can be improved.<br />
+                  <strong>Context & Steps:</strong> Include steps to reproduce glitches or context for your idea.<br />
+                  <strong>Visual Evidence:</strong> Screenshots or photo proof help our developers evaluate and resolve quickly.
+                </div>
+              </div>
+            </div>
             
             {error && (
               <div style={{
@@ -423,15 +462,15 @@ export default function BugReportPage() {
             )}
 
             <form onSubmit={handleSubmit}>
-              {/* Bug Title */}
+              {/* Improvement Title */}
               <div style={{ marginBottom: '18px' }}>
                 <label style={{ display: 'block', fontSize: '0.86rem', fontWeight: 700, color: '#0f172a', marginBottom: '6px' }}>
-                  Bug Title / Summary *
+                  Improvement Title / Summary *
                 </label>
                 <input
                   type="text"
                   required
-                  placeholder="e.g. Leaderboard win streak didn't increase after verified match"
+                  placeholder="e.g. Add quick search in team selection or fix match score verification button"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   className="form-input"
@@ -681,11 +720,11 @@ export default function BugReportPage() {
                   {compressing ? (
                     <span>Compressing image...</span>
                   ) : submitting ? (
-                    <span>Submitting Report...</span>
+                    <span>Submitting Improvement...</span>
                   ) : (
                     <>
-                      <Bug size={16} />
-                      <span>Submit Bug Report</span>
+                      <Lightbulb size={16} />
+                      <span>Submit to Improvement Box</span>
                     </>
                   )}
                 </button>
@@ -694,20 +733,20 @@ export default function BugReportPage() {
           </div>
         )}
 
-        {/* TAB 2: MY BUG REPORTS */}
+        {/* TAB 2: MY IMPROVEMENTS */}
         {activeTab === 'MY_BUGS' && (
           <div>
             {loadingBugs ? (
               <div style={{ textAlign: 'center', padding: '40px', color: '#64748b' }}>
                 <RefreshCw size={28} className="spin" style={{ margin: '0 auto 10px auto', color: '#2563eb' }} />
-                <p style={{ fontSize: '0.9rem', fontWeight: 600 }}>Loading your bug reports...</p>
+                <p style={{ fontSize: '0.9rem', fontWeight: 600 }}>Loading your submissions...</p>
               </div>
             ) : myBugs.length === 0 ? (
               <div className="glass-card" style={{ padding: '40px 20px', textAlign: 'center', background: '#ffffff', borderRadius: '18px' }}>
                 <CheckCircle2 size={44} color="#059669" style={{ margin: '0 auto 12px auto', opacity: 0.8 }} />
-                <h3 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#0f172a' }}>No Bug Reports Submitted</h3>
-                <p style={{ fontSize: '0.85rem', color: '#64748b', marginTop: '4px', maxWidth: '400px', margin: '4px auto 16px auto' }}>
-                  You haven't reported any issues yet. If you ever run into a problem while playing, let our team know!
+                <h3 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#0f172a' }}>No Improvements Submitted Yet</h3>
+                <p style={{ fontSize: '0.85rem', color: '#64748b', marginTop: '4px', maxWidth: '420px', margin: '4px auto 16px auto' }}>
+                  You haven't submitted any improvements yet. If you have any suggestions, found a bug, or want an enhancement, drop it in the Improvement Box!
                 </p>
                 <button
                   type="button"
@@ -716,7 +755,7 @@ export default function BugReportPage() {
                   style={{ padding: '8px 18px', fontSize: '0.85rem' }}
                 >
                   <PlusCircle size={15} />
-                  <span>Report an Issue</span>
+                  <span>Submit an Improvement</span>
                 </button>
               </div>
             ) : (

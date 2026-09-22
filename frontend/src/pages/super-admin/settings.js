@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../../components/Layout';
+import ArenaDataLoader from '../../components/MorphingInfinity';
 import { api } from '../../services/api';
 import { Settings, Calendar, Save, Plus, Check } from 'lucide-react';
 
@@ -75,6 +76,14 @@ export default function SuperAdminSettingsPage() {
       setCreatingSeason(false);
     }
   };
+
+  if (loading) {
+    return (
+      <Layout title="Elo Engine & System Settings" requireAuth={true} allowedRoles={['SUPER_ADMIN']}>
+        <ArenaDataLoader text="Loading Elo & System Settings..." subtext="Fetching global configuration and tournament parameters..." />
+      </Layout>
+    );
+  }
 
   return (
     <Layout title="Elo Engine & System Settings" requireAuth={true} allowedRoles={['SUPER_ADMIN']}>

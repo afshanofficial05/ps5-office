@@ -222,7 +222,7 @@ export default function AdminBugsPage() {
   };
 
   return (
-    <Layout title="Bug Reports & Issue Tracker" requireAuth={true} allowedRoles={['ADMIN', 'SUPER_ADMIN']}>
+    <Layout title="Improvement Box & Quality Tracker" requireAuth={true} allowedRoles={['ADMIN', 'SUPER_ADMIN']}>
       <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
 
         {/* Top Header & Analytics Banner */}
@@ -236,10 +236,10 @@ export default function AdminBugsPage() {
         }}>
           <div>
             <h2 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0f172a', margin: 0 }}>
-              Platform Bug Reports & Developer Tracker
+              Platform Improvement Box & Quality Tracker
             </h2>
             <p style={{ color: '#64748b', fontSize: '0.86rem', marginTop: '3px' }}>
-              Inspect user and admin reports, triage severity, analyze device diagnostics, and document fixes.
+              Inspect user suggestions, bug reports, triage severity, analyze device diagnostics, and uphold platform standards.
             </p>
           </div>
 
@@ -251,7 +251,7 @@ export default function AdminBugsPage() {
             style={{ padding: '8px 16px', fontSize: '0.84rem' }}
           >
             <RefreshCw size={14} className={refreshing ? 'spin' : ''} />
-            <span>{refreshing ? 'Refreshing...' : 'Refresh Reports'}</span>
+            <span>{refreshing ? 'Refreshing...' : 'Refresh Submissions'}</span>
           </button>
         </div>
 
@@ -390,20 +390,20 @@ export default function AdminBugsPage() {
           </div>
         </div>
 
-        {/* Bug Reports List */}
+        {/* Submissions List */}
         {loading ? (
           <div style={{ textAlign: 'center', padding: '60px', color: '#64748b' }}>
             <RefreshCw size={32} className="spin" style={{ margin: '0 auto 12px auto', color: '#2563eb' }} />
-            <p style={{ fontSize: '0.95rem', fontWeight: 600 }}>Loading bug reports...</p>
+            <p style={{ fontSize: '0.95rem', fontWeight: 600 }}>Loading submissions...</p>
           </div>
         ) : filteredBugs.length === 0 ? (
           <div className="glass-card" style={{ padding: '48px 20px', textAlign: 'center', background: '#ffffff', borderRadius: '18px' }}>
             <Bug size={44} color="#94a3b8" style={{ margin: '0 auto 12px auto' }} />
-            <h3 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#0f172a' }}>No Bug Reports Found</h3>
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#0f172a' }}>No Improvement Reports Found</h3>
             <p style={{ fontSize: '0.85rem', color: '#64748b', marginTop: '4px' }}>
               {searchQuery || statusFilter !== 'ALL' || categoryFilter !== 'ALL' || severityFilter !== 'ALL'
                 ? 'No reports match your selected filters. Try clearing search or reset filters.'
-                : 'Great news! There are currently no unresolved bug reports.'}
+                : 'Great news! There are currently no pending improvement reports.'}
             </p>
             {(searchQuery || statusFilter !== 'ALL' || categoryFilter !== 'ALL' || severityFilter !== 'ALL') && (
               <button

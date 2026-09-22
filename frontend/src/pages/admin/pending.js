@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../../components/Layout';
+import ArenaDataLoader from '../../components/MorphingInfinity';
 import { useAuth } from '../../context/AuthContext';
 import { api } from '../../services/api';
 import { 
@@ -106,20 +107,28 @@ export default function PendingVerificationPage() {
 
   if (!canVerify) {
     return (
-      <Layout title="Result Verification Queue" requireAuth={true} allowedRoles={['ADMIN', 'SUPER_ADMIN']}>
+      <Layout title="Pending Verification" requireAuth={true} allowedRoles={['ADMIN', 'SUPER_ADMIN']}>
         <div style={{ maxWidth: '800px', margin: '40px auto', textAlign: 'center', padding: '40px' }} className="glass-card">
           <ShieldAlert size={48} color="#ef4444" style={{ margin: '0 auto 16px auto' }} />
           <h2 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0f172a' }}>Permission Denied</h2>
           <p style={{ color: '#64748b', marginTop: '8px' }}>
-            You do not possess the <strong>VERIFY_RESULTS</strong> permission required to review pending results.
+            You do not possess the <strong>VERIFY_RESULTS</strong> permission required to review and verify match scores.
           </p>
         </div>
       </Layout>
     );
   }
 
+  if (loading) {
+    return (
+      <Layout title="Pending Verification" requireAuth={true} allowedRoles={['ADMIN', 'SUPER_ADMIN']}>
+        <ArenaDataLoader text="Loading Pending Queue..." subtext="Syncing unverified match submissions and photo evidence..." />
+      </Layout>
+    );
+  }
+
   return (
-    <Layout title="Result Verification Queue" requireAuth={true} allowedRoles={['ADMIN', 'SUPER_ADMIN']}>
+    <Layout title="Pending Verification" requireAuth={true} allowedRoles={['ADMIN', 'SUPER_ADMIN']}>
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
 
 
