@@ -7,11 +7,11 @@ import FootballLoader from '../components/FootballLoader';
 export default function LoginPage() {
   const { login, register } = useAuth();
   const [isRegister, setIsRegister] = useState(false);
-  
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
+
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [isSlowLoading, setIsSlowLoading] = useState(false);
@@ -160,7 +160,7 @@ export default function LoginPage() {
 
               <div>
                 <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, color: '#334155', marginBottom: '6px' }}>
-                  Office Email
+                  Email
                 </label>
                 <div style={{ position: 'relative' }}>
                   <Mail size={18} color="#94a3b8" style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)' }} />
