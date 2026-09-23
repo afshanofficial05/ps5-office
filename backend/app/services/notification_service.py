@@ -12,6 +12,16 @@ from backend.app.models.models import (
 
 logger = logging.getLogger("notifications")
 
+class PushResult:
+    def __init__(self, success: bool, is_expired: bool = False, error: Optional[str] = None):
+        self.success = success
+        self.is_expired = is_expired
+        self.error = error
+
+    def __bool__(self):
+        return self.success
+
+
 class NotificationService:
     @staticmethod
     def get_vapid_claims() -> Dict[str, str]:
@@ -26,14 +36,14 @@ class NotificationService:
         p256dh: str,
         auth: str,
         payload: Dict[str, Any]
-    ) -> bool:
+    ) -> PushResult:
         """
         Sends an encrypted Web Push notification to a specific browser endpoint.
-        Returns True if successful, False otherwise.
+        Returns a PushResult. is_expired is True ONLY when HTTP 404 or 410 is returned.
         """
         if not settings.VAPID_PUBLIC_KEY or not settings.VAPID_PRIVATE_KEY:
             logger.warning("[PUSH] VAPID keys not configured. Skipping push delivery.")
-            return False
+            return PushResult(False, False, "VAPID keys not configured")
 
         subscription_info = {
             "endpoint": endpoint,
@@ -51,16 +61,15 @@ class NotificationService:
                 vapid_claims=NotificationService.get_vapid_claims(),
                 ttl=3600
             )
-            return True
+            return PushResult(True, False)
         except WebPushException as ex:
-            # 404 or 410 means subscription expired or revoked
-            logger.warning(f"[PUSH ERROR] Failed to send push: {ex}")
-            if ex.response and ex.response.status_code in [404, 410]:
-                return False
-            return False
+            status_code = getattr(ex.response, "status_code", None) if hasattr(ex, "response") and ex.response else None
+            is_expired = status_code in [404, 410]
+            logger.warning(f"[PUSH ERROR] Failed to send push (status={status_code}, expired={is_expired}): {ex}")
+            return PushResult(False, is_expired, str(ex))
         except Exception as e:
             logger.error(f"[PUSH ERROR] Unexpected error sending push: {e}")
-            return False
+            return PushResult(False, False, str(e))
 
     @staticmethod
     def create_in_app_notification(
@@ -87,6 +96,7 @@ class NotificationService:
     def notify_room_created(db: Session, match: Match, creator: User):
         """
         Broadcasts notification to all active players who have notify_rooms enabled.
+        Delivers to all registered devices for each eligible user.
         """
         title = f"⚽ New {match.game_mode} Match Room!"
         body = f"{creator.name} opened room {match.match_code}. Tap to challenge or join!"
@@ -105,7 +115,7 @@ class NotificationService:
             }
         }
 
-        # Find eligible subscriptions
+        # Find eligible subscriptions across all devices
         subscriptions = (
             db.query(PushSubscription)
             .filter(
@@ -119,16 +129,16 @@ class NotificationService:
         user_ids_notified = set()
 
         for sub in subscriptions:
-            success = NotificationService.send_push_payload(
+            res = NotificationService.send_push_payload(
                 sub.endpoint, sub.p256dh, sub.auth, payload
             )
-            if not success:
-                # Track potentially expired subscription
-                expired_ids.append(sub.id)
-            else:
+            if res.success:
                 user_ids_notified.add(sub.user_id)
+                sub.last_active_at = datetime.utcnow()
+            elif res.is_expired:
+                expired_ids.append(sub.id)
 
-        # Clean up expired subscriptions
+        # Clean up ONLY truly expired subscriptions (HTTP 404 or 410)
         if expired_ids:
             try:
                 db.query(PushSubscription).filter(PushSubscription.id.in_(expired_ids)).delete(synchronize_session=False)
@@ -146,7 +156,7 @@ class NotificationService:
     @staticmethod
     def notify_match_approved(db: Session, match: Match):
         """
-        Sends notifications to participating players when match results are approved.
+        Sends notifications to participating players across all their devices when match results are approved.
         """
         if not match.players:
             return
@@ -181,7 +191,7 @@ class NotificationService:
                 db, p.player_id, title, body, type="LEADERBOARD_UPDATE", data_url=url
             )
 
-            # Push notifications
+            # Push notifications to all player's devices
             subs = (
                 db.query(PushSubscription)
                 .filter(
@@ -191,17 +201,28 @@ class NotificationService:
                 .all()
             )
 
+            expired_ids = []
             for sub in subs:
-                NotificationService.send_push_payload(
+                res = NotificationService.send_push_payload(
                     sub.endpoint, sub.p256dh, sub.auth, payload
                 )
+                if res.success:
+                    sub.last_active_at = datetime.utcnow()
+                elif res.is_expired:
+                    expired_ids.append(sub.id)
+
+            if expired_ids:
+                try:
+                    db.query(PushSubscription).filter(PushSubscription.id.in_(expired_ids)).delete(synchronize_session=False)
+                except Exception:
+                    pass
 
         db.commit()
 
     @staticmethod
     def send_diagnostic_test(db: Session, user: User) -> Dict[str, Any]:
         """
-        Sends an immediate diagnostic test notification to verify delivery.
+        Sends an immediate diagnostic test notification to verify delivery across all current user's devices.
         """
         title = "🎮 PSO Gaming Arena: Diagnostics Test"
         body = f"Push notifications are working perfectly for {user.name}! (VAPID verified)"
@@ -224,26 +245,37 @@ class NotificationService:
         NotificationService.create_in_app_notification(
             db, user.id, title, body, type="TEST", data_url=url
         )
-        db.commit()
 
         subs = db.query(PushSubscription).filter(PushSubscription.user_id == user.id).all()
         sent_count = 0
-        expired_count = 0
+        failed_count = 0
+        expired_ids = []
 
         for sub in subs:
-            success = NotificationService.send_push_payload(
+            res = NotificationService.send_push_payload(
                 sub.endpoint, sub.p256dh, sub.auth, payload
             )
-            if success:
+            if res.success:
                 sent_count += 1
+                sub.last_active_at = datetime.utcnow()
             else:
-                expired_count += 1
+                failed_count += 1
+                if res.is_expired:
+                    expired_ids.append(sub.id)
+
+        if expired_ids:
+            try:
+                db.query(PushSubscription).filter(PushSubscription.id.in_(expired_ids)).delete(synchronize_session=False)
+            except Exception:
+                pass
+
+        db.commit()
 
         return {
             "status": "success" if (subs and sent_count > 0) or not subs else "delivered_to_available",
             "devices_registered": len(subs),
             "devices_delivered": sent_count,
-            "devices_failed": expired_count,
+            "devices_failed": failed_count,
             "vapid_public_key_configured": bool(settings.VAPID_PUBLIC_KEY),
             "subject": settings.VAPID_SUBJECT,
             "timestamp": datetime.utcnow().isoformat()

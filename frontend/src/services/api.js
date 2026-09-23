@@ -248,6 +248,8 @@ export const api = {
     body: JSON.stringify(prefs)
   }),
   sendTestNotification: () => request('/notifications/test', { method: 'POST' }),
+  getRegisteredDevices: () => request('/notifications/devices'),
+  deleteRegisteredDevice: (id) => request(`/notifications/devices/${id}`, { method: 'DELETE' }),
   getInAppNotifications: (limit = 30) => request(`/notifications?limit=${limit}`),
   markNotificationRead: (id) => request(`/notifications/${id}/read`, { method: 'POST' }),
   markAllNotificationsRead: () => request('/notifications/read-all', { method: 'POST' }),

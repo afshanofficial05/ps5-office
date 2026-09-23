@@ -87,3 +87,131 @@ export async function unsubscribeUserFromPush() {
   }
   return null;
 }
+
+export function getDeviceDetails() {
+  if (typeof window === 'undefined' || !navigator) {
+    return { device_name: 'Unknown Device', device_type: 'DESKTOP' };
+  }
+
+  const ua = navigator.userAgent || '';
+  let device_type = 'DESKTOP';
+  let os = 'Unknown OS';
+  let browser = 'Browser';
+
+  // Detect Type & OS
+  if (/iPad|Tablet/i.test(ua)) {
+    device_type = 'TABLET';
+    os = 'Tablet';
+  } else if (/Android/i.test(ua)) {
+    device_type = /Mobile/i.test(ua) ? 'MOBILE' : 'TABLET';
+    os = 'Android';
+  } else if (/iPhone|iPod/i.test(ua)) {
+    device_type = 'MOBILE';
+    os = 'iOS';
+  } else if (/Windows/i.test(ua)) {
+    os = 'Windows';
+  } else if (/Macintosh|Mac OS/i.test(ua)) {
+    os = 'macOS';
+  } else if (/Linux/i.test(ua)) {
+    os = 'Linux';
+  }
+
+  // Detect Browser
+  if (/Edg/i.test(ua)) {
+    browser = 'Edge';
+  } else if (/Chrome|CriOS/i.test(ua)) {
+    browser = 'Chrome';
+  } else if (/Firefox|FxiOS/i.test(ua)) {
+    browser = 'Firefox';
+  } else if (/Safari/i.test(ua)) {
+    browser = 'Safari';
+  }
+
+  const device_name = `${os} (${browser})`;
+  return { device_name, device_type };
+}
+
+export async function syncDevicePushSubscription(apiClient, options = {}) {
+  const { forcePrompt = false } = options;
+
+  if (!isPushNotificationSupported()) {
+    return { status: 'unsupported' };
+  }
+
+  let permission = getNotificationPermission();
+
+  if (permission === 'denied') {
+    return { status: 'denied' };
+  }
+
+  if (permission === 'default') {
+    if (!forcePrompt) {
+      return { status: 'prompt_needed' };
+    }
+    permission = await Notification.requestPermission();
+    if (permission !== 'granted') {
+      return { status: 'denied' };
+    }
+  }
+
+  // Permission is 'granted'
+  try {
+    let subscription = await getExistingPushSubscription();
+
+    // If permission is granted but subscription is missing or revoked, auto-recover using VAPID key
+    if (!subscription) {
+      const vapidData = await apiClient.getVapidPublicKey();
+      if (!vapidData?.public_key) {
+        return { status: 'vapid_not_configured' };
+      }
+      subscription = await subscribeUserToPush(vapidData.public_key);
+    }
+
+    if (!subscription) {
+      return { status: 'failed_to_subscribe' };
+    }
+
+    const subJson = subscription.toJSON();
+    const { device_name, device_type } = getDeviceDetails();
+
+    const response = await apiClient.subscribePushNotification({
+      endpoint: subscription.endpoint,
+      keys: {
+        p256dh: subJson.keys?.p256dh || '',
+        auth: subJson.keys?.auth || ''
+      },
+      user_agent: navigator.userAgent,
+      device_name,
+      device_type
+    });
+
+    return {
+      status: 'synced',
+      subscription,
+      endpoint: subscription.endpoint,
+      device_name,
+      device_type,
+      response
+    };
+  } catch (err) {
+    console.error('Error syncing device push subscription:', err);
+    return { status: 'error', error: err.message };
+  }
+}
+
+export async function disassociateDevicePush(apiClient) {
+  try {
+    const subscription = await getExistingPushSubscription();
+    if (subscription) {
+      if (apiClient?.unsubscribePushNotification) {
+        await apiClient.unsubscribePushNotification(subscription.endpoint).catch(() => {});
+      }
+      await subscription.unsubscribe().catch(() => {});
+      return true;
+    }
+  } catch (err) {
+    console.error('Error disassociating device push:', err);
+  }
+  return false;
+}
+

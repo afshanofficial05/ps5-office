@@ -10,11 +10,14 @@ import {
   subscribeUserToPush,
   getExistingPushSubscription,
   unsubscribeUserFromPush,
-  registerServiceWorker
+  registerServiceWorker,
+  syncDevicePushSubscription,
+  getDeviceDetails
 } from '../../utils/pushNotifications';
 import {
   Bell, CheckCircle, AlertTriangle, XCircle, ShieldCheck, Zap,
-  Send, RefreshCw, Smartphone, Radio, Settings, Trophy, Swords, ArrowRight, Info
+  Send, RefreshCw, Smartphone, Radio, Settings, Trophy, Swords, ArrowRight, Info,
+  Trash2, Laptop
 } from 'lucide-react';
 
 export default function NotificationSettingsPage() {
@@ -25,6 +28,8 @@ export default function NotificationSettingsPage() {
   const [permission, setPermission] = useState('default');
   const [swActive, setSwActive] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [currentEndpoint, setCurrentEndpoint] = useState('');
+  const [registeredDevices, setRegisteredDevices] = useState([]);
   const [subscriptionCount, setSubscriptionCount] = useState(0);
   const [vapidConfigured, setVapidConfigured] = useState(false);
   const [vapidSubject, setVapidSubject] = useState('');
@@ -68,19 +73,22 @@ export default function NotificationSettingsPage() {
       }
     }
 
-    // 4. Check existing browser subscription
+    // 4. Check existing browser subscription on this device
     const existingSub = await getExistingPushSubscription();
     setIsSubscribed(!!existingSub);
+    setCurrentEndpoint(existingSub?.endpoint || '');
 
-    // 5. Check backend VAPID status & registered devices
+    // 5. Check backend VAPID status, registered devices & preferences
     try {
-      const [vapidData, statusData] = await Promise.all([
+      const [vapidData, statusData, devicesData] = await Promise.all([
         api.getVapidPublicKey().catch(() => ({})),
-        api.getNotificationStatus().catch(() => ({}))
+        api.getNotificationStatus().catch(() => ({})),
+        api.getRegisteredDevices().catch(() => ([]))
       ]);
       setVapidConfigured(!!vapidData.is_configured);
       setVapidSubject(vapidData.subject || '');
       setSubscriptionCount(statusData.active_subscriptions || 0);
+      setRegisteredDevices(Array.isArray(devicesData) ? devicesData : []);
       if (statusData.notify_rooms !== undefined) setNotifyRooms(statusData.notify_rooms);
       if (statusData.notify_leaderboard !== undefined) setNotifyLeaderboard(statusData.notify_leaderboard);
     } catch (err) {
@@ -119,25 +127,17 @@ export default function NotificationSettingsPage() {
           await api.unsubscribePushNotification(endpoint);
         }
         setIsSubscribed(false);
+        setCurrentEndpoint('');
       } else {
-        // Subscribe
-        const vapidData = await api.getVapidPublicKey();
-        if (!vapidData.public_key) {
-          throw new Error('Server VAPID public key is missing.');
+        // Subscribe / Sync with auto-recovery
+        const res = await syncDevicePushSubscription(api, { forcePrompt: true });
+        if (res.status === 'denied') {
+          throw new Error('Notification permission was blocked in browser settings. Please allow notifications.');
+        } else if (res.status === 'unsupported') {
+          throw new Error('Push notifications are not supported on this browser or device.');
+        } else if (res.status === 'error') {
+          throw new Error(res.error || 'Failed to register push subscription.');
         }
-
-        const subscription = await subscribeUserToPush(vapidData.public_key);
-        const subJson = subscription.toJSON();
-
-        await api.subscribePushNotification({
-          endpoint: subscription.endpoint,
-          keys: {
-            p256dh: subJson.keys?.p256dh || '',
-            auth: subJson.keys?.auth || ''
-          },
-          user_agent: navigator.userAgent
-        });
-
         setIsSubscribed(true);
       }
       await runDiagnostics();
@@ -145,6 +145,15 @@ export default function NotificationSettingsPage() {
       setErrorMsg(err.message || 'Failed to update push subscription');
     } finally {
       setSubscribing(false);
+    }
+  };
+
+  const handleDeleteDevice = async (deviceId) => {
+    try {
+      await api.deleteRegisteredDevice(deviceId);
+      await runDiagnostics();
+    } catch (err) {
+      setErrorMsg(err.message || 'Failed to remove device');
     }
   };
 
@@ -215,6 +224,65 @@ export default function NotificationSettingsPage() {
           }}>
             <AlertTriangle size={20} />
             <span>{errorMsg}</span>
+          </div>
+        )}
+
+        {/* Permission Granted but Subscription Missing Banner (Scenario 4 Recovery) */}
+        {permission === 'granted' && !isSubscribed && (
+          <div style={{
+            backgroundColor: '#fffbeb',
+            border: '1px solid #fcd34d',
+            color: '#92400e',
+            padding: '16px 20px',
+            borderRadius: '16px',
+            fontSize: '0.88rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: '14px',
+            boxShadow: '0 2px 8px rgba(245, 158, 11, 0.1)'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <div style={{
+                width: '36px',
+                height: '36px',
+                borderRadius: '10px',
+                backgroundColor: '#fef3c7',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#d97706'
+              }}>
+                <Zap size={20} />
+              </div>
+              <div>
+                <div style={{ fontWeight: 700, fontSize: '0.92rem', color: '#78350f' }}>
+                  Permission Granted, But Device Not Registered
+                </div>
+                <div style={{ fontSize: '0.82rem', color: '#92400e', marginTop: '2px' }}>
+                  Your browser allowed notifications, but this device does not have an active Web Push subscription yet. Click to sync and start receiving alerts.
+                </div>
+              </div>
+            </div>
+
+            <button
+              onClick={handleSubscribeToggle}
+              disabled={subscribing}
+              className="btn btn-primary"
+              style={{
+                backgroundColor: '#d97706',
+                border: 'none',
+                fontSize: '0.84rem',
+                padding: '8px 16px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}
+            >
+              <Smartphone size={15} />
+              <span>{subscribing ? 'Registering...' : 'Sync & Connect This Device'}</span>
+            </button>
           </div>
         )}
 
@@ -386,7 +454,7 @@ export default function NotificationSettingsPage() {
                 style={{ fontSize: '0.86rem', padding: '10px 18px' }}
               >
                 <Smartphone size={16} />
-                <span>{subscribing ? 'Updating...' : isSubscribed ? 'Disable on this device' : 'Enable on this device'}</span>
+                <span>{subscribing ? 'Updating...' : isSubscribed ? 'Disable on this device' : (permission === 'granted' ? 'Sync & Enable on this device' : 'Enable on this device')}</span>
               </button>
 
               <button
@@ -428,6 +496,144 @@ export default function NotificationSettingsPage() {
                 • VAPID Subject: <code>{testResult.subject}</code><br/>
                 • Delivered at: {new Date(testResult.timestamp).toLocaleTimeString()}
               </div>
+            </div>
+          )}
+        </div>
+
+        {/* Multi-Device Registered Devices Card */}
+        <div className="glass-card" style={{ padding: '24px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px', marginBottom: '18px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <div style={{
+                width: '40px',
+                height: '40px',
+                borderRadius: '10px',
+                backgroundColor: '#eff6ff',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#2563eb'
+              }}>
+                <Smartphone size={22} />
+              </div>
+              <div>
+                <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>
+                  Registered Devices ({registeredDevices.length})
+                </h3>
+                <p style={{ fontSize: '0.82rem', color: '#64748b' }}>
+                  Notifications are delivered simultaneously to all active devices registered to your account
+                </p>
+              </div>
+            </div>
+
+            <button
+              onClick={runDiagnostics}
+              disabled={refreshing}
+              className="btn btn-secondary"
+              style={{ fontSize: '0.8rem', padding: '6px 14px' }}
+            >
+              Refresh Devices
+            </button>
+          </div>
+
+          {registeredDevices.length === 0 ? (
+            <div style={{
+              textAlign: 'center',
+              padding: '28px 16px',
+              backgroundColor: '#f8fafc',
+              borderRadius: '12px',
+              border: '1px dashed #cbd5e1',
+              color: '#64748b',
+              fontSize: '0.88rem'
+            }}>
+              No devices currently registered for push notifications. Click "Enable on this device" above to register your browser.
+            </div>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {registeredDevices.map((dev) => {
+                const isCurrent = currentEndpoint && dev.endpoint === currentEndpoint;
+                return (
+                  <div
+                    key={dev.id}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      padding: '14px 18px',
+                      backgroundColor: isCurrent ? '#f0fdf4' : '#f8fafc',
+                      border: isCurrent ? '1px solid #86efac' : '1px solid #e2e8f0',
+                      borderRadius: '12px',
+                      gap: '12px',
+                      flexWrap: 'wrap'
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                      <div style={{
+                        width: '36px',
+                        height: '36px',
+                        borderRadius: '50%',
+                        backgroundColor: isCurrent ? '#dcfce7' : '#e2e8f0',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: isCurrent ? '#16a34a' : '#475569'
+                      }}>
+                        {dev.device_type === 'MOBILE' ? <Smartphone size={18} /> : <Laptop size={18} />}
+                      </div>
+                      <div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                          <span style={{ fontWeight: 700, fontSize: '0.92rem', color: '#0f172a' }}>
+                            {dev.device_name || 'Web Device'}
+                          </span>
+                          {isCurrent && (
+                            <span style={{
+                              backgroundColor: '#16a34a',
+                              color: '#ffffff',
+                              fontSize: '0.72rem',
+                              fontWeight: 700,
+                              padding: '2px 8px',
+                              borderRadius: '10px'
+                            }}>
+                              This Device
+                            </span>
+                          )}
+                          <span style={{
+                            backgroundColor: '#e0e7ff',
+                            color: '#3730a3',
+                            fontSize: '0.72rem',
+                            fontWeight: 600,
+                            padding: '2px 8px',
+                            borderRadius: '10px'
+                          }}>
+                            {dev.device_type || 'DEVICE'}
+                          </span>
+                        </div>
+                        <div style={{ fontSize: '0.78rem', color: '#64748b', marginTop: '3px' }}>
+                          Last active: {dev.last_active_at ? new Date(dev.last_active_at).toLocaleString() : new Date(dev.created_at).toLocaleString()}
+                        </div>
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={() => handleDeleteDevice(dev.id)}
+                      className="btn btn-secondary"
+                      style={{
+                        fontSize: '0.78rem',
+                        padding: '6px 12px',
+                        color: '#b91c1c',
+                        borderColor: '#fca5a5',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '4px'
+                      }}
+                      title="Remove device from receiving notifications"
+                    >
+                      <Trash2 size={14} />
+                      <span>Remove</span>
+                    </button>
+                  </div>
+                );
+              })}
             </div>
           )}
         </div>

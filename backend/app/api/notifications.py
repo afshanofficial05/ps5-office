@@ -8,8 +8,8 @@ from backend.app.core.database import get_db
 from backend.app.core.config import settings
 from backend.app.models.models import User, PushSubscription, InAppNotification
 from backend.app.schemas.schemas import (
-    PushSubscriptionCreate, NotificationPreferencesUpdate,
-    InAppNotificationResponse, NotificationStatusResponse
+    PushSubscriptionCreate, PushSubscriptionUnsubscribe, DeviceSubscriptionResponse,
+    NotificationPreferencesUpdate, InAppNotificationResponse, NotificationStatusResponse
 )
 from backend.app.api.deps import get_current_user
 from backend.app.services.notification_service import NotificationService
@@ -52,6 +52,41 @@ def get_notification_status(
         "notify_leaderboard": notify_leaderboard
     }
 
+@router.get("/devices", response_model=List[DeviceSubscriptionResponse])
+def get_user_devices(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    """
+    Returns all registered devices for the current user.
+    """
+    devices = (
+        db.query(PushSubscription)
+        .filter(PushSubscription.user_id == current_user.id)
+        .order_by(desc(PushSubscription.last_active_at))
+        .all()
+    )
+    return devices
+
+@router.delete("/devices/{device_id}")
+def delete_user_device(
+    device_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    """
+    Deletes a registered device push subscription by its ID.
+    """
+    sub = db.query(PushSubscription).filter(
+        PushSubscription.id == device_id,
+        PushSubscription.user_id == current_user.id
+    ).first()
+    if not sub:
+        raise HTTPException(status_code=404, detail="Device subscription not found")
+    db.delete(sub)
+    db.commit()
+    return {"status": "deleted", "id": device_id}
+
 @router.post("/subscribe")
 def subscribe_push(
     payload: PushSubscriptionCreate,
@@ -59,7 +94,7 @@ def subscribe_push(
     current_user: User = Depends(get_current_user)
 ):
     """
-    Saves or updates browser push notification subscription for the current user.
+    Saves or updates browser push notification subscription for the current user and device.
     """
     existing = db.query(PushSubscription).filter(PushSubscription.endpoint == payload.endpoint).first()
     if existing:
@@ -67,9 +102,14 @@ def subscribe_push(
         existing.p256dh = payload.keys.p256dh
         existing.auth = payload.keys.auth
         existing.user_agent = payload.user_agent or existing.user_agent
+        if payload.device_name:
+            existing.device_name = payload.device_name
+        if payload.device_type:
+            existing.device_type = payload.device_type
+        existing.last_active_at = datetime.utcnow()
         existing.updated_at = datetime.utcnow()
         db.commit()
-        return {"status": "updated", "id": existing.id}
+        return {"status": "updated", "id": existing.id, "device_name": existing.device_name}
 
     new_sub = PushSubscription(
         user_id=current_user.id,
@@ -77,6 +117,9 @@ def subscribe_push(
         p256dh=payload.keys.p256dh,
         auth=payload.keys.auth,
         user_agent=payload.user_agent,
+        device_name=payload.device_name or "Web Device",
+        device_type=payload.device_type or "UNKNOWN",
+        last_active_at=datetime.utcnow(),
         notify_rooms=True,
         notify_leaderboard=True,
         created_at=datetime.utcnow(),
@@ -85,19 +128,24 @@ def subscribe_push(
     db.add(new_sub)
     db.commit()
     db.refresh(new_sub)
-    return {"status": "subscribed", "id": new_sub.id}
+    return {"status": "subscribed", "id": new_sub.id, "device_name": new_sub.device_name}
 
 @router.post("/unsubscribe")
 def unsubscribe_push(
-    endpoint: str,
+    payload: Optional[PushSubscriptionUnsubscribe] = None,
+    endpoint: Optional[str] = None,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
     """
-    Removes a push subscription by endpoint.
+    Removes a push subscription by endpoint (supports JSON body or query param).
     """
+    target_endpoint = payload.endpoint if (payload and payload.endpoint) else endpoint
+    if not target_endpoint:
+        raise HTTPException(status_code=400, detail="Endpoint is required to unsubscribe")
+
     sub = db.query(PushSubscription).filter(
-        PushSubscription.endpoint == endpoint,
+        PushSubscription.endpoint == target_endpoint,
         PushSubscription.user_id == current_user.id
     ).first()
     if sub:

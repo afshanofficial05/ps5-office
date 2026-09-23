@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { api, setAuthToken, getAuthToken } from '../services/api';
+import { syncDevicePushSubscription, disassociateDevicePush } from '../utils/pushNotifications';
 
 const AuthContext = createContext(null);
 
@@ -19,6 +20,10 @@ export const AuthProvider = ({ children }) => {
     try {
       const userData = await api.getMe();
       setUser(userData);
+      // Automatically sync current device push subscription if permission was already granted
+      if (typeof window !== 'undefined') {
+        syncDevicePushSubscription(api).catch(() => {});
+      }
     } catch (err) {
       console.error('Failed to load user', err);
       setAuthToken(null);
@@ -36,6 +41,10 @@ export const AuthProvider = ({ children }) => {
     const data = await api.login(email, password);
     setAuthToken(data.access_token);
     setUser(data.user);
+    // Background sync current device
+    if (typeof window !== 'undefined') {
+      syncDevicePushSubscription(api).catch(() => {});
+    }
     if (data.user.role === 'SUPER_ADMIN') {
       router.push('/super-admin');
     } else if (data.user.role === 'ADMIN') {
@@ -50,11 +59,22 @@ export const AuthProvider = ({ children }) => {
     const data = await api.register(name, email, password, profilePhoto);
     setAuthToken(data.access_token);
     setUser(data.user);
+    if (typeof window !== 'undefined') {
+      syncDevicePushSubscription(api).catch(() => {});
+    }
     router.push('/dashboard');
     return data.user;
   };
 
-  const logout = () => {
+  const logout = async () => {
+    // Disassociate current device subscription from user in backend
+    if (typeof window !== 'undefined') {
+      try {
+        await disassociateDevicePush(api);
+      } catch (err) {
+        console.warn('Could not cleanly disassociate push device on logout:', err);
+      }
+    }
     setAuthToken(null);
     setUser(null);
     router.push('/login');
@@ -97,8 +117,12 @@ export const AuthProvider = ({ children }) => {
     return user.permissions.some(p => validKeys.includes(p.permission) && p.enabled);
   };
 
+  const syncNotifications = (options = {}) => {
+    return syncDevicePushSubscription(api, options);
+  };
+
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout, refreshUser: loadUser, hasPermission }}>
+    <AuthContext.Provider value={{ user, loading, login, register, logout, refreshUser: loadUser, hasPermission, syncNotifications }}>
       {children}
     </AuthContext.Provider>
   );

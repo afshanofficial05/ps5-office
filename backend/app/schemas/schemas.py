@@ -439,6 +439,26 @@ class PushSubscriptionCreate(BaseModel):
     endpoint: str
     keys: PushSubscriptionKeys
     user_agent: Optional[str] = None
+    device_name: Optional[str] = None
+    device_type: Optional[str] = "UNKNOWN"
+
+class PushSubscriptionUnsubscribe(BaseModel):
+    endpoint: str
+
+class DeviceSubscriptionResponse(BaseModel):
+    id: int
+    user_id: int
+    device_name: Optional[str] = None
+    device_type: Optional[str] = None
+    user_agent: Optional[str] = None
+    endpoint: str
+    notify_rooms: bool
+    notify_leaderboard: bool
+    created_at: datetime
+    last_active_at: Optional[datetime] = None
+
+    class Config:
+        from_attributes = True
 
 class NotificationPreferencesUpdate(BaseModel):
     notify_rooms: Optional[bool] = None
@@ -463,4 +483,5 @@ class NotificationStatusResponse(BaseModel):
     active_subscriptions: int
     notify_rooms: bool
     notify_leaderboard: bool
+
 
