@@ -4,7 +4,7 @@ import RatingBadge from '../../components/RatingBadge';
 import Avatar from '../../components/Avatar';
 import ArenaDataLoader from '../../components/MorphingInfinity';
 import { api } from '../../services/api';
-import { Users, Edit3, Save, X, AlertTriangle, Check } from 'lucide-react';
+import { Users, Edit3, Save, X, AlertTriangle, Check, Trash2 } from 'lucide-react';
 
 export default function SuperAdminPlayersPage() {
   const [players, setPlayers] = useState([]);
@@ -67,6 +67,21 @@ export default function SuperAdminPlayersPage() {
       setError(err.message || 'Rating adjustment failed');
     } finally {
       setSubmitting(false);
+    }
+  };
+
+  const handleDeletePlayer = async (targetUser) => {
+    if (!confirm(`Are you sure you want to permanently delete player "${targetUser.name}" (${targetUser.player_id})? This action cannot be undone.`)) {
+      return;
+    }
+    try {
+      await api.deleteUser(targetUser.id);
+      setSuccessMsg(`Player ${targetUser.name} deleted successfully.`);
+      setTimeout(() => setSuccessMsg(''), 4000);
+      await fetchPlayers();
+    } catch (err) {
+      console.error('Failed to delete player', err);
+      alert(err.message || 'Failed to delete player');
     }
   };
 
@@ -161,14 +176,25 @@ export default function SuperAdminPlayersPage() {
                       <td style={{ fontWeight: 600, color: '#334155' }}>{totalMatches}</td>
                       <td style={{ fontWeight: 700, color: '#059669' }}>{winRate}%</td>
                       <td>
-                        <button
-                          onClick={() => openAdjust(p)}
-                          className="btn btn-secondary"
-                          style={{ padding: '6px 12px', fontSize: '0.8rem' }}
-                        >
-                          <Edit3 size={14} />
-                          <span>Adjust Rating</span>
-                        </button>
+                        <div style={{ display: 'flex', gap: '6px' }}>
+                          <button
+                            onClick={() => openAdjust(p)}
+                            className="btn btn-secondary"
+                            style={{ padding: '6px 12px', fontSize: '0.8rem' }}
+                            title="Adjust Rating"
+                          >
+                            <Edit3 size={14} />
+                            <span>Adjust</span>
+                          </button>
+                          <button
+                            onClick={() => handleDeletePlayer(p)}
+                            className="btn btn-secondary"
+                            style={{ padding: '6px 12px', fontSize: '0.8rem', color: '#ef4444' }}
+                            title="Delete Player Account"
+                          >
+                            <Trash2 size={14} />
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   );

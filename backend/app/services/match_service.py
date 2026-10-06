@@ -286,21 +286,36 @@ class MatchService:
 
     @classmethod
     def create_direct_match_submission(cls, db: Session, user_id: int, payload: DirectMatchSubmit) -> Match:
-        if user_id == payload.opponent_id:
-            raise HTTPException(status_code=400, detail="You cannot submit a match against yourself")
+        game_mode = payload.game_mode or "1V1"
+
+        if user_id == payload.opponent_id or (game_mode == "2V2" and (user_id == payload.opponent2_id or user_id == payload.teammate_id)):
+            raise HTTPException(status_code=400, detail="You cannot submit a match against yourself or play on both sides")
+
+        if game_mode == "2V2":
+            if not payload.teammate_id or not payload.opponent2_id:
+                raise HTTPException(status_code=400, detail="Teammate and second opponent are required for 2V2 matches")
 
         user = db.query(User).filter(User.id == user_id).first()
         if user and user.role in [UserRole.ADMIN, UserRole.SUPER_ADMIN]:
             raise HTTPException(status_code=403, detail="Admins manage matches and do not submit fixtures as players.")
 
+        # Check opponent 1
         opponent = db.query(User).filter(User.id == payload.opponent_id, User.status == "ACTIVE").first()
         if not opponent:
             raise HTTPException(status_code=404, detail="Selected opponent not found or inactive")
-
         if opponent.role in [UserRole.ADMIN, UserRole.SUPER_ADMIN]:
             raise HTTPException(status_code=400, detail="Admins cannot be selected as match opponents.")
 
-        if not payload.evidence_url:
+        # Check teammate and opponent 2 if 2V2
+        if game_mode == "2V2":
+            teammate = db.query(User).filter(User.id == payload.teammate_id, User.status == "ACTIVE").first()
+            if not teammate or teammate.role in [UserRole.ADMIN, UserRole.SUPER_ADMIN]:
+                raise HTTPException(status_code=400, detail="Invalid teammate selected")
+            opponent2 = db.query(User).filter(User.id == payload.opponent2_id, User.status == "ACTIVE").first()
+            if not opponent2 or opponent2.role in [UserRole.ADMIN, UserRole.SUPER_ADMIN]:
+                raise HTTPException(status_code=400, detail="Invalid second opponent selected")
+
+        if game_mode == "1V1" and not payload.evidence_url:
             raise HTTPException(status_code=400, detail="A screenshot upload is required for match result verification.")
 
         # Check for existing pending match between these players
@@ -315,7 +330,7 @@ class MatchService:
 
         match = Match(
             match_code=cls.generate_match_code(db),
-            game_mode="1V1",
+            game_mode=game_mode,
             season_id=active_season.id if active_season else None,
             status=MatchStatus.PENDING_VERIFICATION,
             created_by=user_id,
@@ -325,23 +340,35 @@ class MatchService:
         db.add(match)
         db.flush()
 
-        # Side A Player (User)
-        player_a = MatchPlayer(
+        # Side A Players
+        db.add(MatchPlayer(
             match_id=match.id,
             player_id=user_id,
             side="SIDE_A",
             team_id=payload.user_team_id
-        )
-        db.add(player_a)
+        ))
+        if game_mode == "2V2":
+            db.add(MatchPlayer(
+                match_id=match.id,
+                player_id=payload.teammate_id,
+                side="SIDE_A",
+                team_id=payload.user_team_id
+            ))
 
-        # Side B Player (Opponent)
-        player_b = MatchPlayer(
+        # Side B Players
+        db.add(MatchPlayer(
             match_id=match.id,
             player_id=payload.opponent_id,
             side="SIDE_B",
             team_id=payload.opponent_team_id
-        )
-        db.add(player_b)
+        ))
+        if game_mode == "2V2":
+            db.add(MatchPlayer(
+                match_id=match.id,
+                player_id=payload.opponent2_id,
+                side="SIDE_B",
+                team_id=payload.opponent_team_id
+            ))
 
         # Determine winner side
         if payload.user_score == payload.opponent_score:
@@ -371,14 +398,15 @@ class MatchService:
         )
         db.add(result)
 
-        evidence = MatchEvidence(
-            match_id=match.id,
-            uploaded_by=user_id,
-            file_url=payload.evidence_url,
-            file_type="image/webp",
-            created_at=datetime.utcnow()
-        )
-        db.add(evidence)
+        if payload.evidence_url:
+            evidence = MatchEvidence(
+                match_id=match.id,
+                uploaded_by=user_id,
+                file_url=payload.evidence_url,
+                file_type="image/webp",
+                created_at=datetime.utcnow()
+            )
+            db.add(evidence)
 
         db.commit()
         db.refresh(match)

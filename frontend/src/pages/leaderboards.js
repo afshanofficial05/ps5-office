@@ -287,16 +287,16 @@ export default function LeaderboardsPage() {
                           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                               <Avatar src={p.player1_photo} name={p.player1_name} size="xs" />
-                              <div className="player-meta-wrap" style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                              <div className="player-meta-wrap">
                                 <span className="player-full-name" title={p.player1_name}>{p.player1_name}</span>
-                                <span className="player-code-sub" style={{ fontSize: '0.65rem' }}>{p.player1_code}</span>
+                                <span className="player-code-sub">{p.player1_code}</span>
                               </div>
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                               <Avatar src={p.player2_photo} name={p.player2_name} size="xs" />
-                              <div className="player-meta-wrap" style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                              <div className="player-meta-wrap">
                                 <span className="player-full-name" title={p.player2_name}>{p.player2_name}</span>
-                                <span className="player-code-sub" style={{ fontSize: '0.65rem' }}>{p.player2_code}</span>
+                                <span className="player-code-sub">{p.player2_code}</span>
                               </div>
                             </div>
                           </div>

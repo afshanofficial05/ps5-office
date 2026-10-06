@@ -117,11 +117,11 @@ class Match(Base):
     game_mode = Column(String(10), nullable=False) # 1V1, 2V2
     season_id = Column(Integer, ForeignKey("seasons.id"), nullable=True)
     status = Column(String(30), default=MatchStatus.WAITING, nullable=False, index=True)
-    created_by = Column(Integer, ForeignKey("users.id"), nullable=False)
+    created_by = Column(Integer, ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
     started_at = Column(DateTime, nullable=True)
     completed_at = Column(DateTime, nullable=True)
     verified_at = Column(DateTime, nullable=True)
-    verified_by = Column(Integer, ForeignKey("users.id"), nullable=True)
+    verified_by = Column(Integer, ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
 
     # Relationships
@@ -160,7 +160,7 @@ class MatchPlayer(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     match_id = Column(Integer, ForeignKey("matches.id", ondelete="CASCADE"), nullable=False, index=True)
-    player_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    player_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     side = Column(String(10), nullable=False) # SIDE_A, SIDE_B
     team_id = Column(Integer, ForeignKey("teams.id"), nullable=True)
     player_rating_before = Column(Float, nullable=True)
@@ -183,7 +183,7 @@ class MatchResult(Base):
     is_penalty_shootout = Column(Boolean, default=False, nullable=False)
     penalty_score_a = Column(Integer, nullable=True)
     penalty_score_b = Column(Integer, nullable=True)
-    submitted_by = Column(Integer, ForeignKey("users.id"), nullable=False)
+    submitted_by = Column(Integer, ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
     submitted_at = Column(DateTime, default=datetime.utcnow)
     notes = Column(Text, nullable=True)
     rejection_reason = Column(Text, nullable=True)
@@ -197,7 +197,7 @@ class MatchEvidence(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     match_id = Column(Integer, ForeignKey("matches.id", ondelete="CASCADE"), nullable=False, index=True)
-    uploaded_by = Column(Integer, ForeignKey("users.id"), nullable=False)
+    uploaded_by = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     file_url = Column(String(500), nullable=False)
     file_type = Column(String(50), nullable=False) # image/png, image/jpeg, etc.
     created_at = Column(DateTime, default=datetime.utcnow)
@@ -251,7 +251,7 @@ class AuditLog(Base):
     __tablename__ = "audit_logs"
 
     id = Column(Integer, primary_key=True, index=True)
-    actor_id = Column(Integer, ForeignKey("users.id"), nullable=True)
+    actor_id = Column(Integer, ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
     action = Column(String(100), nullable=False)
     entity_type = Column(String(50), nullable=False)
     entity_id = Column(String(50), nullable=False)
@@ -298,7 +298,7 @@ class TeamRequest(Base):
     notes = Column(Text, nullable=True)
     status = Column(String(20), default=TeamRequestStatus.PENDING, nullable=False, index=True) # PENDING, APPROVED, REJECTED
     rejection_reason = Column(Text, nullable=True)
-    reviewed_by = Column(Integer, ForeignKey("users.id"), nullable=True)
+    reviewed_by = Column(Integer, ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
     reviewed_at = Column(DateTime, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
@@ -345,7 +345,7 @@ class BugReport(Base):
     screenshot_url = Column(String(500), nullable=True)
     status = Column(String(20), default=BugReportStatus.OPEN, nullable=False, index=True)
     admin_notes = Column(Text, nullable=True)
-    resolved_by = Column(Integer, ForeignKey("users.id"), nullable=True)
+    resolved_by = Column(Integer, ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
     resolved_at = Column(DateTime, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
@@ -406,7 +406,7 @@ class ScoreReport(Base):
     description = Column(Text, nullable=True)
     status = Column(String(20), default=ScoreReportStatus.PENDING, nullable=False, index=True)
     admin_notes = Column(Text, nullable=True)
-    resolved_by = Column(Integer, ForeignKey("users.id"), nullable=True)
+    resolved_by = Column(Integer, ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
     resolved_at = Column(DateTime, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)

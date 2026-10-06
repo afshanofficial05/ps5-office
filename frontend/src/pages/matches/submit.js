@@ -23,7 +23,10 @@ export default function SubmitMatchResultPage() {
   const [submittedMatch, setSubmittedMatch] = useState(null);
 
   // Form State
+  const [gameMode, setGameMode] = useState('1v1');
   const [opponentId, setOpponentId] = useState('');
+  const [teammateId, setTeammateId] = useState('');
+  const [opponent2Id, setOpponent2Id] = useState('');
   const [userTeamId, setUserTeamId] = useState('');
   const [opponentTeamId, setOpponentTeamId] = useState('');
   const [userScore, setUserScore] = useState('0');
@@ -144,6 +147,21 @@ export default function SubmitMatchResultPage() {
       setError('Please select an opponent player');
       return;
     }
+    
+    if (gameMode === '2v2') {
+      if (!teammateId) {
+        setError('Please select a teammate for 2v2 match');
+        return;
+      }
+      if (!opponent2Id) {
+        setError('Please select a second opponent for 2v2 match');
+        return;
+      }
+      if (teammateId === opponentId || teammateId === opponent2Id || opponentId === opponent2Id) {
+        setError('Please select distinct players for each position');
+        return;
+      }
+    }
 
     const valUser = userScore === '' ? 0 : parseInt(userScore, 10);
     const valOpp = opponentScore === '' ? 0 : parseInt(opponentScore, 10);
@@ -174,7 +192,10 @@ export default function SubmitMatchResultPage() {
 
       // 2. Direct submit match record with pending status
       const payload = {
+        game_mode: gameMode.toUpperCase(),
         opponent_id: parseInt(opponentId, 10),
+        teammate_id: gameMode === '2v2' ? parseInt(teammateId, 10) : null,
+        opponent2_id: gameMode === '2v2' ? parseInt(opponent2Id, 10) : null,
         user_team_id: userTeamId ? parseInt(userTeamId, 10) : null,
         opponent_team_id: opponentTeamId ? parseInt(opponentTeamId, 10) : null,
         user_score: valUser,
@@ -474,6 +495,18 @@ export default function SubmitMatchResultPage() {
         )}
 
         <form onSubmit={handleSubmit} className="glass-card submit-card-container">
+          <div style={{ marginBottom: '24px', padding: '16px', background: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+            <label className="submit-field-label" style={{ marginBottom: '8px', display: 'block' }}>Game Mode</label>
+            <div style={{ display: 'flex', gap: '12px' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', fontWeight: 600 }}>
+                <input type="radio" name="gameMode" value="1v1" checked={gameMode === '1v1'} onChange={() => setGameMode('1v1')} /> 1V1
+              </label>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', fontWeight: 600 }}>
+                <input type="radio" name="gameMode" value="2v2" checked={gameMode === '2v2'} onChange={() => setGameMode('2v2')} /> 2V2 (No Verification Required)
+              </label>
+            </div>
+          </div>
+
           {/* Section 1: Players & Clubs Selection */}
           <div className="submit-teams-grid">
             {/* Player A (You) */}
@@ -489,6 +522,26 @@ export default function SubmitMatchResultPage() {
                   </p>
                 </div>
               </div>
+
+              {gameMode === '2v2' && (
+                <>
+                  <label className="submit-field-label">Select Teammate *</label>
+                  <select
+                    className="form-input"
+                    required
+                    value={teammateId}
+                    onChange={(e) => setTeammateId(e.target.value)}
+                    style={{ marginBottom: '10px' }}
+                  >
+                    <option value="">Choose Teammate...</option>
+                    {players.map((p) => (
+                      <option key={p.id} value={p.id}>
+                        {p.name} ({p.player_id})
+                      </option>
+                    ))}
+                  </select>
+                </>
+              )}
 
               <label className="submit-field-label">
                 Your FC Club
@@ -543,6 +596,26 @@ export default function SubmitMatchResultPage() {
                   ))
                 )}
               </select>
+
+              {gameMode === '2v2' && (
+                <>
+                  <label className="submit-field-label">Select Opponent 2 *</label>
+                  <select
+                    className="form-input"
+                    required
+                    value={opponent2Id}
+                    onChange={(e) => setOpponent2Id(e.target.value)}
+                    style={{ marginBottom: '10px' }}
+                  >
+                    <option value="">Choose Opponent 2...</option>
+                    {players.map((p) => (
+                      <option key={p.id} value={p.id}>
+                        {p.name} ({p.player_id})
+                      </option>
+                    ))}
+                  </select>
+                </>
+              )}
 
               <label className="submit-field-label">
                 Opponent FC Club
@@ -728,10 +801,10 @@ export default function SubmitMatchResultPage() {
             </div>
           </div>
 
-          {/* Section 4: Screenshot Upload (Optional) */}
+          {/* Section 4: Screenshot Upload */}
           <ScreenshotUploader
-            required={false}
-            label="Match Result Screenshot Proof (Optional)"
+            required={gameMode === '1v1'}
+            label={gameMode === '1v1' ? "Match Result Screenshot Proof (Required for 1V1)" : "Match Result Screenshot Proof (Optional for 2V2)"}
             onFileReady={(file) => setCompressedFile(file)}
             onFileCleared={() => setCompressedFile(null)}
           />

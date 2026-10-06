@@ -215,7 +215,10 @@ class MatchResultSubmit(BaseModel):
     evidence_url: Optional[str] = None
 
 class DirectMatchSubmit(BaseModel):
+    game_mode: Optional[str] = "1V1"
     opponent_id: int
+    opponent2_id: Optional[int] = None
+    teammate_id: Optional[int] = None
     user_team_id: Optional[int] = None
     opponent_team_id: Optional[int] = None
     user_score: int = Field(ge=0)
@@ -225,7 +228,7 @@ class DirectMatchSubmit(BaseModel):
     opponent_penalty_score: Optional[int] = None
     match_date: Optional[datetime] = None
     notes: Optional[str] = None
-    evidence_url: str # Required screenshot URL
+    evidence_url: Optional[str] = None # Required for 1V1, Optional for 2V2
 
 class MatchVerificationRequest(BaseModel):
     approved: bool
