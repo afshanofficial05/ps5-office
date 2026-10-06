@@ -1,8 +1,8 @@
 from typing import List
 from sqlalchemy.orm import Session
 from sqlalchemy import desc
-from backend.app.models.models import PlayerRating, User, Team, TeamStatistic, UserRole
-from backend.app.schemas.schemas import LeaderboardPlayer, LeaderboardTeam
+from backend.app.models.models import PlayerRating, User, Team, TeamStatistic, UserRole, DuoRating
+from backend.app.schemas.schemas import LeaderboardPlayer, LeaderboardTeam, LeaderboardDuo
 
 class LeaderboardService:
     @staticmethod
@@ -35,6 +35,44 @@ class LeaderboardService:
                 draws=rating_rec.draws,
                 win_rate=rating_rec.win_rate,
                 win_streak=rating_rec.win_streak
+            ))
+        return leaderboard
+
+    @staticmethod
+    def get_duo_leaderboard(db: Session, limit: int = 100) -> List[LeaderboardDuo]:
+        from sqlalchemy.orm import aliased
+        User1 = aliased(User)
+        User2 = aliased(User)
+
+        results = (
+            db.query(DuoRating, User1, User2)
+            .join(User1, DuoRating.player1_id == User1.id)
+            .join(User2, DuoRating.player2_id == User2.id)
+            .filter(User1.status == "ACTIVE", User2.status == "ACTIVE")
+            .order_by(desc(DuoRating.rating), desc(DuoRating.wins))
+            .limit(limit)
+            .all()
+        )
+
+        leaderboard = []
+        for rank, (duo, u1, u2) in enumerate(results, start=1):
+            leaderboard.append(LeaderboardDuo(
+                rank=rank,
+                player1_id=u1.id,
+                player1_name=u1.name,
+                player1_code=u1.player_id,
+                player1_photo=u1.profile_photo,
+                player2_id=u2.id,
+                player2_name=u2.name,
+                player2_code=u2.player_id,
+                player2_photo=u2.profile_photo,
+                rating=duo.rating,
+                matches_played=duo.matches_played,
+                wins=duo.wins,
+                losses=duo.losses,
+                draws=duo.draws,
+                win_rate=duo.win_rate,
+                win_streak=duo.win_streak
             ))
         return leaderboard
 

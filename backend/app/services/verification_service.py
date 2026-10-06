@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from fastapi import HTTPException
 from backend.app.models.models import (
     Match, MatchStatus, MatchPlayer, MatchResult, Team, TeamStatistic,
-    PlayerRating, User
+    PlayerRating, User, DuoRating
 )
 from backend.app.services.rating_service import RatingService
 from backend.app.services.achievement_service import AchievementService
@@ -154,6 +154,70 @@ class VerificationService:
                 rec.draws += 1
             rec.win_rate = round((rec.wins / rec.matches_played) * 100.0, 1)
             rec.updated_at = datetime.utcnow()
+
+        # DUO RATING UPDATE (If 2V2)
+        if mode == "2V2" and len(side_a_players) == 2 and len(side_b_players) == 2:
+            # Sort IDs to ensure consistent Duo representation
+            a_ids = sorted([side_a_players[0].player_id, side_a_players[1].player_id])
+            b_ids = sorted([side_b_players[0].player_id, side_b_players[1].player_id])
+            
+            # Fetch or create Duo A
+            duo_a = db.query(DuoRating).filter(
+                DuoRating.player1_id == a_ids[0],
+                DuoRating.player2_id == a_ids[1]
+            ).first()
+            if not duo_a:
+                duo_a = DuoRating(player1_id=a_ids[0], player2_id=a_ids[1])
+                db.add(duo_a)
+                db.flush()
+                
+            # Fetch or create Duo B
+            duo_b = db.query(DuoRating).filter(
+                DuoRating.player1_id == b_ids[0],
+                DuoRating.player2_id == b_ids[1]
+            ).first()
+            if not duo_b:
+                duo_b = DuoRating(player1_id=b_ids[0], player2_id=b_ids[1])
+                db.add(duo_b)
+                db.flush()
+                
+            # Calculate Duo Elo change
+            duo_elo_calc = RatingService.calculate_elo_change(
+                ratings_a=[duo_a.rating],
+                ratings_b=[duo_b.rating],
+                ovr_a=ovr_a,
+                ovr_b=ovr_b,
+                winner_side=result.winner_side,
+                k_factor=k_factor,
+                handicap_multiplier=handicap_multiplier,
+                max_handicap=max_handicap
+            )
+            
+            # Update Duo A
+            duo_a.rating = duo_a.rating + duo_elo_calc["change_a"]
+            duo_a.matches_played += 1
+            if result.winner_side == "SIDE_A":
+                duo_a.wins += 1
+                duo_a.win_streak += 1
+            elif result.winner_side == "SIDE_B":
+                duo_a.losses += 1
+                duo_a.win_streak = 0
+            else:
+                duo_a.draws += 1
+            duo_a.win_rate = round((duo_a.wins / duo_a.matches_played) * 100.0, 1)
+            
+            # Update Duo B
+            duo_b.rating = duo_b.rating + duo_elo_calc["change_b"]
+            duo_b.matches_played += 1
+            if result.winner_side == "SIDE_B":
+                duo_b.wins += 1
+                duo_b.win_streak += 1
+            elif result.winner_side == "SIDE_A":
+                duo_b.losses += 1
+                duo_b.win_streak = 0
+            else:
+                duo_b.draws += 1
+            duo_b.win_rate = round((duo_b.wins / duo_b.matches_played) * 100.0, 1)
 
         # Update Team Statistics
         if team_a:

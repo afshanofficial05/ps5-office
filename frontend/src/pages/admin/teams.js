@@ -252,7 +252,7 @@ export default function AdminTeamsPage() {
 
     try {
       const payload = {
-        action: reviewAction,
+        approved: reviewAction === 'APPROVE',
         rejection_reason: reviewAction === 'REJECT' ? rejectionReason : undefined,
         league: reviewAction === 'APPROVE' ? reviewLeague : undefined,
         ovr: reviewAction === 'APPROVE' ? parseInt(reviewOvr, 10) : undefined,

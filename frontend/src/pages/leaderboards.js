@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
 import Avatar from '../components/Avatar';
 import { api } from '../services/api';
+import { useRealtime } from '../hooks/useRealtime';
 import { 
   Trophy, Swords, Users, Shield, Crown, 
   ChevronDown, Calendar, Check 
@@ -20,28 +21,31 @@ export default function LeaderboardsPage() {
   const [loading, setLoading] = useState(true);
   const dropdownRef = useRef(null);
 
-  useEffect(() => {
-    let isMounted = true;
-    async function loadLeaderboards() {
-      try {
-        const [l1, l2, lt] = await Promise.all([
-          api.get1v1Leaderboard().catch(() => []),
-          api.get2v2Leaderboard().catch(() => []),
-          api.getTeamLeaderboard().catch(() => [])
-        ]);
-        if (isMounted) {
-          setLeaderboard1v1(l1 || []);
-          setLeaderboard2v2(l2 || []);
-          setLeaderboardTeams(lt || []);
-        }
-      } catch (err) {
-        console.error('Failed to load leaderboards', err);
-      } finally {
-        if (isMounted) setLoading(false);
-      }
+  const loadLeaderboards = async () => {
+    try {
+      const [l1, l2, lt] = await Promise.all([
+        api.get1v1Leaderboard().catch(() => []),
+        api.get2v2Leaderboard().catch(() => []),
+        api.getTeamLeaderboard().catch(() => [])
+      ]);
+      setLeaderboard1v1(l1 || []);
+      setLeaderboard2v2(l2 || []);
+      setLeaderboardTeams(lt || []);
+    } catch (err) {
+      console.error('Failed to load leaderboards', err);
+    } finally {
+      setLoading(false);
     }
+  };
+
+  useRealtime((event) => {
+    if (event.type === 'UPDATE_LEADERBOARD') {
+      loadLeaderboards();
+    }
+  });
+
+  useEffect(() => {
     loadLeaderboards();
-    return () => { isMounted = false; };
   }, []);
 
   // Close dropdown on click outside
@@ -258,7 +262,7 @@ export default function LeaderboardsPage() {
 
                   return (
                     <div 
-                      key={p.player_id} 
+                      key={gameMode === '2V2' ? `${p.player1_id}-${p.player2_id}` : p.player_id} 
                       className={`leaderboard-data-row ${isFirst ? 'row-champion' : ''}`}
                     >
                       {/* Rank Badge */}
@@ -279,14 +283,35 @@ export default function LeaderboardsPage() {
 
                       {/* Player (Avatar + Name + Code) */}
                       <div className="col-player">
-                        <div className="player-avatar-wrap">
-                          <Avatar src={p.profile_photo} name={p.name} size="sm" />
-                          <span className="online-indicator-dot" />
-                        </div>
-                        <div className="player-meta-wrap">
-                          <span className="player-full-name" title={p.name}>{p.name}</span>
-                          <span className="player-code-sub">{p.player_code}</span>
-                        </div>
+                        {gameMode === '2V2' ? (
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                              <Avatar src={p.player1_photo} name={p.player1_name} size="xs" />
+                              <div className="player-meta-wrap" style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                                <span className="player-full-name" title={p.player1_name}>{p.player1_name}</span>
+                                <span className="player-code-sub" style={{ fontSize: '0.65rem' }}>{p.player1_code}</span>
+                              </div>
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                              <Avatar src={p.player2_photo} name={p.player2_name} size="xs" />
+                              <div className="player-meta-wrap" style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                                <span className="player-full-name" title={p.player2_name}>{p.player2_name}</span>
+                                <span className="player-code-sub" style={{ fontSize: '0.65rem' }}>{p.player2_code}</span>
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          <>
+                            <div className="player-avatar-wrap">
+                              <Avatar src={p.profile_photo} name={p.name} size="sm" />
+                              <span className="online-indicator-dot" />
+                            </div>
+                            <div className="player-meta-wrap">
+                              <span className="player-full-name" title={p.name}>{p.name}</span>
+                              <span className="player-code-sub">{p.player_code}</span>
+                            </div>
+                          </>
+                        )}
                       </div>
 
                       {/* Streak Pill (No emoji - clean text) */}

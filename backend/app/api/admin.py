@@ -1,11 +1,12 @@
 from datetime import datetime, timedelta
 from typing import List, Optional
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, BackgroundTasks
 from sqlalchemy.orm import Session
 from sqlalchemy import desc, func
 from backend.app.core.database import get_db
 from backend.app.models.models import (
-    Match, MatchStatus, MatchPlayer, MatchResult, User, UserRole, Team, SystemSetting
+    Match, MatchStatus, MatchPlayer, MatchResult, User, UserRole, Team, SystemSetting,
+    ScoreReport, ScoreReportStatus, BugReport, BugReportStatus, TeamRequest, TeamRequestStatus
 )
 from backend.app.schemas.schemas import (
     MatchResponse, MatchVerificationRequest, ManualMatchCreate
@@ -16,8 +17,26 @@ from backend.app.services.verification_service import VerificationService
 from backend.app.services.match_service import MatchService
 from backend.app.services.storage_service import StorageService
 from backend.app.services.audit_service import AuditService
+from backend.app.core.websockets import manager
 
 router = APIRouter(prefix="/admin", tags=["admin"])
+
+@router.get("/badges")
+def get_admin_badges(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(require_admin)
+):
+    pending_appeals = db.query(ScoreReport).filter(ScoreReport.status == ScoreReportStatus.PENDING).count()
+    pending_bugs = db.query(BugReport).filter(BugReport.status.in_([BugReportStatus.OPEN, BugReportStatus.IN_PROGRESS])).count()
+    pending_teams = db.query(TeamRequest).filter(TeamRequest.status == TeamRequestStatus.PENDING).count()
+    pending_matches = db.query(Match).filter(Match.status == MatchStatus.PENDING_VERIFICATION).count()
+
+    return {
+        "appeals": pending_appeals,
+        "bugs": pending_bugs,
+        "teams": pending_teams,
+        "matches": pending_matches
+    }
 
 @router.get("/dashboard")
 def get_admin_dashboard(
@@ -85,31 +104,37 @@ def get_pending_results(
 @router.post("/matches/{match_id}/approve", response_model=MatchResponse)
 def approve_match(
     match_id: int,
+    background_tasks: BackgroundTasks,
     db: Session = Depends(get_db),
     current_user: User = Depends(check_admin_permission("RESULT_VERIFICATION"))
 ):
     match = VerificationService.approve_match(db, match_id, current_user.id)
+    background_tasks.add_task(manager.broadcast, {"type": "UPDATE_LEADERBOARD"})
     return serialize_match(match)
 
 @router.post("/matches/{match_id}/reject", response_model=MatchResponse)
 def reject_match(
     match_id: int,
     payload: MatchVerificationRequest,
+    background_tasks: BackgroundTasks,
     db: Session = Depends(get_db),
     current_user: User = Depends(check_admin_permission("RESULT_VERIFICATION"))
 ):
     if not payload.rejection_reason:
         raise HTTPException(status_code=400, detail="Rejection reason is required")
     match = VerificationService.reject_match(db, match_id, current_user.id, payload.rejection_reason)
+    background_tasks.add_task(manager.broadcast, {"type": "UPDATE_LEADERBOARD"})
     return serialize_match(match)
 
 @router.post("/matches/manual", response_model=MatchResponse)
 def create_manual_match(
     payload: ManualMatchCreate,
+    background_tasks: BackgroundTasks,
     db: Session = Depends(get_db),
     current_user: User = Depends(check_admin_permission("MATCH_MANAGEMENT"))
 ):
     match = MatchService.create_manual_match(db, current_user.id, payload)
+    background_tasks.add_task(manager.broadcast, {"type": "UPDATE_LEADERBOARD"})
     return serialize_match(match)
 
 @router.get("/settings/screenshot-limit")

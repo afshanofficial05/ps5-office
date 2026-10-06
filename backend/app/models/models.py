@@ -1,6 +1,6 @@
 from datetime import datetime
 from sqlalchemy import (
-    Column, Integer, String, Float, Boolean, DateTime, ForeignKey, Text, Enum
+    Column, Integer, String, Float, Boolean, DateTime, ForeignKey, Text, Enum, UniqueConstraint
 )
 from sqlalchemy.orm import relationship
 from backend.app.core.database import Base
@@ -131,6 +131,28 @@ class Match(Base):
     players = relationship("MatchPlayer", back_populates="match", cascade="all, delete-orphan")
     result = relationship("MatchResult", back_populates="match", uselist=False, cascade="all, delete-orphan")
     evidence = relationship("MatchEvidence", back_populates="match", cascade="all, delete-orphan")
+
+
+class DuoRating(Base):
+    __tablename__ = "duo_ratings"
+
+    id = Column(Integer, primary_key=True, index=True)
+    player1_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    player2_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    rating = Column(Integer, default=1500, nullable=False)
+    matches_played = Column(Integer, default=0, nullable=False)
+    wins = Column(Integer, default=0, nullable=False)
+    losses = Column(Integer, default=0, nullable=False)
+    draws = Column(Integer, default=0, nullable=False)
+    win_rate = Column(Float, default=0.0, nullable=False)
+    win_streak = Column(Integer, default=0, nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    __table_args__ = (UniqueConstraint('player1_id', 'player2_id', name='uix_duo_players'),)
+
+    player1 = relationship("User", foreign_keys=[player1_id])
+    player2 = relationship("User", foreign_keys=[player2_id])
 
 
 class MatchPlayer(Base):
@@ -365,4 +387,33 @@ class InAppNotification(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
 
     user = relationship("User", back_populates="in_app_notifications")
+
+
+class ScoreReportStatus:
+    PENDING = "PENDING"
+    RESOLVED = "RESOLVED"
+    DISMISSED = "DISMISSED"
+
+
+class ScoreReport(Base):
+    __tablename__ = "score_reports"
+
+    id = Column(Integer, primary_key=True, index=True)
+    match_id = Column(Integer, ForeignKey("matches.id", ondelete="CASCADE"), nullable=False, index=True)
+    reporter_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    reported_player_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    reason = Column(String(100), nullable=False)
+    description = Column(Text, nullable=True)
+    status = Column(String(20), default=ScoreReportStatus.PENDING, nullable=False, index=True)
+    admin_notes = Column(Text, nullable=True)
+    resolved_by = Column(Integer, ForeignKey("users.id"), nullable=True)
+    resolved_at = Column(DateTime, nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    match = relationship("Match")
+    reporter = relationship("User", foreign_keys=[reporter_id])
+    reported_player = relationship("User", foreign_keys=[reported_player_id])
+    resolver = relationship("User", foreign_keys=[resolved_by])
+
 

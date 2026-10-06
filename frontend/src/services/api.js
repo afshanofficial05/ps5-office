@@ -43,7 +43,11 @@ export async function request(endpoint, options = {}) {
     let errorMessage = 'An error occurred';
     try {
       const errData = await res.json();
-      errorMessage = errData.detail || errData.message || errorMessage;
+      if (Array.isArray(errData.detail)) {
+        errorMessage = errData.detail.map(e => `${e.loc.join('.')}: ${e.msg}`).join(', ');
+      } else {
+        errorMessage = errData.detail || errData.message || errorMessage;
+      }
     } catch (e) {
       if (res.status === 503) {
         errorMessage = 'Backend service unavailable (503). The Render server might be waking up from sleep or is offline. Please wait ~30 seconds and retry.';
@@ -88,7 +92,7 @@ export const api = {
 
   // Matches
   create1v1Match: (teamId, opponentId) => request('/matches/1v1', { method: 'POST', body: JSON.stringify({ team_id: teamId, opponent_id: opponentId }) }),
-  create2v2Match: (teamId, teammateId) => request('/matches/2v2', { method: 'POST', body: JSON.stringify({ team_id: teamId, teammate_id: teammateId }) }),
+  create2v2Match: (teamId, side = 'SIDE_A', teammateId = null) => request('/matches/2v2', { method: 'POST', body: JSON.stringify({ team_id: teamId, teammate_id: teammateId, side }) }),
   getMatches: (params = {}) => {
     const q = new URLSearchParams(params);
     return request(`/matches?${q.toString()}`);
@@ -108,6 +112,7 @@ export const api = {
     if (matchId) formData.append('match_id', matchId);
     return request('/matches/upload-screenshot', { method: 'POST', body: formData });
   },
+  cancelMatch: (matchId) => request(`/matches/${matchId}`, { method: 'DELETE' }),
   directSubmitMatch: (data) => request('/matches/direct-submit', { method: 'POST', body: JSON.stringify(data) }),
 
   // Teams with Smart In-Memory Caching
@@ -163,6 +168,7 @@ export const api = {
 
   // Admin
   getAdminDashboard: () => request('/admin/dashboard'),
+  getAdminBadges: () => request('/admin/badges'),
   getPendingResults: () => request('/admin/pending-results'),
   approveMatch: (matchId) => request(`/admin/matches/${matchId}/approve`, { method: 'POST' }),
   rejectMatch: (matchId, reason) => request(`/admin/matches/${matchId}/reject`, { method: 'POST', body: JSON.stringify({ approved: false, rejection_reason: reason }) }),
@@ -253,5 +259,10 @@ export const api = {
   getInAppNotifications: (limit = 30) => request(`/notifications?limit=${limit}`),
   markNotificationRead: (id) => request(`/notifications/${id}/read`, { method: 'POST' }),
   markAllNotificationsRead: () => request('/notifications/read-all', { method: 'POST' }),
+
+  // Score Appeals / Cheating Reports
+  submitReport: (data) => request('/appeals', { method: 'POST', body: JSON.stringify(data) }),
+  getReports: (status = '') => request(`/appeals${status ? '?status='+status : ''}`),
+  resolveReport: (id, data) => request(`/appeals/${id}/resolve`, { method: 'POST', body: JSON.stringify(data) }),
 };
 

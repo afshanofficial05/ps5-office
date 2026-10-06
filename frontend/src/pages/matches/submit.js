@@ -144,10 +144,6 @@ export default function SubmitMatchResultPage() {
       setError('Please select an opponent player');
       return;
     }
-    if (!compressedFile) {
-      setError('A match screenshot is required for result verification');
-      return;
-    }
 
     const valUser = userScore === '' ? 0 : parseInt(userScore, 10);
     const valOpp = opponentScore === '' ? 0 : parseInt(opponentScore, 10);
@@ -169,9 +165,12 @@ export default function SubmitMatchResultPage() {
     setSubmitting(true);
 
     try {
-      // 1. Upload compressed screenshot (enforcing client-side <= 300 KB)
-      const uploadRes = await api.uploadMatchScreenshot(compressedFile);
-      const screenshotUrl = uploadRes.file_url;
+      // 1. Upload compressed screenshot if provided
+      let screenshotUrl = null;
+      if (compressedFile) {
+        const uploadRes = await api.uploadMatchScreenshot(compressedFile);
+        screenshotUrl = uploadRes.file_url;
+      }
 
       // 2. Direct submit match record with pending status
       const payload = {
@@ -241,7 +240,7 @@ export default function SubmitMatchResultPage() {
               Result submitted successfully!
             </h2>
             <p style={{ fontSize: '0.88rem', color: '#64748b', marginBottom: '22px', lineHeight: 1.5, maxWidth: '440px', margin: '0 auto 22px' }}>
-              Waiting for admin verification. Your match has been registered as{' '}
+              Your match has been registered as{' '}
               <span style={{
                 display: 'inline-block',
                 fontWeight: 800,
@@ -253,7 +252,7 @@ export default function SubmitMatchResultPage() {
               }}>
                 {submittedMatch.match_code}
               </span>.
-              Ratings will automatically update once verified.
+              Leaderboards and ratings have been updated automatically!
             </p>
 
             {/* Scoreboard Card: Perfect 3-column Grid */}
@@ -451,7 +450,7 @@ export default function SubmitMatchResultPage() {
             Submit Match Result ⚽
           </h2>
           <p style={{ fontSize: '0.88rem', color: '#64748b', marginTop: '4px' }}>
-            Finished a PS5 fixture? Enter your score and upload the required screenshot proof for admin verification.
+            Finished a PS5 fixture? Enter your score to update the live leaderboards instantly!
           </p>
         </div>
 
@@ -729,10 +728,10 @@ export default function SubmitMatchResultPage() {
             </div>
           </div>
 
-          {/* Section 4: Screenshot Upload (Mandatory with <= 300 KB constraint) */}
+          {/* Section 4: Screenshot Upload (Optional) */}
           <ScreenshotUploader
-            required={true}
-            label="Match Result Screenshot Proof"
+            required={false}
+            label="Match Result Screenshot Proof (Optional)"
             onFileReady={(file) => setCompressedFile(file)}
             onFileCleared={() => setCompressedFile(null)}
           />
@@ -741,19 +740,19 @@ export default function SubmitMatchResultPage() {
           <div className="submit-button-wrap">
             <button
               type="submit"
-              disabled={submitting || !compressedFile || !opponentId || isTieBlocked}
+              disabled={submitting || !opponentId || isTieBlocked}
               className="btn btn-primary submit-action-btn"
               style={{
-                opacity: (submitting || !compressedFile || !opponentId || isTieBlocked) ? 0.65 : 1,
-                cursor: (submitting || !compressedFile || !opponentId || isTieBlocked) ? 'not-allowed' : 'pointer'
+                opacity: (submitting || !opponentId || isTieBlocked) ? 0.65 : 1,
+                cursor: (submitting || !opponentId || isTieBlocked) ? 'not-allowed' : 'pointer'
               }}
             >
               <span>
                 {submitting 
-                  ? 'Submitting & Uploading Proof...' 
+                  ? 'Submitting Result...' 
                   : isTieBlocked 
                     ? 'Enter Penalties to Submit' 
-                    : 'Submit Result for Verification'}
+                    : 'Submit Match Result'}
               </span>
               <ArrowRight size={18} />
             </button>

@@ -18,6 +18,7 @@ export default function CreateMatchPage() {
     }
   }, [user, router]);
   const [gameMode, setGameMode] = useState('1V1');
+  const [selectedSide, setSelectedSide] = useState('SIDE_A');
   const [teams, setTeams] = useState([]);
   const [selectedTeamId, setSelectedTeamId] = useState(null);
   const [categoryFilter, setCategoryFilter] = useState('ALL');
@@ -78,7 +79,7 @@ export default function CreateMatchPage() {
     try {
       const match = gameMode === '1V1'
         ? await api.create1v1Match(selectedTeamId)
-        : await api.create2v2Match(selectedTeamId);
+        : await api.create2v2Match(selectedTeamId, selectedSide);
       
       router.push(`/matches/${match.id}`);
     } catch (err) {
@@ -252,6 +253,33 @@ export default function CreateMatchPage() {
             {gameMode === '2V2' && <Check size={18} color="#2563eb" style={{ strokeWidth: 3 }} />}
           </div>
         </div>
+
+        {/* 2V2 Side Picker */}
+        {gameMode === '2V2' && (
+          <div style={{ marginBottom: '20px' }}>
+            <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 800, color: '#334155', marginBottom: '10px' }}>
+              Choose Your Starting Side
+            </label>
+            <div style={{ display: 'flex', gap: '12px' }}>
+              <button
+                type="button"
+                className={`btn ${selectedSide === 'SIDE_A' ? 'btn-primary' : 'btn-secondary'}`}
+                onClick={() => setSelectedSide('SIDE_A')}
+                style={{ flex: 1, padding: '12px' }}
+              >
+                Side A (Home)
+              </button>
+              <button
+                type="button"
+                className={`btn ${selectedSide === 'SIDE_B' ? 'btn-primary' : 'btn-secondary'}`}
+                onClick={() => setSelectedSide('SIDE_B')}
+                style={{ flex: 1, padding: '12px' }}
+              >
+                Side B (Away)
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* Section 2: Selected Team Progressive Detail Bar */}
         {selectedTeam && (

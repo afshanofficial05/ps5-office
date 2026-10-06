@@ -10,8 +10,9 @@ import { useAuth } from '../../context/AuthContext';
 import { api } from '../../services/api';
 import { 
   Swords, Shield, Users, Trophy, Play, CheckCircle2, AlertCircle, 
-  Upload, Share2, Clock, Check, X, RefreshCw, Copy, ChevronDown, ChevronUp, Globe
+  Upload, Share2, Clock, Check, X, RefreshCw, Copy, ChevronDown, ChevronUp, Globe, Flag, Trash2
 } from 'lucide-react';
+import ReportScoreModal from '../../components/ReportScoreModal';
 
 export default function MatchRoomPage() {
   const router = useRouter();
@@ -39,6 +40,7 @@ export default function MatchRoomPage() {
   const [copiedCode, setCopiedCode] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
   const [showGuidelines, setShowGuidelines] = useState(false);
+  const [showReportModal, setShowReportModal] = useState(false);
 
   // Helper: Strip leading zeros (e.g., '04' -> '4', '005' -> '5', '00' -> '0')
   const cleanScoreInput = (value) => {
@@ -139,6 +141,19 @@ export default function MatchRoomPage() {
     }
   };
 
+  const handleCancelMatch = async () => {
+    if (!window.confirm('Are you sure you want to cancel this match?')) return;
+    setSubmitting(true);
+    setError('');
+    try {
+      await api.cancelMatch(match.id);
+      router.push('/dashboard');
+    } catch (err) {
+      setError(err.message || 'Failed to cancel match');
+      setSubmitting(false);
+    }
+  };
+
   const handleEvidenceChange = (file) => {
     setEvidenceFile(file);
   };
@@ -228,12 +243,6 @@ export default function MatchRoomPage() {
         setError('Penalty shootout cannot end in a draw. One side must win the shootout.');
         return;
       }
-    }
-
-    const hasPriorScreenshot = match.evidence && match.evidence.some(ev => ev.file_url && ev.file_url !== '[Deleted after approval]');
-    if (!evidenceFile && !hasPriorScreenshot) {
-      setError('A match screenshot is required for result verification');
-      return;
     }
 
     let finalWinner = winnerSide;
@@ -348,6 +357,16 @@ export default function MatchRoomPage() {
                 <RefreshCw size={13} />
                 <span>Refresh</span>
               </button>
+              {(match.status === 'VERIFIED' || match.status === 'APPROVED' || match.status === 'PENDING_VERIFICATION') && (
+                <button
+                  onClick={() => setShowReportModal(true)}
+                  className="btn btn-secondary"
+                  style={{ padding: '6px 12px', fontSize: '0.78rem', display: 'flex', alignItems: 'center', gap: '4px', background: '#fee2e2', borderColor: '#fca5a5', color: '#991b1b' }}
+                >
+                  <Flag size={13} />
+                  <span>Report</span>
+                </button>
+              )}
               {match.status === 'VERIFIED' && (
                 <button
                   onClick={() => setShowShareModal(true)}
@@ -356,6 +375,17 @@ export default function MatchRoomPage() {
                 >
                   <Share2 size={13} />
                   <span>WhatsApp</span>
+                </button>
+              )}
+              {isCreator && (match.status === 'WAITING' || match.status === 'READY') && (
+                <button
+                  onClick={handleCancelMatch}
+                  disabled={submitting}
+                  className="btn btn-secondary"
+                  style={{ padding: '6px 12px', fontSize: '0.78rem', display: 'flex', alignItems: 'center', gap: '4px', background: '#fef2f2', borderColor: '#fecaca', color: '#dc2626' }}
+                >
+                  <Trash2 size={13} />
+                  <span>Cancel Match</span>
                 </button>
               )}
             </div>
@@ -540,34 +570,7 @@ export default function MatchRoomPage() {
           </div>
         )}
 
-        {/* Pending Verification Banner */}
-        {match.status === 'PENDING_VERIFICATION' && (
-          <div className="glass-card" style={{
-            padding: '24px',
-            marginBottom: '20px',
-            background: '#fffbeb',
-            border: '1.5px solid #fde68a',
-            borderRadius: '18px'
-          }}>
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
-              <Clock size={24} color="#d97706" style={{ flexShrink: 0, marginTop: '2px' }} />
-              <div>
-                <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#92400e' }}>
-                  Result Waiting for Admin Verification
-                </h4>
-                <p style={{ fontSize: '0.88rem', color: '#b45309', marginTop: '4px' }}>
-                  Score reported: <strong>{match.result?.score_a} - {match.result?.score_b}</strong>.
-                  The verification queue has been notified. Once approved, player ratings will update, and the temporary screenshot proof will be automatically deleted from storage.
-                </p>
-                {match.result?.notes && (
-                  <p style={{ fontSize: '0.82rem', color: '#78350f', marginTop: '8px', fontStyle: 'italic' }}>
-                    Notes: "{match.result.notes}"
-                  </p>
-                )}
-              </div>
-            </div>
-          </div>
-        )}
+
 
         {/* Score Submission for In-Progress, Ready, Playing, or Rejected (Resubmission) */}
         {isParticipant && (match.status === 'IN_PROGRESS' || match.status === 'READY' || match.status === 'PLAYING' || match.status === 'REJECTED') && (
@@ -722,10 +725,10 @@ export default function MatchRoomPage() {
                 />
               </div>
 
-              {/* Secure Screenshot Upload (<= 300 KB required) */}
+              {/* Secure Screenshot Upload (Optional) */}
               <ScreenshotUploader
-                required={true}
-                label="Match Result Screenshot Proof"
+                required={false}
+                label="Match Result Screenshot Proof (Optional)"
                 onFileReady={handleEvidenceChange}
                 onFileCleared={() => setEvidenceFile(null)}
               />
@@ -748,7 +751,7 @@ export default function MatchRoomPage() {
                     : isTieBlocked 
                       ? 'Enter Penalties to Submit' 
                       : match.status === 'REJECTED' 
-                        ? 'Resubmit Result for Verification' 
+                        ? 'Resubmit Result' 
                         : 'Submit Match Result'}
                 </span>
               </button>
@@ -795,6 +798,11 @@ export default function MatchRoomPage() {
         {/* WhatsApp Share Modal */}
         {showShareModal && (
           <WhatsAppShareModal match={match} onClose={() => setShowShareModal(false)} />
+        )}
+
+        {/* Report Score Modal */}
+        {showReportModal && (
+          <ReportScoreModal match={match} onClose={() => setShowReportModal(false)} />
         )}
 
         <style jsx>{`

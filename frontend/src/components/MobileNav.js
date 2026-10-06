@@ -7,7 +7,7 @@ import { api } from '../services/api';
 import {
   Menu, X, Home, Swords, Trophy, Shield, User, History,
   CheckSquare, Users, Settings, FileText, LogOut, ChevronRight,
-  Gamepad2, PlusCircle, Calendar, BarChart3, Plus, Camera, KeyRound, Sparkles, Award, Bug, Bell, Lightbulb
+  Gamepad2, PlusCircle, Calendar, BarChart3, Plus, Camera, KeyRound, Sparkles, Award, Bug, Bell, Lightbulb, ShieldCheck
 } from 'lucide-react';
 
 export default function MobileNav() {
@@ -16,6 +16,7 @@ export default function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
   const [isActionSheetOpen, setIsActionSheetOpen] = useState(false);
   const [unreadCount, setUnreadCount] = useState(0);
+  const [adminBadges, setAdminBadges] = useState({ appeals: 0, bugs: 0, teams: 0, matches: 0 });
 
   useEffect(() => {
     if (!user) return;
@@ -27,7 +28,19 @@ export default function MobileNav() {
       }).catch(() => {});
     };
     fetchUnread();
-    const interval = setInterval(fetchUnread, 25000);
+    
+    // Fetch Admin Badges
+    const fetchAdminBadges = () => {
+      if (user.role === 'ADMIN' || user.role === 'SUPER_ADMIN') {
+        api.getAdminBadges().then(setAdminBadges).catch(() => {});
+      }
+    };
+    fetchAdminBadges();
+
+    const interval = setInterval(() => {
+      fetchUnread();
+      fetchAdminBadges();
+    }, 25000);
     return () => clearInterval(interval);
   }, [user]);
 
@@ -121,12 +134,13 @@ export default function MobileNav() {
         { href: '/admin', label: 'Admin Hub', icon: Shield, perm: null },
         { href: '/admin/achievements', label: 'Achievements & Badges', icon: Award, perm: null },
         { href: '/admin/seasons', label: 'Season Management', icon: Calendar, perm: 'VIEW_SEASON' },
-        { href: '/admin/pending', label: 'Pending Results', icon: CheckSquare, perm: 'VERIFY_RESULTS' },
-        { href: '/admin/teams', label: 'Teams & Requests', icon: Gamepad2, perm: 'VIEW_TEAMS' },
+        { href: '/admin/pending', label: 'Pending Results', icon: CheckSquare, perm: 'VERIFY_RESULTS', badge: adminBadges.matches },
+        { href: '/admin/teams', label: 'Teams & Requests', icon: Gamepad2, perm: 'VIEW_TEAMS', badge: adminBadges.teams },
         { href: '/admin/players', label: 'Player Accounts', icon: Users, perm: 'VIEW_PLAYERS' },
         { href: '/admin/manual', label: 'Record Match', icon: Swords, perm: 'MANUAL_MATCH_CREATE' },
-        { href: '/admin/bugs', label: 'Improvement Box', icon: Lightbulb, perm: null },
+        { href: '/admin/bugs', label: 'Improvement Box', icon: Lightbulb, perm: null, badge: adminBadges.bugs },
         { href: '/admin/reports', label: 'Platform Reports', icon: BarChart3, perm: 'VIEW_REPORTS' },
+        { href: '/admin/appeals', label: 'Appeals & Moderation', icon: ShieldCheck, perm: null, badge: adminBadges.appeals },
         { href: '/settings/notifications', label: 'Notifications & Alerts', icon: Bell, perm: null },
         { href: '/leaderboards', label: 'Leaderboards', icon: Trophy, perm: null },
         { href: '/matches/history', label: 'Match History', icon: History, perm: null },
@@ -149,7 +163,7 @@ export default function MobileNav() {
         items: [
           { href: '/super-admin', label: 'Executive Console', icon: Shield },
           { href: '/super-admin/admins', label: 'Staff Management', icon: Users },
-          { href: '/admin/bugs', label: 'Improvement Box', icon: Lightbulb },
+          { href: '/admin/bugs', label: 'Improvement Box', icon: Lightbulb, badge: adminBadges.bugs },
           { href: '/super-admin/players', label: 'Rating Overrides', icon: Trophy },
           { href: '/super-admin/audit-logs', label: 'Audit Logs', icon: FileText },
           { href: '/settings/notifications', label: 'Notifications & Alerts', icon: Bell },
@@ -304,9 +318,23 @@ export default function MobileNav() {
                           className={`mobile-drawer-link ${isActive ? 'active' : ''}`}
                           onClick={() => setIsOpen(false)}
                         >
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}>
                             <Icon size={18} />
                             <span style={{ fontWeight: isActive ? 700 : 500 }}>{item.label}</span>
+                            {item.badge > 0 && (
+                              <span style={{
+                                background: '#ef4444',
+                                color: '#ffffff',
+                                fontSize: '0.65rem',
+                                fontWeight: 800,
+                                padding: '1px 6px',
+                                borderRadius: '10px',
+                                marginLeft: 'auto',
+                                marginRight: '8px'
+                              }}>
+                                {item.badge}
+                              </span>
+                            )}
                           </div>
                           <ChevronRight size={14} opacity={isActive ? 1 : 0.4} />
                         </Link>

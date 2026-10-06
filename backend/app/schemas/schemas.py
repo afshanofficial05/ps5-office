@@ -181,6 +181,7 @@ class MatchCreate1v1(BaseModel):
 class MatchCreate2v2(BaseModel):
     team_id: int
     teammate_id: Optional[int] = None
+    side: Optional[str] = "SIDE_A"
 
 class MatchJoinRequest(BaseModel):
     team_id: Optional[int] = None # Team choice for joiner side
@@ -298,6 +299,24 @@ class LeaderboardPlayer(BaseModel):
     name: str
     profile_photo: Optional[str] = None
     rating: float
+    matches_played: int
+    wins: int
+    losses: int
+    draws: int
+    win_rate: float
+    win_streak: int
+
+class LeaderboardDuo(BaseModel):
+    rank: int
+    player1_id: int
+    player1_name: str
+    player1_code: str
+    player1_photo: Optional[str] = None
+    player2_id: int
+    player2_name: str
+    player2_code: str
+    player2_photo: Optional[str] = None
+    rating: int
     matches_played: int
     wins: int
     losses: int

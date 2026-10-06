@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useAuth } from '../context/AuthContext';
+import { api } from '../services/api';
 import Avatar from './Avatar';
 import { 
   Gamepad2, Swords, Trophy, History, User, Users, Shield, 
@@ -12,6 +13,18 @@ import {
 export default function Sidebar() {
   const router = useRouter();
   const { user, hasPermission } = useAuth();
+  const [adminBadges, setAdminBadges] = useState({ appeals: 0, bugs: 0, teams: 0, matches: 0 });
+
+  useEffect(() => {
+    if (user && (user.role === 'ADMIN' || user.role === 'SUPER_ADMIN')) {
+      const fetchBadges = () => {
+        api.getAdminBadges().then(setAdminBadges).catch(() => {});
+      };
+      fetchBadges();
+      const interval = setInterval(fetchBadges, 30000);
+      return () => clearInterval(interval);
+    }
+  }, [user]);
 
   if (!user) return null;
 
@@ -33,12 +46,13 @@ export default function Sidebar() {
     { label: 'Admin Overview', href: '/admin', icon: Activity, requiredPerm: null },
     { label: 'Achievements', href: '/admin/achievements', icon: Award, requiredPerm: null },
     { label: 'Seasons', href: '/admin/seasons', icon: Calendar, requiredPerm: 'VIEW_SEASON' },
-    { label: 'Pending Verification', href: '/admin/pending', icon: CheckSquare, requiredPerm: 'VERIFY_RESULTS' },
+    { label: 'Pending Verification', href: '/admin/pending', icon: CheckSquare, requiredPerm: 'VERIFY_RESULTS', badge: adminBadges.matches },
     { label: 'Manual Match Entry', href: '/admin/manual', icon: Swords, requiredPerm: 'MANUAL_MATCH_CREATE' },
     { label: 'Players Directory', href: '/admin/players', icon: Users, requiredPerm: 'VIEW_PLAYERS' },
-    { label: 'Teams Database', href: '/admin/teams', icon: Shield, requiredPerm: 'VIEW_TEAMS' },
-    { label: 'Improvement Box', href: '/admin/bugs', icon: Lightbulb, requiredPerm: null },
+    { label: 'Teams Database', href: '/admin/teams', icon: Shield, requiredPerm: 'VIEW_TEAMS', badge: adminBadges.teams },
+    { label: 'Improvement Box', href: '/admin/bugs', icon: Lightbulb, requiredPerm: null, badge: adminBadges.bugs },
     { label: 'Platform Reports', href: '/admin/reports', icon: BarChart3, requiredPerm: 'VIEW_REPORTS' },
+    { label: 'Appeals & Moderation', href: '/admin/appeals', icon: ShieldCheck, requiredPerm: null, badge: adminBadges.appeals },
     { label: 'Notifications', href: '/settings/notifications', icon: Bell, requiredPerm: null },
     { label: 'Leaderboards', href: '/leaderboards', icon: Trophy, requiredPerm: null },
     { label: 'Match History', href: '/matches/history', icon: History, requiredPerm: null },
@@ -52,11 +66,12 @@ export default function Sidebar() {
     { label: 'Admin Management', href: '/super-admin/admins', icon: ShieldCheck },
     { label: 'Seasons', href: '/admin/seasons', icon: Calendar },
     { label: 'Player Management', href: '/super-admin/players', icon: Users },
-    { label: 'Pending Results', href: '/admin/pending', icon: CheckSquare },
+    { label: 'Pending Results', href: '/admin/pending', icon: CheckSquare, badge: adminBadges.matches },
     { label: 'Manual Match', href: '/admin/manual', icon: Swords },
-    { label: 'Teams & Ratings', href: '/admin/teams', icon: Shield },
-    { label: 'Improvement Box', href: '/admin/bugs', icon: Lightbulb },
+    { label: 'Teams & Ratings', href: '/admin/teams', icon: Shield, badge: adminBadges.teams },
+    { label: 'Improvement Box', href: '/admin/bugs', icon: Lightbulb, badge: adminBadges.bugs },
     { label: 'Platform Reports', href: '/admin/reports', icon: BarChart3 },
+    { label: 'Appeals & Moderation', href: '/admin/appeals', icon: ShieldCheck, badge: adminBadges.appeals },
     { label: 'Notifications', href: '/settings/notifications', icon: Bell },
     { label: 'Leaderboards', href: '/leaderboards', icon: Trophy },
     { label: 'System Settings', href: '/super-admin/settings', icon: Settings },
@@ -157,7 +172,20 @@ export default function Sidebar() {
               }}
             >
               <Icon size={18} color={isActive ? '#2563eb' : '#94a3b8'} />
-              <span>{item.label}</span>
+              <span style={{ flex: 1 }}>{item.label}</span>
+              {item.badge > 0 && (
+                <span style={{
+                  background: '#ef4444',
+                  color: '#ffffff',
+                  fontSize: '0.65rem',
+                  fontWeight: 800,
+                  padding: '2px 6px',
+                  borderRadius: '10px',
+                  marginLeft: 'auto'
+                }}>
+                  {item.badge}
+                </span>
+              )}
             </Link>
           );
         })}

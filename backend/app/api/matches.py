@@ -1,7 +1,7 @@
 import os
 import shutil
 from typing import List, Optional
-from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form, Query
+from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form, Query, BackgroundTasks
 from sqlalchemy.orm import Session, joinedload
 from sqlalchemy import or_, desc
 from backend.app.core.database import get_db
@@ -15,6 +15,7 @@ from backend.app.services.match_service import MatchService
 from backend.app.services.storage_service import StorageService
 from backend.app.services.notification_service import NotificationService
 from backend.app.core.config import settings
+from backend.app.core.websockets import manager
 
 router = APIRouter(prefix="/matches", tags=["matches"])
 
@@ -187,21 +188,25 @@ def confirm_match(
 def submit_match_result(
     match_id: int,
     payload: MatchResultSubmit,
+    background_tasks: BackgroundTasks,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
     submitted = MatchService.submit_result(db, match_id, current_user.id, payload)
     match = get_match_query(db).filter(Match.id == submitted.id).first()
+    background_tasks.add_task(manager.broadcast, {"type": "UPDATE_LEADERBOARD"})
     return serialize_match(match or submitted)
 
 @router.post("/direct-submit", response_model=MatchResponse)
 def direct_submit_match(
     payload: DirectMatchSubmit,
+    background_tasks: BackgroundTasks,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
     created = MatchService.create_direct_match_submission(db, current_user.id, payload)
     match = get_match_query(db).filter(Match.id == created.id).first()
+    background_tasks.add_task(manager.broadcast, {"type": "UPDATE_LEADERBOARD"})
     return serialize_match(match or created)
 
 @router.post("/upload-screenshot")
@@ -246,3 +251,12 @@ def upload_evidence(
     db.commit()
     db.refresh(evidence)
     return evidence
+
+@router.delete("/{match_id}")
+def delete_match(
+    match_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    return MatchService.cancel_match(db, match_id, current_user.id)
+

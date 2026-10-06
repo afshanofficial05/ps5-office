@@ -93,21 +93,22 @@ class MatchService:
         db.add(match)
         db.flush()
 
-        # Side A Player 1 (Creator)
+        # Side A or B Player 1 (Creator)
+        creator_side = payload.side if payload.side in ["SIDE_A", "SIDE_B"] else "SIDE_A"
         player_a1 = MatchPlayer(
             match_id=match.id,
             player_id=user_id,
-            side="SIDE_A",
+            side=creator_side,
             team_id=payload.team_id
         )
         db.add(player_a1)
 
-        # Side A Player 2 (if specified)
+        # Side A or B Player 2 (if specified)
         if payload.teammate_id:
             player_a2 = MatchPlayer(
                 match_id=match.id,
                 player_id=payload.teammate_id,
-                side="SIDE_A",
+                side=creator_side,
                 team_id=payload.team_id
             )
             db.add(player_a2)
@@ -211,8 +212,6 @@ class MatchService:
             raise HTTPException(status_code=404, detail="Match not found")
 
         # Duplicate submission checks
-        if match.status == MatchStatus.PENDING_VERIFICATION:
-            raise HTTPException(status_code=400, detail="Your result is already waiting for admin verification.")
         if match.status == MatchStatus.APPROVED:
             raise HTTPException(status_code=400, detail="This match result has already been approved.")
 
@@ -281,7 +280,9 @@ class MatchService:
         match.status = MatchStatus.PENDING_VERIFICATION
         db.commit()
         db.refresh(match)
-        return match
+        
+        # Auto-approve
+        return VerificationService.approve_match(db, match.id, user_id)
 
     @classmethod
     def create_direct_match_submission(cls, db: Session, user_id: int, payload: DirectMatchSubmit) -> Match:
@@ -381,7 +382,9 @@ class MatchService:
 
         db.commit()
         db.refresh(match)
-        return match
+
+        # Auto-approve
+        return VerificationService.approve_match(db, match.id, user_id)
 
     @classmethod
     def create_manual_match(cls, db: Session, admin_id: int, payload: ManualMatchCreate) -> Match:
@@ -451,3 +454,34 @@ class MatchService:
             return VerificationService.approve_match(db, match.id, admin_id)
         
         return match
+
+    @classmethod
+    def cancel_match(cls, db: Session, match_id: int, user_id: int) -> dict:
+        match = db.query(Match).filter(Match.id == match_id).first()
+        if not match:
+            raise HTTPException(status_code=404, detail="Match not found")
+
+        # Allow cancellation only if WAITING or READY
+        if match.status not in [MatchStatus.WAITING, MatchStatus.READY]:
+            raise HTTPException(status_code=400, detail="Match cannot be cancelled at this stage.")
+
+        # Check permission: Only creator or admin can cancel
+        user = db.query(User).filter(User.id == user_id).first()
+        if match.created_by != user_id and (not user or user.role not in ["ADMIN", "SUPER_ADMIN"]):
+            raise HTTPException(status_code=403, detail="You are not authorized to cancel this match.")
+
+        # Cleanup players
+        db.query(MatchPlayer).filter(MatchPlayer.match_id == match.id).delete()
+        
+        # Cleanup evidence/result if any
+        if match.evidence:
+            for ev in match.evidence:
+                StorageService.delete_file(ev.file_url)
+                db.delete(ev)
+        
+        if match.result:
+            db.delete(match.result)
+            
+        db.delete(match)
+        db.commit()
+        return {"status": "success", "message": "Match cancelled successfully"}
