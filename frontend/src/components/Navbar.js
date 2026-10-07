@@ -24,14 +24,22 @@ export default function Navbar({ title, subtitle }) {
       return;
     }
     try {
-      const items = await api.getInAppNotifications(10);
-      if (Array.isArray(items)) {
-        setNotifications(items);
-        setUnreadCount(items.filter(n => n && !n.is_read).length);
-      } else {
-        setNotifications([]);
-        setUnreadCount(0);
-      }
+      const items = await api.getInAppNotifications(10) || [];
+      const announcements = await api.getAnnouncements() || [];
+      
+      const mappedAnnouncements = (Array.isArray(announcements) ? announcements : []).map(a => ({
+        ...a,
+        isAnnouncement: true,
+        data_url: a.action_url || null
+      }));
+
+      const combined = [
+        ...mappedAnnouncements,
+        ...(Array.isArray(items) ? items : [])
+      ].sort((a, b) => new Date(b.created_at) - new Date(a.created_at)).slice(0, 15);
+
+      setNotifications(combined);
+      setUnreadCount(combined.filter(n => n && !n.is_read).length);
     } catch (err) {
       setNotifications([]);
       setUnreadCount(0);
@@ -60,6 +68,12 @@ export default function Navbar({ title, subtitle }) {
   const handleMarkAllRead = async () => {
     try {
       await api.markAllNotificationsRead();
+      // Mark announcements read
+      const unreadAnnouncements = notifications.filter(n => n.isAnnouncement && !n.is_read);
+      for (const ann of unreadAnnouncements) {
+        await api.markAnnouncementRead(ann.id).catch(() => {});
+      }
+
       setNotifications(prev => prev.map(n => ({ ...n, is_read: true })));
       setUnreadCount(0);
     } catch (e) {
@@ -70,8 +84,12 @@ export default function Navbar({ title, subtitle }) {
   const handleItemClick = async (notif) => {
     if (!notif.is_read) {
       try {
-        await api.markNotificationRead(notif.id);
-        setNotifications(prev => prev.map(n => n.id === notif.id ? { ...n, is_read: true } : n));
+        if (notif.isAnnouncement) {
+          await api.markAnnouncementRead(notif.id);
+        } else {
+          await api.markNotificationRead(notif.id);
+        }
+        setNotifications(prev => prev.map(n => (n.id === notif.id && n.isAnnouncement === notif.isAnnouncement) ? { ...n, is_read: true } : n));
         setUnreadCount(prev => Math.max(0, prev - 1));
       } catch (e) {
         // Ignore

@@ -7,7 +7,7 @@ import Avatar from './Avatar';
 import { 
   Gamepad2, Swords, Trophy, History, User, Users, Shield, 
   Settings, CheckSquare, PlusCircle, LogIn, FileText, Activity, ShieldCheck,
-  HelpCircle, Home, ChevronRight, Sparkles, LayoutDashboard, Calendar, BarChart3, Award, Bug, Bell, Lightbulb
+  HelpCircle, Home, ChevronRight, Sparkles, LayoutDashboard, Calendar, BarChart3, Award, Bug, Bell, Lightbulb, Megaphone
 } from 'lucide-react';
 
 export default function Sidebar() {
@@ -97,6 +97,7 @@ export default function Sidebar() {
       group: 'Administration',
       items: [
         { label: 'Admin Roles', href: '/super-admin/admins', icon: ShieldCheck },
+        { label: 'Announcements', href: '/super-admin/announcements', icon: Megaphone },
         { label: 'System Settings', href: '/super-admin/settings', icon: Settings },
         { label: 'Platform Reports', href: '/admin/reports', icon: BarChart3 },
         { label: 'Audit Logs', href: '/super-admin/audit-logs', icon: FileText },

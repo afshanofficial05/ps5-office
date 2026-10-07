@@ -499,6 +499,49 @@ class InAppNotificationResponse(BaseModel):
     class Config:
         from_attributes = True
 
+# --- Announcement Schemas ---
+class AnnouncementCreate(BaseModel):
+    title: str
+    message: str
+    type: str = "INFO"
+    action_url: Optional[str] = None
+    action_text: Optional[str] = None
+    show_popup: bool = False
+    requires_ack: bool = False
+    is_active: bool = True
+
+class AnnouncementUpdate(BaseModel):
+    title: Optional[str] = None
+    message: Optional[str] = None
+    type: Optional[str] = None
+    action_url: Optional[str] = None
+    action_text: Optional[str] = None
+    show_popup: Optional[bool] = None
+    requires_ack: Optional[bool] = None
+    is_active: Optional[bool] = None
+
+class AnnouncementResponse(BaseModel):
+    id: int
+    title: str
+    message: str
+    type: str
+    action_url: Optional[str] = None
+    action_text: Optional[str] = None
+    show_popup: bool
+    requires_ack: bool
+    is_active: bool
+    created_by_id: Optional[int] = None
+    created_at: datetime
+    updated_at: datetime
+
+    # For user responses
+    is_read: Optional[bool] = False
+    is_acknowledged: Optional[bool] = False
+
+    class Config:
+        from_attributes = True
+
+
 class NotificationStatusResponse(BaseModel):
     vapid_public_key: str
     is_configured: bool

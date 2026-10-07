@@ -6,6 +6,7 @@ import Navbar from './Navbar';
 import MobileNav from './MobileNav';
 
 import ArenaDataLoader from './MorphingInfinity';
+import GlobalAnnouncementPopup from './GlobalAnnouncementPopup';
 
 export default function Layout({ children, title, subtitle, requireAuth = true, allowedRoles = [] }) {
   const { user, loading } = useAuth();
@@ -43,6 +44,7 @@ export default function Layout({ children, title, subtitle, requireAuth = true, 
 
   return (
     <div className="app-layout">
+      <GlobalAnnouncementPopup />
       <MobileNav />
       <Sidebar />
       <main className="main-content">

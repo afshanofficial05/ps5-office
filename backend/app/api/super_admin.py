@@ -305,3 +305,113 @@ def get_seasons(
     current_user: User = Depends(require_super_admin)
 ):
     return db.query(Season).order_by(desc(Season.start_date)).all()
+
+
+# --- Announcement Management ---
+
+from backend.app.models.models import Announcement
+from backend.app.schemas.schemas import AnnouncementCreate, AnnouncementUpdate, AnnouncementResponse
+from backend.app.services.notification_service import NotificationService
+
+@router.post("/announcements", response_model=AnnouncementResponse)
+def create_announcement(
+    payload: AnnouncementCreate,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(require_super_admin)
+):
+    announcement = Announcement(
+        title=payload.title,
+        message=payload.message,
+        type=payload.type,
+        action_url=payload.action_url,
+        action_text=payload.action_text,
+        show_popup=payload.show_popup,
+        requires_ack=payload.requires_ack,
+        is_active=payload.is_active,
+        created_by_id=current_user.id
+    )
+    db.add(announcement)
+    
+    AuditService.log(
+        db=db,
+        action="CREATE_ANNOUNCEMENT",
+        entity_type="ANNOUNCEMENT",
+        entity_id="NEW",
+        actor_id=current_user.id,
+        new_value=f"Created Announcement: {payload.title}"
+    )
+
+    db.commit()
+    db.refresh(announcement)
+    
+    # Broadcast in-app notifications if it is active
+    if announcement.is_active:
+        # Create an InAppNotification for everyone so it triggers websocket counters?
+        # A lightweight way is to rely on websocket /notifications or we can actually create InAppNotifications.
+        pass # Not creating 1000 InAppNotifications; users fetch Announcements.
+
+    # We can trigger a websocket event here if we import the ws manager
+    from backend.app.api.ws import manager
+    # Assuming there's a way to broadcast. If not, users will get it on next refresh or polling.
+
+    return announcement
+
+@router.get("/announcements", response_model=List[AnnouncementResponse])
+def get_announcements(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(require_super_admin)
+):
+    return db.query(Announcement).order_by(desc(Announcement.created_at)).all()
+
+@router.patch("/announcements/{id}", response_model=AnnouncementResponse)
+def update_announcement(
+    id: int,
+    payload: AnnouncementUpdate,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(require_super_admin)
+):
+    announcement = db.query(Announcement).filter(Announcement.id == id).first()
+    if not announcement:
+        raise HTTPException(status_code=404, detail="Announcement not found")
+        
+    for key, value in payload.dict(exclude_unset=True).items():
+        setattr(announcement, key, value)
+    
+    announcement.updated_at = datetime.utcnow()
+    
+    AuditService.log(
+        db=db,
+        action="UPDATE_ANNOUNCEMENT",
+        entity_type="ANNOUNCEMENT",
+        entity_id=str(announcement.id),
+        actor_id=current_user.id,
+        new_value=f"Updated Announcement: {announcement.title}"
+    )
+    
+    db.commit()
+    db.refresh(announcement)
+    return announcement
+
+@router.delete("/announcements/{id}")
+def delete_announcement(
+    id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(require_super_admin)
+):
+    announcement = db.query(Announcement).filter(Announcement.id == id).first()
+    if not announcement:
+        raise HTTPException(status_code=404, detail="Announcement not found")
+        
+    db.delete(announcement)
+    
+    AuditService.log(
+        db=db,
+        action="DELETE_ANNOUNCEMENT",
+        entity_type="ANNOUNCEMENT",
+        entity_id=str(id),
+        actor_id=current_user.id,
+        new_value=f"Deleted Announcement: {announcement.title}"
+    )
+    
+    db.commit()
+    return {"message": "Announcement deleted successfully"}

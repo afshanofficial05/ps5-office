@@ -417,3 +417,34 @@ class ScoreReport(Base):
     resolver = relationship("User", foreign_keys=[resolved_by])
 
 
+class Announcement(Base):
+    __tablename__ = "announcements"
+
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String(255), nullable=False)
+    message = Column(Text, nullable=False)
+    type = Column(String(50), nullable=False, default="INFO") # INFO, IMPORTANT, UPDATE, WARNING
+    action_url = Column(String(255), nullable=True)
+    action_text = Column(String(100), nullable=True)
+    show_popup = Column(Boolean, default=False)
+    requires_ack = Column(Boolean, default=False)
+    is_active = Column(Boolean, default=True)
+    created_by_id = Column(Integer, ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    created_by = relationship("User")
+
+
+class AnnouncementReceipt(Base):
+    __tablename__ = "announcement_receipts"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
+    announcement_id = Column(Integer, ForeignKey("announcements.id", ondelete="CASCADE"), nullable=False, index=True)
+    is_read = Column(Boolean, default=False, nullable=False)
+    is_acknowledged = Column(Boolean, default=False, nullable=False)
+    read_at = Column(DateTime, nullable=True)
+    
+    user = relationship("User")
+    announcement = relationship("Announcement")

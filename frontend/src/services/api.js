@@ -193,6 +193,16 @@ export const api = {
   updateSystemSettings: (data) => request('/super-admin/settings', { method: 'PATCH', body: JSON.stringify(data) }),
   adjustRating: (data) => request('/super-admin/adjust-rating', { method: 'POST', body: JSON.stringify(data) }),
 
+  // Announcements
+  getAnnouncements: () => request('/notifications/announcements'),
+  markAnnouncementRead: (id) => request(`/notifications/announcements/${id}/read`, { method: 'POST' }),
+  acknowledgeAnnouncement: (id) => request(`/notifications/announcements/${id}/acknowledge`, { method: 'POST' }),
+
+  getSuperAdminAnnouncements: () => request('/super-admin/announcements'),
+  createAnnouncement: (data) => request('/super-admin/announcements', { method: 'POST', body: JSON.stringify(data) }),
+  updateAnnouncement: (id, data) => request(`/super-admin/announcements/${id}`, { method: 'PATCH', body: JSON.stringify(data) }),
+  deleteAnnouncement: (id) => request(`/super-admin/announcements/${id}`, { method: 'DELETE' }),
+
   // Seasons
   getSeasons: () => request('/seasons'),
   getSeason: (id) => request(`/seasons/${id}`),

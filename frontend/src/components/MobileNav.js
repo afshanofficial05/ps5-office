@@ -7,7 +7,7 @@ import { api } from '../services/api';
 import {
   Menu, X, Home, Swords, Trophy, Shield, User, History,
   CheckSquare, Users, Settings, FileText, LogOut, ChevronRight,
-  Gamepad2, PlusCircle, Calendar, BarChart3, Plus, Camera, KeyRound, Sparkles, Award, Bug, Bell, Lightbulb, ShieldCheck
+  Gamepad2, PlusCircle, Calendar, BarChart3, Plus, Camera, KeyRound, Sparkles, Award, Bug, Bell, Lightbulb, ShieldCheck, Megaphone
 } from 'lucide-react';
 
 export default function MobileNav() {
@@ -20,12 +20,16 @@ export default function MobileNav() {
 
   useEffect(() => {
     if (!user) return;
-    const fetchUnread = () => {
-      api.getInAppNotifications(10).then((items) => {
-        if (Array.isArray(items)) {
-          setUnreadCount(items.filter(n => n && !n.is_read).length);
-        }
-      }).catch(() => {});
+    const fetchUnread = async () => {
+      try {
+        const items = await api.getInAppNotifications(10) || [];
+        const announcements = await api.getAnnouncements() || [];
+        const combined = [
+          ...(Array.isArray(announcements) ? announcements : []),
+          ...(Array.isArray(items) ? items : [])
+        ];
+        setUnreadCount(combined.filter(n => n && !n.is_read).length);
+      } catch (err) { }
     };
     fetchUnread();
     
@@ -191,6 +195,7 @@ export default function MobileNav() {
         title: 'Administration',
         items: [
           { href: '/super-admin/admins', label: 'Admin Roles', icon: ShieldCheck },
+          { href: '/super-admin/announcements', label: 'Announcements', icon: Megaphone },
           { href: '/super-admin/settings', label: 'System Settings', icon: Settings },
           { href: '/admin/reports', label: 'Platform Reports', icon: BarChart3 },
           { href: '/super-admin/audit-logs', label: 'Audit Logs', icon: FileText },

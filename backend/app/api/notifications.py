@@ -227,3 +227,83 @@ def mark_all_read(
     ).update({"is_read": True})
     db.commit()
     return {"status": "all_marked_read"}
+
+
+# --- Announcement Endpoints for Users ---
+
+from backend.app.models.models import Announcement, AnnouncementReceipt
+from backend.app.schemas.schemas import AnnouncementResponse
+
+@router.get("/announcements", response_model=List[AnnouncementResponse])
+def get_user_announcements(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    """
+    Returns active announcements and the user's read/acknowledge status for each.
+    """
+    announcements = db.query(Announcement).filter(Announcement.is_active == True).order_by(desc(Announcement.created_at)).all()
+    
+    receipts = db.query(AnnouncementReceipt).filter(
+        AnnouncementReceipt.user_id == current_user.id
+    ).all()
+    receipt_map = {r.announcement_id: r for r in receipts}
+
+    result = []
+    for a in announcements:
+        r = receipt_map.get(a.id)
+        # Convert SQLAlchemy model to dict to append dynamic fields
+        a_dict = {
+            "id": a.id,
+            "title": a.title,
+            "message": a.message,
+            "type": a.type,
+            "action_url": a.action_url,
+            "action_text": a.action_text,
+            "show_popup": a.show_popup,
+            "requires_ack": a.requires_ack,
+            "is_active": a.is_active,
+            "created_by_id": a.created_by_id,
+            "created_at": a.created_at,
+            "updated_at": a.updated_at,
+            "is_read": r.is_read if r else False,
+            "is_acknowledged": r.is_acknowledged if r else False,
+        }
+        result.append(a_dict)
+    
+    return result
+
+@router.post("/announcements/{id}/read")
+def mark_announcement_read(
+    id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    receipt = db.query(AnnouncementReceipt).filter_by(user_id=current_user.id, announcement_id=id).first()
+    if not receipt:
+        receipt = AnnouncementReceipt(user_id=current_user.id, announcement_id=id, is_read=True, read_at=datetime.utcnow())
+        db.add(receipt)
+    else:
+        receipt.is_read = True
+        if not receipt.read_at:
+            receipt.read_at = datetime.utcnow()
+    db.commit()
+    return {"status": "marked_read"}
+
+@router.post("/announcements/{id}/acknowledge")
+def acknowledge_announcement(
+    id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    receipt = db.query(AnnouncementReceipt).filter_by(user_id=current_user.id, announcement_id=id).first()
+    if not receipt:
+        receipt = AnnouncementReceipt(user_id=current_user.id, announcement_id=id, is_read=True, is_acknowledged=True, read_at=datetime.utcnow())
+        db.add(receipt)
+    else:
+        receipt.is_read = True
+        receipt.is_acknowledged = True
+        if not receipt.read_at:
+            receipt.read_at = datetime.utcnow()
+    db.commit()
+    return {"status": "acknowledged"}
