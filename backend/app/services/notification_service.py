@@ -280,3 +280,47 @@ class NotificationService:
             "subject": settings.VAPID_SUBJECT,
             "timestamp": datetime.utcnow().isoformat()
         }
+
+    @staticmethod
+    def broadcast_announcement(db: Session, announcement):
+        """
+        Broadcasts an announcement as a push notification to all users who have active push subscriptions.
+        """
+        title = announcement.title
+        body = announcement.message[:150] + ("..." if len(announcement.message) > 150 else "")
+        url = announcement.action_url or "/dashboard"
+
+        payload = {
+            "title": f"📢 {title}",
+            "body": body,
+            "icon": "/gamepad_banner.jpg",
+            "badge": "/gamepad_banner.jpg",
+            "tag": f"announcement-{announcement.id}",
+            "data": {
+                "url": url,
+                "type": "ANNOUNCEMENT",
+                "announcement_id": announcement.id
+            }
+        }
+
+        # Fetch all push subscriptions
+        subs = db.query(PushSubscription).all()
+        
+        expired_ids = []
+        for sub in subs:
+            res = NotificationService.send_push_payload(
+                sub.endpoint, sub.p256dh, sub.auth, payload
+            )
+            if res.success:
+                sub.last_active_at = datetime.utcnow()
+            elif res.is_expired:
+                expired_ids.append(sub.id)
+
+        # Cleanup expired subscriptions
+        if expired_ids:
+            try:
+                db.query(PushSubscription).filter(PushSubscription.id.in_(expired_ids)).delete(synchronize_session=False)
+            except Exception as e:
+                logger.error(f"[PUSH ERROR] Failed to clean up expired subscriptions: {e}")
+
+        db.commit()

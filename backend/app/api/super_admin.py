@@ -349,6 +349,9 @@ def create_announcement(
         # Create an InAppNotification for everyone so it triggers websocket counters?
         # A lightweight way is to rely on websocket /notifications or we can actually create InAppNotifications.
         pass # Not creating 1000 InAppNotifications; users fetch Announcements.
+        
+        # Broadcast via Web Push Notification to all subscribed devices
+        NotificationService.broadcast_announcement(db, announcement)
 
     # We can trigger a websocket event here if we import the ws manager
     from backend.app.api.ws import manager
