@@ -28,50 +28,7 @@ export default function AdminDashboardPage() {
     <Layout title="Gaming Admin Console" requireAuth={true} allowedRoles={['ADMIN', 'SUPER_ADMIN']}>
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
 
-        {/* Quick Pending Alert if any matches are waiting */}
-        {data?.pending_verification > 0 && (
-          <div className="glass-card" style={{
-            padding: '20px 28px',
-            marginBottom: '28px',
-            border: '1.5px solid #fde68a',
-            background: '#fffdf5',
-            borderRadius: '16px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-            gap: '16px'
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-              <div style={{
-                width: '46px',
-                height: '46px',
-                borderRadius: '12px',
-                background: '#fef3c7',
-                border: '1px solid #fde68a',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#b45309'
-              }}>
-                <CheckSquare size={24} />
-              </div>
-              <div>
-                <h4 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#b45309' }}>
-                  {data.pending_verification} Match Result(s) Pending Verification
-                </h4>
-                <p style={{ fontSize: '0.85rem', color: '#64748b' }}>
-                  Review scores & screenshot proof to finalize official Elo rating adjustments.
-                </p>
-              </div>
-            </div>
 
-            <Link href="/admin/pending" className="btn btn-primary">
-              <span>Review Pending Matches</span>
-              <ChevronRight size={16} />
-            </Link>
-          </div>
-        )}
 
         {/* Stats Row */}
         <div style={{
@@ -80,15 +37,7 @@ export default function AdminDashboardPage() {
           gap: '20px',
           marginBottom: '28px'
         }}>
-          <div className="glass-card" style={{ padding: '24px', borderLeft: '4px solid #f59e0b', background: '#ffffff' }}>
-            <p style={{ fontSize: '0.8rem', fontWeight: 700, color: '#64748b', textTransform: 'uppercase' }}>
-              Pending Verification
-            </p>
-            <h3 style={{ fontSize: '2.2rem', fontWeight: 900, color: '#b45309', margin: '8px 0' }}>
-              {data?.pending_verification ?? 0}
-            </h3>
-            <p style={{ fontSize: '0.82rem', color: '#64748b' }}>Awaiting admin sign-off</p>
-          </div>
+
 
           <div className="glass-card" style={{ padding: '24px', borderLeft: '4px solid #10b981', background: '#ffffff' }}>
             <p style={{ fontSize: '0.8rem', fontWeight: 700, color: '#64748b', textTransform: 'uppercase' }}>
@@ -128,9 +77,6 @@ export default function AdminDashboardPage() {
           <div className="glass-card" style={{ padding: '28px', background: '#ffffff', borderRadius: '20px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
               <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#0f172a' }}>Latest Match Submissions</h3>
-              <Link href="/admin/pending" className="btn btn-secondary" style={{ fontSize: '0.8rem', padding: '6px 12px' }}>
-                View Queue
-              </Link>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>

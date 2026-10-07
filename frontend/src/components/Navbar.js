@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import Avatar from './Avatar';
 import { api } from '../services/api';
 import { 
-  LogOut, Plus, Bell, ShieldCheck, Sparkles, CheckSquare, Settings, Check, ExternalLink 
+  LogOut, Plus, Bell, ShieldCheck, Sparkles, CheckSquare, Settings, Check, ExternalLink, Activity
 } from 'lucide-react';
 
 export default function Navbar({ title, subtitle }) {
@@ -275,9 +275,9 @@ export default function Navbar({ title, subtitle }) {
             <span>Admin Console</span>
           </Link>
         ) : user?.role === 'ADMIN' ? (
-          <Link href="/admin/pending" className="btn btn-primary" style={{ padding: '10px 20px', fontSize: '0.9rem' }}>
-            <CheckSquare size={16} />
-            <span>Verify Matches</span>
+          <Link href="/admin" className="btn btn-primary" style={{ padding: '10px 20px', fontSize: '0.9rem' }}>
+            <Activity size={16} />
+            <span>Admin Hub</span>
           </Link>
         ) : (
           <Link href="/matches/create" className="btn btn-cyan" style={{ padding: '10px 22px', fontSize: '0.9rem' }}>

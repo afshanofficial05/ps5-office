@@ -74,10 +74,10 @@ export default function MobileNav() {
   const getBottomNavItems = () => {
     if (role === 'SUPER_ADMIN') {
       return [
-        { href: '/super-admin', label: 'Console', icon: Shield },
-        { href: '/super-admin/admins', label: 'Admins', icon: Users },
-        { href: '/admin/seasons', label: 'Seasons', icon: Calendar },
-        { href: '/admin/teams', label: 'Teams', icon: Gamepad2 },
+        { href: '/super-admin', label: 'Overview', icon: Shield },
+        { href: '/super-admin/players', label: 'Players', icon: Users },
+        { href: '/admin/manual', label: 'Scoring', icon: Swords },
+        { href: '/super-admin/settings', label: 'Settings', icon: Settings },
         { href: '/profile', label: 'Profile', icon: User },
       ];
     }
@@ -86,9 +86,7 @@ export default function MobileNav() {
       if (hasPermission && hasPermission('VIEW_SEASON')) {
         items.push({ href: '/admin/seasons', label: 'Seasons', icon: Calendar });
       }
-      if (hasPermission && hasPermission('VERIFY_RESULTS')) {
-        items.push({ href: '/admin/pending', label: 'Approvals', icon: CheckSquare });
-      } else if (hasPermission && hasPermission('VIEW_TEAMS')) {
+      if (hasPermission && hasPermission('VIEW_TEAMS')) {
         items.push({ href: '/admin/teams', label: 'Teams', icon: Shield });
       }
       if (items.length < 4 && hasPermission && hasPermission('VIEW_PLAYERS')) {
@@ -134,7 +132,6 @@ export default function MobileNav() {
         { href: '/admin', label: 'Admin Hub', icon: Shield, perm: null },
         { href: '/admin/achievements', label: 'Achievements & Badges', icon: Award, perm: null },
         { href: '/admin/seasons', label: 'Season Management', icon: Calendar, perm: 'VIEW_SEASON' },
-        { href: '/admin/pending', label: 'Pending Results', icon: CheckSquare, perm: 'VERIFY_RESULTS', badge: adminBadges.matches },
         { href: '/admin/teams', label: 'Teams & Requests', icon: Gamepad2, perm: 'VIEW_TEAMS', badge: adminBadges.teams },
         { href: '/admin/players', label: 'Player Accounts', icon: Users, perm: 'VIEW_PLAYERS' },
         { href: '/admin/manual', label: 'Record Match', icon: Swords, perm: 'MANUAL_MATCH_CREATE' },
@@ -156,19 +153,48 @@ export default function MobileNav() {
       }
     }
 
-    // Super Admin Section
     if (role === 'SUPER_ADMIN') {
       sections.push({
-        title: 'Super Admin Core',
+        title: 'Super Admin Dashboard',
         items: [
-          { href: '/super-admin', label: 'Executive Console', icon: Shield },
-          { href: '/super-admin/admins', label: 'Staff Management', icon: Users },
-          { href: '/admin/bugs', label: 'Improvement Box', icon: Lightbulb, badge: adminBadges.bugs },
-          { href: '/super-admin/players', label: 'Rating Overrides', icon: Trophy },
-          { href: '/super-admin/audit-logs', label: 'Audit Logs', icon: FileText },
-          { href: '/settings/notifications', label: 'Notifications & Alerts', icon: Bell },
+          { href: '/super-admin', label: 'Overview', icon: Shield },
+        ]
+      });
+      sections.push({
+        title: 'Players & Users',
+        items: [
+          { href: '/super-admin/players', label: 'Players Directory', icon: Users },
+        ]
+      });
+      sections.push({
+        title: 'Scoring',
+        items: [
+          { href: '/matches/history', label: 'Match History', icon: History },
+          { href: '/admin/manual', label: 'Manual Score Entry', icon: Swords },
+        ]
+      });
+      sections.push({
+        title: 'Moderation',
+        items: [
+          { href: '/admin/appeals', label: 'Appeals & Moderation', icon: ShieldCheck, badge: adminBadges.appeals },
+          { href: '/admin/bugs', label: 'Reported Bugs', icon: Lightbulb, badge: adminBadges.bugs },
+        ]
+      });
+      sections.push({
+        title: 'Events / Matches',
+        items: [
+          { href: '/admin/seasons', label: 'Seasons', icon: Calendar },
+          { href: '/admin/teams', label: 'Teams & Ratings', icon: Shield, badge: adminBadges.teams },
+        ]
+      });
+      sections.push({
+        title: 'Administration',
+        items: [
+          { href: '/super-admin/admins', label: 'Admin Roles', icon: ShieldCheck },
           { href: '/super-admin/settings', label: 'System Settings', icon: Settings },
-        ],
+          { href: '/admin/reports', label: 'Platform Reports', icon: BarChart3 },
+          { href: '/super-admin/audit-logs', label: 'Audit Logs', icon: FileText },
+        ]
       });
     }
 

@@ -76,17 +76,6 @@ export default function SuperAdminDashboardPage() {
               </p>
             </div>
           </div>
-
-          <div style={{ display: 'flex', gap: '12px' }}>
-            <Link href="/super-admin/admins" className="btn btn-primary">
-              <Users size={16} />
-              <span>Manage Admins</span>
-            </Link>
-            <Link href="/super-admin/settings" className="btn btn-secondary">
-              <Settings size={16} />
-              <span>Elo Config</span>
-            </Link>
-          </div>
         </div>
 
         {/* Global Key Performance Metrics */}
@@ -130,7 +119,7 @@ export default function SuperAdminDashboardPage() {
         </div>
 
         {/* Activity Breakdown Charts & Shortcuts */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '28px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '24px', marginBottom: '28px' }}>
           
           {/* Matches Over Past 7 Days */}
           <div className="glass-card" style={{ padding: '28px', background: '#ffffff', borderRadius: '20px' }}>
@@ -157,96 +146,6 @@ export default function SuperAdminDashboardPage() {
               })}
             </div>
           </div>
-
-          {/* Quick Management Quick Links */}
-          <div className="glass-card" style={{ padding: '28px', background: '#ffffff', borderRadius: '20px' }}>
-            <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#0f172a', marginBottom: '16px' }}>
-              System Command Hub
-            </h3>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              <Link
-                href="/super-admin/admins"
-                style={{
-                  padding: '14px 18px',
-                  borderRadius: '12px',
-                  background: '#f8fafc',
-                  border: '1px solid #e2e8f0',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  color: '#0f172a',
-                  textDecoration: 'none',
-                  transition: 'all 0.2s ease'
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <div style={{ padding: '8px', borderRadius: '8px', background: '#eff6ff', color: '#2563eb' }}>
-                    <Users size={18} />
-                  </div>
-                  <div>
-                    <h5 style={{ fontSize: '0.92rem', fontWeight: 800 }}>Admin Permissions</h5>
-                    <p style={{ fontSize: '0.75rem', color: '#64748b' }}>Delegate granular management access</p>
-                  </div>
-                </div>
-                <ArrowRight size={16} color="#94a3b8" />
-              </Link>
-
-              <Link
-                href="/super-admin/audit-logs"
-                style={{
-                  padding: '14px 18px',
-                  borderRadius: '12px',
-                  background: '#f8fafc',
-                  border: '1px solid #e2e8f0',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  color: '#0f172a',
-                  textDecoration: 'none',
-                  transition: 'all 0.2s ease'
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <div style={{ padding: '8px', borderRadius: '8px', background: '#eff6ff', color: '#2563eb' }}>
-                    <FileText size={18} />
-                  </div>
-                  <div>
-                    <h5 style={{ fontSize: '0.92rem', fontWeight: 800 }}>Audit Trail</h5>
-                    <p style={{ fontSize: '0.75rem', color: '#64748b' }}>Review security logs & actions</p>
-                  </div>
-                </div>
-                <ArrowRight size={16} color="#94a3b8" />
-              </Link>
-
-              <Link
-                href="/super-admin/players"
-                style={{
-                  padding: '14px 18px',
-                  borderRadius: '12px',
-                  background: '#f8fafc',
-                  border: '1px solid #e2e8f0',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  color: '#0f172a',
-                  textDecoration: 'none',
-                  transition: 'all 0.2s ease'
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <div style={{ padding: '8px', borderRadius: '8px', background: '#faf5ff', color: '#7c3aed' }}>
-                    <TrendingUp size={18} />
-                  </div>
-                  <div>
-                    <h5 style={{ fontSize: '0.92rem', fontWeight: 800 }}>Rating Overrides</h5>
-                    <p style={{ fontSize: '0.75rem', color: '#64748b' }}>Manual Elo adjustments with audit logging</p>
-                  </div>
-                </div>
-                <ArrowRight size={16} color="#94a3b8" />
-              </Link>
-            </div>
-          </div>
-
         </div>
 
       </div>

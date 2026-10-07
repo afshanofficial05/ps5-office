@@ -46,7 +46,6 @@ export default function Sidebar() {
     { label: 'Admin Overview', href: '/admin', icon: Activity, requiredPerm: null },
     { label: 'Achievements', href: '/admin/achievements', icon: Award, requiredPerm: null },
     { label: 'Seasons', href: '/admin/seasons', icon: Calendar, requiredPerm: 'VIEW_SEASON' },
-    { label: 'Pending Verification', href: '/admin/pending', icon: CheckSquare, requiredPerm: 'VERIFY_RESULTS', badge: adminBadges.matches },
     { label: 'Manual Match Entry', href: '/admin/manual', icon: Swords, requiredPerm: 'MANUAL_MATCH_CREATE' },
     { label: 'Players Directory', href: '/admin/players', icon: Users, requiredPerm: 'VIEW_PLAYERS' },
     { label: 'Teams Database', href: '/admin/teams', icon: Shield, requiredPerm: 'VIEW_TEAMS', badge: adminBadges.teams },
@@ -61,21 +60,48 @@ export default function Sidebar() {
   const adminNav = adminNavRaw.filter(item => !item.requiredPerm || (hasPermission && hasPermission(item.requiredPerm)));
 
   const superAdminNav = [
-    { label: 'Super Dashboard', href: '/super-admin', icon: Activity },
-    { label: 'Achievements', href: '/admin/achievements', icon: Award },
-    { label: 'Admin Management', href: '/super-admin/admins', icon: ShieldCheck },
-    { label: 'Seasons', href: '/admin/seasons', icon: Calendar },
-    { label: 'Player Management', href: '/super-admin/players', icon: Users },
-    { label: 'Pending Results', href: '/admin/pending', icon: CheckSquare, badge: adminBadges.matches },
-    { label: 'Manual Match', href: '/admin/manual', icon: Swords },
-    { label: 'Teams & Ratings', href: '/admin/teams', icon: Shield, badge: adminBadges.teams },
-    { label: 'Improvement Box', href: '/admin/bugs', icon: Lightbulb, badge: adminBadges.bugs },
-    { label: 'Platform Reports', href: '/admin/reports', icon: BarChart3 },
-    { label: 'Appeals & Moderation', href: '/admin/appeals', icon: ShieldCheck, badge: adminBadges.appeals },
-    { label: 'Notifications', href: '/settings/notifications', icon: Bell },
-    { label: 'Leaderboards', href: '/leaderboards', icon: Trophy },
-    { label: 'System Settings', href: '/super-admin/settings', icon: Settings },
-    { label: 'Audit Logs', href: '/super-admin/audit-logs', icon: FileText },
+    {
+      group: 'Dashboard',
+      items: [
+        { label: 'Overview', href: '/super-admin', icon: Activity },
+      ]
+    },
+    {
+      group: 'Players & Users',
+      items: [
+        { label: 'Players Directory', href: '/super-admin/players', icon: Users },
+      ]
+    },
+    {
+      group: 'Scoring',
+      items: [
+        { label: 'Match History', href: '/matches/history', icon: History },
+        { label: 'Manual Score Entry', href: '/admin/manual', icon: Swords },
+      ]
+    },
+    {
+      group: 'Moderation',
+      items: [
+        { label: 'Appeals & Moderation', href: '/admin/appeals', icon: ShieldCheck, badge: adminBadges.appeals },
+        { label: 'Reported Bugs', href: '/admin/bugs', icon: Lightbulb, badge: adminBadges.bugs },
+      ]
+    },
+    {
+      group: 'Events / Matches',
+      items: [
+        { label: 'Seasons', href: '/admin/seasons', icon: Calendar },
+        { label: 'Teams & Ratings', href: '/admin/teams', icon: Shield, badge: adminBadges.teams },
+      ]
+    },
+    {
+      group: 'Administration',
+      items: [
+        { label: 'Admin Roles', href: '/super-admin/admins', icon: ShieldCheck },
+        { label: 'System Settings', href: '/super-admin/settings', icon: Settings },
+        { label: 'Platform Reports', href: '/admin/reports', icon: BarChart3 },
+        { label: 'Audit Logs', href: '/super-admin/audit-logs', icon: FileText },
+      ]
+    }
   ];
 
   let navItems = userNav;
@@ -150,133 +176,96 @@ export default function Sidebar() {
 
       {/* Navigation Links */}
       <nav style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '4px', paddingRight: '4px' }}>
-        {navItems.map((item) => {
-          const Icon = item.icon;
-          const isActive = router.pathname === item.href;
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '12px',
-                padding: '10px 14px',
-                borderRadius: '10px',
-                textDecoration: 'none',
-                fontSize: '0.88rem',
-                fontWeight: isActive ? 700 : 500,
-                color: isActive ? '#2563eb' : '#64748b',
-                backgroundColor: isActive ? '#eff6ff' : 'transparent',
-                transition: 'all 0.15s ease',
-              }}
-            >
-              <Icon size={18} color={isActive ? '#2563eb' : '#94a3b8'} />
-              <span style={{ flex: 1 }}>{item.label}</span>
-              {item.badge > 0 && (
-                <span style={{
-                  background: '#ef4444',
-                  color: '#ffffff',
-                  fontSize: '0.65rem',
-                  fontWeight: 800,
-                  padding: '2px 6px',
+        {navItems.map((item, idx) => {
+          if (item.group) {
+            return (
+              <div key={idx} style={{ marginBottom: '8px' }}>
+                <div style={{ padding: '8px 14px 4px 14px', fontSize: '0.72rem', fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  {item.group}
+                </div>
+                {item.items.map((subItem) => {
+                  const Icon = subItem.icon;
+                  const isActive = router.pathname === subItem.href;
+                  return (
+                    <Link
+                      key={subItem.href}
+                      href={subItem.href}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '12px',
+                        padding: '10px 14px',
+                        borderRadius: '10px',
+                        textDecoration: 'none',
+                        fontSize: '0.88rem',
+                        fontWeight: isActive ? 700 : 500,
+                        color: isActive ? '#2563eb' : '#64748b',
+                        backgroundColor: isActive ? '#eff6ff' : 'transparent',
+                        transition: 'all 0.15s ease',
+                      }}
+                    >
+                      <Icon size={18} color={isActive ? '#2563eb' : '#94a3b8'} />
+                      <span style={{ flex: 1 }}>{subItem.label}</span>
+                      {subItem.badge > 0 && (
+                        <span style={{
+                          background: '#ef4444',
+                          color: '#ffffff',
+                          fontSize: '0.65rem',
+                          fontWeight: 800,
+                          padding: '2px 6px',
+                          borderRadius: '10px',
+                          marginLeft: 'auto'
+                        }}>
+                          {subItem.badge}
+                        </span>
+                      )}
+                    </Link>
+                  );
+                })}
+              </div>
+            );
+          } else {
+            const Icon = item.icon;
+            const isActive = router.pathname === item.href;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                  padding: '10px 14px',
                   borderRadius: '10px',
-                  marginLeft: 'auto'
-                }}>
-                  {item.badge}
-                </span>
-              )}
-            </Link>
-          );
+                  textDecoration: 'none',
+                  fontSize: '0.88rem',
+                  fontWeight: isActive ? 700 : 500,
+                  color: isActive ? '#2563eb' : '#64748b',
+                  backgroundColor: isActive ? '#eff6ff' : 'transparent',
+                  transition: 'all 0.15s ease',
+                }}
+              >
+                <Icon size={18} color={isActive ? '#2563eb' : '#94a3b8'} />
+                <span style={{ flex: 1 }}>{item.label}</span>
+                {item.badge > 0 && (
+                  <span style={{
+                    background: '#ef4444',
+                    color: '#ffffff',
+                    fontSize: '0.65rem',
+                    fontWeight: 800,
+                    padding: '2px 6px',
+                    borderRadius: '10px',
+                    marginLeft: 'auto'
+                  }}>
+                    {item.badge}
+                  </span>
+                )}
+              </Link>
+            );
+          }
         })}
       </nav>
 
-      {/* Bottom Profile Card */}
-      <Link
-        href="/profile"
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '10px 12px',
-          borderRadius: '12px',
-          background: '#f8fafc',
-          border: '1px solid #e2e8f0',
-          marginBottom: '14px',
-          textDecoration: 'none',
-          transition: 'all 0.2s ease'
-        }}
-      >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
-          <Avatar
-            src={user.profile_photo}
-            name={user.name}
-            size="sm"
-            status="online"
-            borderColor="#cbd5e1"
-          />
-          <div style={{ minWidth: 0 }}>
-            <p style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0f172a', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-              {user.name}
-            </p>
-            <p style={{ fontSize: '0.72rem', color: '#64748b', fontFamily: 'monospace', fontWeight: 600 }}>
-              {user.player_id}
-            </p>
-          </div>
-        </div>
-        <ChevronRight size={16} color="#94a3b8" />
-      </Link>
-
-      {/* Sidebar Footer Links */}
-      <div style={{ borderTop: '1px solid #f1f5f9', paddingTop: '10px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-        <Link
-          href="/profile"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            padding: '6px 8px',
-            color: '#64748b',
-            fontSize: '0.8rem',
-            textDecoration: 'none',
-            borderRadius: '6px',
-            fontWeight: 500
-          }}
-        >
-          <Settings size={15} color="#94a3b8" />
-          <span>Settings</span>
-        </Link>
-        <a
-          href="#"
-          onClick={(e) => { e.preventDefault(); alert('PSO Gaming Platform v1.0. For support contact FC Admins.'); }}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            padding: '6px 8px',
-            color: '#64748b',
-            fontSize: '0.8rem',
-            textDecoration: 'none',
-            borderRadius: '6px',
-            fontWeight: 500
-          }}
-        >
-          <HelpCircle size={15} color="#94a3b8" />
-          <span>Help & Support</span>
-        </a>
-        <div style={{
-          fontSize: '0.68rem',
-          color: '#94a3b8',
-          padding: '6px 8px 0 8px',
-          fontWeight: 600,
-          display: 'flex',
-          alignItems: 'center',
-          gap: '4px'
-        }}>
-          <Gamepad2 size={13} />
-          <span>Play · Compete · Level Up</span>
-        </div>
-      </div>
     </aside>
   );
 }

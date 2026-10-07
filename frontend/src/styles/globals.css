@@ -1239,3 +1239,6 @@ button, a, input, select, textarea, .glass-card, .btn, .mobile-bottom-tab, .mobi
 
 
 
+
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
